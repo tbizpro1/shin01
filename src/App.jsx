@@ -1,34 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import "./assets/plugins/bootstrap/css/bootstrap.min.css"
+import "./assets/css/main.css"
+import "./assets/css/authentication.css"
+import "./assets/css/color_skins.css"
+import './assets/css/blog.css'
+import './assets/css/timeline.css'
+import "./assets/css/inbox.css"
+
+import Login from './app/pages/Signin/login'
+import Home from './app/pages/Home/blank'
+import ProtectedRouter from './app/components/ProtectedRouter/protectedRouter';
+import AgentsPage from './app/pages/Socio/socio';
+import { AddSocio } from './app/pages/AddSocio/addsocio';
+import AgentProfile from './app/pages/Perfil/perfil';
+
+import InvitePage from './app/pages/Invite/invite';
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/workspace' element={ <ProtectedRouter page={Home} />} />
+        <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} />
+        <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
+        <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
+
+        <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
+
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 
