@@ -13,7 +13,7 @@ import ProtectedRouter from './app/components/ProtectedRouter/protectedRouter';
 import AgentsPage from './app/pages/Socio/socio';
 import { AddSocio } from './app/pages/AddSocio/addsocio';
 import AgentProfile from './app/pages/Perfil/perfil';
-
+// import Notification from './app/pages/Notification/Notification';
 import InvitePage from './app/pages/Invite/invite';
 
 
@@ -22,19 +22,16 @@ import InvitePage from './app/pages/Invite/invite';
 function App() {
   return (
     
-    <BrowserRouter>
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/workspace' element={ <ProtectedRouter page={Home} />} />
         <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} />
         <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
         <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
-
         <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
-
+        {/* <Route path='/notifications' element={<ProtectedRouter page={Notification} />} /> */}
 
       </Routes>
-    </BrowserRouter>
   )
 }
 

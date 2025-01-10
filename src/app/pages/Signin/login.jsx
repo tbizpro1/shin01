@@ -13,25 +13,25 @@ import { backgroundLogin, logoShin, logoLoader } from "../../../assets/images";
 
 
 const Login = () => {
-    const {setToken, setUserId} = useContext(AuthContext)
+    const {setToken, setUserId, onSubmit} = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const [isLoading, setIsLoading] = useState(false)
 
     let navigate = useNavigate();
 
-    const onSubmit = data => {
-        console.log("aguardando resposta da api...")
-        setIsLoading(true)
+    // const onSubmit = data => {
+    //     console.log("aguardando resposta da api...")
+    //     setIsLoading(true)
 
-        loginApi(data).then(response => {
-            Cookies.set("user_id", response.user.id)
-            Cookies.set("token", response.token)
-            setToken(Cookies.get("token"))
-            setUserId(Cookies.get('user_id'))
-            setIsLoading(false)
-            return navigate("/workspace");
-        })
-    };
+    //     loginApi(data).then(response => {
+    //         Cookies.set("user_id", response.user.id)
+    //         Cookies.set("token", response.token)
+    //         setToken(Cookies.get("token"))
+    //         setUserId(Cookies.get('user_id'))
+    //         setIsLoading(false)
+    //         return navigate("/workspace");
+    //     })
+    // };
 
     return (
         <div className="theme-purple authentication sidebar-collapse">

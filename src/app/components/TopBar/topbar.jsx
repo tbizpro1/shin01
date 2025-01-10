@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { logoLoader } from "../../../assets/images";
+import { AuthContext } from "../../context/authContext";
 
 const TopBar = () => {
+  const {logout} = useContext(AuthContext)
     return (
       <nav className="navbar">
         <div className="col-12">
@@ -109,7 +111,7 @@ const TopBar = () => {
               </a>
             </li>
             <li>
-              <a href="/" className="mega-menu" data-close="true">
+              <a href="" onClick={()=> logout()} className="mega-menu cursor-pointer" data-close="true">
                 <i className="zmdi zmdi-power"></i>
               </a>
             </li>
