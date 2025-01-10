@@ -72,10 +72,10 @@ function MailItem({ mail }) {
             <div className="media inbox-item-conteiner">
                 <div className="pull-left inbox-item">
                     <div className="controls">
-                        <div className="checkbox">
+                        {/* <div className="checkbox">
                             <input type="checkbox" id="basic_checkbox_5" />
                             <label htmlFor="basic_checkbox_5"></label>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="thumb hidden-sm-down m-r-20">
                         <img src="src/assets/images/xs/avatar5.jpg" className="rounded-circle" alt="" />

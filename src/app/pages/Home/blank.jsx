@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { GetUser } from "../../api/get/user-profile";
 
 const Home = () => {
-const [user, setUser] = useState(null)
+const [user, setUser] = useState('')
 //extrai o token de authenticacao
 const {token, userId} = useContext(AuthContext)
 console.log(token)
