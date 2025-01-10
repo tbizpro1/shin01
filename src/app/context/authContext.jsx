@@ -1,8 +1,9 @@
 import React, { createContext,useEffect, useState } from "react";
 import Cookies from 'js-cookie'
-import { redirect } from "react-router";
+import { redirect, useNavigate } from "react-router";
 import { GetUser } from "../api/get/user-profile";
 import userEnterprises from "../api/get/user-enterprises";
+import { loginApi } from "../api/post/token";
 
 
 export const AuthContext = createContext()
@@ -13,6 +14,8 @@ export const AuthProvider = ({children}) => {
     const [userId, setUserId] = useState(null)
     const [user, setUser] = useState(null)
     const [enterprise, setEnterprise] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+    let navigate = useNavigate();
 
     useEffect(() => {
         const userToken = Cookies.get("token");
@@ -33,8 +36,22 @@ export const AuthProvider = ({children}) => {
         //controla as atualizacoes que estao dentro do componente
     }, [userId, token]);
 
+    const onSubmit = data => {
+        console.log("aguardando resposta da api...")
+        setIsLoading(true)
+
+        loginApi(data).then(response => {
+            Cookies.set("user_id", response.user.id)
+            Cookies.set("token", response.token)
+            setToken(Cookies.get("token"))
+            setUserId(Cookies.get('user_id'))
+            setIsLoading(false)
+            return navigate("/workspace");
+        })
+    };
+
     return (
-        <AuthContext.Provider value={{token, isAuthentication, setToken, setUserId, userId, user, setUser, enterprise}}>
+        <AuthContext.Provider value={{token, isAuthentication, setToken, setUserId, userId, user, setUser, enterprise, setIsLoading, isLoading, onSubmit}}>
             {children}
         </AuthContext.Provider>
     )

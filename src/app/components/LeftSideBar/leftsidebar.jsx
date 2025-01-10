@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { profileUser } from "../../../assets/images";
@@ -11,9 +11,15 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
     }
 
 
-    const {user, enterprise} = useContext(AuthContext)
+    const { user, enterprise, isLoading } = useContext(AuthContext);
 
-    console.log(enterprise)
+    if (isLoading) {
+        return <div>Carregando ...</div>; // Or your custom loading component
+    }
+
+    if (!user || !enterprise) {
+        return <div>Algo ocorreu!</div>; // Or handle this case as needed
+    }
 
     return (
         <aside id="leftsidebar" className="sidebar">
@@ -30,7 +36,7 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
                                 {/* validacao condicional de user: evita erros em casos undefined ou null */}
                                 <h4>{user?.username || 'Usuário não definido'}</h4> 
 
-                                <small>{user.profession} | {enterprise[0]?.enterprise_name || 'Usuário não definido'}</small>
+                                <small>{user?.profession || 'Profissão não encontrada' } | {enterprise[0]?.enterprise_name === undefined ? 'Usuário não definido' : enterprise[0]?.enterprise_name}</small>
                                 {/* <small>{user.profession} | {'Usuário não definido'}</small> */}
                             </div>
                             <a href="#" title="Events"><i className="zmdi zmdi-calendar"></i></a>
@@ -53,7 +59,7 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
                             <li><Link to='/addsocio'>Adicionar sócio</Link></li>
                             <li><Link to='/perfil'>Perfil do sócio</Link></li>
                             <li><Link to='/explorer'>Convidar sócio</Link></li>
-
+                            {/* <li><Link to='/notifications'>Notificações</Link></li> */}
                         </ul>
                     </li>
                 </ul>
