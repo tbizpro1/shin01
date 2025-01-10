@@ -50,8 +50,14 @@ export const AuthProvider = ({children}) => {
         })
     };
 
+    const logout = () => {
+        Cookies.remove('token')
+        Cookies.remove('user_id')
+        return navigate('/')
+    }
+
     return (
-        <AuthContext.Provider value={{token, isAuthentication, setToken, setUserId, userId, user, setUser, enterprise, setIsLoading, isLoading, onSubmit}}>
+        <AuthContext.Provider value={{token, isAuthentication, setToken, setUserId, userId, user, setUser, enterprise, setIsLoading, isLoading, onSubmit, logout}}>
             {children}
         </AuthContext.Provider>
     )

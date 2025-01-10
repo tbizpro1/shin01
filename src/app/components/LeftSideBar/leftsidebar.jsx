@@ -11,7 +11,7 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
     }
 
 
-    const { user, enterprise, isLoading } = useContext(AuthContext);
+    const { user, enterprise, isLoading, logout } = useContext(AuthContext);
 
     if (isLoading) {
         return <div>Carregando ...</div>; // Or your custom loading component
@@ -36,14 +36,14 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
                                 {/* validacao condicional de user: evita erros em casos undefined ou null */}
                                 <h4>{user?.username || 'Usuário não definido'}</h4> 
 
-                                <small>{user?.profession || 'Profissão não encontrada' } | {enterprise[0]?.enterprise_name === undefined ? 'Usuário não definido' : enterprise[0]?.enterprise_name}</small>
+                                <small>{user?.profession || '' }  {enterprise[0]?.enterprise_name === undefined ? '' : enterprise[0]?.enterprise_name}</small>
                                 {/* <small>{user.profession} | {'Usuário não definido'}</small> */}
                             </div>
                             <a href="#" title="Events"><i className="zmdi zmdi-calendar"></i></a>
                             <a href="#" title="Inbox"><i className="zmdi zmdi-email"></i></a>
                             <a href="#" title="Contact List"><i className="zmdi zmdi-account-box-phone"></i></a>
                             <a href="#" title="Chat App"><i className="zmdi zmdi-comments"></i></a>
-                            <a href="/" title="Sign out"><i className="zmdi zmdi-power"></i></a>
+                            <a href="" onClick={() => logout()} title="Sign out"><i className="zmdi zmdi-power"></i></a>
                         </div>
                     </li>
 

@@ -9,46 +9,85 @@ function MailList() {
     const [users, setUsers] = useState([]);
     const {user, token, enterprise} = useContext(AuthContext)
     const [partners, setPartners] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    console.log("teste", user)
+    console.log("teste", enterprise)
 
     useEffect(() => {
-        allUserEnterprisePending(enterprise[0].enterprise_id, token).then(
-            response => {
-            const uniqueData = response.filter(
-                (item, index, self) =>
-                index === self.findIndex(t => t.user_id === item.user_id)
-            );
-            console.log("uniqueData", uniqueData);
-            setPartners(uniqueData);
-            }
-        )
-        allUsers()
-            .then(response => {
-                // Filtra os usuários que já foram convidados
-                const filteredUsers = response.filter(user =>
-                    !partners.some(partner => partner.user_id === user.id)
+        // Certifique-se de que `enterprise` está disponível antes de fazer chamadas.
+        if (!enterprise?.[0]?.enterprise_id || !token) return;
+    
+        const fetchData = async () => {
+            try {
+                setIsLoading(true);
+    
+                // Obtém os parceiros pendentes
+                const partnersResponse = await allUserEnterprisePending(enterprise[0].enterprise_id, token);
+                const responseData = Array.isArray(partnersResponse) ? partnersResponse : [];
+                const uniquePartners = responseData.filter(
+                    (item, index, self) =>
+                        index === self.findIndex(t => t.user_id === item.user_id)
+                );
+    
+                console.log("uniquePartners", uniquePartners);
+                setPartners(uniquePartners);
+    
+                // Obtém todos os usuários e filtra os que já foram convidados
+                const allUsersResponse = await allUsers();
+                const filteredUsers = allUsersResponse.filter(user =>
+                    !uniquePartners.some(partner => partner.user_id === user.id)
                 );
                 setUsers(filteredUsers);
-            })
-            .catch(error => console.log(error));
-    }, [partners]);
+                setIsLoading(false)
+            } catch (error) {
+                console.error("Erro ao buscar dados:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+    
+        fetchData();
+    }, [enterprise, token]); // Remova `partners` das dependências
+    
 
     return (
         <section className="content inbox">
-        <div className="block-header">
-            <div className="row">
-            <div className="col-lg-7 col-md-6 col-sm-12">
-                <h2>Convidar Sócio</h2>
-                <small className="text-muted">Encaminhe solicitação de ingresso em sua startup!</small>
-            </div>
-            </div>
-        </div>
-        <div className="container-fluid">
-            <ul className="mail_list list-group list-unstyled">
-            {users.map((mail) => (
-                <MailItem key={mail.id} mail={mail} />
-            ))}
-            </ul>
-        </div>
+            {
+                isLoading ?(
+                    <div className="page-loader-wrapper">
+                    <div className="loader">
+                        <div className="m-t-30">
+                            <img
+                                className="zmdi-hc-spin"
+                                src="src/assets/images/logo.svg"
+                                width="48"
+                                height="48"
+                                alt="Compass"
+                            />
+                        </div>
+                      <p>Carregando informações ...</p>
+                    </div>
+                  </div>
+                ):(
+                    <>
+                        <div className="block-header">
+                            <div className="row">
+                            <div className="col-lg-7 col-md-6 col-sm-12">
+                                <h2>Convidar Sócio</h2>
+                                <small className="text-muted">Encaminhe solicitação de ingresso em sua startup!</small>
+                            </div>
+                            </div>
+                        </div>
+                        <div className="container-fluid">
+                            <ul className="mail_list list-group list-unstyled">
+                            {users?.map((mail) => (
+                                <MailItem key={mail.id} mail={mail} />
+                            ))}
+                            </ul>
+                        </div>
+                    </>
+                )
+            }
         </section>
     );
 }
@@ -61,21 +100,25 @@ function MailItem({ mail }) {
 
 
     const handleButtonClick = useCallback((user_id) => {
-        setIsClicked(!isClicked); 
-        addUserEnterprise(user_id, enterprise[0].enterprise_id, token).then(
-            response => console.log(response)
-        )
-    })
+        if (enterprise?.[0]?.enterprise_id) {
+            setIsClicked(!isClicked);
+            addUserEnterprise(user_id, enterprise[0].enterprise_id, token).then(
+                response => console.log(response)
+            );
+        } else {
+            console.error("Enterprise ID não disponível.");
+        }
+    }, [enterprise, token])
 
     return (
         <li className="list-group-item inbox-item-conteiner">
             <div className="media inbox-item-conteiner">
                 <div className="pull-left inbox-item">
                     <div className="controls">
-                        <div className="checkbox">
+                        {/* <div className="checkbox">
                             <input type="checkbox" id="basic_checkbox_5" />
                             <label htmlFor="basic_checkbox_5"></label>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="thumb hidden-sm-down m-r-20">
                         <img src="src/assets/images/xs/avatar5.jpg" className="rounded-circle" alt="" />
