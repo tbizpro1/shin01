@@ -8,10 +8,11 @@ import { AuthContext } from "../../context/authContext";
 import { useContext } from "react";
 import { useEffect } from "react";
 import { GetUser } from "../../api/get/user-profile";
-
+    // componente funcional definido com arrow function 
 const Home = () => {
-const [user, setUser] = useState('')
-//extrai o token de authenticacao
+    // hook de estado
+const [user, setUser] = useState(null)
+    //extrai o token de authenticacao
 const {token, userId} = useContext(AuthContext)
 console.log(token)
 
@@ -33,3 +34,7 @@ console.log(token)
 }
 
 export default Home
+
+// user: variavel que armazena o estado
+// setUser: funcao que atualiza o estado
+// null: valor inicial do estado

@@ -30,6 +30,9 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
                                 {/* validacao condicional de user: evita erros em casos undefined ou null */}
                                 <h4>{user?.username || 'Usuário não definido'}</h4> 
 
+                                {/* leftsidebar.jsx:33 TypeError não capturado: não é possível ler propriedades de null (lendo 'profissão')
+    em LeftSideBar */}
+
                                 <small>{user.profession} | {enterprise[0]?.enterprise_name || 'Usuário não definido'}</small>
                                 {/* <small>{user.profession} | {'Usuário não definido'}</small> */}
                             </div>
