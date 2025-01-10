@@ -7,6 +7,7 @@ import Chat from "../../components/Chat/chat";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending";
 import { AuthContext } from "../../context/authContext";
 import { GetUser } from "../../api/get/user-profile";
+import { logoLoader, socio } from "../../../assets/images";
 
 const formatPhoneNumber = (phoneNumber) => {
   if (!phoneNumber) return '';
@@ -65,7 +66,7 @@ const AgentCard = ({ avatar, partner_id, token,partner_status  }) => {
         <div className="m-t-30">
           <img
             className="zmdi-hc-spin"
-            src="src/assets/images/logo.svg"
+            src={logoLoader}
             width="48"
             height="48"
             alt="Compass"
@@ -195,7 +196,7 @@ const AgentsPage = () => {
                   {partners.map((agent, index) => (
                     <AgentCard
                       key={index}
-                      avatar={'https://secure.gravatar.com/avatar/752c5cf32c634249bebcef3c9b35b37d?s=500&d=mm&r=g'}
+                      avatar={socio}
                       partner_id={agent.user_id}
                       partner_status={agent.status}
                       token={token}

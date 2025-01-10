@@ -4,6 +4,7 @@ import allUsers from "../../api/get/all-users";
 import { AuthContext } from "../../context/authContext";
 import addUserEnterprise from "../../api/post/add-user-enterprise";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending";
+import { logoLoader, socio } from "../../../assets/images";
 
 function MailList() {
     const [users, setUsers] = useState([]);
@@ -59,7 +60,7 @@ function MailList() {
                         <div className="m-t-30">
                             <img
                                 className="zmdi-hc-spin"
-                                src="src/assets/images/logo.svg"
+                                src={logoLoader}
                                 width="48"
                                 height="48"
                                 alt="Compass"
@@ -121,7 +122,7 @@ function MailItem({ mail }) {
                         </div> */}
                     </div>
                     <div className="thumb hidden-sm-down m-r-20">
-                        <img src="src/assets/images/xs/avatar5.jpg" className="rounded-circle" alt="" />
+                        <img src={socio} className="rounded-circle" alt="" />
                     </div>
                 </div>
                 <div className="media-body">
