@@ -4,13 +4,13 @@ O Render aceita perfeitamente arquivos JSX.
 
 O problema da tela branca geralmente está relacionado a alguns fatores comuns. Vamos verificar e corrigir:
 
-1. Primeiro, no seu index.html, precisamos ajustar o caminho do script:
+1. No index.html, devemos ajustar o caminho do script:
 ```html
 <script type="module" src="./src/main.jsx"></script>
 ```
 Note o './' no início do caminho.
 
-2. No seu vite.config.js, adicione a configuração base:
+2. No vite.config.js, adicionar a configuração base:
 ```javascript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -21,7 +21,7 @@ export default defineConfig({
 })
 ```
 
-3. Agora, vamos configurar o deploy no Render.com corretamente:
+3. Configurar deploy no Render.com corretamente:
 
    a. Faça login no Render.com
    b. Clique em "New +" e selecione "Static Site"
@@ -36,7 +36,7 @@ export default defineConfig({
         NODE_VERSION=16.x
         ```
 
-4. Verifique se seu package.json tem os scripts corretos:
+4. Verificar scripts package.json:
 ```json
 {
   "scripts": {
@@ -47,13 +47,13 @@ export default defineConfig({
 }
 ```
 
-5. Antes de fazer o deploy, teste localmente:
+5. Antes do deploy, testar localmente:
 ```bash
 npm run build
 npm run preview
 ```
 
-6. Se ainda persistir o problema, verifique seu main.jsx:
+6. Se ainda persistir o problema, verificar main.jsx:
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -73,12 +73,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
    - Certifique-se de que todas as dependências estão instaladas
    - Limpe o cache do navegador após o deploy
 
-8. Se ainda houver problemas, adicione um arquivo `_redirects` na pasta `public`:
+8. Se ainda houver problemas, adicionar um arquivo `_redirects` na pasta `public`:
 ```
 /* /index.html 200
 ```
 
-9. Atualize seu .gitignore para garantir que arquivos corretos sejam enviados:
+9. Atualizar .gitignore para garantir que arquivos corretos sejam enviados:
 ```
 node_modules
 dist
