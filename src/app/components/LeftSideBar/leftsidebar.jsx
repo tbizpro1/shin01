@@ -47,6 +47,7 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
                         </div>
                     </li>
 
+
                     <li> 
                         <a href="#" 
                         className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}
