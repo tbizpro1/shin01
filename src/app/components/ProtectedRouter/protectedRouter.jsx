@@ -5,22 +5,23 @@ import { AuthContext } from '../../context/authContext';
 import Login from '../../pages/Signin/login';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+
 const ProtectedRouter = ({ page: Page }) => {
     const { isAuthentication } = useContext(AuthContext);
     let navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         let userId = Cookies.get('user_id')
         let token = Cookies.get('token')
 
-        if (token === undefined || userId === undefined)  {
-            console.log(isAuthentication, token)
+        if (!token || !userId) {
+            // console.log(isAuthentication, token)
             alert("Sua sessão expirou, realize login!")
             navigate("/")
-        } 
-    }, [])   
+        }
+    }, [isAuthentication, navigate])
 
-    return isAuthentication ? <Page /> : <Login/>;
+    return isAuthentication ? <Page /> : <Login />;
 };
 
 export default ProtectedRouter;
