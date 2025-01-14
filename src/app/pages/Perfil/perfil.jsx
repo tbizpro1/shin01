@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/authContext';
 import UserSettings from '../../components/UserSettings/usersettings';
 import Timeline from '../../components/Timeline/timeline'; 
 
-import { profileUser } from '../../../assets/images';
+import { perfilUnd, profileUser, socio } from '../../../assets/images';
 
 const AgentProfile = () => {
   const [activeTab, setActiveTab] = useState('usersettings');
@@ -85,7 +85,7 @@ const ProfileCard = () => {
         {/* <a href="profile.html"> */}
         <img
           // src="/api/placeholder/150/150"
-          src={profileUser}
+          src={perfilUnd}
           className="rounded-circle"
           alt="profile-image"
         />
@@ -234,10 +234,10 @@ const SkillItem = ({ name, progress, color }) => (
 const FriendsContent = () => {
   const friends = [
     { name: 'Jackson', joinDate: 'Today', image: 'src/assets/images/sm/avatar1.jpg' },
-    { name: 'Aubrey', joinDate: 'Yesterday', image: 'src/assets/images/sm/avatar2.jpg' },
-    { name: 'Oliver', joinDate: '08 Nov', image: 'src/assets/images/sm/avatar3.jpg' },
-    { name: 'Isabella', joinDate: '12 Dec', image: 'src/assets/images/sm/avatar4.jpg' },
-    { name: 'Matthew', joinDate: '17 Dec', image: 'src/assets/images/sm/avatar5.jpg' },
+    // { name: 'Aubrey', joinDate: 'Yesterday', image: 'src/assets/images/sm/avatar2.jpg' },
+    // { name: 'Oliver', joinDate: '08 Nov', image: 'src/assets/images/sm/avatar3.jpg' },
+    // { name: 'Isabella', joinDate: '12 Dec', image: 'src/assets/images/sm/avatar4.jpg' },
+    // { name: 'Matthew', joinDate: '17 Dec', image: 'src/assets/images/sm/avatar5.jpg' },
   ];
 
   return (
@@ -257,7 +257,7 @@ const FriendItem = ({ name, joinDate, image }) => {
     <li className="col-lg-4 col-md-2 col-sm-6 col-4">
       <a >
         <img
-          src={`src/assets/images/sm/avatar1.jpg`}
+          src={socio}
           className="img-thumbnail"
           alt={name}
         />
