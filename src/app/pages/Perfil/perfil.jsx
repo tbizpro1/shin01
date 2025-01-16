@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Facebook, Twitter, Instagram, Plus, Home } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Plus, Home, Camera } from 'lucide-react';
 import TopBar from "../../components/TopBar/topbar";
 import LeftSideBar from "../../components/LeftSideBar/leftsidebar";
 import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
 import Chat from "../../components/Chat/chat";
 import { AuthContext } from '../../context/authContext';
-// import MyPosts from '../../components/MyPost/mypost';
+import MyPosts from '../../components/MyPost/mypost';
 import UserSettings from '../../components/UserSettings/usersettings';
-import Timeline from '../../components/Timeline/timeline'; 
-
+import Timeline from '../../components/Timeline/timeline';
 import { perfilUnd, profileUser, socio } from '../../../assets/images';
+import { useForm } from 'react-hook-form';
+import addProfileImage from '../../api/post/profile-image';
 
 const AgentProfile = () => {
   const [activeTab, setActiveTab] = useState('usersettings');
@@ -62,7 +63,7 @@ const Breadcrumb = () => (
   <ul className="breadcrumb float-md-right">
     <li className="breadcrumb-item">
       <a href="/workspace">
-      <i class="zmdi zmdi-home"></i> Shin
+        <i class="zmdi zmdi-home"></i> Shin
       </a>
     </li>
     <li className="breadcrumb-item">
@@ -73,9 +74,20 @@ const Breadcrumb = () => (
 );
 
 const ProfileCard = () => {
-  //pega do authcontext as informacoes armazenadas de dentro do estado user
-  const { user } = useContext(AuthContext)
+  const { user, token } = useContext(AuthContext)
+  const { register } = useForm()
+  const onSubmit = (data) => {
+    const file = data?.target?.files[0]; // Pega o arquivo selecionado
+    if (file) {
+      const formData = new FormData();
+      formData.append("profile_picture", file); // Anexa o arquivo ao FormData
+    }
 
+    // Verificando o conteúdo do FormData
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
+  }
   return (
     <div className="card member-card">
       <div className="header l-cyan">
@@ -83,12 +95,30 @@ const ProfileCard = () => {
       </div>
       <div className="member-img">
         {/* <a href="profile.html"> */}
-        <img
-          // src="/api/placeholder/150/150"
-          src={perfilUnd}
-          className="rounded-circle"
-          alt="profile-image"
-        />
+        <div className="member-card">
+          <label htmlFor='formFile' className="member-img">
+            <div className='image-profile'>
+              <img
+                // src="/api/placeholder/150/15
+                src={perfilUnd}
+                className="rounded-circle"
+                alt="profile-image"
+              />
+            </div>
+            {/* <i class="zmdi zmdi-camera cam-overlay zmdi-hc-3x mdc-text-grey"></i> */}
+            <Camera className="cam-overlay" color="grey" size={48} />
+            <input className="form-control input-overlay" type="file" id="formFile" {...register("profile_picture")} onChange={() => onSubmit()} />
+          </label >
+        </div>
+        {/* <div className="input-content member-img">
+          <img
+            // src="/api/placeholder/150/150"
+            src={perfilUnd}
+            className="rounded-circle position-relative"
+            alt="profile-image"
+          />
+            <input className="form-control input-content" type="file" id="formFile" />
+          </div> */}
         {/* </a> */}
       </div>
       <div className="body">
@@ -271,8 +301,8 @@ const FriendItem = ({ name, joinDate, image }) => {
 
 const MainContent = ({ activeTab, setActiveTab }) => {
   const tabs = [
-    // { id: 'mypost', label: 'My Post' },
-    // { id: 'timeline', label: 'Timeline' },
+    { id: 'mypost', label: 'LinkedIn' },
+    { id: 'timeline', label: 'Timeline' },
     { id: 'usersettings', label: 'Setting' },
   ];
 
@@ -292,8 +322,8 @@ const MainContent = ({ activeTab, setActiveTab }) => {
         </ul>
       </div>
       <div className="tab-content">
-        {/* {activeTab === 'mypost' && <MyPosts />}
-        {activeTab === 'timeline' && <Timeline />} */}
+        {activeTab === 'mypost' && <MyPosts />}
+        {activeTab === 'timeline' && <Timeline />}
         {activeTab === 'usersettings' && <UserSettings />}
       </div>
     </>

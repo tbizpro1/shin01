@@ -16807,7 +16807,8 @@ img {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
-    z-index: 12
+    z-index: 12;
+    
 }
 
 .overlay-open .sidebar {
@@ -23408,24 +23409,78 @@ section.content {
     white-space: nowrap
 }
 
-.member-card .header {
-    min-height: 150px
-}
-
 .member-card .member-img {
     position: relative;
-    margin-top: -70px
-}
-
-.member-card .member-img img {
     width: 150px;
-    border: 3px solid #fff;
-    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3)
+    height: 150px;
+    margin: auto;
+    cursor: pointer; /* Mostra que o elemento é clicável */
 }
 
-.member-card .social-links li a {
-    padding: 5px 10px
+.member-card .member-img .image-profile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Garante o formato circular */
+    overflow: hidden; /* Para que o hover se limite ao contorno da imagem */
+    z-index: 1;
 }
+
+.member-card .member-img .image-profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Garante o formato circular */
+    border: 3px solid #fff;
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease; /* Animação suave ao passar o mouse */
+}
+
+.member-card .member-img .image-profile:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Mantém o efeito circular */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo semitransparente escuro */
+    z-index: 2; /* Aparece acima da imagem */
+    transition: opacity 0.3s ease; /* Suaviza o efeito */
+    opacity: 1;
+}
+.member-card .member-img .cam-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Garante que o input fique acima de tudo */
+    display: none; /* Esconde o input inicialmente */   
+    opacity: 0;
+    cursor: pointer;
+}
+
+.member-card .member-img:hover .cam-overlay{
+    display: block; /* Mostra o input no hover */
+    opacity: 1; /* Torna o input visível */
+}
+
+
+.member-card .member-img .input-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Garante que o input fique acima de tudo */
+    display: none; /* Esconde o input inicialmente */
+    opacity: 0;
+    cursor: pointer;
+}
+
+.member-card .member-img:hover .input-overlay {
+    display: none; /* Mostra o input no hover */
+    opacity: 1; /* Torna o input visível */
+}
+
 
 .social-widget .text {
     margin-top: 0 !important

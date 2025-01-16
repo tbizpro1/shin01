@@ -59,7 +59,7 @@ const MyPosts = () => {
                             <img src="assets/images/blog/blog-page-2.jpg" alt="Awesome Image" />
                             <div className="social_share">
                                 <button className="btn btn-primary btn-icon btn-icon-mini btn-round"><i className="zmdi zmdi-facebook"></i></button>
-                                <button className="btn btn-primary btn-icon btn-icon-mini btn-round"><i className="zmdi zmdi-twitter"></i></button>
+                                <button className="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="fa-brands fa-twitter"></i></button>
                                 <button className="btn btn-primary btn-icon btn-icon-mini btn-round"><i className="zmdi zmdi-instagram"></i></button>
                             </div>
                         </div>
