@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Facebook, Twitter, Instagram, Plus, Home } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Plus, Home, Camera } from 'lucide-react';
 import TopBar from "../../components/TopBar/topbar";
 import LeftSideBar from "../../components/LeftSideBar/leftsidebar";
 import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
 import Chat from "../../components/Chat/chat";
 import { AuthContext } from '../../context/authContext';
-// import MyPosts from '../../components/MyPost/mypost';
+import MyPosts from '../../components/MyPost/mypost';
 import UserSettings from '../../components/UserSettings/usersettings';
-import Timeline from '../../components/Timeline/timeline'; 
-
-import { perfilUnd, profileUser, socio } from '../../../assets/images';
+import Timeline from '../../components/Timeline/timeline';
+import { perfilUnd, profileUser, simao } from '../../../assets/images';
+import { useForm } from 'react-hook-form';
+import addProfileImage from '../../api/post/profile-image';
 
 const AgentProfile = () => {
   const [activeTab, setActiveTab] = useState('usersettings');
@@ -43,8 +44,8 @@ const Header = () => (
     <div className="row">
       <div className="col-lg-7 col-md-6 col-sm-12">
         <h2>
-          Admin Profile
-          <small className="text-muted">Welcome to Shin</small>
+          Perfil
+          <small className="text-muted">Informações de usuário</small>
         </h2>
       </div>
       <div className="col-lg-5 col-md-6 col-sm-12">
@@ -62,7 +63,7 @@ const Breadcrumb = () => (
   <ul className="breadcrumb float-md-right">
     <li className="breadcrumb-item">
       <a href="/workspace">
-      <i class="zmdi zmdi-home"></i> Shin
+        <i class="zmdi zmdi-home"></i> Shin
       </a>
     </li>
     <li className="breadcrumb-item">
@@ -73,22 +74,59 @@ const Breadcrumb = () => (
 );
 
 const ProfileCard = () => {
-  //pega do authcontext as informacoes armazenadas de dentro do estado user
-  const { user } = useContext(AuthContext)
+  const { user, token } = useContext(AuthContext)
+  const { register } = useForm()
+   const handleProfileImageChange = async (e) => {
+    console.log("ativada")
+    const file = e?.target?.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("profile_picture", file);
 
+      const response = await addProfileImage(user?.id, token, formData);
+
+      if (response) {
+        console.log('Imagem de perfil atualizada com sucesso', response);
+      }
+    }
+  };
   return (
     <div className="card member-card">
       <div className="header l-cyan">
         <h4 className="m-t-10">{user?.username || 'não encontrado'}</h4>
       </div>
       <div className="member-img">
-        {/* <a href="profile.html"> */}
-        <img
-          // src="/api/placeholder/150/150"
-          src={perfilUnd}
-          className="rounded-circle"
-          alt="profile-image"
-        />
+        <div className="member-card">
+          <label htmlFor="formFile" className="member-img">
+            <div className="image-profile">
+              <img
+                src={user?.profile_picture}
+                className="rounded-circle"
+                alt="profile-image"
+              />
+            </div>
+            <div className="cam-overlay">
+              <Camera className="cam" color='gray' size={48} />
+            </div>
+            <input
+              className="form-control input-overlay"
+              type="file"
+              id="formFile"
+              {...register('profile_picture')}
+              onChange={handleProfileImageChange}
+            />
+          </label>
+        </div>
+
+        {/* <div className="input-content member-img">
+          <img
+            // src="/api/placeholder/150/150"
+            src={perfilUnd}
+            className="rounded-circle position-relative"
+            alt="profile-image"
+          />
+            <input className="form-control input-content" type="file" id="formFile" />
+          </div> */}
         {/* </a> */}
       </div>
       <div className="body">
@@ -154,7 +192,7 @@ const AboutCard = () => {
         />
         <TabItem
           id="friends"
-          label="Agents"
+          label="Partners"
           activeTab={activeTab}
           onClick={() => setActiveTab('friends')}
         />
@@ -183,7 +221,7 @@ const AboutContent = () => (
     <InfoItem label="Estate" value="Cleveland" />
     <InfoItem label="Email address" value="michael@gmail.com" />
     <InfoItem label="Phone" value="+ 202-555-0191" />
-    <SkillsList />
+    {/* <SkillsList /> */}
   </div>
 );
 
@@ -233,45 +271,69 @@ const SkillItem = ({ name, progress, color }) => (
 
 const FriendsContent = () => {
   const friends = [
-    { name: 'Jackson', joinDate: 'Today', image: 'src/assets/images/sm/avatar1.jpg' },
-    // { name: 'Aubrey', joinDate: 'Yesterday', image: 'src/assets/images/sm/avatar2.jpg' },
-    // { name: 'Oliver', joinDate: '08 Nov', image: 'src/assets/images/sm/avatar3.jpg' },
-    // { name: 'Isabella', joinDate: '12 Dec', image: 'src/assets/images/sm/avatar4.jpg' },
-    // { name: 'Matthew', joinDate: '17 Dec', image: 'src/assets/images/sm/avatar5.jpg' },
+    { name: 'Simão Pedro', joinDate: 'Today', image: 'src/assets/images/partners/simao.png' },
+    { name: 'Luciana Tsukada', joinDate: 'Yesterday', image: 'src/assets/images/partners/luciana.jpeg' },
+    { name: 'Heygler', joinDate: '08 Nov', image: 'src/assets/images/partners/heygler.jpeg' },
+    { name: 'Jerdeson', joinDate: '12 Dec', image: 'src/assets/images/partners/jerdeson.jpeg' },
+    { name: 'Breno Ramon', joinDate: '17 Dec', image: 'src/assets/images/partners/breno.jpeg' },
   ];
 
   return (
-    <div className="tab-pane body active" id="friends">
-      <ul className="new_friend_list list-unstyled row">
-        {friends.map((friend) => (
-          <FriendItem key={friend.name} {...friend} />
+    <div className="container">
+      <div className="row">
+        {friends.map((friend, index) => (
+          <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div className="friend-item d-flex flex-column align-items-center text-center">
+              {/* Imagem do amigo */}
+              <img
+                src={friend.image}
+                alt={`${friend.name}'s avatar`}
+                className="rounded-circle mb-"
+                style={{ width: '80px', height: '80px', objectFit: 'cover' }}
+              />
+              {/* Informações do amigo */}
+              <div>
+                <h5 className="mb-1" style={{ fontSize: '18px' }}>{friend.name}</h5>
+                <small className="text-muted">Joined: {friend.joinDate}</small>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
+
+  // return (
+  //   <div className="tab-pane body active" id="friends">
+  //     <ul className="new_friend_list list-unstyled row">
+  //       {friends.map((friend, index) => (
+  //         <FriendItem key={friend.name} {...friend} />
+  //       ))}
+  //     </ul>
+  //   </div>
+  // );
 };
 
-const FriendItem = ({ name, joinDate, image }) => {
-  console.log(name, joinDate, image)
-  return (
-    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-      <a >
-        <img
-          src={socio}
-          className="img-thumbnail"
-          alt={name}
-        />
-        <h6 className="users_name">{name}</h6>
-        <small className="join_date">{joinDate}</small>
-      </a>
-    </li>
-  )
-}
-
+// const FriendItem = ({ name, joinDate, image }) => {
+//   console.log(name, joinDate, image)
+//   return (
+//     <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+//       <a >
+//         <img
+//           src={simao}
+//           className="img-thumbnail"
+//           alt={name}
+//         />
+//         <h6 className="users_name">{name}</h6>
+//         <small className="join_date">{joinDate}</small>
+//       </a>
+//     </li>
+//   )
+// }
 
 const MainContent = ({ activeTab, setActiveTab }) => {
   const tabs = [
-    // { id: 'mypost', label: 'My Post' },
+    // { id: 'mypost', label: 'My Posts' },
     // { id: 'timeline', label: 'Timeline' },
     { id: 'usersettings', label: 'Setting' },
   ];

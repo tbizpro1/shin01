@@ -7,7 +7,7 @@ import Chat from "../../components/Chat/chat";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending";
 import { AuthContext } from "../../context/authContext";
 import { GetUser } from "../../api/get/user-profile";
-import { logoLoader, socio } from "../../../assets/images";
+import { logoLoader, simao } from "../../../assets/images";
 
 const formatPhoneNumber = (phoneNumber) => {
   if (!phoneNumber) return '';
@@ -79,14 +79,14 @@ const AgentCard = ({ avatar, partner_id, token,partner_status  }) => {
     <div className="col-lg-4 col-md-6">
       <div className="card agent">
         <div className="agent-avatar">
-          <a href="profile.html">
-            <img src={avatar} className="img-fluid" alt="" />
+          <a >
+            <img src={user?.profile_picture || socio} className="img-fluid" alt="" />
           </a>
         </div>
         <div className="agent-content">
           <div className="agent-name">
             <h4>
-              <a href="profile.html">{user?.username || "Usuário desconhecido"}</a>
+              <a >{user?.username || "Usuário desconhecido"}</a>
             </h4>
             <span>{'Teresina - PI'}</span>
             <ul className="list-unstyled team-info m-b-0">
@@ -166,8 +166,8 @@ const AgentsPage = () => {
                 <div className="row">
                   <div className="col-lg-7 col-md-6 col-sm-12">
                     <h2>
-                      All Agents
-                      <small className="text-muted">Welcome to Shin</small>
+                      Todos os sócios
+                      <small className="text-muted">Bem-vindo à sua equipe!</small>
                     </h2>
                   </div>
                   <div className="col-lg-5 col-md-6 col-sm-12">
@@ -196,7 +196,7 @@ const AgentsPage = () => {
                   {partners.map((agent, index) => (
                     <AgentCard
                       key={index}
-                      avatar={socio}
+                      avatar={simao}
                       partner_id={agent.user_id}
                       partner_status={agent.status}
                       token={token}

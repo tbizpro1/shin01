@@ -10,21 +10,21 @@ import { useEffect } from "react";
 import { GetUser } from "../../api/get/user-profile";
 
 const Home = () => {
-const [user, setUser] = useState(null)
-//extrai o token de authenticacao
-const {token, userId} = useContext(AuthContext)
-console.log(token)
+    const [user, setUser] = useState(null)
+    //extrai o token de authenticacao
+    const { token, userId } = useContext(AuthContext)
+    console.log(token)
 
-// useEffect(() => {
-//     GetUser(userId, token).then(response=>setUser(response.data))
+    // useEffect(() => {
+    //     GetUser(userId, token).then(response=>setUser(response.data))
 
-// },[])
+    // },[])
 
     return (
         <div className="theme-purple">
-            {/* <div className="overlay" style={{display:'none'}}></div> */}
+            <div className="overlay" style={{display:'none'}}></div>
             <TopBar />
-            <LeftSideBar/>
+            <LeftSideBar />
             <RightSideBar />
             <Chat />
             <MainContent />
