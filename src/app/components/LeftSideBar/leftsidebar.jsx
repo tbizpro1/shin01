@@ -29,7 +29,7 @@ const LeftSideBar = () => {
                         <div className="user-info">
                             <div className="image">
                                 <Link to="/perfil">
-                                    <img className="image" src={user?.profile_picture} alt="User" />
+                                    <img className="image" style={{height:"80px"}} src={user?.profile_picture} alt="User" />
                                 </Link>
                             </div>
                             <div className="detail">

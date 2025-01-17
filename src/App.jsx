@@ -13,7 +13,6 @@ import ProtectedRouter from './app/components/ProtectedRouter/protectedRouter';
 import AgentsPage from './app/pages/Socio/socio';
 import { AddSocio } from './app/pages/AddSocio/addsocio';
 import AgentProfile from './app/pages/Perfil/perfil';
-// import Notification from './app/pages/Notification/Notification';
 import InvitePage from './app/pages/Invite/invite';
 
 

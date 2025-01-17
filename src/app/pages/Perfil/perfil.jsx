@@ -89,6 +89,7 @@ const ProfileCard = () => {
         console.log('Imagem de perfil atualizada com sucesso', response);
       }
     }
+    window.location.reload();
   };
   return (
     <div className="card member-card">
