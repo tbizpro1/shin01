@@ -1,4 +1,5 @@
 import Chat from "../../components/Chat/chat";
+import Inbox from "../../components/Inbox/inbox";
 import MailList from "../../components/Inbox/inbox";
 import LeftSideBar from "../../components/LeftSideBar/leftsidebar";
 import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
@@ -11,7 +12,9 @@ export default function InvitePage() {
             <LeftSideBar/>
             <RightSideBar />
             <Chat />
-            <MailList/>
+            <section className="content inbox">
+                <Inbox/>
+            </section>
         </div>
     )
 };
