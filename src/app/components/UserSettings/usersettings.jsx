@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useForm } from "react-hook-form";
 import UpDateUser from "../../api/put/update-user";
@@ -8,10 +8,15 @@ export default function UserSettings() {
 const {
     user, token
 } = useContext(AuthContext)
-
-const { register, handleSubmit } = useForm({
+const { register, handleSubmit,reset } = useForm({
     defaultValues:user
 })
+useEffect(()=>{
+    if(user) {
+        reset(user)
+    }
+}, [user, reset])
+
 const onSubmit = (data) => {
     console.log(data)
     UpDateUser(user.id, data, token).then(response => console.log(" reposta da api: ",response))
@@ -40,7 +45,7 @@ const onSubmit = (data) => {
             </div> */}
             <div className="card">
                 <div className="header">
-                    <h2><strong>Account</strong> Settings</h2>
+                    <h2><strong>Configurações</strong> de conta</h2>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="body">
@@ -57,12 +62,22 @@ const onSubmit = (data) => {
                         </div>
                         <div className="col-lg-4 col-md-12">
                             <div className="form-group">
+                                <input {...register("email")} type="text" className="form-control" placeholder="E-mail" />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
                                 <input {...register("profession")} type="text" className="form-control" placeholder="Profissão" />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-12">
                             <div className="form-group">
-                                <input {...register("email")} type="text" className="form-control" placeholder="E-mail" />
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="CPF" 
+                                />
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-12">
@@ -70,11 +85,92 @@ const onSubmit = (data) => {
                                 <input {...register("phone")} type="text" className="form-control" placeholder="WhatsApp" />
                             </div>
                         </div>
-                        <div className="col-md-12">
+                        <div className="col-lg-4 col-md-12">
                             <div className="form-group">
-                                <textarea rows="4" className="form-control no-resize" placeholder="Address Line 1"></textarea>
+                                <input 
+                                    // {...register("city")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Cidade" />
                             </div>
                         </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Estado" 
+                                />
+                            </div>
+                        </div>
+                        
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Horas trabalhadas" 
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Raça" 
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Gênero" 
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Data de nascimento" 
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Escolaridade" 
+                                />
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12">
+                            <div className="form-group">
+                                <input 
+                                    // {...register("state")} 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder="Instituição" 
+                                />
+                            </div>
+                        </div>  
+                        {/* <div className="col-md-12">
+                            <div className="form-group">
+                                <textarea rows="4" className="form-control no-resize" placeholder="Endereço"></textarea>
+                            </div>
+                        </div> */}
+                        
                         {/* <div className="col-md-12">
                             <div className="checkbox">
                                 <input id="procheck1" type="checkbox" />
@@ -90,7 +186,7 @@ const onSubmit = (data) => {
                             </div>
                         </div> */}
                         <div className="col-md-12">
-                            <button type="submit" className="btn btn-primary btn-round">Save Changes</button>
+                            <button type="submit" className="btn btn-primary btn-round">Salvar mudanças</button>
                         </div>
                     </div>
                 </div>
