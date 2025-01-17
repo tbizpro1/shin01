@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { perfilUnd, profileUser } from "../../../assets/images";
 
-const LeftSideBar = () => { 
+const LeftSideBar = () => {
     const [menuClicado, setMenuCliclado] = useState(false)
 
     const handleMenuCliclado = () => {
-        setMenuCliclado(!menuClicado); 
+        setMenuCliclado(!menuClicado);
     }
 
 
     const { user, enterprise, isLoading, logout } = useContext(AuthContext);
 
     if (isLoading) {
-        return <div>Carregando ...</div>; 
+        return <div>Carregando ...</div>;
     }
 
     if (!user || !enterprise) {
-        return <div>Algo ocorreu!</div>; 
+        return <div>Algo ocorreu!</div>;
     }
 
     return (
@@ -33,9 +33,9 @@ const LeftSideBar = () => {
                                 </Link>
                             </div>
                             <div className="detail">
-                                <h4>{user?.username || 'Usuário não definido'}</h4> 
+                                <h4>{user?.username || 'Usuário não definido'}</h4>
 
-                                <small>{user?.profession || '' }  {enterprise[0]?.enterprise_name === undefined ? '' : enterprise[0]?.enterprise_name}</small>
+                                <small>{user?.profession || ''}  {enterprise[0]?.enterprise_name === undefined ? '' : enterprise[0]?.enterprise_name}</small>
                             </div>
                             <a href="#" title="Events"><i className="zmdi zmdi-calendar"></i></a>
                             <a href="#" title="Inbox"><i className="zmdi zmdi-email"></i></a>
@@ -46,14 +46,16 @@ const LeftSideBar = () => {
                     </li>
 
 
-                    <li> 
-                        <a href="#" 
-                        className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}
-                        onClick={handleMenuCliclado}
+                    <li>
+                        <li><a href="/workspace"><i class="zmdi zmdi-home"></i><span>Home</span></a></li>
+                        <li><a href="/perfil"><i class="zmdi zmdi-accounts-outline"></i><span>Meu Perfil</span></a></li>
+                        <a href="#"
+                            className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}
+                            onClick={handleMenuCliclado}
                         >
                             <i className="zmdi zmdi-accounts-outline"></i><span>Sócios</span>
                         </a>
-                        <ul className="ml-menu" style={{display: menuClicado ? 'block' : 'none'}}>
+                        <ul className="ml-menu" style={{ display: menuClicado ? 'block' : 'none' }}>
                             <li><Link to='/socio'>Todos os sócios</Link></li>
                             <li><Link to='/addsocio'>Adicionar sócio</Link></li>
                             <li><Link to='/perfil'>Perfil do sócio</Link></li>
