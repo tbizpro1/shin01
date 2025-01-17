@@ -12,13 +12,13 @@ const MainContent = () => {
                             <small className="text-muted">Welcome to Shin</small>
                         </h2>
                     </div>
-                    <div className="col-lg-5 col-md-6 col-sm-12">
+                    {/* <div className="col-lg-5 col-md-6 col-sm-12">
                         <button className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
                             <i className="zmdi zmdi-plus"></i>
                         </button>
                         <ul className="breadcrumb float-md-right">
                             <li className="breadcrumb-item">
-                                <a href="#">
+                                <a href="/workspace">
                                     <i className="zmdi zmdi-home"></i> Shin
                                 </a>
                             </li>
@@ -27,7 +27,7 @@ const MainContent = () => {
                             </li>
                             <li className="breadcrumb-item active">Stater Page</li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
