@@ -22,7 +22,9 @@ export const AuthProvider = ({children}) => {
         //chama a funcao que retorna os dados do usuario
         const userId = Cookies.get("user_id");
         //.then recolhe a resposta da funcao GetUser (api)
-        GetUser(userId, userToken).then(response=>{setUser(response.data)})
+        GetUser(userId, userToken).then(response=>{
+            setUser(response.data)
+        })
         userEnterprises(userId, userToken).then(response=>{setEnterprise(response)})
         
         if (userToken !== null) {
@@ -46,9 +48,9 @@ export const AuthProvider = ({children}) => {
             setToken(Cookies.get("token"))
             setUserId(Cookies.get('user_id'))
             setIsLoading(false)
-            return navigate("/workspace");
+            return navigate("/workspace")
         })
-    };
+    }
 
     const logout = () => {
         Cookies.remove('token')

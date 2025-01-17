@@ -336,7 +336,7 @@ const MainContent = ({ activeTab, setActiveTab }) => {
   const tabs = [
     // { id: 'mypost', label: 'My Posts' },
     // { id: 'timeline', label: 'Timeline' },
-    { id: 'usersettings', label: 'Setting' },
+    { id: 'usersettings', label: 'Configurações' },
   ];
 
   return (
