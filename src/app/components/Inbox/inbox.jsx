@@ -4,7 +4,7 @@ import allUsers from "../../api/get/all-users";
 import { AuthContext } from "../../context/authContext";
 import addUserEnterprise from "../../api/post/add-user-enterprise";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending";
-import { logoLoader, socio } from "../../../assets/images";
+import { logoLoader, simao } from "../../../assets/images";
 
 function MailList() {
     const [users, setUsers] = useState([]);
@@ -122,7 +122,7 @@ function MailItem({ mail }) {
                         </div> */}
                     </div>
                     <div className="thumb hidden-sm-down m-r-20">
-                        <img src={socio} className="rounded-circle" alt="" />
+                        <img src={simao} className="rounded-circle" alt="" />
                     </div>
                 </div>
                 <div className="media-body">

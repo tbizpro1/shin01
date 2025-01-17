@@ -22,7 +22,7 @@ const Home = () => {
 
     return (
         <div className="theme-purple">
-            {/* <div className="overlay" style={{display:'none'}}></div> */}
+            <div className="overlay" style={{display:'none'}}></div>
             <TopBar />
             <LeftSideBar />
             <RightSideBar />

@@ -7,7 +7,7 @@ import Chat from "../../components/Chat/chat";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending";
 import { AuthContext } from "../../context/authContext";
 import { GetUser } from "../../api/get/user-profile";
-import { logoLoader, socio } from "../../../assets/images";
+import { logoLoader, simao } from "../../../assets/images";
 
 const formatPhoneNumber = (phoneNumber) => {
   if (!phoneNumber) return '';
@@ -196,7 +196,7 @@ const AgentsPage = () => {
                   {partners.map((agent, index) => (
                     <AgentCard
                       key={index}
-                      avatar={socio}
+                      avatar={simao}
                       partner_id={agent.user_id}
                       partner_status={agent.status}
                       token={token}

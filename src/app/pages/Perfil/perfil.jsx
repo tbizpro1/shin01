@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/authContext';
 import MyPosts from '../../components/MyPost/mypost';
 import UserSettings from '../../components/UserSettings/usersettings';
 import Timeline from '../../components/Timeline/timeline';
-import { perfilUnd, profileUser, socio } from '../../../assets/images';
+import { perfilUnd, profileUser, simao } from '../../../assets/images';
 import { useForm } from 'react-hook-form';
 import addProfileImage from '../../api/post/profile-image';
 
@@ -184,7 +184,7 @@ const AboutCard = () => {
         />
         <TabItem
           id="friends"
-          label="Agents"
+          label="Partners"
           activeTab={activeTab}
           onClick={() => setActiveTab('friends')}
         />
@@ -213,7 +213,7 @@ const AboutContent = () => (
     <InfoItem label="Estate" value="Cleveland" />
     <InfoItem label="Email address" value="michael@gmail.com" />
     <InfoItem label="Phone" value="+ 202-555-0191" />
-    <SkillsList />
+    {/* <SkillsList /> */}
   </div>
 );
 
@@ -263,46 +263,70 @@ const SkillItem = ({ name, progress, color }) => (
 
 const FriendsContent = () => {
   const friends = [
-    { name: 'Jackson', joinDate: 'Today', image: 'src/assets/images/sm/avatar1.jpg' },
-    // { name: 'Aubrey', joinDate: 'Yesterday', image: 'src/assets/images/sm/avatar2.jpg' },
-    // { name: 'Oliver', joinDate: '08 Nov', image: 'src/assets/images/sm/avatar3.jpg' },
-    // { name: 'Isabella', joinDate: '12 Dec', image: 'src/assets/images/sm/avatar4.jpg' },
-    // { name: 'Matthew', joinDate: '17 Dec', image: 'src/assets/images/sm/avatar5.jpg' },
+    { name: 'Simão Pedro', joinDate: 'Today', image: 'src/assets/images/partners/simao.png' },
+    { name: 'Luciana Tsukada', joinDate: 'Yesterday', image: 'src/assets/images/partners/luciana.jpeg' },
+    { name: 'Heygler', joinDate: '08 Nov', image: 'src/assets/images/partners/heygler.jpeg' },
+    { name: 'Jerdeson', joinDate: '12 Dec', image: 'src/assets/images/partners/jerdeson.jpeg' },
+    { name: 'Breno Ramon', joinDate: '17 Dec', image: 'src/assets/images/partners/breno.jpeg' },
   ];
 
   return (
-    <div className="tab-pane body active" id="friends">
-      <ul className="new_friend_list list-unstyled row">
-        {friends.map((friend) => (
-          <FriendItem key={friend.name} {...friend} />
+    <div className="container">
+      <div className="row">
+        {friends.map((friend, index) => (
+          <div key={index} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div className="friend-item d-flex flex-column align-items-center text-center">
+              {/* Imagem do amigo */}
+              <img
+                src={friend.image}
+                alt={`${friend.name}'s avatar`}
+                className="rounded-circle mb-"
+                style={{ width: '80px', height: '80px', objectFit: 'cover' }}
+              />
+              {/* Informações do amigo */}
+              <div>
+                <h5 className="mb-1" style={{ fontSize: '18px' }}>{friend.name}</h5>
+                <small className="text-muted">Joined: {friend.joinDate}</small>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
+
+  // return (
+  //   <div className="tab-pane body active" id="friends">
+  //     <ul className="new_friend_list list-unstyled row">
+  //       {friends.map((friend, index) => (
+  //         <FriendItem key={friend.name} {...friend} />
+  //       ))}
+  //     </ul>
+  //   </div>
+  // );
 };
 
-const FriendItem = ({ name, joinDate, image }) => {
-  console.log(name, joinDate, image)
-  return (
-    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-      <a >
-        <img
-          src={socio}
-          className="img-thumbnail"
-          alt={name}
-        />
-        <h6 className="users_name">{name}</h6>
-        <small className="join_date">{joinDate}</small>
-      </a>
-    </li>
-  )
-}
-
+// const FriendItem = ({ name, joinDate, image }) => {
+//   console.log(name, joinDate, image)
+//   return (
+//     <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+//       <a >
+//         <img
+//           src={simao}
+//           className="img-thumbnail"
+//           alt={name}
+//         />
+//         <h6 className="users_name">{name}</h6>
+//         <small className="join_date">{joinDate}</small>
+//       </a>
+//     </li>
+//   )
+// }
 
 const MainContent = ({ activeTab, setActiveTab }) => {
   const tabs = [
-    { id: 'mypost', label: 'LinkedIn' },
-    { id: 'timeline', label: 'Timeline' },
+    // { id: 'mypost', label: 'My Posts' },
+    // { id: 'timeline', label: 'Timeline' },
     { id: 'usersettings', label: 'Setting' },
   ];
 
@@ -322,8 +346,8 @@ const MainContent = ({ activeTab, setActiveTab }) => {
         </ul>
       </div>
       <div className="tab-content">
-        {activeTab === 'mypost' && <MyPosts />}
-        {activeTab === 'timeline' && <Timeline />}
+        {/* {activeTab === 'mypost' && <MyPosts />}
+        {activeTab === 'timeline' && <Timeline />} */}
         {activeTab === 'usersettings' && <UserSettings />}
       </div>
     </>
