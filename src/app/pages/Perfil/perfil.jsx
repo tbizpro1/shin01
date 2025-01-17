@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Facebook, Twitter, Instagram, Plus, Home, Camera } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Plus, Home, Camera, Linkedin } from 'lucide-react';
 import TopBar from "../../components/TopBar/topbar";
 import LeftSideBar from "../../components/LeftSideBar/leftsidebar";
 import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
@@ -145,20 +145,25 @@ const ProfileCard = () => {
 }
 
 const SocialLinks = () => (
-  <ul className="social-links list-unstyled">
-    <li>
+  <ul className="social-links list-unstyled align-items-center">
+    <li className='mx-3'>
       <a href="#" title="facebook">
         <Facebook size={18} />
       </a>
     </li>
-    <li>
+    <li className='mx-3'>
       <a href="#" title="twitter">
         <Twitter size={18} />
       </a>
     </li>
-    <li>
+    <li className='mx-3'>
       <a href="#" title="instagram">
         <Instagram size={18} />
+      </a>
+    </li>
+    <li className='mx-3'>
+      <a href="#" title="linkedin">
+        <Linkedin size={18} />
       </a>
     </li>
   </ul>
