@@ -79,14 +79,14 @@ const AgentCard = ({ avatar, partner_id, token,partner_status  }) => {
     <div className="col-lg-4 col-md-6">
       <div className="card agent">
         <div className="agent-avatar">
-          <a href="profile.html">
-            <img src={avatar} className="img-fluid" alt="" />
+          <a >
+            <img src={user?.profile_picture || socio} className="img-fluid" alt="" />
           </a>
         </div>
         <div className="agent-content">
           <div className="agent-name">
             <h4>
-              <a href="profile.html">{user?.username || "Usuário desconhecido"}</a>
+              <a >{user?.username || "Usuário desconhecido"}</a>
             </h4>
             <span>{'Teresina - PI'}</span>
             <ul className="list-unstyled team-info m-b-0">

@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { perfilUnd, profileUser } from "../../../assets/images";
 
-const LeftSideBar = () => { //desestruturacao props: o componente usa {user} para acessar diretamente as propriedades passadas
-    const [menuClicado, setMenuCliclado] = useState(false) //estado para controle de colapso
+const LeftSideBar = () => { 
+    const [menuClicado, setMenuCliclado] = useState(false)
 
     const handleMenuCliclado = () => {
-        setMenuCliclado(!menuClicado); //inverte o estado atual
+        setMenuCliclado(!menuClicado); 
     }
 
 
     const { user, enterprise, isLoading, logout } = useContext(AuthContext);
 
     if (isLoading) {
-        return <div>Carregando ...</div>; // Or your custom loading component
+        return <div>Carregando ...</div>; 
     }
 
     if (!user || !enterprise) {
-        return <div>Algo ocorreu!</div>; // Or handle this case as needed
+        return <div>Algo ocorreu!</div>; 
     }
 
     return (
@@ -29,15 +29,13 @@ const LeftSideBar = () => { //desestruturacao props: o componente usa {user} par
                         <div className="user-info">
                             <div className="image">
                                 <Link to="/perfil">
-                                    <img src={perfilUnd} alt="User" />
+                                    <img className="image" src={user?.profile_picture} alt="User" />
                                 </Link>
                             </div>
                             <div className="detail">
-                                {/* validacao condicional de user: evita erros em casos undefined ou null */}
                                 <h4>{user?.username || 'Usuário não definido'}</h4> 
 
                                 <small>{user?.profession || '' }  {enterprise[0]?.enterprise_name === undefined ? '' : enterprise[0]?.enterprise_name}</small>
-                                {/* <small>{user.profession} | {'Usuário não definido'}</small> */}
                             </div>
                             <a href="#" title="Events"><i className="zmdi zmdi-calendar"></i></a>
                             <a href="#" title="Inbox"><i className="zmdi zmdi-email"></i></a>

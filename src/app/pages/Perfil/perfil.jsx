@@ -96,20 +96,30 @@ const ProfileCard = () => {
       <div className="member-img">
         {/* <a href="profile.html"> */}
         <div className="member-card">
-          <label htmlFor='formFile' className="member-img">
-            <div className='image-profile'>
+          <label htmlFor="formFile" className="member-img">
+            {/* Imagem de perfil */}
+            <div className="image-profile">
               <img
-                // src="/api/placeholder/150/15
-                src={perfilUnd}
+                src={user?.profile_picture}
                 className="rounded-circle"
                 alt="profile-image"
               />
             </div>
-            {/* <i class="zmdi zmdi-camera cam-overlay zmdi-hc-3x mdc-text-grey"></i> */}
-            <Camera className="cam-overlay" color="grey" size={48} />
-            <input className="form-control input-overlay" type="file" id="formFile" {...register("profile_picture")} onChange={() => onSubmit()} />
-          </label >
+            {/* Overlay com o ícone da câmera */}
+            <div className="cam-overlay">
+              <Camera className="cam" color='gray' size={48} />
+            </div>
+            {/* Input de arquivo invisível */}
+            <input
+              className="form-control input-overlay"
+              type="file"
+              id="formFile"
+              {...register("profile_picture")}
+              onChange={() => onSubmit()}
+            />
+          </label>
         </div>
+
         {/* <div className="input-content member-img">
           <img
             // src="/api/placeholder/150/150"
