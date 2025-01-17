@@ -44,8 +44,8 @@ const Header = () => (
     <div className="row">
       <div className="col-lg-7 col-md-6 col-sm-12">
         <h2>
-          Admin Profile
-          <small className="text-muted">Welcome to Shin</small>
+          Perfil
+          <small className="text-muted">Informações de usuário</small>
         </h2>
       </div>
       <div className="col-lg-5 col-md-6 col-sm-12">
@@ -76,28 +76,28 @@ const Breadcrumb = () => (
 const ProfileCard = () => {
   const { user, token } = useContext(AuthContext)
   const { register } = useForm()
-  const onSubmit = (data) => {
-    const file = data?.target?.files[0]; // Pega o arquivo selecionado
+   const handleProfileImageChange = async (e) => {
+    console.log("ativada")
+    const file = e?.target?.files[0];
     if (file) {
       const formData = new FormData();
-      formData.append("profile_picture", file); // Anexa o arquivo ao FormData
-    }
+      formData.append("profile_picture", file);
 
-    // Verificando o conteúdo do FormData
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}:`, value);
+      const response = await addProfileImage(user?.id, token, formData);
+
+      if (response) {
+        console.log('Imagem de perfil atualizada com sucesso', response);
+      }
     }
-  }
+  };
   return (
     <div className="card member-card">
       <div className="header l-cyan">
         <h4 className="m-t-10">{user?.username || 'não encontrado'}</h4>
       </div>
       <div className="member-img">
-        {/* <a href="profile.html"> */}
         <div className="member-card">
           <label htmlFor="formFile" className="member-img">
-            {/* Imagem de perfil */}
             <div className="image-profile">
               <img
                 src={user?.profile_picture}
@@ -105,17 +105,15 @@ const ProfileCard = () => {
                 alt="profile-image"
               />
             </div>
-            {/* Overlay com o ícone da câmera */}
             <div className="cam-overlay">
               <Camera className="cam" color='gray' size={48} />
             </div>
-            {/* Input de arquivo invisível */}
             <input
               className="form-control input-overlay"
               type="file"
               id="formFile"
-              {...register("profile_picture")}
-              onChange={() => onSubmit()}
+              {...register('profile_picture')}
+              onChange={handleProfileImageChange}
             />
           </label>
         </div>

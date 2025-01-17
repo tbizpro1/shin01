@@ -10,7 +10,8 @@ export default async function addProfileImage(user_id, token, data) {
             data,
             {
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data', 
                 }
             }
         )

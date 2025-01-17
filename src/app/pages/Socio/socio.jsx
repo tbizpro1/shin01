@@ -166,8 +166,8 @@ const AgentsPage = () => {
                 <div className="row">
                   <div className="col-lg-7 col-md-6 col-sm-12">
                     <h2>
-                      All Agents
-                      <small className="text-muted">Welcome to Shin</small>
+                      Todos os sócios
+                      <small className="text-muted">Bem-vindo à sua equipe!</small>
                     </h2>
                   </div>
                   <div className="col-lg-5 col-md-6 col-sm-12">
