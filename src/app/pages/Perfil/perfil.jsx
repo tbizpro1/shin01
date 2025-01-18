@@ -48,13 +48,13 @@ const Header = () => (
           <small className="text-muted">Informações de usuário</small>
         </h2>
       </div>
-      <div className="col-lg-5 col-md-6 col-sm-12">
+      {/* <div className="col-lg-5 col-md-6 col-sm-12">
         <button className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10">
-          {/* <Plus size={24} /> */}
+          <Plus size={24} />
           <i class="zmdi zmdi-plus"></i>
         </button>
         <Breadcrumb />
-      </div>
+      </div> */}
     </div>
   </div>
 );

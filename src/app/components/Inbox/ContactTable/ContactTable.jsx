@@ -2,7 +2,7 @@
 import { useCallback, useContext, useState } from 'react';
 import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
-import { backgroundLogin, logoShin, logoLoader } from "../../../../assets/images/index";
+import { backgroundLogin, logoShin, logoLoader, simao } from "../../../../assets/images/index";
 
 export const Partner = ({userid, name, number, email, address}) => {
     const [isClicked, setIsClicked] = useState(false);
@@ -22,20 +22,20 @@ export const Partner = ({userid, name, number, email, address}) => {
     return (
         <tr>
             <td>
-                <img src="assets/images/xs/avatar1.jpg" className="rounded-circle avatar" alt=""/>
+                <img src={''} className="rounded-circle avatar" alt=""/>
                 <p className="c_name">
                     {name}
-                    <p className="badge badge-default m-l-10 hidden-sm-down">Family</p>
+                    {/* <p className="badge badge-default m-l-10 hidden-sm-down">Family</p> */}
                 </p>
             </td>
             <td>
-                <p className="c_name"><i className="zmdi zmdi-phone m-r-10"></i>{number}</p>
+                <p className="c_name"><i className="zmdi zmdi-phone m-r-5"></i>{number}</p>
             </td>
             <td>
-                <span className="email"><a href="javascript:void(0);" title=""><i className="zmdi zmdi-email m-r-5"></i>{email}</a></span>
+                <span className="email"><a href="" title=""><i className="zmdi zmdi-email m-r-5"></i>{email}</a></span>
             </td>
             <td>
-                <address><i className="zmdi zmdi-pin"></i>{address}</address>
+                <address><i className="zmdi zmdi-pin m-r-5"></i>{address}</address>
             </td>
             <td>
             <button
@@ -57,7 +57,7 @@ export const Partner = ({userid, name, number, email, address}) => {
 }
 
 export default function ContactTable({users}) {
-    console.log("aaaaaaaaaaah",users)
+    // console.log(users)
     if (Array.isArray(users) && users.length === 0) {
         return (
             <div className="page-loader-wrapper">
@@ -102,7 +102,7 @@ export default function ContactTable({users}) {
                     </table>
                 </div>
             </div>
-            <div className="card">
+            {/* <div className="card">
                 <div className="body">
                     <ul className="pagination pagination-primary m-b-0">
                         <li className="page-item">
@@ -129,7 +129,7 @@ export default function ContactTable({users}) {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
     )

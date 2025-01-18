@@ -105,8 +105,8 @@ const MainContent = () => {
                                                 <th>Logo</th>
                                                 <th>Name</th>
                                                 <th>Initial Market</th>
-                                                <th>Team</th>
-                                                <th>Acceleration Phase</th>
+                                                <th style={{ width: "20%" }}>Team</th>
+                                                <th style={{ width: "10%" }}>Acceleration Phase</th>
                                                 <th>Next Meeting</th>
                                             </tr>
                                         </thead>
@@ -124,7 +124,14 @@ const MainContent = () => {
                                                     <span class="text-muted">Piauí, Brazil</span>
                                                 </td>
                                                 <td>Inovação e Tecnologia</td>
-                                                <td>14K</td>
+                                                <td>
+                                                    <ul class="list-unstyled team-info m-b-0">
+                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={luciana} alt="Avatar" /></li>
+                                                        <li><img src={heygler} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                    </ul>
+                                                </td>
                                                 <td><span class="badge badge-info">Medium</span></td>
                                                 <td>19 Mar 2025</td>
                                             </tr>
@@ -141,7 +148,14 @@ const MainContent = () => {
                                                     <span class="text-muted">Massachusetts, United States</span>
                                                 </td>
                                                 <td>Inovação e Tecnologia</td>
-                                                <td>11K</td>
+                                                <td>
+                                                    <ul class="list-unstyled team-info m-b-0">
+                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={luciana} alt="Avatar" /></li>
+                                                        <li><img src={heygler} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                    </ul>
+                                                </td>
                                                 <td><span class="badge badge-success">High</span></td>
                                                 <td>17 Jan 2025</td>
                                             </tr>
@@ -158,7 +172,14 @@ const MainContent = () => {
                                                     <span class="text-muted">São Paulo, Brazil</span>
                                                 </td>
                                                 <td>Inovação e Tecnologia</td>
-                                                <td>18K</td>
+                                                <td>
+                                                    <ul class="list-unstyled team-info m-b-0">
+                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={luciana} alt="Avatar" /></li>
+                                                        <li><img src={heygler} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                    </ul>
+                                                </td>
                                                 <td><span class="badge badge-info">Medium</span></td>
                                                 <td>03 Mar 2025</td>
                                             </tr>
@@ -175,7 +196,14 @@ const MainContent = () => {
                                                     <span class="text-muted">Arizona, United States</span>
                                                 </td>
                                                 <td>Inovação e Tecnologia</td>
-                                                <td>18K</td>
+                                                <td>
+                                                    <ul class="list-unstyled team-info m-b-0">
+                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={luciana} alt="Avatar" /></li>
+                                                        <li><img src={heygler} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                    </ul>
+                                                </td>
                                                 <td><span class="badge badge-warning">Pading</span></td>
                                                 <td>20 Fev 2025</td>
                                             </tr>
@@ -192,7 +220,14 @@ const MainContent = () => {
                                                     <span class="text-muted">Lisboa, Portugal</span>
                                                 </td>
                                                 <td>Inovação e Tecnologia</td>
-                                                <td>18K</td>
+                                                <td>
+                                                    <ul class="list-unstyled team-info m-b-0">
+                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={luciana} alt="Avatar" /></li>
+                                                        <li><img src={heygler} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                    </ul>
+                                                </td>
                                                 <td><span class="badge badge-danger">Low</span></td>
                                                 <td>25 Jan 2025</td>
                                             </tr>
