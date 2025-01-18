@@ -101,7 +101,7 @@ const ProfileCard = () => {
           <label htmlFor="formFile" className="member-img">
             <div className="image-profile">
               <img
-                src={user?.profile_picture}
+                src={user?.profile_picture || perfilUnd}
                 className="rounded-circle"
                 alt="profile-image"
               />

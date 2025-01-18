@@ -4,7 +4,7 @@ import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
 import { backgroundLogin, logoShin, logoLoader, simao } from "../../../../assets/images/index";
 
-export const Partner = ({userid, name, number, email, address}) => {
+export const Partner = ({userid, name,profession, number, email, profile_image}) => {
     const [isClicked, setIsClicked] = useState(false);
     const { enterprise, token} = useContext(AuthContext)
 
@@ -20,37 +20,33 @@ export const Partner = ({userid, name, number, email, address}) => {
         }
     }, [enterprise, token])
     return (
-        <tr>
+        <tr className='display-flex justify-content-row'>
             <td>
-                <img src={''} className="rounded-circle avatar" alt=""/>
-                <p className="c_name">
-                    {name}
-                    {/* <p className="badge badge-default m-l-10 hidden-sm-down">Family</p> */}
-                </p>
+                <img src={profile_image} class="rounded-circle avatar" alt=""/>
             </td>
             <td>
-                <p className="c_name"><i className="zmdi zmdi-phone m-r-5"></i>{number}</p>
+                <p class="c_name">{name} <span class="badge badge-default m-l-10 hidden-sm-down">{profession}</span></p>
             </td>
             <td>
-                <span className="email"><a href="" title=""><i className="zmdi zmdi-email m-r-5"></i>{email}</a></span>
+                <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{number}</span>
             </td>
             <td>
-                <address><i className="zmdi zmdi-pin m-r-5"></i>{address}</address>
+                <span class="email"><a href="javascript:void(0);" title=""><i class="zmdi zmdi-email m-r-5"></i> {email} </a></span>
             </td>
             <td>
-            <button
-                className={`btn btn-default btn-icon btn-simple btn-icon-mini btn-round ${
-                    isClicked ? "btn-success" : ""
-                }`}
-                onClick={() => handleButtonClick(userid)}
-            >
-                <i
-                    className={`zmdi ${
-                        isClicked ? "zmdi-check text-green" : "zmdi-check"
+                <button
+                    className={`btn btn-default btn-icon btn-simple btn-icon-mini btn-round ${
+                        isClicked ? "btn-success" : ""
                     }`}
-                ></i>
-            </button>
-                <button className="btn btn-default btn-icon btn-simple btn-icon-mini btn-round"><i className="zmdi zmdi-delete"></i></button>
+                    onClick={() => handleButtonClick(userid)}
+                >
+                    <i
+                        className={`zmdi ${
+                            isClicked ? "zmdi-check text-green" : "zmdi-check"
+                        }`}
+                    ></i>
+                </button>
+                    <button className="btn btn-default btn-icon btn-simple btn-icon-mini btn-round"><i className="zmdi zmdi-delete"></i></button>
             </td>
         </tr>
     )
@@ -92,9 +88,11 @@ export default function ContactTable({users}) {
                                     <Partner
                                         key={user?.id || index} // Adicionado para garantir uma key única
                                         userid={user?.id}
+                                        profile_image={user?.profile_image}
                                         name={user?.username}
                                         number={user?.phone}
                                         email={user?.email}
+                                        profession={user?.profession}
                                         address={user?.address || "123 6th St. Melbourne, FL 32904"} // Ajuste do endereço
                                     />
                                 ))}

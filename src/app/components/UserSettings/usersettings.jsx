@@ -72,16 +72,6 @@ export default function UserSettings() {
                                     <input {...register("profession")} type="text" className="form-control" placeholder="Profissão" />
                                 </div>
                             </div>
-                            {/* <div className="col-lg-4 col-md-12">
-                                <div className="form-group">
-                                    <input
-                                        // {...register("state")} 
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="CPF"
-                                    />
-                                </div>
-                            </div> */}
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <Inputmask
@@ -100,7 +90,7 @@ export default function UserSettings() {
                                     className="form-control" 
                                     placeholder="WhatsApp" /> */}
                                     <Inputmask
-                                        // {...register("fone")}
+                                        {...register("phone")}
                                         mask="(99)99999-9999"
                                         className="form-control"
                                         placeholder="WhatsApp"
@@ -110,7 +100,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        // {...register("city")} 
+                                        {...register("city")} 
                                         type="text"
                                         className="form-control"
                                         placeholder="Cidade" />
@@ -119,7 +109,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        // {...register("state")} 
+                                        {...register("state")} 
                                         type="text"
                                         className="form-control"
                                         placeholder="Estado"
@@ -130,7 +120,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        // {...register("state")} 
+                                        {...register("weekly_hours_worked")} 
                                         type="text"
                                         className="form-control"
                                         placeholder="Horas semanais trabalhadas"
@@ -140,7 +130,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        // {...register("state")} 
+                                        {...register("ethnicity")} 
                                         type="text"
                                         className="form-control"
                                         placeholder="Raça"
@@ -186,6 +176,16 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
+                                    <Inputmask
+                                        // {...register("date")} 
+                                        mask='99999-999'
+                                        className="form-control"
+                                        placeholder="CEP"
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-lg-4 col-md-12">
+                                <div className="form-group">
                                     <input
                                         // {...register("state")} 
                                         type="text"
@@ -205,10 +205,10 @@ export default function UserSettings() {
                                 </div>
                             </div>
                             {/* <div className="col-md-12">
-                            <div className="form-group">
-                                <textarea rows="4" className="form-control no-resize" placeholder="Endereço"></textarea>
-                            </div>
-                        </div> */}
+                                    <div className="form-group">
+                                        <textarea rows="4" className="form-control no-resize" placeholder="Endereço"></textarea>
+                                    </div>
+                                </div> */}
 
                             {/* <div className="col-md-12">
                             <div className="checkbox">
