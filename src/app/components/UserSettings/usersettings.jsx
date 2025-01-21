@@ -47,7 +47,7 @@ export default function UserSettings() {
             </div> */}
             <div className="card">
                 <div className="header">
-                    <h2><strong>Configurações</strong> de conta</h2>
+                    <h2><strong>Informações</strong> do usuário</h2>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="body">
@@ -100,7 +100,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        {...register("city")} 
+                                        {...register("city")}
                                         type="text"
                                         className="form-control"
                                         placeholder="Cidade" />
@@ -108,19 +108,49 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    <input
-                                        {...register("state")} 
-                                        type="text"
+                                    <select
+                                        // {...register("state")} 
                                         className="form-control"
-                                        placeholder="Estado"
-                                    />
+                                        defaultValue=""
+                                    >
+                                        <option value="" disabled>
+                                            UF
+                                        </option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        {...register("weekly_hours_worked")} 
+                                        {...register("weekly_hours_worked")}
                                         type="text"
                                         className="form-control"
                                         placeholder="Horas semanais trabalhadas"
@@ -129,12 +159,27 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    <input
-                                        {...register("ethnicity")} 
+                                    {/* <input
+                                        // {...register("ethnicity")} 
                                         type="text"
                                         className="form-control"
                                         placeholder="Raça"
-                                    />
+                                        defaultValue=''
+                                    /> */}
+                                    <select
+                                        // {...register("ethnicity")} 
+                                        className="form-control"
+                                        defaultValue=""
+                                    >
+                                        <option value="" disabled>
+                                            Etnia
+                                        </option>
+                                        <option value="white">Branca</option>
+                                        <option value="black">Preta</option>
+                                        <option value="brown">Parda</option>
+                                        <option value="yellow">Amarela</option>
+                                        <option value="indigenous">Indígena</option>
+                                    </select>
                                 </div>
                             </div>
                             {/* <div className="col-lg-4 col-md-12">
@@ -159,6 +204,7 @@ export default function UserSettings() {
                                         </option>
                                         <option value="male">Masculino</option>
                                         <option value="female">Feminino</option>
+                                        <option value="NotBinary">Não binário</option>
                                         <option value="preferNotToSay">Prefiro não responder</option>
                                     </select>
                                 </div>
@@ -186,12 +232,24 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    <input
-                                        // {...register("state")} 
-                                        type="text"
+                                    <select
+                                        // {...register("education")} 
                                         className="form-control"
-                                        placeholder="Escolaridade"
-                                    />
+                                        defaultValue=""
+                                    >
+                                        <option value="" disabled>
+                                            Escolaridade
+                                        </option>
+                                        <option value="nenhuma">Sem escolaridade</option>
+                                        <option value="fundamental">Ensino Fundamental</option>
+                                        <option value="medio">Ensino Médio</option>
+                                        <option value="graduacao">Graduação</option>
+                                        <option value="especializacao">Especialização</option>
+                                        <option value="mestrado">Mestrado</option>
+                                        <option value="doutorado">Doutorado</option>
+                                        <option value="pos-doutorado">Pós-Doutorado</option>
+
+                                    </select>
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12">
