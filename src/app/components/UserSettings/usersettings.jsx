@@ -11,9 +11,30 @@ export default function UserSettings() {
         user, token
     } = useContext(AuthContext)
     const { register, handleSubmit, reset, control } = useForm({
-        defaultValues: {
-            cpf:"",
-            ...user
+        defaultValues:{
+            cpf: user.cpf || "",
+            cep: user.cep || "",
+            city: user.city || "",
+            country: user.country || "",
+            date_joined: user.date_joined || "",
+            date_of_birth: user.date_of_birth || "",
+            education_level: user.education_level || "",
+            email: user.email || "",
+            ethnicity: user.ethnicity || "",
+            gender: user.gender || "",
+            id: user.id || "",
+            institution: user.institution || "",
+            is_active: user.is_active !== null ? user.is_active : "",
+            last_login: user.last_login || "",
+            linkedin: user.linkedin || "",
+            phone: user.phone || "",
+            profession: user.profession || "",
+            profile_picture: user.profile_picture || "",
+            role: user.role || "",
+            state: user.state || "",
+            username: user.username || "",
+            weekly_hours_worked: user.weekly_hours_worked || "",
+            whatsapp_number: user.whatsapp_number || "",
         }
     })
     useEffect(() => {
