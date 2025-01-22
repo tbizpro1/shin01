@@ -19,6 +19,7 @@ export const Partner = ({userid, name,profession, number, email, profile_image})
             console.error("Enterprise ID não disponível.");
         }
     }, [enterprise, token])
+    console.log(profile_image)
     return (
         <tr className='display-flex justify-content-row'>
             <td>
@@ -85,16 +86,17 @@ export default function ContactTable({users}) {
                         <tbody>
                             {Array.isArray(users) &&
                                 users.map((user, index) => (
-                                    <Partner
-                                        key={user?.id || index} // Adicionado para garantir uma key única
-                                        userid={user?.id}
-                                        profile_image={user?.profile_image}
-                                        name={user?.username}
-                                        number={user?.phone}
-                                        email={user?.email}
-                                        profession={user?.profession}
-                                        address={user?.address || "123 6th St. Melbourne, FL 32904"} // Ajuste do endereço
-                                    />
+                                    // console.log(user)
+                                <Partner
+                                    key={user?.id || index} // Adicionado para garantir uma key única
+                                    userid={user?.id}
+                                    profile_image={user?.profile_picture}
+                                    name={user?.username}
+                                    number={user?.phone}
+                                    email={user?.email}
+                                    profession={user?.profession}
+                                    address={user?.address || "123 6th St. Melbourne, FL 32904"} // Ajuste do endereço
+                                />
                                 ))}
                         </tbody>
                     </table>

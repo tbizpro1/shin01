@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import UpDateUser from "../../api/put/update-user";
 import Inputmask from "react-input-mask";
 
@@ -10,8 +10,11 @@ export default function UserSettings() {
     const {
         user, token
     } = useContext(AuthContext)
-    const { register, handleSubmit, reset } = useForm({
-        defaultValues: user
+    const { register, handleSubmit, reset, control } = useForm({
+        defaultValues: {
+            cpf:"",
+            ...user
+        }
     })
     useEffect(() => {
         if (user) {
@@ -22,6 +25,7 @@ export default function UserSettings() {
     const onSubmit = (data) => {
         console.log(data)
         UpDateUser(user.id, data, token).then(response => console.log(" reposta da api: ", response))
+        window.location.reload();
     }
 
     return (
@@ -76,21 +80,23 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    <Inputmask
-                                        // {...register("cpf")}
-                                        mask="999.999.999-99"
-                                        className="form-control"
-                                        placeholder="CPF"
-                                    />
+                                <Controller
+                                    name="cpf"
+                                    control={control}
+                                    defaultValue="" 
+                                    render={({ field }) => (
+                                        <Inputmask
+                                            {...field}
+                                            mask="999.999.999-99"
+                                            className="form-control"
+                                            placeholder="CPF"
+                                        />
+                                    )}
+                                />
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    {/* <input 
-                                    {...register("phone")} 
-                                    type="text" 
-                                    className="form-control" 
-                                    placeholder="WhatsApp" /> */}
                                     <Inputmask
                                         {...register("whatsapp_number")}
                                         mask="(99)99999-9999"
@@ -161,13 +167,6 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    {/* <input
-                                        // {...register("ethnicity")} 
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Raça"
-                                        defaultValue=''
-                                    /> */}
                                     <select
                                         {...register("ethnicity")} 
                                         className="form-control"
@@ -184,16 +183,6 @@ export default function UserSettings() {
                                     </select>
                                 </div>
                             </div>
-                            {/* <div className="col-lg-4 col-md-12">
-                            <div className="form-group">
-                                <input 
-                                    // {...register("state")} 
-                                    type="text" 
-                                    className="form-control" 
-                                    placeholder="Gênero" 
-                                />
-                            </div>
-                        </div> */}
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
@@ -214,21 +203,52 @@ export default function UserSettings() {
 
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    <Inputmask
-                                        // {...register("date_of_birth")} 
-                                        mask='99/99/9999'
+                                <Controller
+                                    name="date_of_birth"
+                                    control={control}
+                                    defaultValue=""
+                                    render={({ field: { onChange, value } }) => (
+                                        <Inputmask
+                                        mask="99/99/9999"
                                         className="form-control"
                                         placeholder="Data de nascimento"
-                                    />
+                                        value={
+                                            value && value.includes("T") 
+                                            ? value.split("T")[0].split("-").reverse().join("/") // Remove a parte da hora e formata para dd/mm/yyyy
+                                            : value && value.includes("-")
+                                            ? value.split("-").reverse().join("/") // Formata ISO para dd/mm/yyyy
+                                            : value // Caso o valor já esteja no formato dd/mm/yyyy
+                                        }
+                                        onChange={(e) => {
+                                            const inputDate = e.target.value; // Formato dd/mm/yyyy
+                                            if (inputDate.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
+                                            const [day, month, year] = inputDate.split("/");
+                                            const isoDate = `${year}-${month}-${day}T00:00:00.000Z`; // Converte para ISO com hora padrão
+                                            onChange(isoDate); // Envia o valor ISO para o estado/controlador
+                                            } else {
+                                            onChange(e.target.value); // Caso o valor seja inválido/incompleto
+                                            }
+                                        }}
+                                        />
+  )}
+/>
+
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                    <Inputmask
-                                        // {...register("cep")} 
-                                        mask='99999-999'
-                                        className="form-control"
-                                        placeholder="CEP"
+                                    <Controller
+                                        name="cep"
+                                        control={control}
+                                        defaultValue=""
+                                        render={({field}) => (
+                                            <Inputmask
+                                                {...field}
+                                                mask='99999-999'
+                                                className="form-control"
+                                                placeholder="CEP"
+                                            />
+                                        )}
                                     />
                                 </div>
                             </div>

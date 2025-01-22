@@ -125,6 +125,10 @@ table tbody td {
     color: #fff;
     background: #FF3636
 }
+.image-invite{
+    border-radius: 100%;
+    width: 10px !important;
+}
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-default {

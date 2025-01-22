@@ -134,7 +134,7 @@ const ProfileCard = () => {
         <div className="col-12">
           <SocialLinks />
           <p className="text-muted">
-            <h5 className='m-t-10'>{user?.city + ', ' + user?.state || 'informação não encontrada'}</h5>
+            <h5 className='m-t-10'>{user?.city + ', ' + user?.state + ", " + user?.cep || 'informação não encontrada'}</h5>
           </p>
         </div>
         <hr />
@@ -221,15 +221,18 @@ const TabItem = ({ id, label, activeTab, onClick }) => (
   </li>
 );
 
-const AboutContent = () => (
-  <div className="tab-pane body active" id="about">
-    <InfoItem label="Position" value="Admin" />
-    <InfoItem label="Estate" value="Cleveland" />
-    <InfoItem label="Email address" value="michael@gmail.com" />
-    <InfoItem label="Phone" value="+ 202-555-0191" />
-    {/* <SkillsList /> */}
-  </div>
-);
+const AboutContent = () =>{ 
+  const {user}=useContext(AuthContext)
+  return (
+    <div className="tab-pane body active" id="about">
+      <InfoItem label="Position" value={user?.role} />
+      <InfoItem label="Estate" value={user?.state} />
+      <InfoItem label="Email address" value={user?.email} />
+      <InfoItem label="Phone" value={user?.whatsapp_number} />
+      {/* <SkillsList /> */}
+    </div>
+  );
+}
 
 const InfoItem = ({ label, value }) => (
   <>

@@ -6704,7 +6704,9 @@ button.bg-dark:focus {
 }
 
 .rounded-circle {
-  border-radius: 50% !important;
+  border-radius: 100% !important;
+  width: 20px !important;
+  height: 20px !important;
 }
 
 .rounded-pill {

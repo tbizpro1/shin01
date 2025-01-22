@@ -29,7 +29,7 @@ export default function Inbox() {
 
                 setPartners(uniquePartners);
 
-                const allUsersResponse = await allUsers();
+                const allUsersResponse = await allUsers(token);
                 const filteredUsers = allUsersResponse.filter((user) =>
                     !uniquePartners.some((partner) => partner.user_id === user.id)
                 );
