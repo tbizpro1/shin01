@@ -2,9 +2,9 @@
 import { useCallback, useContext, useState } from 'react';
 import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
-import { backgroundLogin, logoShin, logoLoader, simao } from "../../../../assets/images/index";
+import { backgroundLogin, logoShin, logoLoader, simao, perfilUnd } from "../../../../assets/images/index";
 
-export const Partner = ({userid, name,profession, number, email, profile_image}) => {
+export const Partner = ({userid, name,profession, number, email, profile_picture}) => {
     const [isClicked, setIsClicked] = useState(false);
     const { enterprise, token} = useContext(AuthContext)
 
@@ -19,11 +19,11 @@ export const Partner = ({userid, name,profession, number, email, profile_image})
             console.error("Enterprise ID não disponível.");
         }
     }, [enterprise, token])
-    console.log(profile_image)
+    console.log(name, profile_picture)
     return (
         <tr className='display-flex justify-content-row'>
             <td>
-                <img src={profile_image} class="rounded-circle avatar" alt=""/>
+                <img src={profile_picture || perfilUnd} class="image-invite" alt=""/>
             </td>
             <td>
                 <p class="c_name">{name} <span class="badge badge-default m-l-10 hidden-sm-down">{profession}</span></p>
@@ -76,10 +76,11 @@ export default function ContactTable({users}) {
                     <table className="table table-hover m-b-0 c_list">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Nome</th>
                                 <th data-breakpoints="xs">Telefone</th>
                                 <th data-breakpoints="xs sm md">Email</th>
-                                <th data-breakpoints="xs sm md">Endereço</th>
+                                {/* <th data-breakpoints="xs sm md">Endereço</th> */}
                                 <th data-breakpoints="xs">Ações</th>
                             </tr>
                         </thead>
@@ -90,7 +91,7 @@ export default function ContactTable({users}) {
                                 <Partner
                                     key={user?.id || index} // Adicionado para garantir uma key única
                                     userid={user?.id}
-                                    profile_image={user?.profile_picture}
+                                    profile_picture={user?.profile_picture}
                                     name={user?.username}
                                     number={user?.phone}
                                     email={user?.email}

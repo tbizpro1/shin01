@@ -127,7 +127,8 @@ table tbody td {
 }
 .image-invite{
     border-radius: 100%;
-    width: 10px !important;
+    width: 50px !important;
+    height: 50px;
 }
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-default,
