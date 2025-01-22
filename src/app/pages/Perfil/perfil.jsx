@@ -134,7 +134,7 @@ const ProfileCard = () => {
         <div className="col-12">
           <SocialLinks />
           <p className="text-muted">
-            795 Folsom Ave, Suite 600 San Francisco, CADGE 94107
+            <h5 className='m-t-10'>{user?.city + ', ' + user?.state || 'informação não encontrada'}</h5>
           </p>
         </div>
         <hr />

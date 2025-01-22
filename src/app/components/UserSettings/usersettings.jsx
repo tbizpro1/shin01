@@ -54,7 +54,9 @@ export default function UserSettings() {
                         <div className="row clearfix">
                             <div className="col-lg-6 col-md-12">
                                 <div className="form-group">
-                                    <input {...register("username")} type="text" className="form-control" placeholder="Username" />
+                                    <input {...register("username")} 
+                                    type="text" className="form-control" 
+                                    placeholder="Username" />
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12">
@@ -90,7 +92,7 @@ export default function UserSettings() {
                                     className="form-control" 
                                     placeholder="WhatsApp" /> */}
                                     <Inputmask
-                                        {...register("phone")}
+                                        {...register("whatsapp_number")}
                                         mask="(99)99999-9999"
                                         className="form-control"
                                         placeholder="WhatsApp"
@@ -109,7 +111,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        // {...register("state")} 
+                                        {...register("state")} 
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -151,7 +153,7 @@ export default function UserSettings() {
                                 <div className="form-group">
                                     <input
                                         {...register("weekly_hours_worked")}
-                                        type="text"
+                                        type="number"
                                         className="form-control"
                                         placeholder="Horas semanais trabalhadas"
                                     />
@@ -167,7 +169,7 @@ export default function UserSettings() {
                                         defaultValue=''
                                     /> */}
                                     <select
-                                        // {...register("ethnicity")} 
+                                        {...register("ethnicity")} 
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -195,17 +197,17 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        // {...register("gender")} 
+                                        {...register("gender")} 
                                         className="form-control"
                                         defaultValue=""
                                     >
                                         <option value="" disabled>
                                             Escolha o gênero
                                         </option>
-                                        <option value="male">Masculino</option>
-                                        <option value="female">Feminino</option>
-                                        <option value="NotBinary">Não binário</option>
-                                        <option value="preferNotToSay">Prefiro não responder</option>
+                                        <option value="m">Masculino</option>
+                                        <option value="f">Feminino</option>
+                                        {/* <option value="NotBinary">Não binário</option> */}
+                                        <option value="p">Prefiro não responder</option>
                                     </select>
                                 </div>
                             </div>
@@ -213,7 +215,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <Inputmask
-                                        // {...register("date")} 
+                                        // {...register("date_of_birth")} 
                                         mask='99/99/9999'
                                         className="form-control"
                                         placeholder="Data de nascimento"
@@ -223,7 +225,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <Inputmask
-                                        // {...register("date")} 
+                                        // {...register("cep")} 
                                         mask='99999-999'
                                         className="form-control"
                                         placeholder="CEP"
@@ -233,7 +235,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        // {...register("education")} 
+                                        {...register("education_level")} 
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -255,7 +257,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        // {...register("state")} 
+                                        {...register("institution")} 
                                         type="text"
                                         className="form-control"
                                         placeholder="Instituição"
