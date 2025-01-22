@@ -1,5 +1,5 @@
 import React from "react";
-import { summer, rain, cloudy, wind, simao, luciana, heygler, jerdeson, breno, logo } from "../../../assets/images";
+import { summer, rain, cloudy, wind, simao, luciana, heygler, jerdeson, logo } from "../../../assets/images";
 
 const MainContent = () => {
     return (
@@ -68,13 +68,13 @@ const MainContent = () => {
                                             <small className="join_date">12 Dec</small>
                                         </a>
                                     </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+                                    {/* <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                         <a href="">
                                             <img src={breno} className="img-thumbnail" alt="User Image" />
                                             <h6 className="users_name">Breno Ramon</h6>
                                             <small className="join_date">17 Dec</small>
                                         </a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ const MainContent = () => {
                             <div class="header">
                                 <h2><strong>My</strong> Startups</h2>
                                 <ul class="header-dropdown">
-                                    <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    {/* <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
                                         <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
                                             <li><a href="javascript:void(0);">Edit</a></li>
                                             <li><a href="javascript:void(0);">Delete</a></li>
@@ -94,7 +94,7 @@ const MainContent = () => {
                                     </li>
                                     <li class="remove">
                                         <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                             <div class="body">
@@ -126,10 +126,10 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
                                                 <td><span class="badge badge-info">Medium</span></td>
@@ -150,10 +150,10 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
                                                 <td><span class="badge badge-success">High</span></td>
@@ -174,10 +174,10 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
                                                 <td><span class="badge badge-info">Medium</span></td>
@@ -198,10 +198,10 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
                                                 <td><span class="badge badge-warning">Pading</span></td>
@@ -222,10 +222,10 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
                                                 <td><span class="badge badge-danger">Low</span></td>

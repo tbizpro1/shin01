@@ -57,7 +57,7 @@ const LeftSideBar = () => {
                         </a>
                         <ul className="ml-menu" style={{ display: menuClicado ? 'block' : 'none' }}>
                             <li><Link to='/socio'>Todos os sócios</Link></li>
-                            <li><Link to='/addsocio'>Adicionar sócio</Link></li>
+                            {/* <li><Link to='/addsocio'>Adicionar sócio</Link></li> */}
                             {/* <li><Link to='/perfil'>Perfil do sócio</Link></li> */}
                             <li><Link to='/explorer'>Convidar sócio</Link></li>
                             {/* <li><Link to='/notifications'>Notificações</Link></li> */}

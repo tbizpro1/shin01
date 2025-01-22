@@ -14,7 +14,7 @@ const Footer = () => {
                         </nav>
                         <div className="copyright">
                             &copy; <span>{new Date().getFullYear()}</span> \ Desenvolvido por
-                            <a href="https://github.com/lucasleytao" target="_blank" rel="noopener noreferrer"> Lucas Leitão</a>
+                            <a href="https://github.com/lucasleytao" target="_blank" rel="noopener noreferrer"> Indefinido</a>
                         </div>
                     </div>
                 </footer>

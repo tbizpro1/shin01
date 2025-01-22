@@ -1,5 +1,5 @@
 
-import { useCallback, useContext, useState } from 'react';
+import { useCallback, useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
 import { backgroundLogin, logoShin, logoLoader, simao, perfilUnd } from "../../../../assets/images/index";
@@ -55,7 +55,17 @@ export const Partner = ({userid, name,profession, number, email, profile_picture
 
 export default function ContactTable({users}) {
     // console.log(users)
-    if (Array.isArray(users) && users.length === 0) {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1500); // loader será mostrado por 1.5s
+
+        return () => clearTimeout(timer);
+    }, [users]);
+
+    if (isLoading) {
         return (
             <div className="page-loader-wrapper">
                 <div className="loader">
@@ -65,6 +75,28 @@ export default function ContactTable({users}) {
                     <p>Buscando usuários...</p>
                 </div>
             </div>
+        );
+    }
+
+    if (Array.isArray(users) && users.length === 0) {
+        return (
+            <>
+                <div className="block-header">
+                    <div className="row">
+                        <div className="col-lg-7 col-md-6 col-sm-12">
+                            <h2>
+                                Invites
+                                <small className="text-muted">Welcome to Shin</small>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div className="container-fluid d-flex justify-content-center align-items-center">
+                    <div className="row clearfix text-center">
+                        <p>Você não enviou nenhum convite até o momento!</p>
+                    </div>
+                </div>
+            </>
         );
     }
 
