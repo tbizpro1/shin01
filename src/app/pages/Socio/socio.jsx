@@ -34,7 +34,7 @@ const truncateText = (text, maxLength) => {
   return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
 };
 
-const AgentCard = ({ avatar, partner_id, token, partner_status }) => {
+const AgentCard = ({ avatar, partner_id, token, partner_status, socio }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 

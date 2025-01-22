@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/authContext';
 import MyPosts from '../../components/MyPost/mypost';
 import UserSettings from '../../components/UserSettings/usersettings';
 import Timeline from '../../components/Timeline/timeline';
-import { perfilUnd, profileUser, simao } from '../../../assets/images';
+import { perfilUnd, profileUser, simao, heygler, luciana, jerdeson } from '../../../assets/images';
 import { useForm } from 'react-hook-form';
 import addProfileImage from '../../api/post/profile-image';
 
@@ -280,11 +280,11 @@ const SkillItem = ({ name, progress, color }) => (
 
 const FriendsContent = () => {
   const friends = [
-    { name: 'Simão Pedro', joinDate: 'Today', image: 'src/assets/images/partners/simao.png' },
-    { name: 'Luciana Tsukada', joinDate: 'Yesterday', image: 'src/assets/images/partners/luciana.jpeg' },
-    { name: 'Heygler', joinDate: '08 Nov', image: 'src/assets/images/partners/heygler.jpeg' },
-    { name: 'Jerdeson', joinDate: '12 Dec', image: 'src/assets/images/partners/jerdeson.jpeg' },
-    { name: 'Breno Ramon', joinDate: '17 Dec', image: 'src/assets/images/partners/breno.jpeg' },
+    { name: 'Simão Pedro', joinDate: 'Today', image: simao },
+    { name: 'Luciana Tsukada', joinDate: 'Yesterday', image: luciana },
+    { name: 'Heygler', joinDate: '08 Nov', image: heygler },
+    { name: 'Jerdeson', joinDate: '12 Dec', image: jerdeson },
+    // { name: 'Breno Ramon', joinDate: '17 Dec', image: 'src/assets/images/partners/breno.jpeg' },
   ];
 
   return (
