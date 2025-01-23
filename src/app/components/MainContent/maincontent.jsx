@@ -7,10 +7,7 @@ const MainContent = () => {
             <div className="block-header">
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">
-                        <h2>
-                            Main page
-                            <small className="text-muted">Welcome to Shin</small>
-                        </h2>
+                        <small className="text-muted">Bem-vindo(a) a Shin.</small>
                     </div>
                     {/* <div className="col-lg-5 col-md-6 col-sm-12">
                         <button className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
@@ -36,7 +33,7 @@ const MainContent = () => {
                     <div className="col-md-12 col-lg-4">
                         <div className="card">
                             <div className="header">
-                                <h2><strong>New</strong> Partners</h2>
+                                <h2><strong>Novos</strong> Sócios</h2>
                             </div>
                             <div className="body">
                                 <ul className="new_friend_list list-unstyled row">
@@ -44,14 +41,14 @@ const MainContent = () => {
                                         <a href="">
                                             <img src={simao} className="img-thumbnail" alt="User Image" />
                                             <h6 className="users_name">Simão Pedro</h6>
-                                            <small className="join_date">Today</small>
+                                            <small className="join_date">Hoje</small>
                                         </a>
                                     </li>
                                     <li className="col-lg-4 col-md-2 col-sm-6 col-4">
                                         <a href="">
                                             <img src={luciana} className="img-thumbnail" alt="User Image" />
                                             <h6 className="users_name">Luciana Tsukada</h6>
-                                            <small className="join_date">Yesterday</small>
+                                            <small className="join_date">Ontem</small>
                                         </a>
                                     </li>
                                     <li className="col-lg-4 col-md-2 col-sm-6 col-4">
@@ -83,7 +80,7 @@ const MainContent = () => {
                     <div class="col-sm-8">
                         <div class="card">
                             <div class="header">
-                                <h2><strong>My</strong> Startups</h2>
+                                <h2><strong>Minhas</strong> Startups</h2>
                                 <ul class="header-dropdown">
                                     {/* <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
                                         <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
@@ -103,11 +100,11 @@ const MainContent = () => {
                                         <thead>
                                             <tr>
                                                 <th>Logo</th>
-                                                <th>Name</th>
-                                                <th>Initial Market</th>
-                                                <th style={{ width: "20%" }}>Team</th>
-                                                <th style={{ width: "10%" }}>Acceleration Phase</th>
-                                                <th>Next Meeting</th>
+                                                <th>Nome</th>
+                                                <th>Mercado Inicial</th>
+                                                <th style={{ width: "20%" }}>Time</th>
+                                                <th style={{ width: "10%" }}>Fase de Aceleração</th>
+                                                <th>Próxima Reunião</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -116,7 +113,7 @@ const MainContent = () => {
                                                     <img
                                                         className="rounded-circle"
                                                         src={logo}
-                                                        width="48"
+                                                        width="58"
                                                         height="48" />
                                                 </span>
                                                 </td>
@@ -132,7 +129,7 @@ const MainContent = () => {
                                                         <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-info">Medium</span></td>
+                                                <td><span class="badge badge-info">Fase 3</span></td>
                                                 <td>19 Mar 2025</td>
                                             </tr>
                                             <tr>
@@ -140,7 +137,7 @@ const MainContent = () => {
                                                     <img
                                                         className="rounded-circle"
                                                         src={logo}
-                                                        width="48"
+                                                        width="58"
                                                         height="48" />
                                                 </span>
                                                 </td>
@@ -156,7 +153,7 @@ const MainContent = () => {
                                                         <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-success">High</span></td>
+                                                <td><span class="badge badge-success">Fase 2</span></td>
                                                 <td>17 Jan 2025</td>
                                             </tr>
                                             <tr>
@@ -164,7 +161,7 @@ const MainContent = () => {
                                                     <img
                                                         className="rounded-circle"
                                                         src={logo}
-                                                        width="48"
+                                                        width="58"
                                                         height="48" />
                                                 </span>
                                                 </td>
@@ -180,7 +177,7 @@ const MainContent = () => {
                                                         <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-info">Medium</span></td>
+                                                <td><span class="badge badge-info">Fase 3</span></td>
                                                 <td>03 Mar 2025</td>
                                             </tr>
                                             <tr>
@@ -188,7 +185,7 @@ const MainContent = () => {
                                                     <img
                                                         className="rounded-circle"
                                                         src={logo}
-                                                        width="48"
+                                                        width="58"
                                                         height="48" />
                                                 </span>
                                                 </td>
@@ -204,7 +201,7 @@ const MainContent = () => {
                                                         <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-warning">Pading</span></td>
+                                                <td><span class="badge badge-warning">Fase 1</span></td>
                                                 <td>20 Fev 2025</td>
                                             </tr>
                                             <tr>
@@ -212,7 +209,7 @@ const MainContent = () => {
                                                     <img
                                                         className="rounded-circle"
                                                         src={logo}
-                                                        width="48"
+                                                        width="58"
                                                         height="48" />
                                                 </span>
                                                 </td>
@@ -228,7 +225,7 @@ const MainContent = () => {
                                                         <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-danger">Low</span></td>
+                                                <td><span class="badge badge-warning">Fase 1</span></td>
                                                 <td>25 Jan 2025</td>
                                             </tr>
                                         </tbody>
