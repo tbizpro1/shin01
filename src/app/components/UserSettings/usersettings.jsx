@@ -17,11 +17,11 @@ export default function UserSettings() {
             city: user?.city || "",
             country: user?.country || "",
             date_joined: user?.date_joined || "",
-            date_of_birth: user?.date_of_birth || "0000-00-00T00:00:00.000Z", 
+            date_of_birth: user?.date_of_birth || null, 
             education_level: user?.education_level || "",
             email: user?.email || "",
             ethnicity: user?.ethnicity || "",
-            gender: user?.gender || "m", 
+            gender: user?.gender || null, 
             id: user?.id || "",
             institution: user?.institution || "",
             is_active: user?.is_active !== null ? user?.is_active : "",
@@ -33,24 +33,48 @@ export default function UserSettings() {
             role: user?.role || "",
             state: user?.state || "",
             username: user?.username || "",
-            weekly_hours_worked: user?.weekly_hours_worked || 0, 
+            weekly_hours_worked: user?.weekly_hours_worked || null, 
             whatsapp_number: user?.whatsapp_number || "",
         }
     })
     useEffect(() => {
         if (user) {
-            reset(user)
+            reset({
+                ...user,
+                gender: user.gender && ["m", "f", "p"].includes(user.gender) ? user.gender : null,
+                weekly_hours_worked: user.weekly_hours_worked !== undefined ? user.weekly_hours_worked : null,
+            });
         }
     }, [user, reset])
 
     const onSubmit = (data) => {
-        console.log(data)
-        UpDateUser(user.id, data, token).then(response =>{  
-            window.location.reload()
-            console.log(" reposta da api: ", response)
-        })
+        const sanitizedData = {
+            ...data,
+            weekly_hours_worked: 
+                data.weekly_hours_worked && !isNaN(parseInt(data.weekly_hours_worked)) 
+                    ? parseInt(data.weekly_hours_worked) 
+                    : null,
+            date_of_birth: 
+                isValidDate(data.date_of_birth) 
+                    ? data.date_of_birth 
+                    : null,
+        };
+    
+        console.log("Dados sanitizados:", sanitizedData);
+    
+        // Envio dos dados para a API
+        UpDateUser(user.id, sanitizedData, token)
+            .then((response) => {
+                window.location.reload();
+                console.log("Resposta da API:", response);
+            })
+            .catch((error) => {
+                console.error("Erro ao atualizar o usuário:", error);
+            });
     }
-
+    const isValidDate = (date) => {
+        return !isNaN(Date.parse(date));
+    };
     return (
         <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
             {/* <div className="card">
