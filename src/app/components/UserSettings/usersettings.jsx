@@ -12,29 +12,29 @@ export default function UserSettings() {
     } = useContext(AuthContext)
     const { register, handleSubmit, reset, control } = useForm({
         defaultValues:{
-            cpf: user.cpf || "",
-            cep: user.cep || "",
-            city: user.city || "",
-            country: user.country || "",
-            date_joined: user.date_joined || "",
-            date_of_birth: user.date_of_birth || "",
-            education_level: user.education_level || "",
-            email: user.email || "",
-            ethnicity: user.ethnicity || "",
-            gender: user.gender || "",
-            id: user.id || "",
-            institution: user.institution || "",
-            is_active: user.is_active !== null ? user.is_active : "",
-            last_login: user.last_login || "",
-            linkedin: user.linkedin || "",
-            phone: user.phone || "",
-            profession: user.profession || "",
-            profile_picture: user.profile_picture || "",
-            role: user.role || "",
-            state: user.state || "",
-            username: user.username || "",
-            weekly_hours_worked: user.weekly_hours_worked || "",
-            whatsapp_number: user.whatsapp_number || "",
+            cpf: user?.cpf || "",
+            cep: user?.cep || "",
+            city: user?.city || "",
+            country: user?.country || "",
+            date_joined: user?.date_joined || "",
+            date_of_birth: user?.date_of_birth || "0000-00-00T00:00:00.000Z", 
+            education_level: user?.education_level || "",
+            email: user?.email || "",
+            ethnicity: user?.ethnicity || "",
+            gender: user?.gender || "m", 
+            id: user?.id || "",
+            institution: user?.institution || "",
+            is_active: user?.is_active !== null ? user?.is_active : "",
+            last_login: user?.last_login || "",
+            linkedin: user?.linkedin || "",
+            phone: user?.phone || "",
+            profession: user?.profession || "",
+            profile_picture: user?.profile_picture || "",
+            role: user?.role || "",
+            state: user?.state || "",
+            username: user?.username || "",
+            weekly_hours_worked: user?.weekly_hours_worked || 0, 
+            whatsapp_number: user?.whatsapp_number || "",
         }
     })
     useEffect(() => {
@@ -45,8 +45,10 @@ export default function UserSettings() {
 
     const onSubmit = (data) => {
         console.log(data)
-        UpDateUser(user.id, data, token).then(response => console.log(" reposta da api: ", response))
-        window.location.reload();
+        UpDateUser(user.id, data, token).then(response =>{  
+            window.location.reload()
+            console.log(" reposta da api: ", response)
+        })
     }
 
     return (
@@ -251,9 +253,8 @@ export default function UserSettings() {
                                             }
                                         }}
                                         />
-  )}
-/>
-
+                                    )}
+                                />
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12">

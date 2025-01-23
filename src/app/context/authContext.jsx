@@ -1,12 +1,19 @@
-import React, { createContext,useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import Cookies from 'js-cookie'
 import { redirect, useNavigate } from "react-router";
 import { GetUser } from "../api/get/user-profile";
 import userEnterprises from "../api/get/user-enterprises";
 import { loginApi } from "../api/post/token";
 
-
 export const AuthContext = createContext()
+
+// Function to safely transform null/undefined values to empty strings
+const sanitizeUserData = (data) => {
+    if (!data) return null;
+    return Object.fromEntries(
+        Object.entries(data).map(([key, value]) => [key, value ?? ""])
+    );
+}
 
 export const AuthProvider = ({children}) => {
     const [token, setToken] = useState(null)
@@ -19,23 +26,25 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const userToken = Cookies.get("token");
-        //chama a funcao que retorna os dados do usuario
         const userId = Cookies.get("user_id");
-        //.then recolhe a resposta da funcao GetUser (api)
-        GetUser(userId, userToken).then(response=>{
-            setUser(response.data)
-        })
-        userEnterprises(userId, userToken).then(response=>{setEnterprise(response)})
-        
+
         if (userToken !== null) {
+            // Sanitize user data before setting
+            GetUser(userId, userToken).then(response => {
+                setUser(sanitizeUserData(response.data))
+            })
+
+            userEnterprises(userId, userToken).then(response => {
+                setEnterprise(sanitizeUserData(response))
+            })
+
             setToken(userToken)
             setIsAuthentication(true)
             redirect(`/workspace`)
-        }else {
+        } else {
             redirect(`/`);
             throw new Error("Sem token, realize o login!")
         }
-        //controla as atualizacoes que estao dentro do componente
     }, [userId, token]);
 
     const onSubmit = data => {
@@ -59,7 +68,20 @@ export const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={{token, isAuthentication, setToken, setUserId, userId, user, setUser, enterprise, setIsLoading, isLoading, onSubmit, logout}}>
+        <AuthContext.Provider value={{
+            token, 
+            isAuthentication, 
+            setToken, 
+            setUserId, 
+            userId, 
+            user, 
+            setUser, 
+            enterprise, 
+            setIsLoading, 
+            isLoading, 
+            onSubmit, 
+            logout
+        }}>
             {children}
         </AuthContext.Provider>
     )
