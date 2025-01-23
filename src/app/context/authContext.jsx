@@ -6,8 +6,8 @@ import userEnterprises from "../api/get/user-enterprises";
 import { loginApi } from "../api/post/token";
 
 export const AuthContext = createContext()
-
-// Function to safely transform null/undefined values to empty strings
+// tratamento de dado
+// funcao para transformar com seguranca valores null/indefined em strings vazias
 const sanitizeUserData = (data) => {
     if (!data) return null;
     return Object.fromEntries(
