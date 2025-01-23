@@ -45,7 +45,7 @@ const Header = () => (
       <div className="col-lg-7 col-md-6 col-sm-12">
         <h2>
           Perfil
-          <small className="text-muted">Informações de usuário</small>
+          <small className="text-muted">Informações do usuário</small>
         </h2>
       </div>
       {/* <div className="col-lg-5 col-md-6 col-sm-12">
@@ -137,8 +137,8 @@ const ProfileCard = () => {
             <h5 className='m-t-10'>{user?.city + ', ' + user?.state + ", " + user?.cep || 'informação não encontrada'}</h5>
           </p>
         </div>
-        <hr />
-        <Stats />
+        {/* <hr /> */}
+        {/* <Stats /> */}
       </div>
     </div>
   );
@@ -192,13 +192,13 @@ const AboutCard = () => {
       <ul className="nav nav-tabs">
         <TabItem
           id="about"
-          label="About"
+          label="Sobre"
           activeTab={activeTab}
           onClick={() => setActiveTab('about')}
         />
         <TabItem
           id="friends"
-          label="Partners"
+          label="Sócios"
           activeTab={activeTab}
           onClick={() => setActiveTab('friends')}
         />
@@ -225,10 +225,10 @@ const AboutContent = () =>{
   const {user}=useContext(AuthContext)
   return (
     <div className="tab-pane body active" id="about">
-      <InfoItem label="Position" value={user?.role} />
-      <InfoItem label="Estate" value={user?.state} />
-      <InfoItem label="Email address" value={user?.email} />
-      <InfoItem label="Phone" value={user?.whatsapp_number} />
+      <InfoItem label="Posição" value={user?.role} />
+      <InfoItem label="Estado" value={user?.state} />
+      <InfoItem label="E-mail" value={user?.email} />
+      <InfoItem label="WhatsApp" value={user?.whatsapp_number} />
       {/* <SkillsList /> */}
     </div>
   );
@@ -280,8 +280,8 @@ const SkillItem = ({ name, progress, color }) => (
 
 const FriendsContent = () => {
   const friends = [
-    { name: 'Simão Pedro', joinDate: 'Today', image: simao },
-    { name: 'Luciana Tsukada', joinDate: 'Yesterday', image: luciana },
+    { name: 'Simão Pedro', joinDate: 'Hoje', image: simao },
+    { name: 'Luciana Tsukada', joinDate: 'Ontem', image: luciana },
     { name: 'Heygler', joinDate: '08 Nov', image: heygler },
     { name: 'Jerdeson', joinDate: '12 Dec', image: jerdeson },
     // { name: 'Breno Ramon', joinDate: '17 Dec', image: 'src/assets/images/partners/breno.jpeg' },
@@ -303,7 +303,7 @@ const FriendsContent = () => {
               {/* Informações do amigo */}
               <div>
                 <h5 className="mb-1" style={{ fontSize: '18px' }}>{friend.name}</h5>
-                <small className="text-muted">Joined: {friend.joinDate}</small>
+                <small className="text-muted">Aceitou: {friend.joinDate}</small>
               </div>
             </div>
           </div>
