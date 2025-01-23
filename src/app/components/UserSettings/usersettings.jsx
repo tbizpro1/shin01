@@ -11,44 +11,48 @@ export default function UserSettings() {
         user, token
     } = useContext(AuthContext)
     const { register, handleSubmit, reset, control } = useForm({
-        defaultValues:{
-            cpf: user.cpf || "",
-            cep: user.cep || "",
-            city: user.city || "",
-            country: user.country || "",
-            date_joined: user.date_joined || "",
-            date_of_birth: user.date_of_birth || "",
-            education_level: user.education_level || "",
-            email: user.email || "",
-            ethnicity: user.ethnicity || "",
-            gender: user.gender || "",
-            id: user.id || "",
-            institution: user.institution || "",
-            is_active: user.is_active !== null ? user.is_active : "",
-            last_login: user.last_login || "",
-            linkedin: user.linkedin || "",
-            phone: user.phone || "",
-            profession: user.profession || "",
-            profile_picture: user.profile_picture || "",
-            role: user.role || "",
-            state: user.state || "",
-            username: user.username || "",
-            weekly_hours_worked: user.weekly_hours_worked || "",
-            whatsapp_number: user.whatsapp_number || "",
+        defaultValues: {
+            ...user
         }
     })
     useEffect(() => {
         if (user) {
-            reset(user)
+            reset({
+                ...user,
+                gender: user.gender && ["m", "f", "p"].includes(user.gender) ? user.gender : null,
+                weekly_hours_worked: user.weekly_hours_worked !== undefined ? user.weekly_hours_worked : null,
+            });
         }
     }, [user, reset])
 
     const onSubmit = (data) => {
-        console.log(data)
-        UpDateUser(user.id, data, token).then(response => console.log(" reposta da api: ", response))
-        window.location.reload();
-    }
+        const sanitizedData = {
+            ...data,
+            weekly_hours_worked:
+                data.weekly_hours_worked && !isNaN(parseInt(data.weekly_hours_worked))
+                    ? parseInt(data.weekly_hours_worked)
+                    : null,
+            date_of_birth:
+                isValidDate(data.date_of_birth)
+                    ? data.date_of_birth
+                    : null,
+        };
 
+        console.log("Dados sanitizados:", sanitizedData);
+
+        // Envio dos dados para a API
+        UpDateUser(user.id, sanitizedData, token)
+            .then((response) => {
+                window.location.reload();
+                console.log("Resposta da API:", response);
+            })
+            .catch((error) => {
+                console.error("Erro ao atualizar o usuário:", error);
+            });
+    }
+    const isValidDate = (date) => {
+        return !isNaN(Date.parse(date));
+    };
     return (
         <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
             {/* <div className="card">
@@ -79,9 +83,9 @@ export default function UserSettings() {
                         <div className="row clearfix">
                             <div className="col-lg-6 col-md-12">
                                 <div className="form-group">
-                                    <input {...register("username")} 
-                                    type="text" className="form-control" 
-                                    placeholder="Username" />
+                                    <input {...register("username")}
+                                        type="text" className="form-control"
+                                        placeholder="Username" />
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12">
@@ -101,19 +105,19 @@ export default function UserSettings() {
                             </div>
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                <Controller
-                                    name="cpf"
-                                    control={control}
-                                    defaultValue="" 
-                                    render={({ field }) => (
-                                        <Inputmask
-                                            {...field}
-                                            mask="999.999.999-99"
-                                            className="form-control"
-                                            placeholder="CPF"
-                                        />
-                                    )}
-                                />
+                                    <Controller
+                                        name="cpf"
+                                        control={control}
+                                        defaultValue=""
+                                        render={({ field }) => (
+                                            <Inputmask
+                                                {...field}
+                                                mask="999.999.999-99"
+                                                className="form-control"
+                                                placeholder="CPF"
+                                            />
+                                        )}
+                                    />
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12">
@@ -138,7 +142,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        {...register("state")} 
+                                        {...register("state")}
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -189,7 +193,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        {...register("ethnicity")} 
+                                        {...register("ethnicity")}
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -207,7 +211,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        {...register("gender")} 
+                                        {...register("gender")}
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -224,36 +228,35 @@ export default function UserSettings() {
 
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
-                                <Controller
-                                    name="date_of_birth"
-                                    control={control}
-                                    defaultValue=""
-                                    render={({ field: { onChange, value } }) => (
-                                        <Inputmask
-                                        mask="99/99/9999"
-                                        className="form-control"
-                                        placeholder="Data de nascimento"
-                                        value={
-                                            value && value.includes("T") 
-                                            ? value.split("T")[0].split("-").reverse().join("/") // Remove a parte da hora e formata para dd/mm/yyyy
-                                            : value && value.includes("-")
-                                            ? value.split("-").reverse().join("/") // Formata ISO para dd/mm/yyyy
-                                            : value // Caso o valor já esteja no formato dd/mm/yyyy
-                                        }
-                                        onChange={(e) => {
-                                            const inputDate = e.target.value; // Formato dd/mm/yyyy
-                                            if (inputDate.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
-                                            const [day, month, year] = inputDate.split("/");
-                                            const isoDate = `${year}-${month}-${day}T00:00:00.000Z`; // Converte para ISO com hora padrão
-                                            onChange(isoDate); // Envia o valor ISO para o estado/controlador
-                                            } else {
-                                            onChange(e.target.value); // Caso o valor seja inválido/incompleto
-                                            }
-                                        }}
-                                        />
-  )}
-/>
-
+                                    <Controller
+                                        name="date_of_birth"
+                                        control={control}
+                                        defaultValue=""
+                                        render={({ field: { onChange, value } }) => (
+                                            <Inputmask
+                                                mask="99/99/9999"
+                                                className="form-control"
+                                                placeholder="Data de nascimento"
+                                                value={
+                                                    value && value.includes("T")
+                                                        ? value.split("T")[0].split("-").reverse().join("/") // Remove a parte da hora e formata para dd/mm/yyyy
+                                                        : value && value.includes("-")
+                                                            ? value.split("-").reverse().join("/") // Formata ISO para dd/mm/yyyy
+                                                            : value // Caso o valor já esteja no formato dd/mm/yyyy
+                                                }
+                                                onChange={(e) => {
+                                                    const inputDate = e.target.value; // Formato dd/mm/yyyy
+                                                    if (inputDate.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
+                                                        const [day, month, year] = inputDate.split("/");
+                                                        const isoDate = `${year}-${month}-${day}T00:00:00.000Z`; // Converte para ISO com hora padrão
+                                                        onChange(isoDate); // Envia o valor ISO para o estado/controlador
+                                                    } else {
+                                                        onChange(e.target.value); // Caso o valor seja inválido/incompleto
+                                                    }
+                                                }}
+                                            />
+                                        )}
+                                    />
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-12">
@@ -262,7 +265,7 @@ export default function UserSettings() {
                                         name="cep"
                                         control={control}
                                         defaultValue=""
-                                        render={({field}) => (
+                                        render={({ field }) => (
                                             <Inputmask
                                                 {...field}
                                                 mask='99999-999'
@@ -276,7 +279,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <select
-                                        {...register("education_level")} 
+                                        {...register("education_level")}
                                         className="form-control"
                                         defaultValue=""
                                     >
@@ -298,7 +301,7 @@ export default function UserSettings() {
                             <div className="col-lg-4 col-md-12">
                                 <div className="form-group">
                                     <input
-                                        {...register("institution")} 
+                                        {...register("institution")}
                                         type="text"
                                         className="form-control"
                                         placeholder="Instituição"

@@ -48,8 +48,9 @@ const LeftSideBar = () => {
 
                     <li>
                         <li><a href="/workspace"><i class="zmdi zmdi-home"></i><span>Home</span></a></li>
-                        {/* <li><a href="/perfil"><i class="zmdi zmdi-account-o"></i><span>Meu Perfil</span></a></li> */}
-                        <a href="#"
+                        <li><a href=""><i class="zmdi zmdi-account-o"></i><span>Meu Perfil</span></a></li>
+                        <li><a href=""><i class="zmdi zmdi-widgets"></i><span>Minhas Startups</span></a></li>
+                        <a  href="#"
                             className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}
                             onClick={handleMenuCliclado}
                         >
