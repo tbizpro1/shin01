@@ -5,37 +5,39 @@ const MainContent = () => {
 
     const InstagramPosts = () => {
         const instagramImages = [
-          post1,
-          post2,
-          post3,
-          post4,
-          post5,
-          post6,
-          post7,
-          post8,
-          post9
+            post1,
+            post2,
+            post3,
+            post4,
+            post5,
+            post6,
+            post7,
+            post8,
+            post9
         ];
-      
+
         return (
-          <div className="card">
-            <div className="header">
-              <h2><strong>Instagram</strong> Post</h2>                        
+            <div className="row">
+                <div className="card">
+                    <div className="header">
+                        <h2><strong>Instagram</strong> Post</h2>
+                    </div>
+                    <div className="body widget">
+                        <ul className="list-unstyled instagram-plugin m-b-0">
+                            {instagramImages.map((image, index) => (
+                                <li className="w-25" key={index}>
+                                    <a href="#">
+                                        <img src={image} alt={`Instagram post ${index + 1}`} />
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div className="body widget">
-              <ul className="list-unstyled instagram-plugin m-b-0">
-                {instagramImages.map((image, index) => (
-                  <li key={index}>
-                    <a href="#">
-                      <img src={image} alt={`Instagram post ${index + 1}`} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
         );
-      };
-      
+    };
+
     //   export default InstagramPosts;
 
     return (
