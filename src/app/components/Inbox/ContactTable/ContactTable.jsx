@@ -32,15 +32,14 @@ export const Partner = ({ userid, name, profession, number, email, profile_pictu
             </td>
 
             <td>
-
-                <p >{name} <span className="badge badge-default m-l-10 hidden-sm-down">{profession}</span></p>
+                <p style={{marginTop: '16px'}}>{name} <span className="badge badge-default m-l-10 hidden-sm-down">{profession}</span></p>
             </td>
 
             <td>
-                <span ><i className="zmdi zmdi-phone m-r-10"></i>{number}</span>
+                <p  style={{marginTop: '16px'}} ><i className="zmdi zmdi-phone m-r-10"></i>{number}</p>
             </td>
             <td>
-                <span ><a href="" title=""><i className="zmdi zmdi-email m-r-5"></i> {email} </a></span>
+                <p style={{marginTop: '16px'}}><a href="" title=""><i className="zmdi zmdi-email m-r-5"></i> {email} </a></p>
             </td>
             {/* <td>
                 <address><i class="zmdi zmdi-pin"></i>123 6th St. Melbourne, FL 32904</address>
