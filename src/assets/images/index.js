@@ -19,6 +19,18 @@ import rain from './weather/rain.svg';
 import cloudy from './weather/cloudy.svg';
 import wind from './weather/wind.svg';
 
+// posts
+import post1 from './posts/post1.png'
+import post2 from './posts/post2.png'
+import post3 from './posts/post3.png'
+import post4 from './posts/post4.png'
+import post5 from './posts/post5.png'
+import post6 from './posts/post6.png'
+import post7 from './posts/post7.png'
+import post8 from './posts/post8.png'
+import post9 from './posts/post9.png'
+
+
 export {
   backgroundLogin,
   logoShin,
@@ -39,4 +51,14 @@ export {
   rain,
   cloudy,
   wind,
+  //posts
+  post1,
+  post2,
+  post3,
+  post4,
+  post5,
+  post6,
+  post7,
+  post8,
+  post9,
 };

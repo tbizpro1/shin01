@@ -1,7 +1,43 @@
 import React from "react";
-import { summer, rain, cloudy, wind, simao, luciana, heygler, jerdeson, logo } from "../../../assets/images";
+import { summer, rain, cloudy, wind, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, post4, post6, post5, post7, post9, post8 } from "../../../assets/images";
 
 const MainContent = () => {
+
+    const InstagramPosts = () => {
+        const instagramImages = [
+          post1,
+          post2,
+          post3,
+          post4,
+          post5,
+          post6,
+          post7,
+          post8,
+          post9
+        ];
+      
+        return (
+          <div className="card">
+            <div className="header">
+              <h2><strong>Instagram</strong> Post</h2>                        
+            </div>
+            <div className="body widget">
+              <ul className="list-unstyled instagram-plugin m-b-0">
+                {instagramImages.map((image, index) => (
+                  <li key={index}>
+                    <a href="#">
+                      <img src={image} alt={`Instagram post ${index + 1}`} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+      };
+      
+    //   export default InstagramPosts;
+
     return (
         <section className="content">
             <div className="block-header">
@@ -65,13 +101,6 @@ const MainContent = () => {
                                             <small className="join_date">12 Dec</small>
                                         </a>
                                     </li>
-                                    {/* <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={breno} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Breno Ramon</h6>
-                                            <small className="join_date">17 Dec</small>
-                                        </a>
-                                    </li> */}
                                 </ul>
                             </div>
                         </div>
@@ -81,18 +110,6 @@ const MainContent = () => {
                         <div class="card">
                             <div class="header">
                                 <h2><strong>Minhas</strong> Startups</h2>
-                                <ul class="header-dropdown">
-                                    {/* <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                        <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
-                                            <li><a href="javascript:void(0);">Edit</a></li>
-                                            <li><a href="javascript:void(0);">Delete</a></li>
-                                            <li><a href="javascript:void(0);">Report</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="remove">
-                                        <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
-                                    </li> */}
-                                </ul>
                             </div>
                             <div class="body">
                                 <div class="table-responsive social_media_table">
@@ -292,7 +309,7 @@ const MainContent = () => {
                         </div>
                     </div>
 
-                    {/* <div className="col-lg-4 col-md-12">
+                    <div className="col-lg-4 col-md-12">
                         <div className="card w_calender">
                             <div className="date l-slategray">
                                 <span>Sunday, December 28</span>
@@ -355,7 +372,7 @@ const MainContent = () => {
                                 </ul>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
 
                     <div role="tabpanel" className="col-md-12 col-lg-8">
                         <ul className="cbp_tmtimeline">
@@ -435,6 +452,8 @@ const MainContent = () => {
                             </li>
                         </ul>
                     </div>
+
+                    <InstagramPosts />
 
                     {/* <div className="col-md-12 col-lg-4">
                         <div className="card activities">

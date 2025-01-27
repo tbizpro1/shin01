@@ -164,7 +164,7 @@ table tbody td {
 
 
 .inbox-item {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     align-items: center;
 }

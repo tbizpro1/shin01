@@ -14,6 +14,7 @@ import AgentsPage from './app/pages/Socio/socio';
 import { AddSocio } from './app/pages/AddSocio/addsocio';
 import AgentProfile from './app/pages/Perfil/perfil';
 import InvitePage from './app/pages/Invite/invite';
+import { StartupProfile } from './app/pages/PerfilStartup/perfilstartup';
 
 
 
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/workspace' element={ <ProtectedRouter page={Home} />} />
+        <Route path='/startup' element={ <ProtectedRouter page={StartupProfile} />} />
         <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} />
         <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
         <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
