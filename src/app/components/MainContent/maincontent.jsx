@@ -1,7 +1,11 @@
 import React from "react";
-import { summer, rain, cloudy, wind, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, post4, post6, post5, post7, post9, post8 } from "../../../assets/images";
+import { Mail, Phone, Instagram, Plus, Home, Camera, Linkedin } from 'lucide-react';
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import { summer, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, post4, post6, post5, post7, post9, post8, perfilUnd } from "../../../assets/images";
 
 const MainContent = () => {
+    const { user, token } = useContext(AuthContext)
 
     const InstagramPosts = () => {
         const instagramImages = [
@@ -18,96 +22,99 @@ const MainContent = () => {
 
         return (
             <div className="row">
-                <div className="card">
-                    <div className="header">
-                        <h2><strong>Instagram</strong> Post</h2>
-                    </div>
-                    <div className="body widget">
-                        <ul className="list-unstyled instagram-plugin m-b-0">
-                            {instagramImages.map((image, index) => (
-                                <li className="w-25" key={index}>
-                                    <a href="#">
-                                        <img src={image} alt={`Instagram post ${index + 1}`} />
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                <div class="col-lg-12 col-md-12 right-box">
+                    <div className="card">
+                        <div className="header">
+                            <h2><strong>Instagram</strong> Post</h2>
+                        </div>
+                        <div className="body widget">
+                            <ul className="list-unstyled instagram-plugin m-b-0">
+                                {instagramImages.map((image, index) => (
+                                    <li style={{ width: '30%' }} key={index}>
+                                        <a href="#">
+                                            <img src={image} alt={`Instagram post ${index + 1}`} />
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         );
     };
 
-    //   export default InstagramPosts;
-
     return (
-        <section className="content">
+        <section className="content blog-page">
             <div className="block-header">
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">
                         <small className="text-muted">Bem-vindo(a) a Shin.</small>
                     </div>
-                    {/* <div className="col-lg-5 col-md-6 col-sm-12">
-                        <button className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
-                            <i className="zmdi zmdi-plus"></i>
-                        </button>
-                        <ul className="breadcrumb float-md-right">
-                            <li className="breadcrumb-item">
-                                <a href="/workspace">
-                                    <i className="zmdi zmdi-home"></i> Shin
-                                </a>
-                            </li>
-                            <li className="breadcrumb-item">
-                                <a href="javascript:void(0);">Sample Pages</a>
-                            </li>
-                            <li className="breadcrumb-item active">Stater Page</li>
-                        </ul>
-                    </div> */}
                 </div>
             </div>
 
             <div className="container-fluid">
                 <div className="row clearfix">
-                    <div className="col-md-12 col-lg-4">
-                        <div className="card">
-                            <div className="header">
-                                <h2><strong>Novos</strong> Sócios</h2>
+                    {/* temperatura */}
+                    <div class="col-lg-4">
+                        <div class="card weather2">
+                            <div class="city-selected body l-parpl">
+                                <div class="row">
+                                    <div class="info col-7">
+                                        <div class="city"><span>City:</span> Teresina</div>
+                                        <div class="night">Day - 12:07 PM</div>
+                                        <div class="temp"><h2>34°</h2></div>
+                                    </div>
+                                    <div class="icon col-5">
+                                        <img src={summer} alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <InstagramPosts /> */}
+
+                        <div className="card member-card">
+                            <div className="header l-cyan">
+                                <h4 className="m-t-10">{user?.username || 'Não encontrado'}</h4>
+                            </div>
+                            <div className="member-img">
+                                <a href="profile.html" className="">
+                                    <img src={user?.profile_picture || perfilUnd} className="rounded-circle" alt="profile-image" />
+                                </a>
                             </div>
                             <div className="body">
-                                <ul className="new_friend_list list-unstyled row">
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={simao} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Simão Pedro</h6>
-                                            <small className="join_date">Hoje</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={luciana} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Luciana Tsukada</h6>
-                                            <small className="join_date">Ontem</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={heygler} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Heygler</h6>
-                                            <small className="join_date">12 Dec</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={jerdeson} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Jerdeson Lucas</h6>
-                                            <small className="join_date">12 Dec</small>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div className="col-12">
+                                    {/* <ul class="social-links list-unstyled">
+                                        <li><a title="facebook" href="#"><i className="zmdi zmdi-facebook"></i></a></li>
+                                        <li><a title="twitter" href="#"><i className="zmdi zmdi-twitter"></i></a></li>
+                                        <li><a title="instagram" href="#"><i className="zmdi zmdi-instagram"></i></a></li>
+                                    </ul> */}
+                                    <ul className="social-links list-unstyled align-items-center">
+                                        <li className='mx-3'>
+                                            <a href="#" title="mail">
+                                                <Mail size={25} />
+                                            </a>
+                                        </li>
+                                        <li className='mx-3'>
+                                            <a href="#" title="phone">
+                                                <Phone size={25} />
+                                            </a>
+                                        </li>
+                                        <li className='mx-3'>
+                                            <a href="#" title="linkedin">
+                                                <Linkedin size={25} />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <p><strong>Acessar meu perfil</strong></p>
+                                    {/* <p className="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p> */}
+                                </div>
+
                             </div>
                         </div>
                     </div>
-
+                    {/* minhas startups */}
                     <div class="col-sm-8">
                         <div class="card">
                             <div class="header">
@@ -253,65 +260,8 @@ const MainContent = () => {
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4">
-                        <div class="card weather2">
-                            <div class="city-selected body l-parpl">
-                                <div class="row">
-                                    <div class="info col-7">
-                                        <div class="city"><span>City:</span> Teresina</div>
-                                        <div class="night">Day - 12:07 PM</div>
-                                        <div class="temp"><h2>34°</h2></div>
-                                    </div>
-                                    <div class="icon col-5">
-                                        <img src={summer} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item text-center active">
-                                        <div class="col-12">
-                                            <ul class="row days-list list-unstyled">
-                                                <li class="day col-4">
-                                                    <p>Monday</p>
-                                                    <img src={rain} alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Tuesday</p>
-                                                    <img src={cloudy} alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Wednesday</p>
-                                                    <img src={wind} alt="" />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item text-center">
-                                        <div class="col-12">
-                                            <ul class="row days-list list-unstyled">
-                                                <li class="day col-4">
-                                                    <p>Thursday</p>
-                                                    <img src="assets/images/weather/sky.svg" alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Friday</p>
-                                                    <img src="assets/images/weather/cloudy.svg" alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Saturday</p>
-                                                    <img src="assets/images/weather/summer.svg" alt="" />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-lg-4 col-md-12">
+                    {/* calendario */}
+                    <div className="col-lg-4">
                         <div className="card w_calender">
                             <div className="date l-slategray">
                                 <span>Sunday, December 28</span>
@@ -374,8 +324,9 @@ const MainContent = () => {
                                 </ul>
                             </div>
                         </div>
+                        <InstagramPosts/>
                     </div>
-
+                    {/* timeline */}
                     <div role="tabpanel" className="col-md-12 col-lg-8">
                         <ul className="cbp_tmtimeline">
                             <li>
@@ -454,59 +405,41 @@ const MainContent = () => {
                             </li>
                         </ul>
                     </div>
-
-                    <InstagramPosts />
-
+                   
+                    {/* novos socios */}
                     {/* <div className="col-md-12 col-lg-4">
-                        <div className="card activities">
+                        <div className="card">
                             <div className="header">
-                                <h2><strong>Activities</strong> <small>Recent user Activities</small></h2>
+                                <h2><strong>Novos</strong> Sócios</h2>
                             </div>
                             <div className="body">
-                                <ul className="list-unstyled activity">
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-cake bg-blue"></i>
-                                            <div className="info">
-                                                <h4>Admin Birthday</h4>
-                                                <small>Will be Dec 21th</small>
-                                            </div>
+                                <ul className="new_friend_list list-unstyled row">
+                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+                                        <a href="">
+                                            <img src={simao} className="img-thumbnail" alt="User Image" />
+                                            <h6 className="users_name">Simão Pedro</h6>
+                                            <small className="join_date">Hoje</small>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-file-text bg-red"></i>
-                                            <div className="info">
-                                                <h4>Code Change</h4>
-                                                <small>Will be Dec 22th</small>
-                                            </div>
+                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+                                        <a href="">
+                                            <img src={luciana} className="img-thumbnail" alt="User Image" />
+                                            <h6 className="users_name">Luciana Tsukada</h6>
+                                            <small className="join_date">Ontem</small>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-account-box-phone bg-green"></i>
-                                            <div className="info">
-                                                <h4>Add New Contact</h4>
-                                                <small>Will be Dec 23th</small>
-                                            </div>
+                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+                                        <a href="">
+                                            <img src={heygler} className="img-thumbnail" alt="User Image" />
+                                            <h6 className="users_name">Heygler</h6>
+                                            <small className="join_date">12 Dec</small>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-email bg-amber"></i>
-                                            <div className="info">
-                                                <h4>New Email</h4>
-                                                <small>Will be July 28th</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-account-box-phone bg-green"></i>
-                                            <div className="info">
-                                                <h4>Add New Contact</h4>
-                                                <small>Will be Dec 23th</small>
-                                            </div>
+                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
+                                        <a href="">
+                                            <img src={jerdeson} className="img-thumbnail" alt="User Image" />
+                                            <h6 className="users_name">Jerdeson Lucas</h6>
+                                            <small className="join_date">12 Dec</small>
                                         </a>
                                     </li>
                                 </ul>
