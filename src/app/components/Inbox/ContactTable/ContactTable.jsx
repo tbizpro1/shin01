@@ -1,7 +1,7 @@
 import { useCallback, useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
-import { backgroundLogin, logoShin, logoLoader, simao, perfilUnd } from "../../../../assets/images/index";
+import { perfilUnd, logo } from "../../../../assets/images/index";
 
 export const Partner = ({ userid, name, profession, number, email, profile_picture }) => {
     const [isClicked, setIsClicked] = useState(false);
@@ -78,7 +78,7 @@ export default function ContactTable({ users }) {
             <div className="page-loader-wrapper">
                 <div className="loader">
                     <div className="m-t-30">
-                        <img className="zmdi-hc-spin" src={logoLoader} width="48" height="48" alt="Compass" />
+                        <img className="zmdi-hc-spin rounded-circle" src={logo} width="48" height="48" alt="Compass" />
                     </div>
                     <p>Buscando usuários...</p>
                 </div>

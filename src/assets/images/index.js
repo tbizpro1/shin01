@@ -32,6 +32,7 @@ import post9 from './posts/post9.png'
 
 
 export {
+  //logo
   backgroundLogin,
   logoShin,
   logoLoader,
