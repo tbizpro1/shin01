@@ -52,14 +52,15 @@ export function ContentStartup() {
                             enterprise={enterpriseDetail}
                             user={user}
                         />
-                        <AboutCard/>
+                        {/* <AboutCard/> */}
+                        <PartenrsCard/>
                     </div>
                     <div className="col-lg-8 col-md-12">
                         <StartupSettings enterprise={enterpriseDetail}/>
                     </div>
                 </div>
             </div>
-            <PartenrsCard/>
+            
         </>
     )
 }
