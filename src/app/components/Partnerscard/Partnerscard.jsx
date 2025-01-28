@@ -2,7 +2,7 @@ import { heygler, jerdeson, luciana, simao } from "../../../assets/images";
 
 export function PartenrsCard() {
     return(
-        <div className="col-lg-5 col-md-12">
+        <div>
                 <div className="card ">
                     <div className="header">
                         <h2><strong>Equipe</strong></h2>
