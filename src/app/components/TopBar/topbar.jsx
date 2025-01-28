@@ -10,7 +10,7 @@ const TopBar = () => {
           <div className="navbar-header">
             <a href="#" className="bars"></a>
             <a className="navbar-brand" href="/workspace">
-              <img src={logo} width="50" alt="Shin" />
+              <img src={logo} width="60" alt="Shin" />
               <span 
               className="m-l-10"
               >SHIN
