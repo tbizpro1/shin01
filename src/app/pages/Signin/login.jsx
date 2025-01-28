@@ -9,7 +9,7 @@ import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 
-import { backgroundLogin, logoShin, logoLoader } from "../../../assets/images";
+import { backgroundLogin, logo, logoShin } from "../../../assets/images";
 
 
 const Login = () => {
@@ -79,10 +79,10 @@ const Login = () => {
                                                 <button
                                                     type="submit"
                                                     className="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
-                                                        SIGN IN
+                                                        Entrar
                                                 </button>
                                                 <h6 className="m-t-20">
-                                                    <a href="forgot-password.html" className="link">Forgot Password?</a>
+                                                    <a href="forgot-password.html" className="link">Esqueceu sua senha?</a>
                                                 </h6>
                                             </div>
                                         </form>
@@ -96,7 +96,7 @@ const Login = () => {
                     <>
                         <div className="page-loader-wrapper">
                             <div className="loader">
-                                <div className="m-t-30"><img className="zmdi-hc-spin" src={logoLoader} width="48" height="48" alt="Compass" /></div>
+                                <div className="m-t-30"><img className="zmdi-hc-spin rounded-circle" src={logo} width="48" height="48" alt="Compass" /></div>
                                 <p>Please wait...</p>
                                 {/* <p>Preparando área de trabalho ...</p> */}
                             </div>

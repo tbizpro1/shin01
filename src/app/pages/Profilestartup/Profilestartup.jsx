@@ -10,31 +10,31 @@ import { perfilUnd, simao, heygler, luciana, jerdeson } from '../../../assets/im
 import { useForm } from 'react-hook-form';
 import addProfileImage from '../../api/post/profile-image';
 
-const AgentProfile = () => {
-  const [activeTab, setActiveTab] = useState('usersettings');
+const StartupProfile = () => {
+    const [activeTab, setActiveTab] = useState('usersettings');
 
-  return (
-    <div className="theme-purple">
-      <TopBar />
-      <LeftSideBar />
-      <RightSideBar />
-      <Chat />
-      <section className="content profile-page">
-        <Header />
-        <div className="container-fluid">
-          <div className="row clearfix">
-            <div className="col-lg-4 col-md-12">
-              <ProfileCard />
-              <AboutCard />
+    return (
+        <div className="theme-purple">
+        <TopBar />
+        <LeftSideBar />
+        <RightSideBar />
+        <Chat />
+        <section className="content profile-page">
+            <Header />
+            <div className="container-fluid">
+            <div className="row clearfix">
+                <div className="col-lg-4 col-md-12">
+                <ProfileCard />
+                <AboutCard />
+                </div>
+                <div className="col-lg-8 col-md-12">
+                <MainContent activeTab={activeTab} setActiveTab={setActiveTab} />
+                </div>
             </div>
-            <div className="col-lg-8 col-md-12">
-              <MainContent activeTab={activeTab} setActiveTab={setActiveTab} />
             </div>
-          </div>
+        </section>
         </div>
-      </section>
-    </div>
-  );
+    );
 };
 
 const Header = () => (

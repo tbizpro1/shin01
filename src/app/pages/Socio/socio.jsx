@@ -7,7 +7,7 @@ import Chat from "../../components/Chat/chat";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending";
 import { AuthContext } from "../../context/authContext";
 import { GetUser } from "../../api/get/user-profile";
-import { logoLoader, simao } from "../../../assets/images";
+import { logo, simao } from "../../../assets/images";
 
 const formatPhoneNumber = (phoneNumber) => {
   if (!phoneNumber) return '';
@@ -34,7 +34,7 @@ const truncateText = (text, maxLength) => {
   return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
 };
 
-const AgentCard = ({ avatar, partner_id, token, partner_status }) => {
+const AgentCard = ({ avatar, partner_id, token, partner_status, socio }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,10 +54,12 @@ const AgentCard = ({ avatar, partner_id, token, partner_status }) => {
   }, [partner_id, token]);
 
   const socialLinks = [
-    { class: "facebook", href: "#", icon: "zmdi-facebook" },
-    { class: "twitter", href: "#", icon: "zmdi-twitter" },
-    { class: "gplus", href: "#", icon: "zmdi-google-plus" },
-    { class: "linkedin", href: "#", icon: "zmdi-linkedin" },
+    // { class: "facebook", href: "#", icon: "zmdi-facebook" },
+    // { class: "twitter", href: "#", icon: "zmdi-twitter" },
+    { class: "instagram", href: "#", icon: "zmdi-instagram" },
+    { class: "linkedin", href: "#", icon: "zmdi-linkedin-box" },
+    { class: "whatsapp", href: "#", icon: "zmdi-whatsapp" },
+    { class: "email", href: "#", icon: "zmdi-email" },
   ];
 
   return isLoading ? (
@@ -65,8 +67,8 @@ const AgentCard = ({ avatar, partner_id, token, partner_status }) => {
       <div className="loader">
         <div className="m-t-30">
           <img
-            className="zmdi-hc-spin"
-            src={logoLoader}
+            className="zmdi-hc-spin rounded-circle"
+            src={logo}
             width="48"
             height="48"
             alt="Compass"
@@ -169,25 +171,6 @@ const AgentsPage = () => {
                         Todos os sócios
                         <small className="text-muted">Bem-vindo à sua equipe!</small>
                       </h2>
-                    </div>
-                    <div className="col-lg-5 col-md-6 col-sm-12">
-                      <button
-                        className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10"
-                        type="button"
-                      >
-                        <i className="zmdi zmdi-plus"></i>
-                      </button>
-                      <ul className="breadcrumb float-md-right">
-                        <li className="breadcrumb-item">
-                          <a href="index.html">
-                            <i className="zmdi zmdi-home"></i> Shin
-                          </a>
-                        </li>
-                        <li className="breadcrumb-item">
-                          <a href="javascript:void(0);">Agents</a>
-                        </li>
-                        <li className="breadcrumb-item active">All Agents</li>
-                      </ul>
                     </div>
                   </div>
                 </div>

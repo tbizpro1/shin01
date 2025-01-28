@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { logoLoader } from "../../../assets/images";
+import { logo } from "../../../assets/images";
 import { AuthContext } from "../../context/authContext";
 
 const TopBar = () => {
@@ -10,7 +10,7 @@ const TopBar = () => {
           <div className="navbar-header">
             <a href="#" className="bars"></a>
             <a className="navbar-brand" href="/workspace">
-              <img src={logoLoader} width="30" alt="Shin" />
+              <img src={logo} width="60" alt="Shin" />
               <span 
               className="m-l-10"
               >SHIN
@@ -42,7 +42,7 @@ const TopBar = () => {
                 </div>
               </a>
               <ul className="dropdown-menu dropdown-menu-right slideDown">
-                <li className="header">NOTIFICATIONS</li>
+                <li className="header">NOTIFICAÇÕES</li>
                 <li className="body">
                   <ul className="menu list-unstyled">
                     <li>

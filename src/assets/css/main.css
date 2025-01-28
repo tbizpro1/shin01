@@ -164,7 +164,7 @@ table tbody td {
 
 
 .inbox-item {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     align-items: center;
 }
@@ -2912,13 +2912,13 @@ textarea.form-control:active {
 
 .badge {
     border-radius: 8px;
-    padding: 4px 8px;
+    /* padding: 4px 8px; */
     text-transform: uppercase;
     font-size: .7142em;
     line-height: 12px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
     border-radius: .875rem
 }
 
@@ -3281,6 +3281,37 @@ body {
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg)
+}
+
+.profileButton {
+    padding-top: 50px;
+    margin: 10px;
+    color: black
+}
+
+.proButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	/* background:linear-gradient(to bottom, #599bb3 5%, #8acfdb 100%); */
+	background-color:#599bb3;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	/* font-family:Arial; */
+	font-size:18px;
+	padding:1px 30px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+
+.proButton:hover {
+	/* background:linear-gradient(to bottom, #408c99 5%, #bdcacf 100%); */
+	background-color:#408c99;
+
+}
+.proButton:active {
+	position:relative;
+	top:1px;
 }
 
 .button-bar {

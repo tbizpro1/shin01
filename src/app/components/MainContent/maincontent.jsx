@@ -1,101 +1,182 @@
-import React from "react";
-import { summer, rain, cloudy, wind, simao, luciana, heygler, jerdeson, breno, logo } from "../../../assets/images";
+import React, { useState, useEffect } from "react";
+import { Mail, Phone, Instagram, Plus, Home, Camera, Linkedin } from 'lucide-react';
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import { summer, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, post4, post6, post5, post7, post9, post8, perfilUnd } from "../../../assets/images";
+import axios from "axios";
 
 const MainContent = () => {
+    const { user, token } = useContext(AuthContext)
+
+    const InstagramPosts = () => {
+        const instagramImages = [
+            post1,
+            post2,
+            post3,
+            post4,
+            post5,
+            post6,
+            post7,
+            post8,
+            post9
+        ];
+
+        return (
+            <div className="row">
+                <div class="col-lg-12 col-md-12 right-box">
+                    <div className="card">
+                        <div className="header">
+                            <h2><strong>Instagram</strong> Post</h2>
+                        </div>
+                        <div className="body widget">
+                            <ul className="list-unstyled instagram-plugin m-b-0">
+                                {instagramImages.map((image, index) => (
+                                    <li style={{ width: '30%' }} key={index}>
+                                        <a href="https://www.instagram.com/startup_piaui/"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            <img src={image} alt={`Instagram post ${index + 1}`} />
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    // const Temperatura = () => {
+    //     const [location, setLocation] = useState(false)
+    //     return (
+    //         <div class="card weather2">
+    //             <div class="city-selected body l-parpl">
+    //                 <div class="row">
+    //                     <div class="info col-7">
+    //                         <div class="city"><span>City:</span> Teresina</div>
+    //                         <div class="night">Day - 12:07 PM</div>
+    //                         <div class="temp"><h2>34°</h2></div>
+    //                     </div>
+    //                     <div class="icon col-5">
+    //                         <img src={summer} alt="" />
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     )
+    // }
+
+    const Temperatura = () => {
+        const [location, setLocation] = useState(null);
+        const [city, setCity] = useState('Teresina');
+        const [temperature, setTemperature] = useState('34°');
+
+        useEffect(() => {
+            const getLocation = (enableHighAccuracy = false) => {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        setLocation({ latitude, longitude });
+                        // Aqui você pode adicionar uma chamada à API de previsão do tempo
+                        // para obter a cidade e a temperatura com base na latitude e longitude
+                    },
+                    (error) => {
+                        console.error('Error fetching location', error);
+                    },
+                    { enableHighAccuracy }
+                );
+            };
+
+            getLocation(true);
+        }, []);
+
+        if (location == false) {
+            return (
+                <>
+                    {alert("Para que as informações de clima funcionem, você precisará autorizar sua localização.")}
+                </>
+            )
+        } else {
+            return (
+                <div className="card weather2">
+                    <div className="city-selected body l-parpl">
+                        <div className="row">
+                            <div className="info col-7">
+                                <div className="city"><span>City:</span> {city}</div>
+                                <div className="night">Day - 12:07 PM</div>
+                                <div className="temp"><h2>{temperature}</h2></div>
+                            </div>
+                            <div className="icon col-5">
+                                <img src={summer} alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+    }
+
     return (
-        <section className="content">
+        <section className="content blog-page">
             <div className="block-header">
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">
-                        <h2>
-                            Main page
-                            <small className="text-muted">Welcome to Shin</small>
-                        </h2>
+                        <small className="text-muted">Bem-vindo(a) a Shin.</small>
                     </div>
-                    {/* <div className="col-lg-5 col-md-6 col-sm-12">
-                        <button className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
-                            <i className="zmdi zmdi-plus"></i>
-                        </button>
-                        <ul className="breadcrumb float-md-right">
-                            <li className="breadcrumb-item">
-                                <a href="/workspace">
-                                    <i className="zmdi zmdi-home"></i> Shin
-                                </a>
-                            </li>
-                            <li className="breadcrumb-item">
-                                <a href="javascript:void(0);">Sample Pages</a>
-                            </li>
-                            <li className="breadcrumb-item active">Stater Page</li>
-                        </ul>
-                    </div> */}
                 </div>
             </div>
 
             <div className="container-fluid">
                 <div className="row clearfix">
-                    <div className="col-md-12 col-lg-4">
-                        <div className="card">
-                            <div className="header">
-                                <h2><strong>New</strong> Partners</h2>
+                    {/* temperatura */}
+                    <div class="col-lg-4">
+                        <Temperatura />
+                        <div className="card member-card">
+                            <div className="header l-cyan">
+                                <h4 className="m-t-10">{user?.username || 'Não encontrado'}</h4>
+                            </div>
+                            <div className="member-img">
+                                <img src={user?.profile_picture || perfilUnd} className="rounded-circle" alt="profile-image" />
                             </div>
                             <div className="body">
-                                <ul className="new_friend_list list-unstyled row">
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={simao} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Simão Pedro</h6>
-                                            <small className="join_date">Today</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={luciana} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Luciana Tsukada</h6>
-                                            <small className="join_date">Yesterday</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={heygler} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Heygler</h6>
-                                            <small className="join_date">12 Dec</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={jerdeson} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Jerdeson Lucas</h6>
-                                            <small className="join_date">12 Dec</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={breno} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Breno Ramon</h6>
-                                            <small className="join_date">17 Dec</small>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <div>
+                                    {/* <ul class="social-links list-unstyled">
+                                        <li><a title="facebook" href="#"><i className="zmdi zmdi-facebook"></i></a></li>
+                                        <li><a title="twitter" href="#"><i className="zmdi zmdi-twitter"></i></a></li>
+                                        <li><a title="instagram" href="#"><i className="zmdi zmdi-instagram"></i></a></li>
+                                    </ul> */}
+                                    <ul className="social-links list-unstyled align-items-center">
+                                        <li className='mx-3'>
+                                            <a href="" title="mail">
+                                                <Mail size={28} />
+                                            </a>
+                                        </li>
+                                        <li className='mx-3'>
+                                            <a href="" title="phone">
+                                                <Phone size={28} />
+                                            </a>
+                                        </li>
+                                        <li className='mx-3'>
+                                            <a href="" title="linkedin">
+                                                <Linkedin size={28} />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div style={{ padding: '4px' }}>
+                                        <a href="/perfil" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
+                                        {/* <a href="/perfil"><span className="proButton">Acessar meu perfil</span></a> */}
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                    {/* minhas startups */}
                     <div class="col-sm-8">
                         <div class="card">
                             <div class="header">
-                                <h2><strong>My</strong> Startups</h2>
-                                <ul class="header-dropdown">
-                                    <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                        <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
-                                            <li><a href="javascript:void(0);">Edit</a></li>
-                                            <li><a href="javascript:void(0);">Delete</a></li>
-                                            <li><a href="javascript:void(0);">Report</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="remove">
-                                        <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
-                                    </li>
-                                </ul>
+                                <h2><strong>Minhas</strong> Startups</h2>
                             </div>
                             <div class="body">
                                 <div class="table-responsive social_media_table">
@@ -103,21 +184,23 @@ const MainContent = () => {
                                         <thead>
                                             <tr>
                                                 <th>Logo</th>
-                                                <th>Name</th>
-                                                <th>Initial Market</th>
-                                                <th style={{ width: "20%" }}>Team</th>
-                                                <th style={{ width: "10%" }}>Acceleration Phase</th>
-                                                <th>Next Meeting</th>
+                                                <th>Nome</th>
+                                                <th>Mercado Inicial</th>
+                                                <th style={{ width: "20%" }}>Time</th>
+                                                <th style={{ width: "10%" }}>Fase de Aceleração</th>
+                                                <th>Próxima Reunião</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="48"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -126,22 +209,24 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-info">Medium</span></td>
+                                                <td><span class="badge badge-info">Fase 3</span></td>
                                                 <td>19 Mar 2025</td>
                                             </tr>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="48"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -150,22 +235,24 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-success">High</span></td>
+                                                <td><span class="badge badge-success">Fase 2</span></td>
                                                 <td>17 Jan 2025</td>
                                             </tr>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="48"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -174,22 +261,24 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-info">Medium</span></td>
+                                                <td><span class="badge badge-info">Fase 3</span></td>
                                                 <td>03 Mar 2025</td>
                                             </tr>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="48"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -198,13 +287,13 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-warning">Pading</span></td>
+                                                <td><span class="badge badge-warning">Fase 1</span></td>
                                                 <td>20 Fev 2025</td>
                                             </tr>
                                             <tr>
@@ -212,7 +301,7 @@ const MainContent = () => {
                                                     <img
                                                         className="rounded-circle"
                                                         src={logo}
-                                                        width="48"
+                                                        width="58"
                                                         height="48" />
                                                 </span>
                                                 </td>
@@ -222,13 +311,13 @@ const MainContent = () => {
                                                 <td>Inovação e Tecnologia</td>
                                                 <td>
                                                     <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={breno} alt="Avatar" /></li>
+                                                        <li><img src={simao} alt="Avatar" /></li>
                                                         <li><img src={luciana} alt="Avatar" /></li>
                                                         <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={simao} alt="Avatar" /></li>
+                                                        <li><img src={jerdeson} alt="Avatar" /></li>
                                                     </ul>
                                                 </td>
-                                                <td><span class="badge badge-danger">Low</span></td>
+                                                <td><span class="badge badge-warning">Fase 1</span></td>
                                                 <td>25 Jan 2025</td>
                                             </tr>
                                         </tbody>
@@ -237,65 +326,8 @@ const MainContent = () => {
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4">
-                        <div class="card weather2">
-                            <div class="city-selected body l-parpl">
-                                <div class="row">
-                                    <div class="info col-7">
-                                        <div class="city"><span>City:</span> Teresina</div>
-                                        <div class="night">Day - 12:07 PM</div>
-                                        <div class="temp"><h2>34°</h2></div>
-                                    </div>
-                                    <div class="icon col-5">
-                                        <img src={summer} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item text-center active">
-                                        <div class="col-12">
-                                            <ul class="row days-list list-unstyled">
-                                                <li class="day col-4">
-                                                    <p>Monday</p>
-                                                    <img src={rain} alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Tuesday</p>
-                                                    <img src={cloudy} alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Wednesday</p>
-                                                    <img src={wind} alt="" />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item text-center">
-                                        <div class="col-12">
-                                            <ul class="row days-list list-unstyled">
-                                                <li class="day col-4">
-                                                    <p>Thursday</p>
-                                                    <img src="assets/images/weather/sky.svg" alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Friday</p>
-                                                    <img src="assets/images/weather/cloudy.svg" alt="" />
-                                                </li>
-                                                <li class="day col-4">
-                                                    <p>Saturday</p>
-                                                    <img src="assets/images/weather/summer.svg" alt="" />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* <div className="col-lg-4 col-md-12">
+                    {/* calendario */}
+                    <div className="col-lg-4">
                         <div className="card w_calender">
                             <div className="date l-slategray">
                                 <span>Sunday, December 28</span>
@@ -358,8 +390,9 @@ const MainContent = () => {
                                 </ul>
                             </div>
                         </div>
-                    </div> */}
-
+                        <InstagramPosts />
+                    </div>
+                    {/* timeline */}
                     <div role="tabpanel" className="col-md-12 col-lg-8">
                         <ul className="cbp_tmtimeline">
                             <li>
@@ -438,63 +471,6 @@ const MainContent = () => {
                             </li>
                         </ul>
                     </div>
-
-                    {/* <div className="col-md-12 col-lg-4">
-                        <div className="card activities">
-                            <div className="header">
-                                <h2><strong>Activities</strong> <small>Recent user Activities</small></h2>
-                            </div>
-                            <div className="body">
-                                <ul className="list-unstyled activity">
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-cake bg-blue"></i>
-                                            <div className="info">
-                                                <h4>Admin Birthday</h4>
-                                                <small>Will be Dec 21th</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-file-text bg-red"></i>
-                                            <div className="info">
-                                                <h4>Code Change</h4>
-                                                <small>Will be Dec 22th</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-account-box-phone bg-green"></i>
-                                            <div className="info">
-                                                <h4>Add New Contact</h4>
-                                                <small>Will be Dec 23th</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-email bg-amber"></i>
-                                            <div className="info">
-                                                <h4>New Email</h4>
-                                                <small>Will be July 28th</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i className="zmdi zmdi-account-box-phone bg-green"></i>
-                                            <div className="info">
-                                                <h4>Add New Contact</h4>
-                                                <small>Will be Dec 23th</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </section>

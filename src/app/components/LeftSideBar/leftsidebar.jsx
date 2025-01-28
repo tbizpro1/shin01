@@ -48,8 +48,9 @@ const LeftSideBar = () => {
 
                     <li>
                         <li><a href="/workspace"><i class="zmdi zmdi-home"></i><span>Home</span></a></li>
-                        {/* <li><a href="/perfil"><i class="zmdi zmdi-account-o"></i><span>Meu Perfil</span></a></li> */}
-                        <a href="#"
+                        <li><a href="/perfil"><i class="zmdi zmdi-account-o"></i><span>Meu Perfil</span></a></li>
+                        <li><a href="/startup"><i class="zmdi zmdi-widgets"></i><span>Minhas Startups</span></a></li>
+                        <a  href="#"
                             className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}
                             onClick={handleMenuCliclado}
                         >
@@ -57,7 +58,7 @@ const LeftSideBar = () => {
                         </a>
                         <ul className="ml-menu" style={{ display: menuClicado ? 'block' : 'none' }}>
                             <li><Link to='/socio'>Todos os sócios</Link></li>
-                            <li><Link to='/addsocio'>Adicionar sócio</Link></li>
+                            {/* <li><Link to='/addsocio'>Adicionar sócio</Link></li> */}
                             {/* <li><Link to='/perfil'>Perfil do sócio</Link></li> */}
                             <li><Link to='/explorer'>Convidar sócio</Link></li>
                             {/* <li><Link to='/notifications'>Notificações</Link></li> */}
