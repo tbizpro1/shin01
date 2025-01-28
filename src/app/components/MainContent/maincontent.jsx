@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Mail, Phone, Instagram, Plus, Home, Camera, Linkedin } from 'lucide-react';
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import { summer, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, post4, post6, post5, post7, post9, post8, perfilUnd } from "../../../assets/images";
+import axios from "axios";
 
 const MainContent = () => {
     const { user, token } = useContext(AuthContext)
@@ -31,7 +32,9 @@ const MainContent = () => {
                             <ul className="list-unstyled instagram-plugin m-b-0">
                                 {instagramImages.map((image, index) => (
                                     <li style={{ width: '30%' }} key={index}>
-                                        <a href="#">
+                                        <a href="https://www.instagram.com/startup_piaui/"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
                                             <img src={image} alt={`Instagram post ${index + 1}`} />
                                         </a>
                                     </li>
@@ -43,6 +46,76 @@ const MainContent = () => {
             </div>
         );
     };
+
+    // const Temperatura = () => {
+    //     const [location, setLocation] = useState(false)
+    //     return (
+    //         <div class="card weather2">
+    //             <div class="city-selected body l-parpl">
+    //                 <div class="row">
+    //                     <div class="info col-7">
+    //                         <div class="city"><span>City:</span> Teresina</div>
+    //                         <div class="night">Day - 12:07 PM</div>
+    //                         <div class="temp"><h2>34°</h2></div>
+    //                     </div>
+    //                     <div class="icon col-5">
+    //                         <img src={summer} alt="" />
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     )
+    // }
+
+    const Temperatura = () => {
+        const [location, setLocation] = useState(null);
+        const [city, setCity] = useState('Teresina');
+        const [temperature, setTemperature] = useState('34°');
+
+        useEffect(() => {
+            const getLocation = (enableHighAccuracy = false) => {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        setLocation({ latitude, longitude });
+                        // Aqui você pode adicionar uma chamada à API de previsão do tempo
+                        // para obter a cidade e a temperatura com base na latitude e longitude
+                    },
+                    (error) => {
+                        console.error('Error fetching location', error);
+                    },
+                    { enableHighAccuracy }
+                );
+            };
+
+            getLocation(true);
+        }, []);
+
+        if (location == false) {
+            return (
+                <>
+                    {alert("Para que as informações de clima funcionem, você precisará autorizar sua localização.")}
+                </>
+            )
+        } else {
+            return (
+                <div className="card weather2">
+                    <div className="city-selected body l-parpl">
+                        <div className="row">
+                            <div className="info col-7">
+                                <div className="city"><span>City:</span> {city}</div>
+                                <div className="night">Day - 12:07 PM</div>
+                                <div className="temp"><h2>{temperature}</h2></div>
+                            </div>
+                            <div className="icon col-5">
+                                <img src={summer} alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+    }
 
     return (
         <section className="content blog-page">
@@ -58,33 +131,16 @@ const MainContent = () => {
                 <div className="row clearfix">
                     {/* temperatura */}
                     <div class="col-lg-4">
-                        <div class="card weather2">
-                            <div class="city-selected body l-parpl">
-                                <div class="row">
-                                    <div class="info col-7">
-                                        <div class="city"><span>City:</span> Teresina</div>
-                                        <div class="night">Day - 12:07 PM</div>
-                                        <div class="temp"><h2>34°</h2></div>
-                                    </div>
-                                    <div class="icon col-5">
-                                        <img src={summer} alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <InstagramPosts /> */}
-
+                        <Temperatura />
                         <div className="card member-card">
                             <div className="header l-cyan">
                                 <h4 className="m-t-10">{user?.username || 'Não encontrado'}</h4>
                             </div>
                             <div className="member-img">
-                                <a href="profile.html" className="">
-                                    <img src={user?.profile_picture || perfilUnd} className="rounded-circle" alt="profile-image" />
-                                </a>
+                                <img src={user?.profile_picture || perfilUnd} className="rounded-circle" alt="profile-image" />
                             </div>
                             <div className="body">
-                                <div className="col-12">
+                                <div>
                                     {/* <ul class="social-links list-unstyled">
                                         <li><a title="facebook" href="#"><i className="zmdi zmdi-facebook"></i></a></li>
                                         <li><a title="twitter" href="#"><i className="zmdi zmdi-twitter"></i></a></li>
@@ -92,25 +148,27 @@ const MainContent = () => {
                                     </ul> */}
                                     <ul className="social-links list-unstyled align-items-center">
                                         <li className='mx-3'>
-                                            <a href="#" title="mail">
-                                                <Mail size={25} />
+                                            <a href="" title="mail">
+                                                <Mail size={28} />
                                             </a>
                                         </li>
                                         <li className='mx-3'>
-                                            <a href="#" title="phone">
-                                                <Phone size={25} />
+                                            <a href="" title="phone">
+                                                <Phone size={28} />
                                             </a>
                                         </li>
                                         <li className='mx-3'>
-                                            <a href="#" title="linkedin">
-                                                <Linkedin size={25} />
+                                            <a href="" title="linkedin">
+                                                <Linkedin size={28} />
                                             </a>
                                         </li>
                                     </ul>
-                                    <p><strong>Acessar meu perfil</strong></p>
-                                    {/* <p className="text-muted">795 Folsom Ave, Suite 600 San Francisco, CADGE 94107</p> */}
-                                </div>
+                                    <div style={{ padding: '4px' }}>
+                                        <a href="/perfil" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
+                                        {/* <a href="/perfil"><span className="proButton">Acessar meu perfil</span></a> */}
+                                    </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -136,11 +194,13 @@ const MainContent = () => {
                                         <tbody>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="58"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -160,11 +220,13 @@ const MainContent = () => {
                                             </tr>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="58"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -184,11 +246,13 @@ const MainContent = () => {
                                             </tr>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="58"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -208,11 +272,13 @@ const MainContent = () => {
                                             </tr>
                                             <tr>
                                                 <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="58"
-                                                        height="48" />
+                                                    <a href="/startup">
+                                                        <img
+                                                            className="rounded-circle"
+                                                            src={logo}
+                                                            width="58"
+                                                            height="48" />
+                                                    </a>
                                                 </span>
                                                 </td>
                                                 <td><span class="list-name">Startup Piauí</span>
@@ -324,7 +390,7 @@ const MainContent = () => {
                                 </ul>
                             </div>
                         </div>
-                        <InstagramPosts/>
+                        <InstagramPosts />
                     </div>
                     {/* timeline */}
                     <div role="tabpanel" className="col-md-12 col-lg-8">
@@ -405,47 +471,6 @@ const MainContent = () => {
                             </li>
                         </ul>
                     </div>
-                   
-                    {/* novos socios */}
-                    {/* <div className="col-md-12 col-lg-4">
-                        <div className="card">
-                            <div className="header">
-                                <h2><strong>Novos</strong> Sócios</h2>
-                            </div>
-                            <div className="body">
-                                <ul className="new_friend_list list-unstyled row">
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={simao} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Simão Pedro</h6>
-                                            <small className="join_date">Hoje</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={luciana} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Luciana Tsukada</h6>
-                                            <small className="join_date">Ontem</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={heygler} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Heygler</h6>
-                                            <small className="join_date">12 Dec</small>
-                                        </a>
-                                    </li>
-                                    <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-                                        <a href="">
-                                            <img src={jerdeson} className="img-thumbnail" alt="User Image" />
-                                            <h6 className="users_name">Jerdeson Lucas</h6>
-                                            <small className="join_date">12 Dec</small>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </section>
