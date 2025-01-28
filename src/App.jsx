@@ -30,6 +30,7 @@ function App() {
         <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
         <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
         <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
+        <Route path='/profile/startup' element={<ProtectedRouter page={StartupProfile} />} />
         {/* <Route path='/notifications' element={<ProtectedRouter page={Notification} />} /> */}
 
       </Routes>
