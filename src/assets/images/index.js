@@ -5,6 +5,7 @@ import logoLoader from './logo.svg';
 import logo from './stp.jpg'
 import profileUser from './profile_av.jpg';
 import perfilUnd from './perfilnd.png';
+import enterpriseUnd from './01e46c17-d08b-48c6-ace8-91c544bb5a1b.webp'
 //socios
 import simao from './partners/simao.png';
 import luciana from './partners/luciana.jpeg'
@@ -40,6 +41,7 @@ export {
   //user
   profileUser,
   perfilUnd,
+  enterpriseUnd,
   //socios
   simao,
   luciana,

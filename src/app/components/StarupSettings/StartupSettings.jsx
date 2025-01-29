@@ -1,59 +1,46 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
-import { useForm, Controller } from "react-hook-form";
-import UpDateUser from "../../api/put/update-user";
-import Inputmask from "react-input-mask";
+import { useForm } from "react-hook-form";
+
+import updateDetailsStartup from "../../api/put/update-details-startup";
+import { enterpriseUnd } from "../../../assets/images";
 
 
 export default function StartupSettings({enterprise}) {
-    console.log("teste",enterprise)
-    // const {
-    //     user, token, enterprise
-    // } = useContext(AuthContext)
-    // console.log(enterprise)
-    const { register, handleSubmit, reset, control } = useForm({
+    const {
+        token
+    } = useContext(AuthContext)
+
+    const { register, handleSubmit, reset } = useForm({
         defaultValues: {
             ...enterprise
         }
     })
+
     useEffect(() => {
         if (enterprise) {
             reset({
                 ...enterprise,
-                // gender: user.gender && ["m", "f", "p"].includes(user.gender) ? user.gender : null,
-                // weekly_hours_worked: user.weekly_hours_worked !== undefined ? user.weekly_hours_worked : null,
+                file: enterprise?.file ||   enterpriseUnd,
             });
         }
     }, [enterprise, reset])
 
     const onSubmit = (data) => {
-        const sanitizedData = {
-            ...data,
-            weekly_hours_worked:
-                data.weekly_hours_worked && !isNaN(parseInt(data.weekly_hours_worked))
-                    ? parseInt(data.weekly_hours_worked)
-                    : null,
-            date_of_birth:
-                isValidDate(data.date_of_birth)
-                    ? data.date_of_birth
-                    : null,
-        };
-
-        console.log("Dados sanitizados:", sanitizedData);
-
-        // // Envio dos dados para a API
-        // UpDateUser(user.id, sanitizedData, token)
-        //     .then((response) => {
-        //         window.location.reload();
-        //         console.log("Resposta da API:", response);
-        //     })
-        //     .catch((error) => {
-        //         console.error("Erro ao atualizar o usuário:", error);
-        //     });
+        if(!data.file){
+            data.file = enterpriseUnd
+        }
+        console.log(data)
+        updateDetailsStartup(data.enterprise_id, data, token)
+            .then((response) => {
+                console.log("Resposta da API:", response);
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log("Erro ao atualizar o usuário:", error);
+            });
     }
-    const isValidDate = (date) => {
-        return !isNaN(Date.parse(date));
-    };
+
     return (
         <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
             <div className="card">
