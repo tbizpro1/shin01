@@ -6,8 +6,10 @@ import { summer, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, p
 import axios from "axios";
 
 const MainContent = () => {
-    const { user, token } = useContext(AuthContext)
-
+    const { user, token, enterprise } = useContext(AuthContext)
+    console.log(enterprise)
+    console.log("enter", enterprise)
+    
     const InstagramPosts = () => {
         const instagramImages = [
             post1,
@@ -46,26 +48,6 @@ const MainContent = () => {
             </div>
         );
     };
-
-    // const Temperatura = () => {
-    //     const [location, setLocation] = useState(false)
-    //     return (
-    //         <div class="card weather2">
-    //             <div class="city-selected body l-parpl">
-    //                 <div class="row">
-    //                     <div class="info col-7">
-    //                         <div class="city"><span>City:</span> Teresina</div>
-    //                         <div class="night">Day - 12:07 PM</div>
-    //                         <div class="temp"><h2>34°</h2></div>
-    //                     </div>
-    //                     <div class="icon col-5">
-    //                         <img src={summer} alt="" />
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     )
-    // }
 
     const Temperatura = () => {
         const [location, setLocation] = useState(null);
@@ -138,6 +120,7 @@ const MainContent = () => {
 
     return (
         <section className="content blog-page">
+            
             <div className="block-header">
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">
@@ -184,7 +167,6 @@ const MainContent = () => {
                                     </ul>
                                     <div style={{ padding: '4px' }}>
                                         <a href="/perfil" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
-                                        {/* <a href="/perfil"><span className="proButton">Acessar meu perfil</span></a> */}
                                     </div>
 
                                 </div>
@@ -211,134 +193,41 @@ const MainContent = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td><span className="zmdi-hc-spin">
-                                                    <a href="/startup">
-                                                        <img
-                                                            className="rounded-circle"
-                                                            src={logo}
-                                                            width="58"
-                                                            height="48" />
-                                                    </a>
-                                                </span>
-                                                </td>
-                                                <td><span class="list-name">Startup Piauí</span>
-                                                    <span class="text-muted">Piauí, Brazil</span>
-                                                </td>
-                                                <td>Inovação e Tecnologia</td>
-                                                <td>
-                                                    <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={simao} alt="Avatar" /></li>
-                                                        <li><img src={luciana} alt="Avatar" /></li>
-                                                        <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={jerdeson} alt="Avatar" /></li>
-                                                    </ul>
-                                                </td>
-                                                <td><span class="badge badge-info">Fase 3</span></td>
-                                                <td>19 Mar 2025</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span className="zmdi-hc-spin">
-                                                    <a href="/startup">
-                                                        <img
-                                                            className="rounded-circle"
-                                                            src={logo}
-                                                            width="58"
-                                                            height="48" />
-                                                    </a>
-                                                </span>
-                                                </td>
-                                                <td><span class="list-name">Startup Piauí</span>
-                                                    <span class="text-muted">Massachusetts, United States</span>
-                                                </td>
-                                                <td>Inovação e Tecnologia</td>
-                                                <td>
-                                                    <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={simao} alt="Avatar" /></li>
-                                                        <li><img src={luciana} alt="Avatar" /></li>
-                                                        <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={jerdeson} alt="Avatar" /></li>
-                                                    </ul>
-                                                </td>
-                                                <td><span class="badge badge-success">Fase 2</span></td>
-                                                <td>17 Jan 2025</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span className="zmdi-hc-spin">
-                                                    <a href="/startup">
-                                                        <img
-                                                            className="rounded-circle"
-                                                            src={logo}
-                                                            width="58"
-                                                            height="48" />
-                                                    </a>
-                                                </span>
-                                                </td>
-                                                <td><span class="list-name">Startup Piauí</span>
-                                                    <span class="text-muted">São Paulo, Brazil</span>
-                                                </td>
-                                                <td>Inovação e Tecnologia</td>
-                                                <td>
-                                                    <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={simao} alt="Avatar" /></li>
-                                                        <li><img src={luciana} alt="Avatar" /></li>
-                                                        <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={jerdeson} alt="Avatar" /></li>
-                                                    </ul>
-                                                </td>
-                                                <td><span class="badge badge-info">Fase 3</span></td>
-                                                <td>03 Mar 2025</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span className="zmdi-hc-spin">
-                                                    <a href="/startup">
-                                                        <img
-                                                            className="rounded-circle"
-                                                            src={logo}
-                                                            width="58"
-                                                            height="48" />
-                                                    </a>
-                                                </span>
-                                                </td>
-                                                <td><span class="list-name">Startup Piauí</span>
-                                                    <span class="text-muted">Arizona, United States</span>
-                                                </td>
-                                                <td>Inovação e Tecnologia</td>
-                                                <td>
-                                                    <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={simao} alt="Avatar" /></li>
-                                                        <li><img src={luciana} alt="Avatar" /></li>
-                                                        <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={jerdeson} alt="Avatar" /></li>
-                                                    </ul>
-                                                </td>
-                                                <td><span class="badge badge-warning">Fase 1</span></td>
-                                                <td>20 Fev 2025</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span className="zmdi-hc-spin">
-                                                    <img
-                                                        className="rounded-circle"
-                                                        src={logo}
-                                                        width="58"
-                                                        height="48" />
-                                                </span>
-                                                </td>
-                                                <td><span class="list-name">Startup Piauí</span>
-                                                    <span class="text-muted">Lisboa, Portugal</span>
-                                                </td>
-                                                <td>Inovação e Tecnologia</td>
-                                                <td>
-                                                    <ul class="list-unstyled team-info m-b-0">
-                                                        <li><img src={simao} alt="Avatar" /></li>
-                                                        <li><img src={luciana} alt="Avatar" /></li>
-                                                        <li><img src={heygler} alt="Avatar" /></li>
-                                                        <li><img src={jerdeson} alt="Avatar" /></li>
-                                                    </ul>
-                                                </td>
-                                                <td><span class="badge badge-warning">Fase 1</span></td>
-                                                <td>25 Jan 2025</td>
-                                            </tr>
+                                        {
+                                            Object.values(enterprise).map(enter => {
+                                                return(
+                                                <tr key={enter.enterprise_id}>
+                                                    <td>
+                                                        <span className="zmdi-hc-spin">
+                                                            <a href="/startup">
+                                                                <img
+                                                                    className="rounded-circle"
+                                                                    src={logo}
+                                                                    width="58"
+                                                                    height="48"
+                                                                    alt="Logo"
+                                                                />
+                                                            </a>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span className="list-name">{enter.enterprise_name}</span>
+                                                        <span className="text-muted">{enter.location || "Location not available"}</span>
+                                                    </td>
+                                                    <td>Inovação e Tecnologia</td>
+                                                    <td>
+                                                        <ul className="list-unstyled team-info m-b-0">
+                                                            <li><img src={simao} alt="Avatar" /></li>
+                                                            <li><img src={luciana} alt="Avatar" /></li>
+                                                            <li><img src={heygler} alt="Avatar" /></li>
+                                                            <li><img src={jerdeson} alt="Avatar" /></li>
+                                                        </ul>
+                                                    </td>
+                                                    <td><span className="badge badge-info">Fase 3</span></td>
+                                                    <td>19 Mar 2025</td>
+                                                </tr>
+                                            )})
+                                        }
                                         </tbody>
                                     </table>
                                 </div>
