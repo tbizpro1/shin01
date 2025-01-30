@@ -16,7 +16,7 @@ export function PartenrsCard() {
                                         <div className="inbox-item-info">
                                             <p className="author">Simão Pedro</p>
                                             <p className="inbox-message">Design</p>
-                                            <p className="inbox-date">12:34 PM</p>
+                                            
                                         </div>
                                         <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
@@ -33,7 +33,7 @@ export function PartenrsCard() {
                                         <div className="inbox-item-info">
                                             <p className="author">Luciana Tsukada</p>
                                             <p className="inbox-message">CEO</p>
-                                            <p className="inbox-date">10:34 AM</p>
+                                            
                                         </div>
                                         <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
@@ -50,7 +50,7 @@ export function PartenrsCard() {
                                         <div className="inbox-item-info">
                                             <p className="author">Jerdeson</p>
                                             <p className="inbox-message">Customer Success</p>
-                                            <p className="inbox-date">15:34 PM</p>
+                                           
                                         </div>
                                         <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
@@ -67,7 +67,7 @@ export function PartenrsCard() {
                                         <div className="inbox-item-info">
                                             <p className="author">Heygler</p>
                                             <p className="inbox-message">COO</p>
-                                            <p className="inbox-date">11:10 AM</p>
+                                            
                                         </div>
                                         <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
