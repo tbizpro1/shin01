@@ -198,7 +198,7 @@ const MainContent = () => {
                                         <tbody>
 
                                         {
-                                            Object.values(enterprise).map(enter => {
+                                                enterprise && Object.values(enterprise).map(enter => {
                                                 return(
                                                 <tr key={enter.enterprise_id}>
                                                     <td>
@@ -233,7 +233,6 @@ const MainContent = () => {
                                             )})
                                         }
 
-                                            <tr>
                                         </tbody>
                                     </table>
                                 </div>
