@@ -7,7 +7,8 @@ import getEnterpriseById from "../../api/get/get-enterprise-by-id";
 import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { Profilecard } from "../Profilecard/Profilecard";
 import { AboutCard } from "../AboutCard/AboutCard";
-import StartupSettings from "../StarupSettings/StartupSettings";
+import StartupSettings from "../StartupSettings/StartupSettings";
+import FomentSettings from "../StartupSettings/FomentSettings";
 
 export function ContentStartup() {
     const { user, token, enterprise } = useContext(AuthContext)
@@ -55,8 +56,11 @@ export function ContentStartup() {
                         {/* <AboutCard/> */}
                         <PartenrsCard/>
                     </div>
-                    <div className="col-lg-8 col-md-12">
+                    <div className="col-lg-4 col-md-12">
                         <StartupSettings enterprise={enterpriseDetail}/>
+                    </div>
+                    <div className="col-lg-4 col-md-12">
+                        <FomentSettings enterprise={enterpriseDetail}/>
                     </div>
                 </div>
             </div>

@@ -33,13 +33,23 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, us
                 </div>
             </div>
             <div className="body">
+                <div className="col-8">
+                    <h3>Resumo</h3>
+                    <input 
+                        type="text"
+                        className="border border-gray-300 p-5 text-lg rounded-top rounded-bottom bg-gray-100"
+                        placeholder="" />
+                </div>
+            </div>
+
+            {/* <div className="body">
                 <div className="col-12">
                     <SocialLinks />
                     <p className="text-muted">
                         <h5 className='m-t-10'>{user?.city + ', ' + user?.state + ", " + user?.cep || 'informação não encontrada'}</h5>
                     </p>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

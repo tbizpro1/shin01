@@ -3106,8 +3106,10 @@ h2,
 h3,
 .h3 {
     font-size: 2em;
-    margin-bottom: 30px;
-    line-height: 1.4em
+    /* margin-bottom: 30px; */
+    margin-bottom: 0px;
+    line-height: 1.4em;
+    text-align: start;
 }
 
 h4,
