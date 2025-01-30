@@ -108,6 +108,7 @@ const MainContent = () => {
                                 <div className="city"><span>City:</span> {city}</div>
                                 <div className="night">Day - 12:07 PM</div>
                                 <div className="temp"><h2>{parseInt(temperature).toFixed()+"°C"}</h2></div>
+
                             </div>
                             <div className="icon col-5">
                                 <img src={summer} alt="" />
@@ -117,6 +118,7 @@ const MainContent = () => {
                 </div>
             );
         };
+
 
     return (
         <section className="content blog-page">
@@ -167,6 +169,7 @@ const MainContent = () => {
                                     </ul>
                                     <div style={{ padding: '4px' }}>
                                         <a href="/perfil" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
+
                                     </div>
 
                                 </div>
@@ -193,6 +196,7 @@ const MainContent = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
+
                                         {
                                             Object.values(enterprise).map(enter => {
                                                 return(
@@ -228,6 +232,8 @@ const MainContent = () => {
                                                 </tr>
                                             )})
                                         }
+
+                                            <tr>
                                         </tbody>
                                     </table>
                                 </div>
