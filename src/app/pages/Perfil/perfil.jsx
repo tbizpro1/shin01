@@ -280,8 +280,6 @@ const FriendsContent = () => {
 
 const MainContent = ({ activeTab, setActiveTab }) => {
   const tabs = [
-    // { id: 'mypost', label: 'My Posts' },
-    // { id: 'timeline', label: 'Timeline' },
     { id: 'usersettings', label: 'Configurações' },
   ];
 
@@ -301,8 +299,6 @@ const MainContent = ({ activeTab, setActiveTab }) => {
         </ul>
       </div>
       <div className="tab-content">
-        {/* {activeTab === 'mypost' && <MyPosts />}
-        {activeTab === 'timeline' && <Timeline />} */}
         {activeTab === 'usersettings' && <UserSettings />}
       </div>
     </>

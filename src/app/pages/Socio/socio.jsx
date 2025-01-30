@@ -9,6 +9,9 @@ import { AuthContext } from "../../context/authContext";
 import { GetUser } from "../../api/get/user-profile";
 import { logo, simao } from "../../../assets/images";
 
+import usePartners from "../../hooks/get_partners_by_id";
+
+
 const formatPhoneNumber = (phoneNumber) => {
   if (!phoneNumber) return '';
 
@@ -133,25 +136,29 @@ const AgentCard = ({ avatar, partner_id, token, partner_status, socio }) => {
 
 const AgentsPage = () => {
   const { user, token, enterprise } = useContext(AuthContext)
-  const [partners, setPartners] = useState([])
 
-  console.log(enterprise?.[0]?.enterprise_id)
+  const partners = usePartners(enterprise?.[0]?.enterprise_id, token)
+    // const [partners, setPartners] = useState([])
 
-  useEffect(() => {
-    allUserEnterprisePending(enterprise?.[0]?.enterprise_id, token).then(
-      response => {
-        const responseData = Array.isArray(response) ? response : []
-        const uniqueData = responseData.filter(
-          (item, index, self) =>
-            index === self.findIndex(t => t.user_id === item.user_id)
-        );
-        console.log("uniqueData", uniqueData);
-        setPartners(uniqueData);
-      }
-    )
-  }, [token, enterprise])
+    // console.log(enterprise?.[0]?.enterprise_id)
 
-  console.log("partns", partners)
+    // useEffect(() => {
+    //   allUserEnterprisePending(enterprise?.[0]?.enterprise_id, token).then(response => {
+    //     const responseData = Array.isArray(response) ? response : [];
+        
+    //     const acceptedUsers = responseData.filter(item => item.status === "accepted");
+      
+    //     const uniqueData = acceptedUsers
+    //       .filter((item, index, self) =>
+    //         index === self.findIndex(t => t.user_id === item.user_id)
+    //       );
+      
+    //     console.log("uniqueData", uniqueData);
+    //     setPartners(uniqueData);
+    //   })
+    // }, [token, enterprise])
+
+    // console.log("partns", partners)
 
   return (
     <div className="theme-purple">
@@ -181,7 +188,7 @@ const AgentsPage = () => {
                         key={index}
                         avatar={simao}
                         partner_id={agent.user_id}
-                        partner_status={agent.status}
+                        partner_status={agent.role}
                         token={token}
                       />
                     ))}
