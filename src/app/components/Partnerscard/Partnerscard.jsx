@@ -18,11 +18,11 @@ export function PartenrsCard() {
                                             <p className="inbox-message">Design</p>
                                             
                                         </div>
-                                        <div className="hover_action">
+                                        {/* <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
                                             <a href="#"><i className="zmdi zmdi-edit"></i></a>
                                             <a href="#"><i className="zmdi zmdi-check-circle"></i></a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </a>
                             </li>
@@ -35,11 +35,11 @@ export function PartenrsCard() {
                                             <p className="inbox-message">CEO</p>
                                             
                                         </div>
-                                        <div className="hover_action">
+                                        {/* <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
                                             <a href="#"><i className="zmdi zmdi-edit"></i></a>
                                             <a href="#"><i className="zmdi zmdi-check-circle"></i></a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </a>
                             </li>
@@ -52,11 +52,11 @@ export function PartenrsCard() {
                                             <p className="inbox-message">Customer Success</p>
                                            
                                         </div>
-                                        <div className="hover_action">
+                                        {/* <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
                                             <a href="#"><i className="zmdi zmdi-edit"></i></a>
                                             <a href="#"><i className="zmdi zmdi-check-circle"></i></a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </a>
                             </li>
@@ -69,11 +69,11 @@ export function PartenrsCard() {
                                             <p className="inbox-message">COO</p>
                                             
                                         </div>
-                                        <div className="hover_action">
+                                        {/* <div className="hover_action">
                                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
                                             <a href="#"><i className="zmdi zmdi-edit"></i></a>
                                             <a href="#"><i className="zmdi zmdi-check-circle"></i></a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </a>
                             </li>

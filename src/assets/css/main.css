@@ -24040,7 +24040,7 @@ img.width30 {
 
 .file_manager .file .image,
 .file_manager .file .icon {
-    height: 150px;
+    height: 200px;
     overflow: hidden;
     background-size: cover;
     background-position: top

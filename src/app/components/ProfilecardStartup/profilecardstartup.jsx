@@ -2,7 +2,7 @@ import { Camera } from "lucide-react";
 import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
 import { SocialLinks } from "../Sociallink/Sociallinks";
 
-export const Profilecard = ({ handleProfileImageChange, register, enterprise, user }) => {
+export const ProfilecardStartup = ({ handleProfileImageChange, register, enterprise, user }) => {
     // console.log("teste", enterprise)
     return (
         <div className="card member-card">
@@ -54,9 +54,9 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, us
                             </a>
                         </li>
                     </ul>
-                    <div style={{ padding: '4px' }}>
+                    {/* <div style={{ padding: '4px' }}>
                         <a href="/startup" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
