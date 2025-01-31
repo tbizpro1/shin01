@@ -9,7 +9,7 @@ import { Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 
-import { backgroundLogin, logoShin, logoLoader } from "../../../assets/images";
+import { backgroundLogin, logo, logoShin } from "../../../assets/images";
 
 
 const Login = () => {
@@ -96,7 +96,7 @@ const Login = () => {
                     <>
                         <div className="page-loader-wrapper">
                             <div className="loader">
-                                <div className="m-t-30"><img className="zmdi-hc-spin" src={logoLoader} width="48" height="48" alt="Compass" /></div>
+                                <div className="m-t-30"><img className="zmdi-hc-spin rounded-circle" src={logo} width="48" height="48" alt="Compass" /></div>
                                 <p>Please wait...</p>
                                 {/* <p>Preparando área de trabalho ...</p> */}
                             </div>

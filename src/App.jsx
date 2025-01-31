@@ -14,6 +14,13 @@ import AgentsPage from './app/pages/Socio/socio';
 import { AddSocio } from './app/pages/AddSocio/addsocio';
 import AgentProfile from './app/pages/Perfil/perfil';
 import InvitePage from './app/pages/Invite/invite';
+import { StartupProfile } from './app/pages/PerfilStartup/perfilstartup';
+
+import PartnerProfile from './app/pages/UserDetail/UserDetail';
+
+import { HomeStartup } from './app/components/MainContent/homestartup';
+import { ContentStartup } from './app/components/ContentStartup/contentstartup';
+
 
 
 
@@ -24,10 +31,17 @@ function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/workspace' element={ <ProtectedRouter page={Home} />} />
+        <Route path='/startup' element={ <ProtectedRouter page={StartupProfile} />} />
         <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} />
         <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
         <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
         <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
+
+        <Route path='/profile/startup' element={<ProtectedRouter page={StartupProfile} />} />
+        <Route path='/profile/partner' element={<ProtectedRouter page={PartnerProfile} />} />
+
+        <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />} />
+        <Route path='/contentstartup' element={<ProtectedRouter page={ContentStartup} />} />
         {/* <Route path='/notifications' element={<ProtectedRouter page={Notification} />} /> */}
 
       </Routes>

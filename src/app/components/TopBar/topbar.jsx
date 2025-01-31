@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { logoLoader } from "../../../assets/images";
+import { logo } from "../../../assets/images";
 import { AuthContext } from "../../context/authContext";
 
 const TopBar = () => {
@@ -10,7 +10,7 @@ const TopBar = () => {
           <div className="navbar-header">
             <a href="#" className="bars"></a>
             <a className="navbar-brand" href="/workspace">
-              <img src={logoLoader} width="30" alt="Shin" />
+              <img src={logo} width="60" alt="Shin" />
               <span 
               className="m-l-10"
               >SHIN
@@ -105,21 +105,21 @@ const TopBar = () => {
                 </li>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <a href="#" className="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true">
                 <i className="zmdi zmdi-fullscreen"></i>
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="" onClick={()=> logout()} className="mega-menu cursor-pointer" data-close="true">
                 <i className="zmdi zmdi-power"></i>
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="javascript:void(0);" className="js-right-sidebar" data-close="true">
                 <i className="zmdi zmdi-settings zmdi-hc-spin"></i>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

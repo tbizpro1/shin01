@@ -5,10 +5,8 @@ import LeftSideBar from "../../components/LeftSideBar/leftsidebar";
 import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
 import Chat from "../../components/Chat/chat";
 import { AuthContext } from '../../context/authContext';
-import MyPosts from '../../components/MyPost/mypost';
 import UserSettings from '../../components/UserSettings/usersettings';
-import Timeline from '../../components/Timeline/timeline';
-import { perfilUnd, profileUser, simao, heygler, luciana, jerdeson } from '../../../assets/images';
+import { perfilUnd, simao, heygler, luciana, jerdeson } from '../../../assets/images';
 import { useForm } from 'react-hook-form';
 import addProfileImage from '../../api/post/profile-image';
 
@@ -48,35 +46,14 @@ const Header = () => (
           <small className="text-muted">Informações de usuário</small>
         </h2>
       </div>
-      {/* <div className="col-lg-5 col-md-6 col-sm-12">
-        <button className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10">
-          <Plus size={24} />
-          <i class="zmdi zmdi-plus"></i>
-        </button>
-        <Breadcrumb />
-      </div> */}
     </div>
   </div>
-);
-
-const Breadcrumb = () => (
-  <ul className="breadcrumb float-md-right">
-    <li className="breadcrumb-item">
-      <a href="/workspace">
-        <i class="zmdi zmdi-home"></i> Shin
-      </a>
-    </li>
-    <li className="breadcrumb-item">
-      <a href="javascript:void(0);">Agent</a>
-    </li>
-    <li className="breadcrumb-item active">Agent Profile</li>
-  </ul>
 );
 
 const ProfileCard = () => {
   const { user, token } = useContext(AuthContext)
   const { register } = useForm()
-   const handleProfileImageChange = async (e) => {
+  const handleProfileImageChange = async (e) => {
     console.log("ativada")
     const file = e?.target?.files[0];
     if (file) {
@@ -118,17 +95,6 @@ const ProfileCard = () => {
             />
           </label>
         </div>
-
-        {/* <div className="input-content member-img">
-          <img
-            // src="/api/placeholder/150/150"
-            src={perfilUnd}
-            className="rounded-circle position-relative"
-            alt="profile-image"
-          />
-            <input className="form-control input-content" type="file" id="formFile" />
-          </div> */}
-        {/* </a> */}
       </div>
       <div className="body">
         <div className="col-12">
@@ -169,20 +135,20 @@ const SocialLinks = () => (
   </ul>
 );
 
-const Stats = () => (
-  <div className="row">
-    <StatItem count="0" label="Following" />
-    <StatItem count="0" label="Followers" />
-    <StatItem count="0" label="Post" />
-  </div>
-);
+// const Stats = () => (
+//   <div className="row">
+//     <StatItem count="0" label="Following" />
+//     <StatItem count="0" label="Followers" />
+//     <StatItem count="0" label="Post" />
+//   </div>
+// );
 
-const StatItem = ({ count, label }) => (
-  <div className="col-4">
-    <h5>{count}</h5>
-    <small>{label}</small>
-  </div>
-);
+// const StatItem = ({ count, label }) => (
+//   <div className="col-4">
+//     <h5>{count}</h5>
+//     <small>{label}</small>
+//   </div>
+// );
 
 const AboutCard = () => {
   const [activeTab, setActiveTab] = useState('about');
@@ -221,8 +187,8 @@ const TabItem = ({ id, label, activeTab, onClick }) => (
   </li>
 );
 
-const AboutContent = () =>{ 
-  const {user}=useContext(AuthContext)
+const AboutContent = () => {
+  const { user } = useContext(AuthContext)
   return (
     <div className="tab-pane body active" id="about">
       <InfoItem label="Position" value={user?.role} />
@@ -277,7 +243,6 @@ const SkillItem = ({ name, progress, color }) => (
   </li>
 );
 
-
 const FriendsContent = () => {
   const friends = [
     { name: 'Simão Pedro', joinDate: 'Today', image: simao },
@@ -311,39 +276,10 @@ const FriendsContent = () => {
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="tab-pane body active" id="friends">
-  //     <ul className="new_friend_list list-unstyled row">
-  //       {friends.map((friend, index) => (
-  //         <FriendItem key={friend.name} {...friend} />
-  //       ))}
-  //     </ul>
-  //   </div>
-  // );
 };
-
-// const FriendItem = ({ name, joinDate, image }) => {
-//   console.log(name, joinDate, image)
-//   return (
-//     <li className="col-lg-4 col-md-2 col-sm-6 col-4">
-//       <a >
-//         <img
-//           src={simao}
-//           className="img-thumbnail"
-//           alt={name}
-//         />
-//         <h6 className="users_name">{name}</h6>
-//         <small className="join_date">{joinDate}</small>
-//       </a>
-//     </li>
-//   )
-// }
 
 const MainContent = ({ activeTab, setActiveTab }) => {
   const tabs = [
-    // { id: 'mypost', label: 'My Posts' },
-    // { id: 'timeline', label: 'Timeline' },
     { id: 'usersettings', label: 'Configurações' },
   ];
 
@@ -363,8 +299,6 @@ const MainContent = ({ activeTab, setActiveTab }) => {
         </ul>
       </div>
       <div className="tab-content">
-        {/* {activeTab === 'mypost' && <MyPosts />}
-        {activeTab === 'timeline' && <Timeline />} */}
         {activeTab === 'usersettings' && <UserSettings />}
       </div>
     </>

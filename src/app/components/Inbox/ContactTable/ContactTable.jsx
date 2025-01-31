@@ -2,7 +2,7 @@
 import { useCallback, useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
-import { backgroundLogin, logoShin, logoLoader, simao, perfilUnd } from "../../../../assets/images/index";
+import { perfilUnd, logo } from "../../../../assets/images/index";
 
 export const Partner = ({userid, name,profession, number, email, profile_picture}) => {
     const [isClicked, setIsClicked] = useState(false);
@@ -26,13 +26,17 @@ export const Partner = ({userid, name,profession, number, email, profile_picture
                 <img src={profile_picture || perfilUnd} class="image-invite" alt=""/>
             </td>
             <td>
-                <p class="c_name">{name} <span class="badge badge-default m-l-10 hidden-sm-down">{profession}</span></p>
+
+                <p style={{marginTop: '16px'}}>{name} <span className="badge badge-default m-l-10 hidden-sm-down">{profession}</span></p>
+
             </td>
             <td>
-                <span class="phone"><i class="zmdi zmdi-phone m-r-10"></i>{number}</span>
+
+                <p  style={{marginTop: '16px'}} ><i className="zmdi zmdi-phone m-r-10"></i>{number}</p>
             </td>
             <td>
-                <span class="email"><a href="javascript:void(0);" title=""><i class="zmdi zmdi-email m-r-5"></i> {email} </a></span>
+                <p style={{marginTop: '16px'}}><a href="" title=""><i className="zmdi zmdi-email m-r-5"></i> {email} </a></p>
+
             </td>
             <td>
                 <button
@@ -70,7 +74,7 @@ export default function ContactTable({users}) {
             <div className="page-loader-wrapper">
                 <div className="loader">
                     <div className="m-t-30">
-                        <img className="zmdi-hc-spin" src={logoLoader} width="48" height="48" alt="Compass" />
+                        <img className="zmdi-hc-spin rounded-circle" src={logo} width="48" height="48" alt="Compass" />
                     </div>
                     <p>Buscando usuários...</p>
                 </div>
