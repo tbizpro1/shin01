@@ -17,16 +17,20 @@ const NavBar = () => {
                     </div>
                     <div className="navbar-collapse">
                         <ul className="navbar-nav">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link" href="index.html">Home</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#">Search Result</a>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
+                                <a className="nav-link" title="" href="#" target="_blank" rel="noopener noreferrer">
+                                    <i className="zmdi zmdi-instagram"></i>
+                                    <p className="d-lg-none d-xl-none">Instagram</p>
+                                </a>
                                 <a className="nav-link" title="Follow us on Twitter" href="#" target="_blank" rel="noopener noreferrer">
-                                    <i className="zmdi zmdi-twitter"></i>
-                                    <p className="d-lg-none d-xl-none">Twitter</p>
+                                    <i className="zmdi zmdi-linkedin-box"></i>
+                                    <p className="d-lg-none d-xl-none">Linkedin</p>
                                 </a>
                             </li>
                             {/* <li className="nav-item">

@@ -134,8 +134,8 @@ const MainContent = () => {
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">
                         <h2>
-                            Main page
-                            <small className="text-muted">Welcome to Shin</small>
+                            {/* Main page */}
+                            <small className="text-muted">Bem-vindo(a) a Shin</small>
                         </h2>
                     </div>
                 </div>
@@ -221,8 +221,6 @@ const MainContent = () => {
                             <div class="header">
 
                                 <h2><strong>Minhas</strong> Startups</h2>
-
-                                <h2><strong>My</strong> Startups</h2>
 
                             </div>
                             <div class="body">
