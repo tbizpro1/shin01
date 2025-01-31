@@ -133,7 +133,10 @@ const MainContent = () => {
             <div className="block-header">
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">
-                        <small className="text-muted">Bem-vindo(a) a Shin.</small>
+                        <h2>
+                            Main page
+                            <small className="text-muted">Welcome to Shin</small>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -207,6 +210,7 @@ const MainContent = () => {
                                         <li>4</li>
                                     </ul>
                                 </div>
+
                             </div>
                             <InstagramPosts />
                         </div>
@@ -215,7 +219,11 @@ const MainContent = () => {
                     <div class="col-lg-8 col-md-12">
                         <div class="card">
                             <div class="header">
+
                                 <h2><strong>Minhas</strong> Startups</h2>
+
+                                <h2><strong>My</strong> Startups</h2>
+
                             </div>
                             <div class="body">
                                 <div class="table-responsive social_media_table">
@@ -223,14 +231,15 @@ const MainContent = () => {
                                         <thead>
                                             <tr>
                                                 <th>Logo</th>
-                                                <th>Nome</th>
-                                                <th>Mercado Inicial</th>
-                                                <th style={{ width: "20%" }}>Time</th>
-                                                <th style={{ width: "10%" }}>Fase de Aceleração</th>
-                                                <th>Próxima Reunião</th>
+                                                <th>Name</th>
+                                                <th>Initial Market</th>
+                                                <th style={{ width: "20%" }}>Team</th>
+                                                <th style={{ width: "10%" }}>Acceleration Phase</th>
+                                                <th>Next Meeting</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+
 
                                             {
                                                 enterprise && Object.values(enterprise).map(enter => {
@@ -268,6 +277,7 @@ const MainContent = () => {
                                                     )
                                                 })
                                             }
+
 
                                         </tbody>
                                     </table>

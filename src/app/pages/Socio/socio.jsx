@@ -57,12 +57,10 @@ const AgentCard = ({ avatar, partner_id, token, partner_status, socio }) => {
   }, [partner_id, token]);
 
   const socialLinks = [
-    // { class: "facebook", href: "#", icon: "zmdi-facebook" },
-    // { class: "twitter", href: "#", icon: "zmdi-twitter" },
-    { class: "instagram", href: "#", icon: "zmdi-instagram" },
-    { class: "linkedin", href: "#", icon: "zmdi-linkedin-box" },
-    { class: "whatsapp", href: "#", icon: "zmdi-whatsapp" },
-    { class: "email", href: "#", icon: "zmdi-email" },
+    { class: "facebook", href: "#", icon: "zmdi-facebook" },
+    { class: "twitter", href: "#", icon: "zmdi-twitter" },
+    { class: "gplus", href: "#", icon: "zmdi-google-plus" },
+    { class: "linkedin", href: "#", icon: "zmdi-linkedin" },
   ];
 
   return isLoading ? (
@@ -179,6 +177,7 @@ const AgentsPage = () => {
                         <small className="text-muted">Bem-vindo à sua equipe!</small>
                       </h2>
                     </div>
+
                   </div>
                 </div>
                 <div className="container-fluid">
