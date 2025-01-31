@@ -228,12 +228,12 @@ const MainContent = () => {
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Logo</th>
-                                                <th>Name</th>
-                                                <th>Initial Market</th>
-                                                <th style={{ width: "20%" }}>Team</th>
-                                                <th style={{ width: "10%" }}>Acceleration Phase</th>
-                                                <th>Next Meeting</th>
+                                                <th>Startup</th>
+                                                <th>Nome</th>
+                                                <th>Mercado Inicial</th>
+                                                <th style={{ width: "20%" }}>Equipe</th>
+                                                <th style={{ width: "10%" }}>Fase de Aceleração</th>
+                                                <th>Próxima Reunião</th>
                                             </tr>
                                         </thead>
                                         <tbody>
