@@ -36,7 +36,7 @@ export function ProfileUser() {
                                         </li>
                                     </ul>
                                     <div style={{ padding: '4px' }}>
-                                        <a href="/" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
+                                        <a href="/perfil" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
                                     </div>
                                 </div>
                             </div>
