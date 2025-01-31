@@ -104,7 +104,7 @@ const ProfileCard = () => {
           </p>
         </div>
         <hr />
-        <Stats />
+        {/* <Stats /> */}
       </div>
     </div>
   );
@@ -158,16 +158,16 @@ const AboutCard = () => {
       <ul className="nav nav-tabs">
         <TabItem
           id="about"
-          label="About"
+          label="Sobre"
           activeTab={activeTab}
           onClick={() => setActiveTab('about')}
         />
-        <TabItem
+        {/* <TabItem
           id="friends"
           label="Partners"
           activeTab={activeTab}
           onClick={() => setActiveTab('friends')}
-        />
+        /> */}
       </ul>
       <div className="tab-content">
         {activeTab === 'about' ? <AboutContent /> : <FriendsContent />}
