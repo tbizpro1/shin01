@@ -79,10 +79,10 @@ const Login = () => {
                                                 <button
                                                     type="submit"
                                                     className="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
-                                                        SIGN IN
+                                                        Entrar
                                                 </button>
                                                 <h6 className="m-t-20">
-                                                    <a href="forgot-password.html" className="link">Forgot Password?</a>
+                                                    <a href="forgot-password.html" className="link">Esqueceu sua senha?</a>
                                                 </h6>
                                             </div>
                                         </form>

@@ -146,7 +146,7 @@ export function ContentStartupHome() {
                 </div>
                 <div className="d-flex flex-lg-row flex-column">
                     <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12">
-                        <PartenrsCard />
+                        <PartenrsCard enterprise_id={enterprise_id} token={token}/>
                     </div>
                     {/* calendario */}
                     <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12">

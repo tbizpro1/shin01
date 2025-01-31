@@ -33,7 +33,7 @@ const PartnerItem = ({ userId, token }) => {
     if (error) return <li>Erro ao carregar usuário</li>;
     if (!user) return null; // Garante que não renderiza se user for undefined
 
-    console.log(user);
+    // console.log(user);
     return (
         <Link 
             key={user.user_id} 
@@ -50,14 +50,16 @@ const PartnerItem = ({ userId, token }) => {
                             <p className="author">{user?.username || "Nome Indisponível"}</p>
                             <p className="inbox-message">{user?.role || "Cargo não informado"}</p>
                         </div>
-                        <div className="hover_action">
+                        {/* <div className="hover_action">
                             <a href="#"><i className="zmdi zmdi-favorite"></i></a>
                             <a href="#"><i className="zmdi zmdi-edit"></i></a>
                             <a href="#"><i className="zmdi zmdi-check-circle"></i></a>
-                        </div>
+                        </div> */}
                     </div>
                 </a>
             </li>
         </Link>
     );
 };
+
+export default PartnerItem

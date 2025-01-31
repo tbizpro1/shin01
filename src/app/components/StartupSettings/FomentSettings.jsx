@@ -42,7 +42,7 @@ export default function FomentSettings({ register, control }) {
                                 <input
                                     {...register("competitors")}
                                     type="text"
-                                    className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
+                                    className="form-control select_styled"
                                     placeholder="Sua resposta ..."
                                 />
                             </div>  
