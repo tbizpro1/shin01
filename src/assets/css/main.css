@@ -20175,7 +20175,10 @@ section.content {
     background-color: #fff;
     color: #424242
 }
-
+.card_helper {
+    padding: 24px 0px 24px 0px!important;
+    border-radius: 14px !important;
+}
 .card .header {
     color: #424242;
     padding: 20px;
@@ -20188,6 +20191,18 @@ section.content {
     top: 14px;
     right: 20px;
     list-style: none
+}
+.header_helper{
+    padding-bottom: -20px !important;
+}
+.select_styled{
+    padding: 14px 20px 14px 20px !important;
+}
+.form_helper{
+    display: flex !important;
+    width: 100% !important;
+    flex-direction: row !important;
+
 }
 
 .card .header .header-dropdown li a {
@@ -20209,6 +20224,29 @@ section.content {
 .card .header .header-dropdown li .dropdown-menu li a {
     padding: 5px 10px
 }
+.input_styled{
+    border-radius: 14px !important;
+    margin-top: -30px !important;
+}
+.input_styled_helper{
+    border-radius: 14px !important;
+    text-align: justify !important;
+}
+.helper p{
+    font-size: .7rem;
+    text-align: start;  
+    margin-bottom: -5px !important;
+}
+.helper span>strong{
+    /* padding-top: -10px !important; */
+    font-size: .6rem;
+    text-align: start;
+}
+.header_helper_1{
+    text-align: start ;
+    font-size: 2rem !important;
+    margin-bottom: -30px !important;
+}
 
 .card .header .header-dropdown i {
     font-size: 20px;
@@ -20224,7 +20262,7 @@ section.content {
 }
 
 .card .header h2 {
-    font-size: 17px;
+    font-size: 12px;
     color: #757575;
     position: relative
 }
@@ -20236,6 +20274,11 @@ section.content {
     left: -20px;
     top: 8px;
     content: ''
+}
+.buttons_content{
+    width: 100% !important;
+    flex-direction: row !important;
+    justify-content: end !important;
 }
 
 .card .header h2 small {

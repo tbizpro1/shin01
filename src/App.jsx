@@ -15,6 +15,7 @@ import { AddSocio } from './app/pages/AddSocio/addsocio';
 import AgentProfile from './app/pages/Perfil/perfil';
 import InvitePage from './app/pages/Invite/invite';
 import { StartupProfile } from './app/pages/PerfilStartup/perfilstartup';
+import PartnerProfile from './app/pages/UserDetail/UserDetail';
 
 
 
@@ -31,7 +32,7 @@ function App() {
         <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
         <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
         <Route path='/profile/startup' element={<ProtectedRouter page={StartupProfile} />} />
-        {/* <Route path='/notifications' element={<ProtectedRouter page={Notification} />} /> */}
+        <Route path='/profile/partner' element={<ProtectedRouter page={PartnerProfile} />} />
 
       </Routes>
   )
