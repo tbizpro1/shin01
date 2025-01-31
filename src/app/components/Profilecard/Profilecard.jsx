@@ -1,5 +1,10 @@
+
 import { Camera, Linkedin, Mail, Phone } from "lucide-react";
 import { perfilUnd } from "../../../assets/images";
+
+import { Camera } from "lucide-react";
+import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
+
 import { SocialLinks } from "../Sociallink/Sociallinks";
 
 export const Profilecard = ({ handleProfileImageChange, register, enterprise, user }) => {
@@ -31,6 +36,7 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, us
                     </label>
                 </div>
             </div>
+
             <div className="w-100 col-md-12">
                 <div className="form-group">
                     <div className="header header_helper_1">

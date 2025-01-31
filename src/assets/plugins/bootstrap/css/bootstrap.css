@@ -4564,7 +4564,7 @@ input[type="button"].btn-block {
 }
 
 .card > hr {
-  margin-right: 0;
+  margin-right: 10;
   margin-left: 0;
 }
 

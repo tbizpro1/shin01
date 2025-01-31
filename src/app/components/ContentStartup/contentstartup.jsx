@@ -9,15 +9,20 @@ import { Profilecard } from "../Profilecard/Profilecard";
 import { AboutCard } from "../AboutCard/AboutCard";
 import StartupSettings from "../StartupSettings/StartupSettings";
 import FomentSettings from "../StartupSettings/FomentSettings";
+
 import { enterpriseUnd } from "../../../assets/images";
 import updateDetailsStartup from "../../api/put/update-details-startup";
 import CardDetails from "../CardDetails/CardDetails";
+
+import { ProfilecardStartup } from "../ProfilecardStartup/profilecardstartup";
+
 
 export function ContentStartup() {
     const { user, token, enterprise } = useContext(AuthContext)
     const [enterpriseDetail, setEnterpriseDetail] = useState("")
 
     const enterprise_id = enterprise?.[0]?.enterprise_id
+
     
     console.log("eeee",enterpriseDetail)
     const { register, handleSubmit, control, reset } = useForm({
@@ -38,9 +43,8 @@ export function ContentStartup() {
         }
     }, [enterprise_id, token, reset]);
 
-
     const handleProfileImageChange = async (e) => {
-    const file = e?.target?.files[0];
+        const file = e?.target?.files[0];
         if (file) {
             const formData = new FormData();
             formData.append("profile_picture", file);
@@ -48,7 +52,7 @@ export function ContentStartup() {
             const response = await addProfileImage(user?.id, token, formData);
 
             if (response) {
-            console.log('Imagem de perfil atualizada com sucesso', response);
+                console.log('Imagem de perfil atualizada com sucesso', response);
             }
         }
         window.location.reload();
@@ -84,6 +88,7 @@ export function ContentStartup() {
                 description={'Gerencie as informações da startup!'}
             />
             <div className="container-fluid">
+
                 <form className="row" onSubmit={handleSubmit(onSubmit)}>
                     <div className="col-lg-4 col-md-12">
                         <Profilecard register={register} enterprise={enterpriseDetail} />
@@ -119,11 +124,12 @@ export function ContentStartup() {
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </form> 
             </div>
 
+
             
+
         </>
     )
 }
