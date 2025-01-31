@@ -54,12 +54,10 @@ const AgentCard = ({ avatar, partner_id, token, partner_status, socio }) => {
   }, [partner_id, token]);
 
   const socialLinks = [
-    // { class: "facebook", href: "#", icon: "zmdi-facebook" },
-    // { class: "twitter", href: "#", icon: "zmdi-twitter" },
-    { class: "instagram", href: "#", icon: "zmdi-instagram" },
-    { class: "linkedin", href: "#", icon: "zmdi-linkedin-box" },
-    { class: "whatsapp", href: "#", icon: "zmdi-whatsapp" },
-    { class: "email", href: "#", icon: "zmdi-email" },
+    { class: "facebook", href: "#", icon: "zmdi-facebook" },
+    { class: "twitter", href: "#", icon: "zmdi-twitter" },
+    { class: "gplus", href: "#", icon: "zmdi-google-plus" },
+    { class: "linkedin", href: "#", icon: "zmdi-linkedin" },
   ];
 
   return isLoading ? (
@@ -172,7 +170,7 @@ const AgentsPage = () => {
                         <small className="text-muted">Bem-vindo à sua equipe!</small>
                       </h2>
                     </div>
-                    {/* <div className="col-lg-5 col-md-6 col-sm-12">
+                    <div className="col-lg-5 col-md-6 col-sm-12">
                       <button
                         className="btn btn-primary btn-icon btn-round hidden-sm-down float-right m-l-10"
                         type="button"
@@ -190,7 +188,7 @@ const AgentsPage = () => {
                         </li>
                         <li className="breadcrumb-item active">All Agents</li>
                       </ul>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
                 <div className="container-fluid">

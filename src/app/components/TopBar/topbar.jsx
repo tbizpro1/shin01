@@ -42,7 +42,7 @@ const TopBar = () => {
                 </div>
               </a>
               <ul className="dropdown-menu dropdown-menu-right slideDown">
-                <li className="header">NOTIFICAÇÕES</li>
+                <li className="header">NOTIFICATIONS</li>
                 <li className="body">
                   <ul className="menu list-unstyled">
                     <li>
