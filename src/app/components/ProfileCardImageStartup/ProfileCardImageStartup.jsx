@@ -37,10 +37,10 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
                 </div>
             </div>
 
-            <div className="w-100 col-md-12">
+            <div className="col-md-12">
                 <div className="form-group">
-                    <div className="header header_helper_1">
-                        <h2  style={{fontSize: "1rem"}}><strong>Resumo</strong></h2>
+                    <div className="header_helper_1">
+                        <h2 style={{fontSize: "1rem"}}><strong>RESUMO</strong></h2>
                     </div>
                     <div className="body">
                         <div className="col-14">

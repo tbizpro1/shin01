@@ -56,7 +56,10 @@ export default function CardDetails({ register }) {
                             <h2 style={{ fontSize: "1rem" }}><strong>Segmento inicial de atuação</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="segment" {...register("segment")} className="form-control select_styled" defaultValue="">
+                            <select id="segment" 
+                            className="form-control select_styled"
+                            {...register("segment")}  
+                            defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="b2b">B2B (Business to Business)</option>
                                 <option value="b2c">B2C (Business to Consumer)</option>
@@ -73,7 +76,10 @@ export default function CardDetails({ register }) {
                             <h2 style={{ fontSize: "1rem" }}><strong>Tipo de cliente da solução</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="customer_type" {...register("client_type")} className="form-control select_styled" defaultValue="">
+                            <select id="client_type"
+                            className="form-control select_styled" 
+                            {...register("client_type")} 
+                            defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="nao_sei">Não sei</option>
                                 <option value="b2c">B2C - business-to-consumer</option>
@@ -83,8 +89,7 @@ export default function CardDetails({ register }) {
                                 <option value="b2c2b">B2C2B - business-to-consumer-to-business</option>
                                 <option value="c2b">C2B - consumer-to-business</option>
                                 <option value="c2c">C2C - consumer-to-consumer</option>
-                                <option value="d2c">D2C – direct-to-consumer</option>
-
+                                <option value="d2c">D2C - direct-to-consumer</option>
                             </select>
                         </div>
                     </div>
