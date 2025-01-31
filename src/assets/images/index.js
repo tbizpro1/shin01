@@ -20,6 +20,21 @@ import rain from './weather/rain.svg';
 import cloudy from './weather/cloudy.svg';
 import wind from './weather/wind.svg';
 
+// import SVGs 
+import lucia from './svg/Lucia.svg'
+import agenda from './svg/Agenda.svg'
+import beneficios from './svg/Beneficios.svg'
+import dados_financeiros from './svg/Dados_financeiros.svg'
+import documentos_da_startup from './svg/Documentos_da_Startup.svg'
+import email from './svg/email.svg'
+import eventos from './svg/Eventos.svg'
+import linkedin from './svg/linkedin.svg'
+import biblioteca from './svg/Biblioteca.svg'
+import minhas_startups from './svg/minhas_startups.svg'
+import sala_de_aula from './svg/Sala_de_aula.svg'
+import telefone from './svg/telefone.svg'
+import lipi from './svg/logolipi.svg'
+
 // posts
 import post1 from './posts/post1.png'
 import post2 from './posts/post2.png'
@@ -64,4 +79,18 @@ export {
   post7,
   post8,
   post9,
+  //svgs
+  lucia,
+  agenda,
+  beneficios,
+  biblioteca,
+  dados_financeiros,
+  documentos_da_startup,
+  email,
+  eventos,
+  linkedin,
+  minhas_startups,
+  sala_de_aula,
+  telefone,
+  lipi,
 };

@@ -105,21 +105,21 @@ const TopBar = () => {
                 </li>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <a href="#" className="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true">
                 <i className="zmdi zmdi-fullscreen"></i>
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="" onClick={()=> logout()} className="mega-menu cursor-pointer" data-close="true">
                 <i className="zmdi zmdi-power"></i>
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="javascript:void(0);" className="js-right-sidebar" data-close="true">
                 <i className="zmdi zmdi-settings zmdi-hc-spin"></i>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
