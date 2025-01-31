@@ -14,7 +14,7 @@ import { enterpriseUnd } from "../../../assets/images";
 import updateDetailsStartup from "../../api/put/update-details-startup";
 import CardDetails from "../CardDetails/CardDetails";
 
-import { ProfilecardStartup } from "../ProfilecardStartup/profilecardstartup";
+import { ProfileCArdImageStartup } from "../ProfileCardImageStartup/ProfileCardImageStartup";
 
 
 export function ContentStartup() {
@@ -75,7 +75,7 @@ export function ContentStartup() {
         updateDetailsStartup(enterprise_id, data, token)
             .then((response) => {
                 console.log("Resposta da API:", response);
-                // window.location.reload();
+                window.location.reload();
             })
             .catch((error) => {
                 console.log("Erro ao atualizar o usuário:", error);
@@ -91,8 +91,8 @@ export function ContentStartup() {
 
                 <form className="row" onSubmit={handleSubmit(onSubmit)}>
                     <div className="col-lg-4 col-md-12">
-                        <Profilecard register={register} enterprise={enterpriseDetail} />
-                        <CardDetails/>
+                        <ProfileCArdImageStartup register={register} enterprise={enterpriseDetail} />
+                        <CardDetails  register={register}/>
                         <PartenrsCard enterprise_id={enterprise_id} token={token}/>
                     </div>
 
@@ -123,6 +123,7 @@ export function ContentStartup() {
                                     </button>
                                 </div>
                             </div>
+                        </div>
                         </div>
                 </form> 
             </div>

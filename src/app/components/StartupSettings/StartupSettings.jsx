@@ -71,22 +71,17 @@ export default function StartupSettings({  register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Estágio de Maturidade do Produto | TRL</strong></h2>
+                                <h2  style={{fontSize: "1rem"}}><strong>Estágio de maturidade do produto | TRL</strong></h2>
                             </div>
-                            <div className="body">
-                                <div className="col-14">
-                                    <textarea
-                                        {...register("product_stage")}
-                                        type="text"
-                                        className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
-                                        placeholder="Em qual estágio estamos ..." 
-                                        rows={6}
-                                    />
-                                </div>
+                            <div className="col-12">
+                                <select id="customer_type" {...register("product_stage")} className="form-control select_styled_helper" defaultValue="">
+                                    <option value="" disabled>Sua resposta</option>
+                                    <option value="empresas_pequenas">TRL 4 - (MVP Concierge ou protótipo não funcional pronto mas sem usuários) <br />Validação do conceito em laboratório. A startup <br /> desenvolve um protótipo mais funcional e o testa em <br /> condições simuladas, ajustando recursos básicos.</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div className="w-100 col-md-12">
+                        </div>
+                            <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
                                 <h2><strong>Proposta de Valor</strong></h2>
@@ -143,18 +138,17 @@ export default function StartupSettings({  register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Estágio de Maturidade do Negócio</strong></h2>
+                                <h2  style={{fontSize: "1rem"}}><strong>Estágio de maturidade do negócio</strong></h2>
                             </div>
-                            <div className="body">
-                                <div className="col-14">
-                                    <textarea
-                                        {...register("state")}
-                                        type="text"
-                                        className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
-                                        placeholder="Sua resposta" 
-                                        rows={6}
-                                    />
-                                </div>
+                            <div className="col-12">
+                                <select id="customer_type" {...register("client_type")} className="form-control select_styled_helper" defaultValue="">
+                                    <option value="" disabled>Sua resposta</option>
+                                    <option value="empresas_pequenas">Pequenas empresas</option>
+                                    <option value="empresas_grandes">Grandes empresas</option>
+                                    <option value="consumidor_final">Consumidor final</option>
+                                    <option value="governo">Governo</option>
+                                    <option value="startups">Startups</option>
+                                </select>
                             </div>
                         </div>
                     </div>

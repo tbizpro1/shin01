@@ -31,7 +31,7 @@ import eventos from './svg/Eventos.svg'
 import linkedin from './svg/linkedin.svg'
 import biblioteca from './svg/Biblioteca.svg'
 import minhas_startups from './svg/minhas_startups.svg'
-import sala_de_aula from './svg/Sala_de_aula.svg'
+import sala_de_aula from './svg/Sala_de_Aula.svg'
 import telefone from './svg/telefone.svg'
 import lipi from './svg/logolipi.svg'
 

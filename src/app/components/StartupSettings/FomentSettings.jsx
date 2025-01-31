@@ -39,31 +39,24 @@ export default function FomentSettings({ register, control }) {
                                 <h2><strong>Necessidade de Capital?</strong></h2>
                             </div>
                             <div className="col-12">
-                                <select
-                                    // {...register("invested")}
-                                    id="invested"
-                                    className="form-control select_styled"
-                                    defaultValue=""
-                                >
-                                    <option value="" disabled>
-                                        Sua resposta
-                                    </option>
-                                    <option value={true}>Não</option>
-                                    <option value={true}>Estou pensando nessa possibilidade</option>
-                                    <option value={false}>Sim</option>
-                                </select>
-                            </div>
+                                <input
+                                    {...register("competitors")}
+                                    type="text"
+                                    className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
+                                    placeholder="Sua resposta ..."
+                                />
+                            </div>  
                         </div>
                     </div>
                     <div className="w-100 col-md-12">
-                        <div className="form-group">
+                        <div className=" form-group">
                             <div className="header">
                                 <h2><strong>Já foi Investida?</strong></h2>
                             </div>
                             <div className="col-12">
 
                                 <select
-                                    // {...register("invested")}
+                                    {...register("invested")}
                                     id="invested"
                                     className="form-control select_styled"
                                     defaultValue=""
@@ -85,7 +78,7 @@ export default function FomentSettings({ register, control }) {
                             </div>
                             <div className="col-12">
                                 <Controller
-                                    name="funding_value"
+                                    name="investment_value"
                                     control={control}
                                     render={({ field: { onChange, value } }) => (
                                         <NumericFormat
@@ -137,7 +130,7 @@ export default function FomentSettings({ register, control }) {
                                         </div>
                                         <div className="col-12">
                                             <Controller
-                                                name="name"
+                                                name="funding_value"
                                                 control={control}
                                                 render={({ field: { onChange, value } }) => (
                                                     <NumericFormat
@@ -169,7 +162,7 @@ export default function FomentSettings({ register, control }) {
                                         <div className="col-12">
 
                                             <input
-                                                // {...register("name")}
+                                                {...register("funding_program")}
                                                 id="name"
                                                 type="text"
                                                 className="form-control select_styled"
@@ -426,7 +419,7 @@ export default function FomentSettings({ register, control }) {
                             <div className="col-12">
 
                                 <input
-                                    // {...register("name")}
+                                    {...register("accelerator_name")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"

@@ -1,4 +1,4 @@
-export default function CardDetails() {
+export default function CardDetails({register}) {
     return (
         <div>
             <div className="card">
@@ -8,7 +8,11 @@ export default function CardDetails() {
                             <h2 style={{fontSize: "1rem"}}><strong>Mercado inicial</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="market" className="form-control select_styled" defaultValue="">
+                            <select
+                                id="market" 
+                                className="form-control select_styled"
+                                {...register("market")}
+                                defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="tecnologia">Tecnologia</option>
                                 <option value="saude">Saúde</option>
@@ -24,10 +28,10 @@ export default function CardDetails() {
                 <div className="w-100 col-md-12">
                     <div className="form-group">
                         <div className="header">
-                            <h2 style={{fontSize: "1rem"}}><strong>Segmento inicial de atuação</strong></h2>
+                            <h2  style={{fontSize: "1rem"}}><strong>Segmento inicial de atuação</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="segment" className="form-control select_styled" defaultValue="">
+                            <select id="segment" {...register("segment")} className="form-control select_styled" defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="b2b">B2B (Business to Business)</option>
                                 <option value="b2c">B2C (Business to Consumer)</option>
@@ -44,7 +48,7 @@ export default function CardDetails() {
                             <h2  style={{fontSize: "1rem"}}><strong>Tipo de cliente da solução</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="customer_type" className="form-control select_styled" defaultValue="">
+                            <select id="customer_type" {...register("client_type")} className="form-control select_styled" defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="empresas_pequenas">Pequenas empresas</option>
                                 <option value="empresas_grandes">Grandes empresas</option>
@@ -62,7 +66,7 @@ export default function CardDetails() {
                             <h2 style={{fontSize: "1rem"}} ><strong>Modelo de receita</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="revenue_model" className="form-control select_styled" defaultValue="">
+                            <select id="revenue_model" {...register("revenue_model")} className="form-control select_styled" defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="assinatura">Assinatura</option>
                                 <option value="freemium">Freemium</option>
@@ -81,7 +85,7 @@ export default function CardDetails() {
                             <h2  style={{fontSize: "1rem"}}><strong>Modelo de negócio</strong></h2>
                         </div>
                         <div className="col-12">
-                            <select id="business_model" className="form-control select_styled" defaultValue="">
+                            <select id="business_model" {...register("business_model")} className="form-control select_styled" defaultValue="">
                                 <option value="" disabled>Sua resposta</option>
                                 <option value="marketplace">Marketplace</option>
                                 <option value="ecommerce">E-commerce</option>
