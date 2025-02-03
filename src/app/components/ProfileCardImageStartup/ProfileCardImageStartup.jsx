@@ -40,7 +40,7 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
             <div className="col-md-12">
                 <div className="form-group">
                     <div className="header_helper_1">
-                        <h2 style={{fontSize: "1rem"}}><strong>RESUMO</strong></h2>
+                        <h2 style={{fontSize: ".8rem"}}><strong>RESUMO</strong></h2>
                     </div>
                     <div className="body">
                         <div className="col-14">
@@ -57,19 +57,19 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-8 col-md-12">
+                    <div className="col-lg-6 col-md-12">
                         <div className="d-flex align-items-center gap-1">
-                            <Mail color="orange" size={24} />
+                            <Mail color="orange" size={18} />
                             <p className="mb-0" style={{fontSize:".7rem", fontWeight:800}}>{enterprise?.email || "enum@gmail.com"}</p>
                         </div>
                         
                         <div className="d-flex align-items-center gap-2">
-                            <Phone color="orange" size={24} />
+                            <Phone color="orange" size={18} />
                             <p className="mb-0" style={{fontSize:".7rem", fontWeight:800}}>{enterprise?.whatsapp || "(00) 00000-0000"}</p>
                         </div>
                         
                         <div className="d-flex align-items-center gap-2">
-                            <Linkedin color="orange" size={24} />
+                            <Linkedin color="orange" size={18} />
                             <p className="mb-0" style={{ fontSize: ".7rem", fontWeight: 800 }}>
                                 {enterprise?.linkedin
                                     ? enterprise.linkedin.length > 20
@@ -79,7 +79,7 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
                             </p>
                         </div>
                     </div>
-                    <div className="col-lg-4 col-md-12 helper">
+                    <div className="col-lg-6 col-md-12 helper">
                         <p className="text-muted">
                             CNPJ
                         </p>

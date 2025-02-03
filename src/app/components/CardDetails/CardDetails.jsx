@@ -5,7 +5,7 @@ export default function CardDetails({ register }) {
                 <div className="w-100 col-md-12">
                     <div className="form-group">
                         <div className="header">
-                            <h2 style={{ fontSize: "1rem" }}><strong>Mercado inicial</strong></h2>
+                            <h2 style={{ fontSize: ".8rem" }}><strong>Mercado inicial</strong></h2>
                         </div>
                         <div className="col-12">
                             <select
@@ -53,7 +53,7 @@ export default function CardDetails({ register }) {
                 <div className="w-100 col-md-12">
                     <div className="form-group">
                         <div className="header">
-                            <h2 style={{ fontSize: "1rem" }}><strong>Segmento inicial de atuação</strong></h2>
+                            <h2 style={{ fontSize: ".8rem" }}><strong>Segmento inicial de atuação</strong></h2>
                         </div>
                         <div className="col-12">
                             <select id="segment" 
@@ -73,7 +73,7 @@ export default function CardDetails({ register }) {
                 <div className="w-100 col-md-12">
                     <div className="form-group">
                         <div className="header">
-                            <h2 style={{ fontSize: "1rem" }}><strong>Tipo de cliente da solução</strong></h2>
+                            <h2 style={{ fontSize: ".8rem" }}><strong>Tipo de cliente da solução</strong></h2>
                         </div>
                         <div className="col-12">
                             <select id="client_type"
@@ -98,7 +98,7 @@ export default function CardDetails({ register }) {
                 <div className="w-100 col-md-12">
                     <div className="form-group">
                         <div className="header">
-                            <h2 style={{ fontSize: "1rem" }} ><strong>Modelo de receita</strong></h2>
+                            <h2 style={{ fontSize: ".8rem" }} ><strong>Modelo de receita</strong></h2>
                         </div>
                         <div className="col-12">
                             <select id="revenue_model" {...register("revenue_model")} className="form-control select_styled" defaultValue="">
@@ -124,7 +124,7 @@ export default function CardDetails({ register }) {
                 <div className="w-100 col-md-12">
                     <div className="form-group">
                         <div className="header">
-                            <h2 style={{ fontSize: "1rem" }}><strong>Modelo de negócio</strong></h2>
+                            <h2 style={{ fontSize: ".8rem" }}><strong>Modelo de negócio</strong></h2>
                         </div>
                         <div className="col-12">
                             <select id="business_model" {...register("business_model")} className="form-control select_styled" defaultValue="">
