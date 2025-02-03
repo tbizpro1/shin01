@@ -16,8 +16,8 @@ export default function StartupSettings({ register, control }) {
                 <div className="row clearfix">
                     <div className="w-100 col-md-12">
                         <div className="form-group">
-                            <div className="header header_helper">
-                                <h2  style={{ fontSize: ".8rem" }} ><strong>O Problema</strong></h2>
+                            <div className="header">
+                                <h2  style={{ fontSize: "1.0625rem" }} ><strong>O Problema</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -35,7 +35,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: ".8rem" }}><strong>Solução</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Solução</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -53,7 +53,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: ".8rem" }}><strong>O Produto</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>O Produto</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -71,7 +71,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2 style={{ fontSize: ".8rem" }}><strong>Estágio de maturidade do produto | TRL</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>Estágio de maturidade do produto | TRL</strong></h2>
                             </div>
                             <div className="col-12">
                                 <select id="product_stage" 
@@ -96,7 +96,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: ".8rem" }} ><strong>Proposta de Valor</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }} ><strong>Proposta de Valor</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -114,7 +114,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2 style={{ fontSize: ".8rem" }}><strong>Diferencial Competitivo</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>Diferencial Competitivo</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -132,7 +132,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: ".8rem" }}><strong>Concorrência</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Concorrência</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -150,7 +150,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: ".8rem" }}><strong>Estágio de maturidade do negócio</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Estágio de maturidade do negócio</strong></h2>
                             </div>
                             <div className="col-12">
                                 <select id="other_projects" {...register("other_projects")} className="form-control select_styled_helper" defaultValue="">

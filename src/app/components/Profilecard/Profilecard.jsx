@@ -55,7 +55,7 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, us
                         </li>
                     </ul>
                     <div style={{ padding: '4px' }}>
-                        <a href="/startup" ><strong><span className="profileButton">Acessar meu perfil</span></strong></a>
+                        <a href="/startup" ><strong><span className="profileButton">Acessar informações</span></strong></a>
                     </div>
                 </div>
             </div>
