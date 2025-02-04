@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Subheader } from "../HeaderCard/Subheader";
 import { AuthContext } from "../../context/authContext";
 import { useForm } from "react-hook-form";
-import addProfileImage from "../../api/post/profile-image";
 import getEnterpriseById from "../../api/get/get-enterprise-by-id";
 import { PartenrsCard } from "../Partnerscard/Partnerscard";
-import { Profilecard } from "../Profilecard/Profilecard";
-import { AboutCard } from "../AboutCard/AboutCard";
+
 import StartupSettings from "../StartupSettings/StartupSettings";
 import FomentSettings from "../StartupSettings/FomentSettings";
 
@@ -16,7 +14,45 @@ import CardDetails from "../CardDetails/CardDetails";
 
 import { ProfileCArdImageStartup } from "../ProfileCardImageStartup/ProfileCardImageStartup";
 import profileImageStartup from "../../api/post/profile-image-startup";
-import { useLocation } from "react-router";
+
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
+const handleExportPDF = async () => {
+    const content = document.querySelector(".container-fluid"); // Seleciona a área a ser exportada
+    const buttons = document.querySelectorAll(".btn"); // Seleciona todos os botões
+
+    if (!content) return;
+
+    // Oculta os botões antes da captura
+    buttons.forEach((btn) => (btn.style.display = "none"));
+
+    const canvas = await html2canvas(content, { scale: 2 });
+
+    // Restaura os botões após a captura
+    buttons.forEach((btn) => (btn.style.display = "block"));
+
+    const imgData = canvas.toDataURL("image/png");
+
+    const pdf = new jsPDF("p", "mm", "a3");
+    const imgWidth = 297; // Largura do A3 em mm
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    const pageHeight = 420; // Altura do A3 em mm
+
+    let position = 0;
+
+    while (position < imgHeight) {
+        pdf.addImage(imgData, "PNG", 0, position * -1, imgWidth, imgHeight);
+        
+        position += pageHeight;
+        
+        if (position < imgHeight) {
+            pdf.addPage(); // Adiciona uma nova página se houver mais conteúdo
+        }
+    }
+
+    pdf.save("export.pdf");
+};
 
 
 export function ContentStartup({enterprise}) {
@@ -45,22 +81,6 @@ export function ContentStartup({enterprise}) {
             });
         }
     }, [enterprise_id, token, reset]);
-
-    const handleProfileImageChange = async (e) => {
-        console.log("ativada")
-        const file = e?.target?.files[0];
-        if (file) {
-            const formData = new FormData();
-            formData.append("profile_picture", file);
-    
-            const response = await profileImageStartup(enterprise_id, formData, token);
-    
-            if (response) {
-            console.log('Imagem de perfil atualizada com sucesso', response);
-            }
-        }
-        window.location.reload();
-    };
 
     useEffect(() => {
         if (enterpriseDetail) {
@@ -102,7 +122,7 @@ export function ContentStartup({enterprise}) {
                     <div className="col-lg-8 col-md-12">
                         <div className="row">
                             <div className="col-lg-6 col-md-12">
-                                <StartupSettings register={register} control={control} />
+                                <StartupSettings register={register} control={control} handleExportPDF={handleExportPDF} />
                             </div>
                             <div className="col-lg-6 col-md-12">
                                 <FomentSettings register={register} control={control} />

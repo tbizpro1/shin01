@@ -6,7 +6,7 @@ import updateDetailsStartup from "../../api/put/update-details-startup";
 import { enterpriseUnd } from "../../../assets/images";
 
 
-export default function StartupSettings({ register, control }) {
+export default function StartupSettings({ register, control, handleExportPDF }) {
 
     return (
         <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
@@ -171,6 +171,16 @@ export default function StartupSettings({ register, control }) {
                 </div>
                 {/* </form> */}
             </div>
+            <div>
+                <button
+                        onClick={handleExportPDF} // Adicione uma função para exportar o PDF
+                        type="button" // Evita que o formulário seja enviado
+                        className="btn btn-primary btn-primary-helper"
+                        style={{ backgroundColor: "#00bcd4", borderColor: "#00bcd4" }}
+                    >
+                        <strong>EXPORTAR PDF</strong>
+                    </button>
+                </div>
         </div>
     )
 }

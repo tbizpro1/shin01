@@ -499,13 +499,13 @@ export default function FomentSettings({ register, control }) {
                 {/* </form> */}
             </div>
             <div>
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                        >
-                            <strong>SALVAR ALTERAÇÕES</strong>
-                        </button>
-                    </div>
+                <button
+                    type="submit"
+                    className="btn btn-primary"
+                >
+                    <strong>SALVAR ALTERAÇÕES</strong>
+                </button>
+            </div>
         </div>
     )
 }
