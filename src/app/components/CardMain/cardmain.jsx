@@ -59,8 +59,8 @@ export function CardMain() {
                     <div className="card">
                         <div className="file">
                             <a href="https://luc-ia.vercel.app/"
-                             target="_blank"
-                             rel="noopener noreferrer">
+                            target="_blank"
+                            rel="noopener noreferrer">
                                 <div className="icon">
                                     <img src={lucia} alt="" />
                                     <p style={{color:"black"}}><strong>Peça ajuda <br />para a Luc.IA</strong></p>
