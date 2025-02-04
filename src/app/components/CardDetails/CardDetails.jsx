@@ -1,5 +1,6 @@
 export default function CardDetails({ register }) {
     return (
+
         <div className="card">
             <div className="w-100 col-md-12">
                 <div className="form-group">
@@ -13,37 +14,37 @@ export default function CardDetails({ register }) {
                             {...register("market")}
                             defaultValue="">
                             <option value="" disabled>Sua resposta</option>
-                            <option value="agricultura">Agricultura e Pecuária</option>
-                            <option value="alimentos">Alimentos e Bebidas</option>
-                            <option value="automotivo">Automotivo e Mobilidade</option>
-                            <option value="capital">Capital e Investimentos</option>
-                            <option value="comercio">Comércio eletrônico</option>
-                            <option value="comunicacao">Comunicação e Mídia</option>
-                            <option value="construcao">Construção e Imóveis</option>
-                            <option value="credito">Crédito e Finanças</option>
-                            <option value="educacao">Educação</option>
-                            <option value="energia">Energia</option>
-                            <option value="esportes">Esportes e Lazer</option>
-                            <option value="gestao">Gestão e Consultoria</option>
-                            <option value="governo">Governo e Poder Público</option>
-                            <option value="hotelaria">Hotelaria e Turismo</option>
-                            <option value="industria">Indústria e Transformação</option>
-                            <option value="jogos">Jogos e Entretenimento</option>
-                            <option value="logistica">Logística e Transportes</option>
-                            <option value="moda">Moda e Vestuário</option>
-                            <option value="motores">Motores e Equipamentos</option>
-                            <option value="oleo">Óleo e Gás</option>
-                            <option value="saude">Saúde</option>
-                            <option value="bemestar">Bem Estar</option>
-                            <option value="seguranca">Segurança e Defesa</option>
-                            <option value="seguros">Seguros</option>
-                            <option value="servicos">Serviços profissionais</option>
-                            <option value="meioambiente">Meio ambiente</option>
-                            <option value="sustentabilidade">Sustentabilidade</option>
-                            <option value="tecnologia">Tecnologia da Informação</option>
-                            <option value="telecom">Telecomunicações</option>
-                            <option value="varejo">Varejo e Atacado</option>
-                            <option value="outro">Outro</option>
+                                <option value="Agricultura e Pecuária">Agricultura e Pecuária</option>
+                                <option value="Alimentos e Bebidas">Alimentos e Bebidas</option>
+                                <option value="Automotivo e Mobilidade">Automotivo e Mobilidade</option>
+                                <option value="Capital e Investimentos">Capital e Investimentos</option>
+                                <option value="Comércio eletrônico">Comércio eletrônico</option>
+                                <option value="Comunicação e Mídia">Comunicação e Mídia</option>
+                                <option value="Construção e Imóveis">Construção e Imóveis</option>
+                                <option value="Crédito e Finanças">Crédito e Finanças</option>
+                                <option value="Educação">Educação</option>
+                                <option value="Energia">Energia</option>
+                                <option value="Esportes e Lazer">Esportes e Lazer</option>
+                                <option value="Gestão e Consultoria">Gestão e Consultoria</option>
+                                <option value="Governo e Poder Público">Governo e Poder Público</option>
+                                <option value="Hotelaria e Turismo">Hotelaria e Turismo</option>
+                                <option value="Indústria e Transformação">Indústria e Transformação</option>
+                                <option value="Jogos e Entretenimento">Jogos e Entretenimento</option>
+                                <option value="Logística e Transportes">Logística e Transportes</option>
+                                <option value="Moda e Vestuário">Moda e Vestuário</option>
+                                <option value="Motores e Equipamentos">Motores e Equipamentos</option>
+                                <option value="Óleo e Gás">Óleo e Gás</option>
+                                <option value="Saúde">Saúde</option>
+                                <option value="Bem Estar">Bem Estar</option>
+                                <option value="Segurança e Defesa">Segurança e Defesa</option>
+                                <option value="Seguros">Seguros</option>
+                                <option value="Serviços profissionais">Serviços profissionais</option>
+                                <option value="Meio ambiente">Meio ambiente</option>
+                                <option value="Sustentabilidade">Sustentabilidade</option>
+                                <option value="Tecnologia da Informação">Tecnologia da Informação</option>
+                                <option value="Telecomunicações">Telecomunicações</option>
+                                <option value="Varejo e Atacado">Varejo e Atacado</option>
+                                <option value="Outro">Outro</option>
                         </select>
                     </div>
                 </div>

@@ -1,9 +1,9 @@
 import { Camera } from "lucide-react";
 import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
 import { SocialLinks } from "../Sociallink/Sociallinks";
+import { Link } from "react-router-dom";
 
-export const Profilecard = ({ handleProfileImageChange, register, enterprise, user }) => {
-    // console.log("teste", enterprise)
+export const Profilecard = ({ handleProfileImageChange, register, enterprise, enterprise_id }) => {
     return (
         <div className="card member-card">
             <div className="header l-cyan">
@@ -55,7 +55,16 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, us
                         </li>
                     </ul>
                     <div style={{ padding: '4px' }}>
-                        <a href="/startup" ><strong><span className="profileButton">Acessar informações</span></strong></a>
+
+                        <Link 
+                            to={"/startup"}
+                            key={enterprise_id} 
+                            state={{ enter: enterprise }}
+                        >   
+                            <strong>
+                                <span className="profileButton">Acessar informações</span>
+                            </strong>
+                        </Link>
                     </div>
                 </div>
             </div>

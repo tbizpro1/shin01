@@ -4,17 +4,18 @@ import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
 import { perfilUnd, logo } from "../../../../assets/images/index";
 
-export const Partner = ({userid, name,profession, number, email, profile_picture}) => {
+export const Partner = ({userid, name,profession, number, email, profile_picture, enterprise_id}) => {
     const [isClicked, setIsClicked] = useState(false);
     const { enterprise, token} = useContext(AuthContext)
 
 
     const handleButtonClick = useCallback((userid) => {
-        if (enterprise?.[0]?.enterprise_id) {
+        if (enterprise_id) {
             setIsClicked(!isClicked);
-            addUserEnterprise(userid, enterprise[0].enterprise_id, token).then(
+            addUserEnterprise(userid, enterprise_id, token).then(
                 response => console.log(response)
             );
+            window.location.reload()
         } else {
             console.error("Enterprise ID não disponível.");
         }
@@ -57,8 +58,8 @@ export const Partner = ({userid, name,profession, number, email, profile_picture
     )
 }
 
-export default function ContactTable({users}) {
-    // console.log(users)
+export default function ContactTable({users, enterprise}) {
+    console.log("qwer",users)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -125,6 +126,7 @@ export default function ContactTable({users}) {
                                 users.map((user, index) => (
                                     // console.log(user)
                                 <Partner
+                                    enterprise_id={enterprise.enterprise_id}
                                     key={user?.id || index} // Adicionado para garantir uma key única
                                     userid={user?.id}
                                     profile_picture={user?.profile_picture}
