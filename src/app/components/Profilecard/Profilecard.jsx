@@ -3,7 +3,7 @@ import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
 import { SocialLinks } from "../Sociallink/Sociallinks";
 import { Link } from "react-router-dom";
 
-export const Profilecard = ({ handleProfileImageChange, register, enterprise, enterprise_id }) => {
+export const Profilecard = ({  enterprise, enterprise_id }) => {
     return (
         <div className="card member-card">
             <div className="header l-cyan">
@@ -19,7 +19,7 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, en
                                 alt="profile-image"
                             />
                         </div>
-                        <div className="cam-overlay">
+                        {/* <div className="cam-overlay">
                             <Camera className="cam" color='gray' size={48} />
                         </div>
                         <input
@@ -28,7 +28,7 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, en
                             id="formFile"
                             {...register('profile_picture')}
                             onChange={handleProfileImageChange}
-                        />
+                        /> */}
                     </label>
                 </div>
             </div>
