@@ -26,7 +26,7 @@ export function StartupItem({enter}) {
                         className="rounded-circle"
                         src={startup?.profile_picture}
                         width="58"
-                        height="48"
+                        height="58"
                         alt="Logo"
                     />
                 </a>
