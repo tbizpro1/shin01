@@ -18,8 +18,8 @@ import { StartupProfile } from './app/pages/PerfilStartup/perfilstartup';
 
 import PartnerProfile from './app/pages/UserDetail/UserDetail';
 
-import { HomeStartup } from './app/components/MainContent/homestartup';
 import { ContentStartup } from './app/components/ContentStartup/contentstartup';
+import { HomeStartup } from './app/pages/HomeStartup/HomeStartup';
 
 
 

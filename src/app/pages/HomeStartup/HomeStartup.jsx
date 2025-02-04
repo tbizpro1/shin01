@@ -1,10 +1,10 @@
 import React from "react";
-import TopBar from "../TopBar/topbar";
-import LeftSideBar from "../LeftSideBar/leftsidebar";
-import RightSideBar from "../RigthSideBar/rigthsidebar";
-import Chat from "../Chat/chat";
-import { ContentStartup } from "../ContentStartup/contentstartup";
-import { ContentStartupHome } from "../HomeStartup/startupcontent";
+import TopBar from "../../components/TopBar/topbar";
+import LeftSideBar from "../../components/LeftSideBar/leftsidebar";
+import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
+import Chat from "../../components/Chat/chat";
+import { ContentStartupHome } from "../../components/HomeStartup/startupcontent";
+
 
 export function HomeStartup() {
     return (
