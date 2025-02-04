@@ -2,130 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Mail, Phone, Instagram, Plus, Home, Camera, Linkedin } from 'lucide-react';
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-import {
-    summer, simao, luciana, heygler, jerdeson, logo, post1, post2, post3, post4,
-    post6, post5, post7, post9, post8, perfilUnd, lucia, documentos_da_startup, eventos, telefone, sala_de_aula, agenda, beneficios, biblioteca,
-    email,
-    linkedin
-} from "../../../assets/images";
-import axios from "axios";
+
 import { CardMain } from "../CardMain/cardmain";
 import { ProfileUser } from "../ProfileUser/profileuser";
+import { StartupItem } from "../StartupItem/StartupItem";
+import { Temperatura } from "../Temperatura/Temperatura";
+import { InstagramPosts } from "../InstagramPost/InstagramPost";
 
 const MainContent = () => {
     const { user, token, enterprise } = useContext(AuthContext)
     console.log(enterprise)
     console.log("enter", enterprise)
-
-    const InstagramPosts = () => {
-        const instagramImages = [
-            post1,
-            post2,
-            post3,
-            post4,
-            post5,
-            post6,
-            post7,
-            post8,
-            post9
-        ];
-
-        return (
-            <div className="row">
-                <div class="col-lg-12 col-md-12 right-box">
-                    <div className="card">
-                        <div className="header">
-                            <h2><strong>Instagram</strong> Post</h2>
-                        </div>
-                        <div className="body widget">
-                            <ul className="list-unstyled instagram-plugin m-b-0">
-                                {instagramImages.map((image, index) => (
-                                    <li style={{ width: '30%' }} key={index}>
-                                        <a href="https://www.instagram.com/startup_piaui/"
-                                            target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src={image} alt={`Instagram post ${index + 1}`} />
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    const Temperatura = () => {
-        const [location, setLocation] = useState(null);
-        const [city, setCity] = useState('Teresina');
-        const [temperature, setTemperature] = useState('');
-        const [loading, setLoading] = useState(true);
-        const [error, setError] = useState('');
-
-        useEffect(() => {
-            const fetchWeather = async (lat, lon) => {
-                try {
-                    // API de Previsão do Tempo
-                    const weatherResponse = await axios.get(
-                        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
-                    );
-
-                    // API de Geocodificação Reversa (para obter nome da cidade)
-                    const geoResponse = await axios.get(
-                        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
-                    );
-
-                    setCity(geoResponse?.data.address.city || geoResponse?.data.address.town);
-                    setTemperature(`${weatherResponse?.data.current_weather.temperature}°C`);
-                    setLoading(false);
-                } catch (err) {
-                    setError('Erro ao buscar dados do clima');
-                    setLoading(false);
-                }
-            };
-
-            const getLocation = () => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        async (position) => {
-                            const { latitude, longitude } = position.coords;
-                            setLocation({ latitude, longitude });
-                            await fetchWeather(latitude, longitude);
-                        },
-                        async (error) => {
-                            console.error('Erro na geolocalização', error);
-                            // Fallback para coordenadas de Teresina
-                            await fetchWeather(-5.0892, -42.8016);
-                            setCity('Teresina');
-                        }
-                    );
-                }
-            };
-
-            getLocation();
-        }, []);
-        if (loading) return <div>Carregando...</div>;
-        if (error) return <div>{error}</div>;
-        return (
-            <div className="card weather2">
-                <div className="city-selected body l-parpl">
-                    <div className="row">
-                        <div className="info col-7">
-                            <div className="city"><span>City:</span> {city}</div>
-                            <div className="night">Day - 12:07 PM</div>
-                            <div className="temp"><h2>{parseInt(temperature).toFixed() + "°C"}</h2></div>
-
-                        </div>
-                        <div className="icon col-5">
-                            <img src={summer} alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
 
     return (
         <section className="content blog-page">
@@ -241,37 +128,9 @@ const MainContent = () => {
 
                                             {
                                                 enterprise && Object.values(enterprise).map(enter => {
+                                                    console.log("aa",enter)
                                                     return (
-                                                        <tr key={enter.enterprise_id}>
-                                                            <td>
-                                                                <span className="zmdi-hc-spin">
-                                                                    <a href="/homestartup">
-                                                                        <img
-                                                                            className="rounded-circle"
-                                                                            src={logo}
-                                                                            width="58"
-                                                                            height="48"
-                                                                            alt="Logo"
-                                                                        />
-                                                                    </a>
-                                                                </span>
-                                                            </td>
-                                                            <td>
-                                                                <span className="list-name">{enter.enterprise_name}</span>
-                                                                <span className="text-muted">{enter.location || "Location not available"}</span>
-                                                            </td>
-                                                            <td>Inovação e Tecnologia</td>
-                                                            <td>
-                                                                <ul className="list-unstyled team-info m-b-0">
-                                                                    <li><img src={simao} alt="Avatar" /></li>
-                                                                    <li><img src={luciana} alt="Avatar" /></li>
-                                                                    <li><img src={heygler} alt="Avatar" /></li>
-                                                                    <li><img src={jerdeson} alt="Avatar" /></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td><span className="badge badge-info">Fase 3</span></td>
-                                                            <td>19 Mar 2025</td>
-                                                        </tr>
+                                                        <StartupItem enter={enter}/>
                                                     )
                                                 })
                                             }

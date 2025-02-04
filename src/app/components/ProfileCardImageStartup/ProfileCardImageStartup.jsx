@@ -6,8 +6,26 @@ import { Camera, Linkedin, Mail, Phone } from "lucide-react";
 import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
 
 import { SocialLinks } from "../Sociallink/Sociallinks";
+import { useForm } from "react-hook-form";
+import profileImageStartup from "../../api/post/profile-image-startup";
 
-export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, enterprise, user }) => {
+export const ProfileCArdImageStartup = ({ enterprise, enterprise_id, token }) => {
+    const{register} = useForm()
+    const handleProfileImageChange = async (e) => {
+            console.log("testando")
+            const file = e?.target?.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append("file", file);
+                console.log([...formData])
+                const response = await profileImageStartup(enterprise_id, formData, token).finally(() => window.location.reload());
+        
+                if (response) {
+                console.log('Imagem de perfil atualizada com sucesso', response);
+                }
+            }
+        };
+    
     return (
         <div className="card member-card">
             <div className="header l-cyan">
@@ -23,20 +41,19 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
                                 alt="profile-image"
                             />
                         </div>
-                        <div className="cam-overlay">
-                            <Camera className="cam" color='gray' size={48} />
-                        </div>
-                        <input
-                            className="form-control input-overlay"
-                            type="file"
-                            id="formFile"
-                            {...register('profile_picture')}
-                            onChange={handleProfileImageChange}
-                        />
-                    </label>
+                            <div className="cam-overlay">
+                                <Camera className="cam" color='gray' size={48} />
+                            </div>
+                            <input
+                                className="form-control input-overlay"
+                                type="file"
+                                id="formFile"
+                                {...register('file')}
+                                onChange={handleProfileImageChange}
+                            />
+                        </label>
                 </div>
             </div>
-
             <div className="col-md-12">
                 <div className="form-group">
                     <div className="header_helper_1">

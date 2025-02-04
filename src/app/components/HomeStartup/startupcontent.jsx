@@ -6,7 +6,6 @@ import addProfileImage from "../../api/post/profile-image";
 import getEnterpriseById from "../../api/get/get-enterprise-by-id";
 import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { Profilecard } from "../Profilecard/Profilecard";
-import { AboutCard } from "../AboutCard/AboutCard";
 import { CardMainStartup } from "../CardMainStartup/cardmainstartup";
 
 export function ContentStartupHome() {
