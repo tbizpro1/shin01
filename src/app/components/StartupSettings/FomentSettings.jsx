@@ -39,12 +39,18 @@ export default function FomentSettings({ register, control }) {
                                 <h2  style={{ fontSize: "1.0625rem" }}><strong>Necessidade de Capital?</strong></h2>
                             </div>
                             <div className="col-12">
-                                <input
-                                    {...register("competitors")}
-                                    type="text"
+                                <select
+                                    {...register("discovered_startup")}
+                                    id="invested"
                                     className="form-control select_styled"
-                                    placeholder="Sua resposta ..."
-                                />
+                                    defaultValue=""
+                                >
+                                    <option value="" disabled>
+                                        Sua resposta
+                                    </option>
+                                    <option value={true}>Não</option>
+                                    <option value={false}>Sim</option>
+                                </select>
                             </div>  
                         </div>
                     </div>
