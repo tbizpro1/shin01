@@ -14,7 +14,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Rodada de Investimento Aberta?</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Rodada de Investimento Aberta?</strong></h2>
                             </div>
                             <div className="col-12">
                                 <select
@@ -36,7 +36,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Necessidade de Capital?</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Necessidade de Capital?</strong></h2>
                             </div>
                             <div className="col-12">
                                 <input
@@ -51,7 +51,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className=" form-group">
                             <div className="header">
-                                <h2><strong>Já foi Investida?</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Já foi Investida?</strong></h2>
                             </div>
                             <div className="col-12">
 
@@ -74,7 +74,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Valor do Investimento</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Valor do Investimento</strong></h2>
                             </div>
                             <div className="col-12">
                                 <Controller
@@ -102,7 +102,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Recebeu Fomento?</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Recebeu Fomento?</strong></h2>
                             </div>
                             <div className="col-12">
                                 <select
@@ -126,7 +126,7 @@ export default function FomentSettings({ register, control }) {
                                 <div className="">
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Valor do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Valor do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <Controller
@@ -157,7 +157,7 @@ export default function FomentSettings({ register, control }) {
                                 
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Nome do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Nome do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
 
@@ -180,7 +180,7 @@ export default function FomentSettings({ register, control }) {
                                 <div className="">
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Valor do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Valor do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <Controller
@@ -210,7 +210,7 @@ export default function FomentSettings({ register, control }) {
                                 
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Nome do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Nome do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <input
@@ -232,7 +232,7 @@ export default function FomentSettings({ register, control }) {
                                 <div className="">
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Valor do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Valor do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <Controller
@@ -263,7 +263,7 @@ export default function FomentSettings({ register, control }) {
                                 
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Nome do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Nome do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <input
@@ -286,7 +286,7 @@ export default function FomentSettings({ register, control }) {
                                 <div className="">
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Valor do Fomento</strong></h2>
+                                            <h2 style={{ fontSize: "1.0625rem" }}><strong>Valor do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <Controller
@@ -317,7 +317,7 @@ export default function FomentSettings({ register, control }) {
                                 
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Nome do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Nome do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
 
@@ -340,7 +340,7 @@ export default function FomentSettings({ register, control }) {
                                 <div className="">
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Valor do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Valor do Fomento</strong></h2>
                                         </div>
                                         <div className="col-12">
                                             <Controller
@@ -370,7 +370,7 @@ export default function FomentSettings({ register, control }) {
                                 
                                     <div className="form-group">
                                         <div className="header">
-                                            <h2><strong>Nome do Fomento</strong></h2>
+                                            <h2  style={{ fontSize: "1.0625rem" }}><strong>Nome do Fomento</strong></h2>
                                             
                                         </div>
                                         <div className="col-12">
@@ -392,7 +392,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Já foi Acelerada?</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Já foi Acelerada?</strong></h2>
                             </div>
                             <div className="col-12">
 
@@ -414,7 +414,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Programa de Aceleração 1</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Programa de Aceleração 1</strong></h2>
                             </div>
                             <div className="col-12">
 
@@ -431,7 +431,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Programa de Aceleração 2</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Programa de Aceleração 2</strong></h2>
                             </div>
                             <div className="col-12">
                                 <input
@@ -447,7 +447,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Programa de Aceleração 3</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Programa de Aceleração 3</strong></h2>
                             </div>
                             <div className="col-12">
                                 <input
@@ -463,7 +463,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Programa de Aceleração 4</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Programa de Aceleração 4</strong></h2>
                             </div>
                             <div className="col-12">
 
@@ -480,7 +480,7 @@ export default function FomentSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2><strong>Programa de Aceleração 5</strong></h2>
+                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Programa de Aceleração 5</strong></h2>
                             </div>
                             <div className="col-12">
                                 <input
@@ -494,18 +494,18 @@ export default function FomentSettings({ register, control }) {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="col-md-12">
-                        <button
-                            type="submit"
-                            className="btn btn-primary btn-round"
-                        >
-                            Salvar mudanças
-                        </button>
-                    </div> */}
                 </div>
                 {/* </div> */}
                 {/* </form> */}
             </div>
+            <div>
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                        >
+                            <strong>SALVAR ALTERAÇÕES</strong>
+                        </button>
+                    </div>
         </div>
     )
 }

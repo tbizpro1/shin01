@@ -6,8 +6,25 @@ import { Camera, Linkedin, Mail, Phone } from "lucide-react";
 import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
 
 import { SocialLinks } from "../Sociallink/Sociallinks";
+import { useForm } from "react-hook-form";
+import profileImageStartup from "../../api/post/profile-image-startup";
 
-export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, enterprise, user }) => {
+export const ProfileCArdImageStartup = ({ enterprise, enterprise_id, token, register}) => {
+    const handleProfileImageChange = async (e) => {
+            console.log("testando")
+            const file = e?.target?.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append("file", file);
+                console.log([...formData])
+                const response = await profileImageStartup(enterprise_id, formData, token).finally(() => window.location.reload());
+        
+                if (response) {
+                console.log('Imagem de perfil atualizada com sucesso', response);
+                }
+            }
+        };
+    
     return (
         <div className="card member-card">
             <div className="header l-cyan">
@@ -23,24 +40,23 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
                                 alt="profile-image"
                             />
                         </div>
-                        <div className="cam-overlay">
-                            <Camera className="cam" color='gray' size={48} />
-                        </div>
-                        <input
-                            className="form-control input-overlay"
-                            type="file"
-                            id="formFile"
-                            {...register('profile_picture')}
-                            onChange={handleProfileImageChange}
-                        />
-                    </label>
+                            <div className="cam-overlay">
+                                <Camera className="cam" color='gray' size={48} />
+                            </div>
+                            <input
+                                className="form-control input-overlay"
+                                type="file"
+                                id="formFile"
+                                {...register('file')}
+                                onChange={handleProfileImageChange}
+                            />
+                        </label>
                 </div>
             </div>
-
             <div className="col-md-12">
                 <div className="form-group">
                     <div className="header_helper_1">
-                        <h2 style={{fontSize: "1rem"}}><strong>RESUMO</strong></h2>
+                        <h2 style={{fontSize: "1.0625rem"}}><strong>RESUMO</strong></h2>
                     </div>
                     <div className="body">
                         <div className="col-14">
@@ -57,19 +73,22 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-8 col-md-12">
+                    <div className="col-lg-6 col-md-12">
                         <div className="d-flex align-items-center gap-1">
-                            <Mail color="orange" size={24} />
+                            {/* <Mail color="orange" size={18} /> */}
+                            <img src={email} style={{width:'26px', height:'26px', marginRight:'10px'}} alt="" />
                             <p className="mb-0" style={{fontSize:".7rem", fontWeight:800}}>{enterprise?.email || "enum@gmail.com"}</p>
                         </div>
                         
                         <div className="d-flex align-items-center gap-2">
-                            <Phone color="orange" size={24} />
+                            {/* <Phone color="orange" size={18} /> */}
+                            <img src={telefone} style={{width:'26px', height:'26px', marginTop:'10px', marginRight:'10px'}} alt="" />
                             <p className="mb-0" style={{fontSize:".7rem", fontWeight:800}}>{enterprise?.whatsapp || "(00) 00000-0000"}</p>
                         </div>
                         
                         <div className="d-flex align-items-center gap-2">
-                            <Linkedin color="orange" size={24} />
+                            {/* <Linkedin color="orange" size={18} /> */}
+                            <img src={linkedin} style={{width:'26px', height:'26px', marginTop:'10px', marginRight:'10px'}} alt="" />
                             <p className="mb-0" style={{ fontSize: ".7rem", fontWeight: 800 }}>
                                 {enterprise?.linkedin
                                     ? enterprise.linkedin.length > 20
@@ -79,7 +98,7 @@ export const ProfileCArdImageStartup = ({ handleProfileImageChange, register, en
                             </p>
                         </div>
                     </div>
-                    <div className="col-lg-4 col-md-12 helper">
+                    <div className="col-lg-6 col-md-12 helper">
                         <p className="text-muted">
                             CNPJ
                         </p>

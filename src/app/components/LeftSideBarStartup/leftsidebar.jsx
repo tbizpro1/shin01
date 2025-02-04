@@ -3,21 +3,23 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { perfilUnd, profileUser } from "../../../assets/images";
 
-const LeftSideBar = () => {
+const LeftSideBar = ({enter}) => {
     const [menuClicado, setMenuCliclado] = useState(false)
 
     const handleMenuCliclado = () => {
         setMenuCliclado(!menuClicado);
     }
 
+    console.log("aaaaaaa",enter)
 
-    const { user, enterprise, isLoading, logout } = useContext(AuthContext);
+
+    const { user, isLoading, logout } = useContext(AuthContext);
 
     if (isLoading) {
         return <div>Carregando ...</div>;
     }
 
-    if (!user || !enterprise) {
+    if (!user) {
         return <div>Algo ocorreu!</div>;
     }
 
@@ -50,19 +52,25 @@ const LeftSideBar = () => {
                         <li><a href="/workspace"><i class="zmdi zmdi-home"></i><span>Home</span></a></li>
                         <li><a href="/perfil"><i class="zmdi zmdi-account-o"></i><span>Meu Perfil</span></a></li>
 
-                        {/* <a  href="#"
+                        <a  href="#"
                             className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}
                             onClick={handleMenuCliclado}
                         >
                             <i className="zmdi zmdi-accounts-outline"></i><span>Sócios</span>
-                        </a> */}
-                        {/* <ul className="ml-menu" style={{ display: menuClicado ? 'block' : 'none' }}> */}
+                        </a>
+                        <ul className="ml-menu" style={{ display: menuClicado ? 'block' : 'none' }}>
                             {/* <li><Link to='/socio'>Todos os sócios</Link></li> */}
                             {/* <li><Link to='/addsocio'>Adicionar sócio</Link></li> */}
                             {/* <li><Link to='/perfil'>Perfil do sócio</Link></li> */}
-                            {/* <li><Link to='/explorer'>Convidar sócio</Link></li> */}
+                            <Link 
+                                key={enter?.enterprise_id}
+                                to='/explorer' 
+                                state={{ enter: enter }}
+                            >
+                                <li>Convidar sócio</li>
+                            </Link>
                             {/* <li><Link to='/notifications'>Notificações</Link></li> */}
-                        {/* </ul> */}
+                        </ul>
                     </li>
                 </ul>
             </div>

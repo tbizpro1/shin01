@@ -6,37 +6,25 @@ import addProfileImage from "../../api/post/profile-image";
 import getEnterpriseById from "../../api/get/get-enterprise-by-id";
 import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { Profilecard } from "../Profilecard/Profilecard";
-import { AboutCard } from "../AboutCard/AboutCard";
 import { CardMainStartup } from "../CardMainStartup/cardmainstartup";
+import profileImageStartup from "../../api/post/profile-image-startup";
 
-export function ContentStartupHome() {
-    const { user, token, enterprise } = useContext(AuthContext)
-    const [enterpriseDetail, setEnterpriseDetail] = useState("")
+export function ContentStartupHome({enterprise}) {
+    // const[enterpriseDetail, setEnterpriseDetail] = useState()
+    const { user, token } = useContext(AuthContext)
     const { register } = useForm()
+    console.log("aqui", enterprise)
 
-    const enterprise_id = enterprise?.[0]?.enterprise_id
+    const enterprise_id = enterprise?.enterprise_id
 
-    useEffect(() => {
-        getEnterpriseById(enterprise_id, token).then(response =>
-            setEnterpriseDetail(response)
-        )
-    }, [enterprise, token, enterprise_id])
+    // useEffect(() => {
+    //     getEnterpriseById(enterprise_id, token).then(response =>
+    //         setEnterpriseDetail(response)
+    //     )
+    // }, [enterprise, token, enterprise_id])
 
 
-    const handleProfileImageChange = async (e) => {
-        const file = e?.target?.files[0];
-        if (file) {
-            const formData = new FormData();
-            formData.append("profile_picture", file);
 
-            const response = await addProfileImage(user?.id, token, formData);
-
-            if (response) {
-                console.log('Imagem de perfil atualizada com sucesso', response);
-            }
-        }
-        window.location.reload();
-    };
     return (
         <>
             <Subheader
@@ -132,9 +120,8 @@ export function ContentStartupHome() {
                     {/* Primeiro elemento: ocupa 33,33% da largura em telas grandes */}
                     <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12 me-lg-3 mb-3 mb-lg-0">
                         <Profilecard
-                            handleProfileImageChange={handleProfileImageChange}
-                            register={register}
-                            enterprise={enterpriseDetail}
+                            enterprise={enterprise}
+                            enterprise_id={enterprise_id}
                             user={user}
                         />
                     </div>
