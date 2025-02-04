@@ -108,7 +108,7 @@ export function ContentStartup({enterprise}) {
                                 <FomentSettings register={register} control={control} />
                             </div>
                         </div>
-                        <div className="row mt-3">
+                        {/* <div className="row mt-3">
                             <div className="col-12 d-flex justify-content-end">
                                 <div className="d-lg-flex gap-2">
                                     <button
@@ -126,7 +126,7 @@ export function ContentStartup({enterprise}) {
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         </div>
                 </form> 
             </div>

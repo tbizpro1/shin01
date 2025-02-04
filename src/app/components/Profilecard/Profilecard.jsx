@@ -4,7 +4,6 @@ import { SocialLinks } from "../Sociallink/Sociallinks";
 import { Link } from "react-router-dom";
 
 export const Profilecard = ({ handleProfileImageChange, register, enterprise, enterprise_id }) => {
-    // console.log("teste", enterprise)
     return (
         <div className="card member-card">
             <div className="header l-cyan">
@@ -56,13 +55,14 @@ export const Profilecard = ({ handleProfileImageChange, register, enterprise, en
                         </li>
                     </ul>
                     <div style={{ padding: '4px' }}>
+
                         <Link 
                             to={"/startup"}
                             key={enterprise_id} 
                             state={{ enter: enterprise }}
                         >   
                             <strong>
-                                <span className="profileButton">Acessar meu perfil</span>
+                                <span className="profileButton">Acessar informações</span>
                             </strong>
                         </Link>
                     </div>

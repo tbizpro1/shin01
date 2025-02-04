@@ -21,7 +21,7 @@ export function StartupProfile() {
             <TopBar />
             <LeftSideBar />
             <RightSideBar />
-            <Chat />
+            {/* <Chat /> */}
             <section className="content">
                 <ContentStartup enterprise={enterprise} />
             </section>

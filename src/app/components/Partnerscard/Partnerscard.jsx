@@ -10,7 +10,7 @@ export function PartenrsCard({ enterprise_id, token }) {
         <div>
             <div className="card">
                 <div className="header">
-                    <h2 style={{ fontSize: ".8rem" }}><strong>Equipe</strong></h2>
+                    <h2 style={{ fontSize: "1.0625rem" }}><strong>Equipe</strong></h2>
                 </div>
                 <div className="body">
                     <ul className="inbox-widget list-unstyled clearfix">
