@@ -30,11 +30,9 @@ const MainContent = () => {
 
             <div className="container-fluid">
                 <div className="row clearfix">
-                    {/* temperatura */}
                     <div class="col-lg-4 col-md-12">
                         <Temperatura />
                         <ProfileUser />
-                        {/* calendario */}
                         <div className="">
                             <div className="card w_calender">
                                 <div className="date l-slategray">
