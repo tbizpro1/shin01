@@ -9,8 +9,7 @@ import { SocialLinks } from "../Sociallink/Sociallinks";
 import { useForm } from "react-hook-form";
 import profileImageStartup from "../../api/post/profile-image-startup";
 
-export const ProfileCArdImageStartup = ({ enterprise, enterprise_id, token }) => {
-    const{register} = useForm()
+export const ProfileCArdImageStartup = ({ enterprise, enterprise_id, token, register}) => {
     const handleProfileImageChange = async (e) => {
             console.log("testando")
             const file = e?.target?.files[0];
