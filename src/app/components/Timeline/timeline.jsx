@@ -1,8 +1,6 @@
-import React from "react";
-
-const Timeline = () => {
-    return (
-        <div role="tabpanel" className="tab-pane blog-page active" id="timeline">
+export default function Timeline() {
+    return(
+        <div role="tabpanel" className="">
             <ul className="cbp_tmtimeline">
                 <li>
                     <time className="cbp_tmtime" datetime="2017-11-04T18:30"><span className="hidden">25/12/2017</span> <span className="large">Now</span></time>
@@ -81,6 +79,4 @@ const Timeline = () => {
             </ul>
         </div>
     )
-}
-
-export default Timeline
+};
