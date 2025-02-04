@@ -6,7 +6,7 @@ import updateDetailsStartup from "../../api/put/update-details-startup";
 import { enterpriseUnd } from "../../../assets/images";
 
 
-export default function StartupSettings({ register, control }) {
+export default function StartupSettings({ register, control, handleExportPDF }) {
 
     return (
         <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
@@ -17,7 +17,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: "1.0625rem" }} ><strong>O Problema</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }} ><strong>O Problema</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -35,7 +35,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Solução</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>Solução</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -53,7 +53,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: "1.0625rem" }}><strong>O Produto</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>O Produto</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -74,10 +74,10 @@ export default function StartupSettings({ register, control }) {
                                 <h2 style={{ fontSize: "1.0625rem" }}><strong>Estágio de maturidade do produto | TRL</strong></h2>
                             </div>
                             <div className="col-12">
-                                <select id="product_stage" 
-                                className="form-control select_styled_helper"
-                                {...register("product_stage")}  
-                                defaultValue="">
+                                <select id="product_stage"
+                                    className="form-control select_styled_helper"
+                                    {...register("product_stage")}
+                                    defaultValue="">
                                     <option value="" disabled>Sua resposta</option>
                                     <option value="trl0">TRL 0 - Não inciado</option>
                                     <option value="trl1">TRL 1 - Princípios básicos observados e documentados. A startup começa a entender a ciência básica por trás do problema que deseja resolver.</option>
@@ -96,7 +96,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: "1.0625rem" }} ><strong>Proposta de Valor</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }} ><strong>Proposta de Valor</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -132,7 +132,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Concorrência</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>Concorrência</strong></h2>
                             </div>
                             <div className="body">
                                 <div className="col-14">
@@ -150,7 +150,7 @@ export default function StartupSettings({ register, control }) {
                     <div className="w-100 col-md-12">
                         <div className="form-group">
                             <div className="header">
-                                <h2  style={{ fontSize: "1.0625rem" }}><strong>Estágio de maturidade do negócio</strong></h2>
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>Estágio de maturidade do negócio</strong></h2>
                             </div>
                             <div className="col-12">
                                 <select id="other_projects" {...register("other_projects")} className="form-control select_styled_helper" defaultValue="">
@@ -170,6 +170,16 @@ export default function StartupSettings({ register, control }) {
                     </div>
                 </div>
                 {/* </form> */}
+            </div>
+            <div>
+                <button
+                    onClick={handleExportPDF} // Adicione uma função para exportar o PDF
+                    type="button" // Evita que o formulário seja enviado
+                    className="btn btn-primary"
+                    style={{ backgroundColor: "#00bcd4", borderColor: "#00bcd4", marginTop:'68px' }}
+                >
+                    <strong>EXPORTAR PDF</strong>
+                </button>
             </div>
         </div>
     )
