@@ -26,7 +26,7 @@ export default function StartupSettings({ register, control, handleExportPDF }) 
                                         type="text"
                                         className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
                                         placeholder="Problema ..."
-                                        rows={5}
+                                        rows={6}
                                     />
                                 </div>
                             </div>
@@ -44,7 +44,7 @@ export default function StartupSettings({ register, control, handleExportPDF }) 
                                         type="text"
                                         className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
                                         placeholder="Sua resposta"
-                                        rows={5}
+                                        rows={6}
                                     />
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ export default function StartupSettings({ register, control, handleExportPDF }) 
                                         type="text"
                                         className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
                                         placeholder="Sua resposta"
-                                        rows={5}
+                                        rows={6}
                                     />
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ export default function StartupSettings({ register, control, handleExportPDF }) 
                                         type="text"
                                         className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
                                         placeholder="Sua resposta"
-                                        rows={5}
+                                        rows={6}
                                     />
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ export default function StartupSettings({ register, control, handleExportPDF }) 
                                         type="text"
                                         className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
                                         placeholder="Sua resposta"
-                                        rows={5}
+                                        rows={6}
                                     />
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ export default function StartupSettings({ register, control, handleExportPDF }) 
                                         type="text"
                                         className="border border-gray-300 w-100 p-3 text-lg rounded-top rounded-bottom bg-gray-100 input_styled"
                                         placeholder="Sua resposta"
-                                        rows={5}
+                                        rows={6}
                                     />
                                 </div>
                             </div>
