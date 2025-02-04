@@ -102,19 +102,19 @@ export function EditeStartup() {
                         <div className="row mt-3">
                             <div className="col-12 d-flex justify-content-end">
                                 <div className="d-lg-flex gap-2">
-                                    <button
+                                    {/* <button
                                         // type="button"
                                         className="btn btn-round"
                                         style={{ backgroundColor: "#00bcd4", borderColor: "#00bcd4" }}
                                     >
                                         Exportar PDF
-                                    </button>
-                                    <button
+                                    </button> */}
+                                    {/* <button
                                         type="submit"
                                         className="btn btn-primary btn-round"
                                     >
                                         Salvar mudanças
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>
