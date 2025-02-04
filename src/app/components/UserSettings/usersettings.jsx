@@ -329,7 +329,7 @@ export default function UserSettings() {
                             </div>
                         </div> */}
                             <div className="col-md-12">
-                                <button type="submit" className="btn btn-primary btn-round">Salvar mudanças</button>
+                                <button type="submit" className="btn btn-primary">Salvar mudanças</button>
                             </div>
                         </div>
                     </div>
