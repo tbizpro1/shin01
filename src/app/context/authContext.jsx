@@ -38,14 +38,15 @@ export const AuthProvider = ({children}) => {
             userEnterprises(userId, userToken).then(response => {
                 // Verifica se a resposta é um array, caso contrário, usa um array vazio
                 const responseData = Array.isArray(response) ? response : [];
-                
+
                 // Filtra os dados, removendo duplicatas com base no user_id
                 const uniqueData = responseData.filter((item, index, self) =>
-                    index === self.findIndex(t => t.user_id === item.user_id)
+                    index === self.findIndex(t => t.enterprise_id === item.enterprise_id)
                 );
                 // Aplica a sanitização nos dados e define o estado com os dados únicos
                 setEnterprise(sanitizeUserData(uniqueData));
             });
+            console.log("bb",enterprise)
 
             setToken(userToken)
             setIsAuthentication(true)

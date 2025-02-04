@@ -5,22 +5,24 @@ import SeachTopBar from "./SeachTopBar/SeachTopBar";
 import ContactTable from "./ContactTable/ContactTable";
 import allUserEnterprisePending from "../../api/get/all-user-enterprise-pending"
 
-export default function Inbox() {
+export default function Inbox({enterprise}) {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const { user, token, enterprise } = useContext(AuthContext);
+    const { user, token } = useContext(AuthContext);
     const [partners, setPartners] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    console.log("mds: ", enterprise)
+
     useEffect(() => {
-        if (!enterprise?.[0]?.enterprise_id || !token) return;
+        if (!enterprise?.enterprise_id || !token) return;
 
         const fetchData = async () => {
             try {
                 setIsLoading(true);
 
-                const partnersResponse = await allUserEnterprisePending(enterprise[0].enterprise_id, token);
+                const partnersResponse = await allUserEnterprisePending(enterprise.enterprise_id, token);
                 const responseData = Array.isArray(partnersResponse) ? partnersResponse : [];
                 const uniquePartners = responseData.filter(
                     (item, index, self) =>
@@ -56,7 +58,7 @@ export default function Inbox() {
     return (
         <section>
             {
-                enterprise?.[0]?.enterprise_id !== undefined ?
+                enterprise?.enterprise_id !== undefined ?
                     (
                         <>
                             <div className="block-header">
@@ -71,7 +73,7 @@ export default function Inbox() {
                             </div>
                             <div className="container-fluid content">
                                 <SeachTopBar users={users} setSearchTerm={setSearchTerm} />
-                                <ContactTable users={filteredUsers} />
+                                <ContactTable users={filteredUsers} enterprise={enterprise} />
                             </div>
                         </>
                     ) : (

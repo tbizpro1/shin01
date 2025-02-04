@@ -16,13 +16,15 @@ import CardDetails from "../CardDetails/CardDetails";
 
 import { ProfileCArdImageStartup } from "../ProfileCardImageStartup/ProfileCardImageStartup";
 import profileImageStartup from "../../api/post/profile-image-startup";
+import { useLocation } from "react-router";
 
 
-export function ContentStartup() {
-    const { user, token, enterprise } = useContext(AuthContext)
+export function ContentStartup({enterprise}) {
+
+    const { user, token } = useContext(AuthContext)
     const [enterpriseDetail, setEnterpriseDetail] = useState("")
 
-    const enterprise_id = enterprise?.[0]?.enterprise_id
+    const enterprise_id = enterprise?.enterprise_id
 
     
     console.log("eeee",enterpriseDetail)
@@ -92,7 +94,7 @@ export function ContentStartup() {
 
                 <form className="row" onSubmit={handleSubmit(onSubmit)}>
                     <div className="col-lg-4 col-md-12">
-                        <ProfileCArdImageStartup enterprise_id={enterprise_id} token={token} enterprise={enterpriseDetail} />
+                        <ProfileCArdImageStartup enterprise_id={enterprise_id} register={register} token={token} enterprise={enterpriseDetail} />
                         <CardDetails  register={register}/>
                         <PartenrsCard enterprise_id={enterprise_id} token={token}/>
                     </div>

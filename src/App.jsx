@@ -28,23 +28,20 @@ import { EditeStartup } from './app/pages/EditeStartup/EditeStartup';
 
 function App() {
   return (
-    
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/workspace' element={ <ProtectedRouter page={Home} />} />
+        {/* página de formulário das startup */}
         <Route path='/startup' element={ <ProtectedRouter page={StartupProfile} />} />
         <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} />
         <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
         <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
         <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
 
-        <Route path='/profile/startup' element={<ProtectedRouter page={StartupProfile} />} />
         <Route path='/profile/partner' element={<ProtectedRouter page={PartnerProfile} />} />
 
         <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />} />
         <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} />} />
-        {/* <Route path='/notifications' element={<ProtectedRouter page={Notification} />} /> */}
-
       </Routes>
   )
 }

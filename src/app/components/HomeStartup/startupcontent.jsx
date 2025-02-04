@@ -8,18 +8,19 @@ import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { Profilecard } from "../Profilecard/Profilecard";
 import { CardMainStartup } from "../CardMainStartup/cardmainstartup";
 
-export function ContentStartupHome() {
-    const { user, token, enterprise } = useContext(AuthContext)
-    const [enterpriseDetail, setEnterpriseDetail] = useState("")
+export function ContentStartupHome({enterprise}) {
+    // const[enterpriseDetail, setEnterpriseDetail] = useState()
+    const { user, token } = useContext(AuthContext)
     const { register } = useForm()
+    console.log("aqui", enterprise)
 
-    const enterprise_id = enterprise?.[0]?.enterprise_id
+    const enterprise_id = enterprise?.enterprise_id
 
-    useEffect(() => {
-        getEnterpriseById(enterprise_id, token).then(response =>
-            setEnterpriseDetail(response)
-        )
-    }, [enterprise, token, enterprise_id])
+    // useEffect(() => {
+    //     getEnterpriseById(enterprise_id, token).then(response =>
+    //         setEnterpriseDetail(response)
+    //     )
+    // }, [enterprise, token, enterprise_id])
 
 
     const handleProfileImageChange = async (e) => {
@@ -133,7 +134,8 @@ export function ContentStartupHome() {
                         <Profilecard
                             handleProfileImageChange={handleProfileImageChange}
                             register={register}
-                            enterprise={enterpriseDetail}
+                            enterprise={enterprise}
+                            enterprise_id={enterprise_id}
                             user={user}
                         />
                     </div>
