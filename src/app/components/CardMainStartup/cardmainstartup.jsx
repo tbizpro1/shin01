@@ -11,7 +11,7 @@ export function CardMainStartup() {
                             <a href="#">
                                 <div className="icon">
                                     <img src={minhas_startups} alt="" />
-                                    <p style={{color:"black"}}><strong>Minhas <br />Startups</strong></p>
+                                    <p style={{color:"black"}}><strong>Onepage</strong></p>
                                 </div>
                             </a>
                         </div>
