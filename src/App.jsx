@@ -18,8 +18,9 @@ import { StartupProfile } from './app/pages/PerfilStartup/perfilstartup';
 
 import PartnerProfile from './app/pages/UserDetail/UserDetail';
 
-import { ContentStartup } from './app/components/ContentStartup/contentstartup';
+// pages
 import { HomeStartup } from './app/pages/HomeStartup/HomeStartup';
+import { EditeStartup } from './app/pages/EditeStartup/EditeStartup';
 
 
 
@@ -41,7 +42,7 @@ function App() {
         <Route path='/profile/partner' element={<ProtectedRouter page={PartnerProfile} />} />
 
         <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />} />
-        <Route path='/contentstartup' element={<ProtectedRouter page={ContentStartup} />} />
+        <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} />} />
         {/* <Route path='/notifications' element={<ProtectedRouter page={Notification} />} /> */}
 
       </Routes>
