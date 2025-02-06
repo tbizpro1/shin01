@@ -10,7 +10,7 @@ const LeftSideBar = ({enter}) => {
         setMenuCliclado(!menuClicado);
     }
 
-    console.log("aaaaaaa",enter)
+    // console.log("aaaaaaa",enter)
 
 
     const { user, isLoading, logout } = useContext(AuthContext);
@@ -51,6 +51,7 @@ const LeftSideBar = ({enter}) => {
                     <li>
                         <li><a href="/workspace"><i class="zmdi zmdi-home"></i><span>Home</span></a></li>
                         <li><a href="/perfil"><i class="zmdi zmdi-account-o"></i><span>Meu Perfil</span></a></li>
+                        <li><a href="/datapage"><i class="zmdi zmdi-view-dashboard"></i><span>Data Page</span></a></li>
 
                         <a  href="#"
                             className={`menu-toggle waves-effect waves-block ${menuClicado ? 'toggled' : ''}`}

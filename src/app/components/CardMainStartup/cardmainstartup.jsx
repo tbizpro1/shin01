@@ -10,8 +10,10 @@ export function CardMainStartup() {
                         <div className="file">
                             <a href="#">
                                 <div className="icon">
-                                    <img src={minhas_startups} alt="" />
-                                    <p style={{color:"black"}}><strong>Onepage</strong></p>
+                                    <img src={minhas_startups} alt="" /><br />
+                                    <p style={{color:"#fca311"}}><strong>Onepage<br /></strong>
+                                    <p style={{color:'#fca311', fontSize:'12px'}}>Resumo do projeto em uma página</p></p>
+                                    
                                 </div>
                             </a>
                         </div>

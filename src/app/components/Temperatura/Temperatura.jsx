@@ -51,7 +51,7 @@ export const Temperatura = () => {
 
         getLocation();
     }, []);
-    if (loading) return <div>Carregando...</div>;
+    if (loading) return <div>Carregando clima...</div>;
     if (error) return <div>{error}</div>;
     return (
         <div className="card weather2">

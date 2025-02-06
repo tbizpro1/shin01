@@ -16,7 +16,6 @@ const MainContent = () => {
 
     return (
         <section className="content blog-page">
-
             <div className="block-header">
                 <div className="row">
                     <div className="col-lg-7 col-md-6 col-sm-12">

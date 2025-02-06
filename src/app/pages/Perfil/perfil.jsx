@@ -6,36 +6,9 @@ import RightSideBar from "../../components/RigthSideBar/rigthsidebar";
 import Chat from "../../components/Chat/chat";
 import { AuthContext } from '../../context/authContext';
 import UserSettings from '../../components/UserSettings/usersettings';
-import { perfilUnd, simao, heygler, luciana, jerdeson } from '../../../assets/images';
+import { perfilUnd, simao, heygler, luciana, jerdeson, email, telefone, linkedin } from '../../../assets/images';
 import { useForm } from 'react-hook-form';
 import addProfileImage from '../../api/post/profile-image';
-
-const AgentProfile = () => {
-  const [activeTab, setActiveTab] = useState('usersettings');
-
-  return (
-    <div className="theme-purple">
-      <TopBar />
-      <LeftSideBar />
-      <RightSideBar />
-      <Chat />
-      <section className="content profile-page">
-        <Header />
-        <div className="container-fluid">
-          <div className="row clearfix">
-            <div className="col-lg-4 col-md-12">
-              <ProfileCard />
-              <AboutCard />
-            </div>
-            <div className="col-lg-8 col-md-12">
-              <MainContent activeTab={activeTab} setActiveTab={setActiveTab} />
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
 
 const Header = () => (
   <div className="block-header">
@@ -113,23 +86,21 @@ const ProfileCard = () => {
 const SocialLinks = () => (
   <ul className="social-links list-unstyled align-items-center">
     <li className='mx-3'>
-      <a href="#" title="facebook">
-        <Facebook size={18} />
+      <a href="" title="mail">
+        {/* <Mail size={28} /> */}
+        <img src={email} alt="" style={{ width: '32px', height: '32px' }} />
       </a>
     </li>
     <li className='mx-3'>
-      <a href="#" title="twitter">
-        <Twitter size={18} />
+      <a href="" title="phone">
+        {/* <Phone size={28} /> */}
+        <img src={telefone} alt="" style={{ width: '32px', height: '32px' }} />
       </a>
     </li>
     <li className='mx-3'>
-      <a href="#" title="instagram">
-        <Instagram size={18} />
-      </a>
-    </li>
-    <li className='mx-3'>
-      <a href="#" title="linkedin">
-        <Linkedin size={18} />
+      <a href="" title="linkedin">
+        {/* <Linkedin size={28} /> */}
+        <img src={linkedin} alt="" style={{ width: '32px', height: '32px' }} />
       </a>
     </li>
   </ul>
@@ -302,6 +273,33 @@ const MainContent = ({ activeTab, setActiveTab }) => {
         {activeTab === 'usersettings' && <UserSettings />}
       </div>
     </>
+  );
+};
+
+const AgentProfile = () => {
+  const [activeTab, setActiveTab] = useState('usersettings');
+
+  return (
+    <div className="theme-purple">
+      <TopBar />
+      <LeftSideBar />
+      <RightSideBar />
+      {/* <Chat /> */}
+      <section className="content profile-page">
+        <Header />
+        <div className="container-fluid">
+          <div className="row clearfix">
+            <div className="col-lg-4 col-md-12">
+              <ProfileCard />
+              <AboutCard />
+            </div>
+            <div className="col-lg-8 col-md-12">
+              <MainContent activeTab={activeTab} setActiveTab={setActiveTab} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

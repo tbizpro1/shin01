@@ -8,23 +8,6 @@ import { ProfileCArdImageStartup } from "../../components/ProfileCardImageStartu
 import CardDetails from "../../components/CardDetails/CardDetails";
 import StartupSettings from "../../components/StartupSettings/StartupSettings";
 import FomentSettings from "../../components/StartupSettings/FomentSettings";
-// import { Subheader } from "../HeaderCard/Subheader";
-// import { AuthContext } from "../../context/authContext";
-// import { useForm } from "react-hook-form";
-// import addProfileImage from "../../api/post/profile-image";
-// import getEnterpriseById from "../../api/get/get-enterprise-by-id";
-// import { PartenrsCard } from "../Partnerscard/Partnerscard";
-// import { Profilecard } from "../Profilecard/Profilecard";
-// import { AboutCard } from "../AboutCard/AboutCard";
-// import StartupSettings from "../StartupSettings/StartupSettings";
-// import FomentSettings from "../StartupSettings/FomentSettings";
-
-// import { enterpriseUnd } from "../../../assets/images";
-// import updateDetailsStartup from "../../api/put/update-details-startup";
-// import CardDetails from "../CardDetails/CardDetails";
-
-// import { ProfileCArdImageStartup } from "../ProfileCardImageStartup/ProfileCardImageStartup";
-// import profileImageStartup from "../../api/post/profile-image-startup";
 
 
 export function EditeStartup() {

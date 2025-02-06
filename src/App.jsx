@@ -21,6 +21,7 @@ import PartnerProfile from './app/pages/UserDetail/UserDetail';
 // pages
 import { HomeStartup } from './app/pages/HomeStartup/HomeStartup';
 import { EditeStartup } from './app/pages/EditeStartup/EditeStartup';
+import { DataPage } from './app/components/DataPage/datapage';
 
 
 
@@ -42,6 +43,10 @@ function App() {
 
         <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />} />
         <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} />} />
+
+        <Route path='/datapage' element={<ProtectedRouter page={DataPage} />} />
+
+
       </Routes>
   )
 }
