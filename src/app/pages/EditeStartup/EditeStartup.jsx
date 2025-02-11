@@ -8,23 +8,6 @@ import { ProfileCArdImageStartup } from "../../components/ProfileCardImageStartu
 import CardDetails from "../../components/CardDetails/CardDetails";
 import StartupSettings from "../../components/StartupSettings/StartupSettings";
 import FomentSettings from "../../components/StartupSettings/FomentSettings";
-// import { Subheader } from "../HeaderCard/Subheader";
-// import { AuthContext } from "../../context/authContext";
-// import { useForm } from "react-hook-form";
-// import addProfileImage from "../../api/post/profile-image";
-// import getEnterpriseById from "../../api/get/get-enterprise-by-id";
-// import { PartenrsCard } from "../Partnerscard/Partnerscard";
-// import { Profilecard } from "../Profilecard/Profilecard";
-// import { AboutCard } from "../AboutCard/AboutCard";
-// import StartupSettings from "../StartupSettings/StartupSettings";
-// import FomentSettings from "../StartupSettings/FomentSettings";
-
-// import { enterpriseUnd } from "../../../assets/images";
-// import updateDetailsStartup from "../../api/put/update-details-startup";
-// import CardDetails from "../CardDetails/CardDetails";
-
-// import { ProfileCArdImageStartup } from "../ProfileCardImageStartup/ProfileCardImageStartup";
-// import profileImageStartup from "../../api/post/profile-image-startup";
 
 
 export function EditeStartup() {
@@ -102,19 +85,19 @@ export function EditeStartup() {
                         <div className="row mt-3">
                             <div className="col-12 d-flex justify-content-end">
                                 <div className="d-lg-flex gap-2">
-                                    <button
+                                    {/* <button
                                         // type="button"
                                         className="btn btn-round"
                                         style={{ backgroundColor: "#00bcd4", borderColor: "#00bcd4" }}
                                     >
                                         Exportar PDF
-                                    </button>
-                                    <button
+                                    </button> */}
+                                    {/* <button
                                         type="submit"
                                         className="btn btn-primary btn-round"
                                     >
                                         Salvar mudanças
-                                    </button>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>
