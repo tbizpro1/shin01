@@ -5,10 +5,12 @@ import { Subheader } from "../HeaderCard/Subheader";
 import { Profilecard } from "../Profilecard/Profilecard";
 import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { DataStartup } from "../DataStartup/datastartup";
-import { CardData } from "../DataSelect/dataselect";
-import UserSettings from "../UserSettings/usersettings";
+import { CardData } from "../DataUpdate/dataupdate";
+import TotalRevenueCard from "../TotalRevenueCard/TotalRevenueCard";
+
 
 export function ContentData({ enterprise }) {
+    const [activeTab, setActiveTab] = useState('updatesettings');
     // const[enterpriseDetail, setEnterpriseDetail] = useState()
     const [activeTab, setActiveTab] = useState('update')
     const { user, token } = useContext(AuthContext)
@@ -27,9 +29,8 @@ export function ContentData({ enterprise }) {
             <section className="container-fluid">
 
                 <DataStartup />
-                {/* container flexível */}
-                {/* wrapper para posicionar os componentes lado a lado */}
-                <div className="row">
+                <div className="d-flex flex-lg-row flex-column">
+
                     {/* Primeiro elemento: ocupa 33,33% da largura em telas grandes */}
                     <div className="col-lg-4 col-md-12 mb-3 mb-lg-0">
                         <div className="d-flex flex-column">
@@ -44,7 +45,14 @@ export function ContentData({ enterprise }) {
                         </div>
                     </div>
                     <div className="col-lg-8 col-md-12">
-                        <CardData activeTab={activeTab} setActiveTab={setActiveTab} />
+
+                        <CardData activeTab={activeTab} setActiveTab={setActiveTab}/>
+                    </div>
+                </div>
+                <div className="d-flex flex-lg-row flex-column">
+                    <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12">
+                        <PartenrsCard enterprise_id={enterprise_id} token={token} />
+
                     </div>
                 </div>
             </section>
