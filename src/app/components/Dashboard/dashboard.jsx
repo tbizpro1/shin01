@@ -1,3 +1,4 @@
+
 import React from "react";
 import TotalRevenueCard from '../TotalRevenueCard/TotalRevenueCard';
 import TotalIncomeCard from '../TotalIncomeCard/TotalIncomeCard';
@@ -30,3 +31,4 @@ export function DataDashboard() {
         </div>
     )
 }
+

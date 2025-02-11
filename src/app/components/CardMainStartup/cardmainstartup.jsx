@@ -36,12 +36,14 @@ export function CardMainStartup() {
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="file">
+
                             <Link
                                 to={"/datapage"}
                                 key={enterprise?.enterprise_id}
                                 state={{enter: enterpriseData}}
                                 
                             >
+
                                 <div className="icon">
                                     <img src={dados_financeiros} alt="" />
                                     <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>

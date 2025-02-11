@@ -19,6 +19,7 @@ const TotalNewClientsCard = ({ data  }) => {
         ],
         };
 
+
         const chartOptions = {
             responsive: true,
             maintainAspectRatio: false,
