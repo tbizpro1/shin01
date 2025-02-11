@@ -31,15 +31,13 @@ const MainContent = () => {
                     <div class="col-lg-4 col-md-12">
                         <Temperatura />
                         <ProfileUser />
-                        <div className="">
-                            <Calendario/>
-                            <InstagramPosts />
-                        </div>
+                        <Calendario />
+                        <InstagramPosts />
                     </div>
                     <div class="col-lg-8 col-md-12">
-                        <MyStartup enterprise={enterprise}/>
+                        <MyStartup enterprise={enterprise} />
                         <CardMain />
-                        <Timeline/>
+                        <Timeline />
                     </div>
                 </div>
             </div>

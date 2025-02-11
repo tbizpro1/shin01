@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../context/authContext";
 import { Subheader } from "../HeaderCard/Subheader";
 import { Profilecard } from "../Profilecard/Profilecard";
 import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { DataStartup } from "../DataStartup/datastartup";
-import { CardData } from "../DataUpdate/dataupdate";
+import { CardData } from "../DataSelect/dataselect";
+import UserSettings from "../UserSettings/usersettings";
 
 export function ContentData({ enterprise }) {
     // const[enterpriseDetail, setEnterpriseDetail] = useState()
+    const [activeTab, setActiveTab] = useState('update')
     const { user, token } = useContext(AuthContext)
     const { register } = useForm()
 
@@ -23,24 +25,26 @@ export function ContentData({ enterprise }) {
                 description={'Gerencie os dados da startup!'}
             />
             <section className="container-fluid">
-                <DataStartup />
 
-                <div className="d-flex flex-lg-row flex-column">
+                <DataStartup />
+                {/* container flexível */}
+                {/* wrapper para posicionar os componentes lado a lado */}
+                <div className="row">
                     {/* Primeiro elemento: ocupa 33,33% da largura em telas grandes */}
-                    <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12 me-lg-3 mb-3 mb-lg-0">
-                        <Profilecard
-                            enterprise={enterprise || {}}
-                            enterprise_id={enterprise_id}
-                            user={user}
-                        />
+                    <div className="col-lg-4 col-md-12 mb-3 mb-lg-0">
+                        <div className="d-flex flex-column">
+                            <div className="mb-3">
+                                <Profilecard
+                                    enterprise={enterprise || {}}
+                                    enterprise_id={enterprise_id}
+                                    user={user}
+                                />
+                            </div>
+                            <PartenrsCard enterprise_id={enterprise_id} token={token} />
+                        </div>
                     </div>
                     <div className="col-lg-8 col-md-12">
-                    <CardData />
-                    </div>
-                </div>
-                <div className="d-flex flex-lg-row flex-column">
-                    <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12">
-                        <PartenrsCard enterprise_id={enterprise_id} token={token} />
+                        <CardData activeTab={activeTab} setActiveTab={setActiveTab} />
                     </div>
                 </div>
             </section>
