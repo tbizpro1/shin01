@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 
 
-
-export function DataUpdate() {
-    return (
-        <>
-            Atualização de dados
-        </>
-    )
-}
-
 export function CardData ({ activeTab, setActiveTab }) {
   const tabs = [
     { id: 'updatesettings', label: 'Atualizar Dados' },
@@ -209,5 +200,4 @@ const TotalNewClientsCard = ({ data = mockIncomeData }) => {
     </div>
   );
 };
-
 
