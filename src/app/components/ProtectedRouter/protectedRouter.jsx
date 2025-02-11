@@ -1,4 +1,3 @@
-
 // import { redirect } from 'react-router';
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../context/authContext';
