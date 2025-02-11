@@ -22,7 +22,7 @@ export function CardMainStartup() {
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="file">
-                            <a href="#">
+                            <a href="/datapage">
                                 <div className="icon">
                                     <img src={dados_financeiros} alt="" />
                                     <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>
