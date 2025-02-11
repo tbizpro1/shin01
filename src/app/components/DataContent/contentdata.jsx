@@ -17,7 +17,11 @@ export function ContentData({ enterprise }) {
     console.log("aqui", enterprise) //verificar o valor de enterprise
 
     const enterprise_id = enterprise?.enterprise_id
+    console.log("mais um: ", enterprise_id)
     // const enterprise_id = enterprise.enterprise_id || "ID não disponível"
+
+
+
     return (
         <>
             <Subheader
