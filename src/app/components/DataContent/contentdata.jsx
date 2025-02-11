@@ -36,7 +36,7 @@ export function ContentData({ enterprise }) {
                         />
                     </div>
                     <div className="col-lg-8 col-md-12">
-                        <CardData activeTab={activeTab} setActiveTab={setActiveTab}/>
+                        <CardData activeTab={activeTab}  setActiveTab={setActiveTab}/>
                     </div>
                 </div>
                 <div className="d-flex flex-lg-row flex-column">

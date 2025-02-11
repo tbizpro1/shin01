@@ -9,15 +9,10 @@ import "react-circular-progressbar/dist/styles.css";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 // Dados mock para o componente
-const mockRevenueData = {
-    totalRevenue: 245124,
-    satisfactionRate: 47,
-    trendData: [3, 2, 6, 5, 9, 8, 7, 8, 4, 5, 1, 2, 9, 5, 1, 3, 5, 7, 4, 6],
-    progressValue: 66, // Valor do círculo de progresso
-};
+
 
 // Componente TotalRevenueCard
-const TotalRevenueCard = ({ data = mockRevenueData }) => {
+const TotalRevenueCard = ({ data  }) => {
 
 
     return (
