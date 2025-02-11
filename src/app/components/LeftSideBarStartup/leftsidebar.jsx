@@ -12,7 +12,6 @@ const LeftSideBar = ({enter}) => {
 
     // console.log("aaaaaaa",enter)
 
-
     const { user, isLoading, logout } = useContext(AuthContext);
 
     if (isLoading) {

@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { lucia, documentos_da_startup, eventos, telefone, sala_de_aula, agenda, beneficios, biblioteca, dados_financeiros, minhas_startups } from "../../../assets/images";
+import { Link } from "react-router-dom";
+import getEnterpriseById from "../../api/get/get-enterprise-by-id";
+import { AuthContext } from "../../context/authContext";
 
 export function CardMainStartup() {
+    const [enterpriseData, setEnterpriseData] = useState(null)
+    const {enterprise, token} = useContext(AuthContext)
+    console.log("id:", enterprise)
+    useEffect(()=>{
+        getEnterpriseById(enterprise?.enterprise_id, token).then(response => {
+            console.log(response)
+        })
+    },[])
+
+    console.log("q",enterpriseData)
+
     return (
         <div className="file_manager">
             <div className="row clearfix">
@@ -22,12 +36,29 @@ export function CardMainStartup() {
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="file">
+<<<<<<< HEAD
                             <a href="/datapage">
+=======
+
+                            <Link
+                                to={"/datapage"}
+                                key={enterprise?.enterprise_id}
+                                state={{enter: enterpriseData}}
+                                
+                            >
+
+>>>>>>> 63fec0f5045147c14a82b1a3986d41a1155b2fa0
                                 <div className="icon">
                                     <img src={dados_financeiros} alt="" />
                                     <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>
                                 </div>
-                            </a>
+                            </Link>
+                            {/* <a href="/datapage">
+                                <div className="icon">
+                                    <img src={dados_financeiros} alt="" />
+                                    <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>
+                                </div>
+                            </a> */}
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,11 @@ export function ContentData({ enterprise }) {
     console.log("aqui", enterprise) //verificar o valor de enterprise
 
     const enterprise_id = enterprise?.enterprise_id
+    console.log("mais um: ", enterprise_id)
     // const enterprise_id = enterprise.enterprise_id || "ID não disponível"
+
+
+
     return (
         <>
             <Subheader
@@ -44,7 +48,16 @@ export function ContentData({ enterprise }) {
                         </div>
                     </div>
                     <div className="col-lg-8 col-md-12">
+<<<<<<< HEAD
                         <CardData activeTab={activeTab} setActiveTab={setActiveTab} />
+=======
+                        <CardData activeTab={activeTab}  setActiveTab={setActiveTab}/>
+                    </div>
+                </div>
+                <div className="d-flex flex-lg-row flex-column">
+                    <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-4 col-md-12">
+                        <PartenrsCard enterprise_id={enterprise_id} token={token} />
+>>>>>>> 63fec0f5045147c14a82b1a3986d41a1155b2fa0
                     </div>
                 </div>
             </section>
