@@ -36,9 +36,6 @@ export function CardMainStartup() {
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="file">
-<<<<<<< HEAD
-                            <a href="/datapage">
-=======
 
                             <Link
                                 to={"/datapage"}
@@ -47,7 +44,6 @@ export function CardMainStartup() {
                                 
                             >
 
->>>>>>> 63fec0f5045147c14a82b1a3986d41a1155b2fa0
                                 <div className="icon">
                                     <img src={dados_financeiros} alt="" />
                                     <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>

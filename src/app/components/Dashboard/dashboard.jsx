@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-export function DataDashboard() {
-    return (
-        <>
-            Dashboard
-        </>
-    )
-}
-=======
 
 import React from "react";
 import TotalRevenueCard from '../TotalRevenueCard/TotalRevenueCard';
@@ -43,4 +32,3 @@ export function DataDashboard() {
     )
 }
 
->>>>>>> 63fec0f5045147c14a82b1a3986d41a1155b2fa0

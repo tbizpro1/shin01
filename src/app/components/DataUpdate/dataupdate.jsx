@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-export function DataUpdate() {
-    return (
-        <>
-            Atualização de dados
-        </>
-    )
-}
-=======
 import React, { useState } from "react";
 import TotalSizeTimeCard from "../TotalSizeTimeCard/TotalSizeTimeCard";
 import TotalNewClientsCard from "../TotalNewClientsCard/TotalNewClientsCard";
@@ -71,4 +60,3 @@ export function CardData ({ activeTab, setActiveTab }) {
   );
 };
 
->>>>>>> 63fec0f5045147c14a82b1a3986d41a1155b2fa0

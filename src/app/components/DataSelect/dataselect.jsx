@@ -1,7 +1,6 @@
 import React from "react";
 import UserSettings from "../UserSettings/usersettings";
 import { DataDashboard } from "../Dashboard/dashboard";
-import { DataUpdate } from "../DataUpdate/dataupdate";
 import { DataHistory } from "../DataHistory/datahistory";
 import UpDateSettings from "../UpdateSettings/updatesettings";
 
