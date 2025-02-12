@@ -23,8 +23,6 @@ const TotalSizeTimeCard = ({ data  }) => {
       maintainAspectRatio: false,
     };
     return (
-      <div class="col-lg-4 col-md-6">
-        <div class="card">
           <Card>
           <Card.Body style={{ padding: "0" }}>
               <div className="header header_helper">
@@ -43,8 +41,6 @@ const TotalSizeTimeCard = ({ data  }) => {
                 </div>
             </Card.Body>
           </Card>
-        </div>
-      </div>
     );
   };
 

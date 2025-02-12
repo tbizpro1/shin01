@@ -16,15 +16,13 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 // Componente TotalRevenueCard
 const TotalRevenueCard = ({ enterprise  }) => {
     const [capital, setCapital] = useState(null)
-    console.log("Card teste:", enterprise.enterprise_id)
+    console.log("Card teste:", enterprise?.enterprise_id)
     const {token} = useContext(AuthContext) 
     useEffect(()=>{
         getCaptable(token, enterprise?.enterprise_id).then(response => setCapital(response))
     },[])
 
     return (
-        <div className="col-lg-6 col-md-12">
-            <div className="card tasks_report">
                 <Card>
                     <Card.Body style={{ padding: "0" }}>
                         {/* Header */}
@@ -82,8 +80,6 @@ const TotalRevenueCard = ({ enterprise  }) => {
                         </h5>
                     </Card.Body>
                 </Card>
-            </div>
-        </div>
     );
 };
 

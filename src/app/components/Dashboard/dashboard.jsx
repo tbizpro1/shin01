@@ -20,7 +20,7 @@ export function DataDashboard({enterprise}) {
                     <TotalRevenueCard enterprise={enterprise} data={mockIncomeData}/>
                     <div class="row clearfix">
                     <div class="col-lg-12">
-                        <TotalIncomeCard  data={mockIncomeData}/>
+                        <TotalIncomeCard enterprise={enterprise}  data={mockIncomeData}/>
                         <TotalOrdersCard />
                         <TotalSizeTimeCard data={mockIncomeData}/>
                         <TotalNewClientsCard data={mockIncomeData}/>
