@@ -15,14 +15,9 @@ const Home = () => {
     const { token, userId } = useContext(AuthContext)
     console.log(token)
 
-    // useEffect(() => {
-    //     GetUser(userId, token).then(response=>setUser(response.data))
-
-    // },[])
-
     return (
         <div className="theme-purple">
-            <div className="overlay" style={{display:'none'}}></div>
+            {/* <div className="overlay" style={{display:'none'}}></div> */}
             <TopBar />
             <LeftSideBar />
             <RightSideBar />

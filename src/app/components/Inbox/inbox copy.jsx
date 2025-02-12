@@ -8,7 +8,7 @@ import { logo, socio } from "../../../assets/images";
 
 function MailList() {
     const [users, setUsers] = useState([]);
-    const {user, token, enterprise} = useContext(AuthContext)
+    const { user, token, enterprise } = useContext(AuthContext)
     const [partners, setPartners] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     console.log("teste", user)
@@ -17,11 +17,11 @@ function MailList() {
     useEffect(() => {
         // Certifique-se de que `enterprise` está disponível antes de fazer chamadas.
         if (!enterprise?.[0]?.enterprise_id || !token) return;
-    
+
         const fetchData = async () => {
             try {
                 setIsLoading(true);
-    
+
                 // Obtém os parceiros pendentes
                 const partnersResponse = await allUserEnterprisePending(enterprise[0].enterprise_id, token);
                 const responseData = Array.isArray(partnersResponse) ? partnersResponse : [];
@@ -29,10 +29,10 @@ function MailList() {
                     (item, index, self) =>
                         index === self.findIndex(t => t.user_id === item.user_id)
                 );
-    
+
                 console.log("uniquePartners", uniquePartners);
                 setPartners(uniquePartners);
-    
+
                 // Obtém todos os usuários e filtra os que já foram convidados
                 const allUsersResponse = await allUsers();
                 const filteredUsers = allUsersResponse.filter(user =>
@@ -46,44 +46,44 @@ function MailList() {
                 setIsLoading(false);
             }
         };
-    
+
         fetchData();
     }, [enterprise, token]); // Remova `partners` das dependências
-    
+
 
     return (
         <section className="content inbox">
             {
-                isLoading ?(
+                isLoading ? (
                     <div className="page-loader-wrapper">
-                    <div className="loader">
-                        <div className="m-t-30">
-                            <img
-                                className="zmdi-hc-spin rounded-circle"
-                                src={logo}
-                                width="48"
-                                height="48"
-                                alt="Compass"
-                            />
+                        <div className="loader">
+                            <div className="m-t-30">
+                                <img
+                                    className="zmdi-hc-spin rounded-circle"
+                                    src={logo}
+                                    width="48"
+                                    height="48"
+                                    alt="Compass"
+                                />
+                            </div>
+                            <p>Carregando informações ...</p>
                         </div>
-                      <p>Carregando informações ...</p>
                     </div>
-                  </div>
-                ):(
+                ) : (
                     <>
                         <div className="block-header">
                             <div className="row">
-                            <div className="col-lg-7 col-md-6 col-sm-12">
-                                <h2>Convidar Sócio</h2>
-                                <small className="text-muted">Encaminhe solicitação de ingresso em sua startup!</small>
-                            </div>
+                                <div className="col-lg-7 col-md-6 col-sm-12">
+                                    <h2>Convidar Sócio</h2>
+                                    <small className="text-muted">Encaminhe solicitação de ingresso em sua startup!</small>
+                                </div>
                             </div>
                         </div>
                         <div className="container-fluid">
                             <ul className="mail_list list-group list-unstyled">
-                            {users?.map((mail) => (
-                                <MailItem key={mail.id} mail={mail} />
-                            ))}
+                                {users?.map((mail) => (
+                                    <MailItem key={mail.id} mail={mail} />
+                                ))}
                             </ul>
                         </div>
                     </>
@@ -97,7 +97,7 @@ export default MailList;
 
 function MailItem({ mail }) {
     const [isClicked, setIsClicked] = useState(false);
-    const {user, enterprise, token} = useContext(AuthContext)
+    const { user, enterprise, token } = useContext(AuthContext)
 
 
     const handleButtonClick = useCallback((user_id) => {
@@ -134,15 +134,13 @@ function MailItem({ mail }) {
                 </div>
                 <td>
                     <button
-                        className={`btn btn-default btn-icon btn-simple btn-icon-mini btn-round ${
-                            isClicked ? "btn-success" : ""
-                        }`}
+                        className={`btn btn-default btn-icon btn-simple btn-icon-mini btn-round ${isClicked ? "btn-success" : ""
+                            }`}
                         onClick={() => handleButtonClick(mail.id)}
                     >
                         <i
-                            className={`zmdi ${
-                                isClicked ? "zmdi-check text-green" : "zmdi-check"
-                            }`}
+                            className={`zmdi ${isClicked ? "zmdi-check text-green" : "zmdi-check"
+                                }`}
                         ></i>
                     </button>
                 </td>

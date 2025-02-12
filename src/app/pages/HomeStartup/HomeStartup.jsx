@@ -12,11 +12,13 @@ export function HomeStartup() {
     const location = useLocation();
     const enter = location.state?.enter; 
 
+    //o codigo useEffect sera executado apos a renderizacao do componente
     useEffect(()=>{
-        console.log("texto")
+        console.log("useEffect executado")
         setEnterprise(enter)
     },[])
-    console.log("empre: ", enterprise)
+
+    console.log("empresa", enterprise)
     return (
         <div className="theme-purple">
             <TopBar />

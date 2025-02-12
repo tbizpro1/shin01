@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { lucia, documentos_da_startup, eventos, telefone, sala_de_aula, agenda, beneficios, biblioteca, dados_financeiros, minhas_startups } from "../../../assets/images";
+import { Link } from "react-router-dom";
+import getEnterpriseById from "../../api/get/get-enterprise-by-id";
+import { AuthContext } from "../../context/authContext";
 
-export function CardMainStartup() {
+export function CardMainStartup({enterprise}) {
+
+
+    console.log("hiii",enterprise)
+
     return (
         <div className="file_manager">
             <div className="row clearfix">
@@ -10,8 +17,10 @@ export function CardMainStartup() {
                         <div className="file">
                             <a href="#">
                                 <div className="icon">
-                                    <img src={minhas_startups} alt="" />
-                                    <p style={{color:"black"}}><strong>Onepage</strong></p>
+                                    <img src={minhas_startups} alt="" /><br />
+                                    <p style={{color:"#fca311"}}><strong>Onepage<br /></strong>
+                                    <p style={{color:'#fca311', fontSize:'12px'}}>Resumo do projeto em uma página</p></p>
+                                    
                                 </div>
                             </a>
                         </div>
@@ -20,12 +29,25 @@ export function CardMainStartup() {
                 <div className="col-sm-4">
                     <div className="card">
                         <div className="file">
-                            <a href="#">
+
+                            <Link
+                                to={"/datapage"}
+                                key={enterprise?.enterprise_id}
+                                state={{enter: enterprise}}
+                                
+                            >
+
                                 <div className="icon">
                                     <img src={dados_financeiros} alt="" />
                                     <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>
                                 </div>
-                            </a>
+                            </Link>
+                            {/* <a href="/datapage">
+                                <div className="icon">
+                                    <img src={dados_financeiros} alt="" />
+                                    <p style={{color:"black"}}><strong>Dados <br />Financeiros</strong></p>
+                                </div>
+                            </a> */}
                         </div>
                     </div>
                 </div>
@@ -59,8 +81,8 @@ export function CardMainStartup() {
                     <div className="card">
                         <div className="file">
                             <a href="https://luc-ia.vercel.app/"
-                             target="_blank"
-                             rel="noopener noreferrer">
+                                target="_blank"
+                                rel="noopener noreferrer">
                                 <div className="icon">
                                     <img src={lucia} alt="" />
                                     <p style={{color:"black"}}><strong>Peça ajuda <br />para a Luc.IA</strong></p>
