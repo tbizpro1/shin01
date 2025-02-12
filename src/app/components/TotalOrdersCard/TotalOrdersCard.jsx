@@ -40,7 +40,7 @@ const TotalOrdersCard = ({ data = mockOrdersData }) => {
                 <div style={{ padding: "0px 20px 0 20px" }}>
                     <h5 className="m-b-0">{data.totalOrders.toLocaleString()}</h5>
                     <small className="displayblock">
-                        {data.averagePercentage}% Average{" "}
+                        {data.averagePercentage}% Média{" "}
                         <i className="zmdi zmdi-trending-down" style={{ color: "#2196F3" }}></i>
                     </small>
                 </div>

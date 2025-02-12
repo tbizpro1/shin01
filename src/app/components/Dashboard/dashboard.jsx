@@ -16,7 +16,7 @@ export function DataDashboard() {
     return (
         <div className="container-fluid">
             <div class="row clearfix">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-12 d-flex">
                     <div class="card tasks_report">
                         {/* <div class="header">
                     </div> */}

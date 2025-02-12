@@ -23,18 +23,9 @@ const TotalRevenueCard = ({ data }) => {
                     <h2>
                         <strong>Capital</strong>
                     </h2>
-                    <ul className="header-dropdown">
-                        <li className="dropdown">
-                            <ul className="dropdown-menu dropdown-menu-right slideUp">
-                                <li><a href="javascript:void(0);">2017 Year</a></li>
-                                <li><a href="javascript:void(0);">2016 Year</a></li>
-                                <li><a href="javascript:void(0);">2015 Year</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
                 {/* Body */}
-                <div className="body text-center" style={{ padding: "0px" }}>
+                <div className="body text-center" style={{ padding: "0px", height:'100%' }}>
                     {/* Círculo de Progresso */}
                     <div style={{ width: "140px", height: "100%", margin: "0 auto" }}>
                         <CircularProgressbar
@@ -57,6 +48,11 @@ const TotalRevenueCard = ({ data }) => {
                     {/* <div style={{ height: "45px", marginTop: "20px" }}>
                                 <Bar data={chartData} options={chartOptions} />
                             </div> */}
+                            <div className="header">
+                                <h2>
+                                    <strong>Necessidade de Capital</strong>
+                                </h2>
+                            </div>
                 </div>
             </Card.Body>
         </Card>

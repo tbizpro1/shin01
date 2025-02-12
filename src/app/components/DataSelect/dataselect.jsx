@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import UserSettings from "../UserSettings/usersettings";
 import { DataDashboard } from "../Dashboard/dashboard";
 import { DataHistory } from "../DataHistory/datahistory";
 import UpDateSettings from "../UpdateSettings/updatesettings";
 
 
-export function CardData ({ activeTab, setActiveTab }) {
+export function CardData () {
+  // inicializa o estado com 'update' para que o botao "Atualizar Dados" comece ativo
+  const [activeTab, setActiveTab] = useState('update')
   const tabs = [
     { id: 'update', label: 'Atualizar Dados' },
     { id: 'history', label: 'Ver Histórico' },

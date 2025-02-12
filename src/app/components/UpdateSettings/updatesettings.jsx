@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
-export default function UpDateSettings({ }) {
+export default function UpDateSettings({ setActiveTab }) {
     return (
         <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
             <div className="card card_helper">
