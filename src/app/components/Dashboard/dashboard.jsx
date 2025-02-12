@@ -14,17 +14,59 @@ const mockIncomeData = {
 
 export function DataDashboard() {
     return (
-        <div>
-            <div className="tab-content">
-                <div class="container-fluid"> 
-                    <TotalRevenueCard data={mockIncomeData}/>
-                    <div class="row clearfix">
-                    <div class="col-lg-12">
-                        <TotalIncomeCard  data={mockIncomeData}/>
-                        <TotalOrdersCard />
-                        <TotalSizeTimeCard data={mockIncomeData}/>
-                        <TotalNewClientsCard data={mockIncomeData}/>
+        <div className="container-fluid">
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12">
+                    <div class="card tasks_report">
+                        {/* <div class="header">
+                    </div> */}
+                        <TotalRevenueCard data={mockIncomeData} />
                     </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <TotalIncomeCard data={mockIncomeData} />
+                    </div>
+                    <div class="card">
+                        <TotalOrdersCard />
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <TotalSizeTimeCard data={mockIncomeData} />
+                    </div>
+                    <div class="card">
+                        <TotalNewClientsCard data={mockIncomeData} />
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Receita</strong> Anual</h2>
+                        </div>
+                        <div class="body">
+                            <div class="row text-center">
+                                <div class="col-sm-3 col-6">
+                                    <h4 class="m-t-0">$ 106 <i class="zmdi zmdi-trending-up col-green"></i></h4>
+                                    <p class="text-muted"> Today's</p>
+                                </div>
+                                <div class="col-sm-3 col-6">
+                                    <h4 class="m-t-0">$ 907 <i class="zmdi zmdi-trending-down col-red"></i></h4>
+                                    <p class="text-muted">This Week's</p>
+                                </div>
+                                <div class="col-sm-3 col-6">
+                                    <h4 class="m-t-0">$ 4210 <i class="zmdi zmdi-trending-up col-green"></i></h4>
+                                    <p class="text-muted">This Month's</p>
+                                </div>
+                                <div class="col-sm-3 col-6">
+                                    <h4 class="m-t-0">$ 67,000 <i class="zmdi zmdi-trending-up col-green"></i></h4>
+                                    <p class="text-muted">This Year's</p>
+                                </div>
+                            </div>
+                            <div id="area_chart" class="graph"></div>
+                        </div>
                     </div>
                 </div>
             </div>
