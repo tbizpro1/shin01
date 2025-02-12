@@ -16,10 +16,9 @@ export function DataDashboard({enterprise}) {
     return (
         <div className="container-fluid">
             <div class="row clearfix">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-12 d-flex">
                     <div class="card tasks_report">
-                       
-                       <TotalRevenueCard enterprise={enterprise} data={mockIncomeData}/>
+                        <TotalRevenueCard enterprise={enterprise} data={mockIncomeData}/>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
