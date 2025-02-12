@@ -46,7 +46,7 @@ export function ContentData({ enterprise }) {
                         </div>
                     </div>
                     <div className="col-lg-8 col-md-12">
-                        <CardData activeTab={activeTab} setActiveTab={setActiveTab} />
+                        <CardData activeTab={activeTab} setActiveTab={setActiveTab} enterprise={enterprise}/>
                     </div>
                 </div>
             </section>

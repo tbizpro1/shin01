@@ -29,15 +29,16 @@ const TotalOrdersCard = ({ data = mockOrdersData }) => {
         maintainAspectRatio: false,
     };  
 
-    return (
+
+    return (  
         <Card>
             <Card.Body style={{ padding: "0" }}>
                 <div className="header header_helper">
-                    <h2 style={{ fontSize: "1rem", color: "#2196F3", padding: "0" }}>
-                        <strong>Total de clientes</strong>
+                    <h2 style={{ fontSize: "1rem", color: "#2196F3", padding: "0"  }}>
+                        <strong>Quatindade de Sócios</strong>
                     </h2>
                 </div>
-                <div style={{ padding: "0px 20px 0 20px" }}>
+                <div style={{padding: "0px 20px 0 20px"}}>
                     <h5 className="m-b-0">{data.totalOrders.toLocaleString()}</h5>
                     <small className="displayblock">
                         {data.averagePercentage}% Average{" "}

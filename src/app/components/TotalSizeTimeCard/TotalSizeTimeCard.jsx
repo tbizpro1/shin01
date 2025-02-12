@@ -23,8 +23,7 @@ const TotalSizeTimeCard = ({ data  }) => {
       maintainAspectRatio: false,
     };
     return (
-      
-          <Card>
+        <Card>
           <Card.Body style={{ padding: "0" }}>
               <div className="header header_helper">
                     <h2 style={{ fontSize: "1rem", color: "#2196F3", padding: "0"  }}>

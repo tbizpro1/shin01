@@ -4,17 +4,10 @@ import { Link } from "react-router-dom";
 import getEnterpriseById from "../../api/get/get-enterprise-by-id";
 import { AuthContext } from "../../context/authContext";
 
-export function CardMainStartup() {
-    const [enterpriseData, setEnterpriseData] = useState(null)
-    const {enterprise, token} = useContext(AuthContext)
-    console.log("id:", enterprise)
-    useEffect(()=>{
-        getEnterpriseById(enterprise?.enterprise_id, token).then(response => {
-            console.log(response)
-        })
-    },[])
+export function CardMainStartup({enterprise}) {
 
-    console.log("q",enterpriseData)
+
+    console.log("hiii",enterprise)
 
     return (
         <div className="file_manager">
@@ -40,7 +33,7 @@ export function CardMainStartup() {
                             <Link
                                 to={"/datapage"}
                                 key={enterprise?.enterprise_id}
-                                state={{enter: enterpriseData}}
+                                state={{enter: enterprise}}
                                 
                             >
 
@@ -88,8 +81,8 @@ export function CardMainStartup() {
                     <div className="card">
                         <div className="file">
                             <a href="https://luc-ia.vercel.app/"
-                             target="_blank"
-                             rel="noopener noreferrer">
+                                target="_blank"
+                                rel="noopener noreferrer">
                                 <div className="icon">
                                     <img src={lucia} alt="" />
                                     <p style={{color:"black"}}><strong>Peça ajuda <br />para a Luc.IA</strong></p>
