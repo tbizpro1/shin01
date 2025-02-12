@@ -7,6 +7,7 @@ import "./assets/css/color_skins.css"
 import './assets/css/blog.css'
 import './assets/css/timeline.css'
 import "./assets/css/inbox.css"
+import "./assets/plugins/morrisjs/morris.min.css"
 // pages
 import { StartupProfile } from './app/pages/PerfilStartup/perfilstartup';
 import InvitePage from './app/pages/Invite/invite';
