@@ -12,12 +12,12 @@ const mockIncomeData = {
     trendData: [1, 2, 3, 6, 5, 26, 7, 1, 9, 10, 11, 22],
 };
 
-export function DataDashboard() {
+export function DataDashboard({enterprise}) {
     return (
         <div>
             <div className="tab-content">
                 <div class="container-fluid"> 
-                    <TotalRevenueCard data={mockIncomeData}/>
+                    <TotalRevenueCard enterprise={enterprise} data={mockIncomeData}/>
                     <div class="row clearfix">
                     <div class="col-lg-12">
                         <TotalIncomeCard  data={mockIncomeData}/>

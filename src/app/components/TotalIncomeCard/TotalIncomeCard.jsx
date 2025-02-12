@@ -33,7 +33,7 @@ const TotalIncomeCard = ({ data }) => {
   };
 
   return (
-    <div class="col-lg-4 col-md-6">
+    <div class="col-lg-6 col-md-6">
       <div class="card">
         <Card>
         <Card.Body style={{ padding: "0" }}>

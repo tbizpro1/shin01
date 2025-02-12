@@ -106,20 +106,6 @@ const SocialLinks = () => (
   </ul>
 );
 
-// const Stats = () => (
-//   <div className="row">
-//     <StatItem count="0" label="Following" />
-//     <StatItem count="0" label="Followers" />
-//     <StatItem count="0" label="Post" />
-//   </div>
-// );
-
-// const StatItem = ({ count, label }) => (
-//   <div className="col-4">
-//     <h5>{count}</h5>
-//     <small>{label}</small>
-//   </div>
-// );
 
 const AboutCard = () => {
   const [activeTab, setActiveTab] = useState('about');
@@ -133,12 +119,6 @@ const AboutCard = () => {
           activeTab={activeTab}
           onClick={() => setActiveTab('about')}
         />
-        {/* <TabItem
-          id="friends"
-          label="Partners"
-          activeTab={activeTab}
-          onClick={() => setActiveTab('friends')}
-        /> */}
       </ul>
       <div className="tab-content">
         {activeTab === 'about' ? <AboutContent /> : <FriendsContent />}
@@ -166,7 +146,6 @@ const AboutContent = () => {
       <InfoItem label="Estate" value={user?.state} />
       <InfoItem label="Email address" value={user?.email} />
       <InfoItem label="Phone" value={user?.whatsapp_number} />
-      {/* <SkillsList /> */}
     </div>
   );
 }

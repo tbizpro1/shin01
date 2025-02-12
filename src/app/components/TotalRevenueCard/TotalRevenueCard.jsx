@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { getCaptable } from "../../api/get/get-captable";
+import { AuthContext } from "../../context/authContext";
 
 // Registrar os componentes necessários para o gráfico de barras
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -12,8 +14,13 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 
 // Componente TotalRevenueCard
-const TotalRevenueCard = ({ data  }) => {
-
+const TotalRevenueCard = ({ enterprise  }) => {
+    const [capital, setCapital] = useState(null)
+    console.log("Card teste:", enterprise.enterprise_id)
+    const {token} = useContext(AuthContext) 
+    useEffect(()=>{
+        getCaptable(token, enterprise?.enterprise_id).then(response => setCapital(response))
+    },[])
 
     return (
         <div className="col-lg-6 col-md-12">
@@ -48,9 +55,9 @@ const TotalRevenueCard = ({ data  }) => {
                                 {/* Círculo de Progresso */}
                             <div style={{ width: "140px", height: "100%", margin: "0 auto" }}>
                                 <CircularProgressbar
-                                    value={data.progressValue}
+                                    value={capital?.progress_percentage}
                                     maxValue={100}
-                                    text={`${data.progressValue}`}
+                                    text={capital?.progress_percentage}
                                     styles={buildStyles({
                                         pathColor: "#00ced1", // Cor da barra de progresso
                                         textColor: "#00ced1", // Cor do texto
@@ -59,15 +66,20 @@ const TotalRevenueCard = ({ data  }) => {
                                     })}
                                 />
                             </div>
-                            <h6 className="m-t-30">Satisfaction Rate</h6>
-                            <small className="displayblock">
-                                {data.satisfactionRate}% Average{" "}
-                                <i className="zmdi zmdi-trending-up" style={{ color: "#00ced1" }}></i>
-                            </small>
-                            {/* <div style={{ height: "45px", marginTop: "20px" }}>
-                                <Bar data={chartData} options={chartOptions} />
-                            </div> */}
                         </div>
+                        <div className="header ">
+                            <h2 style={{ fontSize: ".9rem", color: "#00ced1", padding: "1px" }}>
+                                <strong>Necessidade de capital</strong>
+                            </h2>
+                        </div>
+                        <h5 style={{color: "#00ced1", paddingLeft: "1.5rem"}}>
+                            { 
+                                new Intl.NumberFormat('pt-BR', {
+                                    style: 'currency',
+                                    currency: 'BRL'
+                                }).format(capital?.capital_needed)
+                            }
+                        </h5>
                     </Card.Body>
                 </Card>
             </div>
