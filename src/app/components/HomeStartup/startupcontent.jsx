@@ -37,7 +37,7 @@ export function ContentStartupHome({ enterprise }) {
                     </div>
                     {/* Segundo elemento: ocupa 66,66% da largura em telas grandes */}
                     <div className="flex-lg-grow-0 flex-lg-shrink-0 col-lg-8 col-md-12">
-                        <CardMainStartup />
+                        <CardMainStartup enterprise={enterprise} />
                     </div>
     
                 </div>

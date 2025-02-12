@@ -5,9 +5,7 @@ import { DataHistory } from "../DataHistory/datahistory";
 import UpDateSettings from "../UpdateSettings/updatesettings";
 
 
-export function CardData () {
-  // inicializa o estado com 'update' para que o botao "Atualizar Dados" comece ativo
-  const [activeTab, setActiveTab] = useState('update')
+export function CardData ({ activeTab, setActiveTab, enterprise }) {
   const tabs = [
     { id: 'update', label: 'Atualizar Dados' },
     { id: 'history', label: 'Ver Histórico' },
@@ -47,7 +45,7 @@ export function CardData () {
         {activeTab === 'history' && <DataHistory />}
       </div>
       <div className="tab-content">
-        {activeTab === 'dashboards' && <DataDashboard />}
+        {activeTab === 'dashboards' && <DataDashboard enterprise={enterprise} />}
       </div>
     </div>
   );

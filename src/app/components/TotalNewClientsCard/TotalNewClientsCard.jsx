@@ -26,7 +26,6 @@ const TotalNewClientsCard = ({ data  }) => {
         };
     
         return (
-        
             <Card>
             <Card.Body style={{ padding: "0" }}>
                 <div className="header header_helper">
