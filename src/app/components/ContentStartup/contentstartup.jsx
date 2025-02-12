@@ -13,6 +13,7 @@ import updateDetailsStartup from "../../api/put/update-details-startup";
 import CardDetails from "../CardDetails/CardDetails";
 
 import { ProfileCArdImageStartup } from "../ProfileCardImageStartup/ProfileCardImageStartup";
+import profileImageStartup from "../../api/post/profile-image-startup";
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";

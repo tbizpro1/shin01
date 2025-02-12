@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export function DataHistory() {
@@ -51,4 +50,3 @@ export function DataHistory() {
         </div>
     )
 }
-
