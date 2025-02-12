@@ -12,66 +12,54 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 
 // Componente TotalRevenueCard
-const TotalRevenueCard = ({ data  }) => {
+const TotalRevenueCard = ({ data }) => {
 
 
     return (
-        <div className="col-lg-6 col-md-12">
-            <div className="card tasks_report">
-                <Card>
-                    <Card.Body style={{ padding: "0" }}>
-                        {/* Header */}
-                        <div className="header ">
-                            <h2 style={{ fontSize: "1rem", color: "#00ced1", padding: "10px" }}>
-                                <strong>Capital</strong>
-                            </h2>
-                            <ul className="header-dropdown">
-                                <li className="dropdown">
-                                    <a href="javascript:void(0);" className="dropdown-toggle" role="button">
-                                        <i className="zmdi zmdi-more"></i>
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-right slideUp">
-                                        <li><a href="javascript:void(0);">2017 Year</a></li>
-                                        <li><a href="javascript:void(0);">2016 Year</a></li>
-                                        <li><a href="javascript:void(0);">2015 Year</a></li>
-                                    </ul>
-                                </li>
-                                <li className="remove">
-                                    <a role="button" className="boxs-close">
-                                        <i className="zmdi zmdi-close"></i>
-                                    </a>
-                                </li>
+        <Card>
+            <Card.Body style={{ padding: "0" }}>
+                {/* Header */}
+                <div className="header ">
+                    <h2>
+                        <strong>Capital</strong>
+                    </h2>
+                    <ul className="header-dropdown">
+                        <li className="dropdown">
+                            <ul className="dropdown-menu dropdown-menu-right slideUp">
+                                <li><a href="javascript:void(0);">2017 Year</a></li>
+                                <li><a href="javascript:void(0);">2016 Year</a></li>
+                                <li><a href="javascript:void(0);">2015 Year</a></li>
                             </ul>
-                        </div>
-                        {/* Body */}
-                        <div className="body text-center" style={{ padding: "0px" }}>
-                                {/* Círculo de Progresso */}
-                            <div style={{ width: "140px", height: "100%", margin: "0 auto" }}>
-                                <CircularProgressbar
-                                    value={data.progressValue}
-                                    maxValue={100}
-                                    text={`${data.progressValue}`}
-                                    styles={buildStyles({
-                                        pathColor: "#00ced1", // Cor da barra de progresso
-                                        textColor: "#00ced1", // Cor do texto
-                                        trailColor: "#d6d6d6", // Cor do fundo
-                                        textSize: "24px", // Tamanho do texto
-                                    })}
-                                />
-                            </div>
-                            <h6 className="m-t-30">Satisfaction Rate</h6>
-                            <small className="displayblock">
-                                {data.satisfactionRate}% Average{" "}
-                                <i className="zmdi zmdi-trending-up" style={{ color: "#00ced1" }}></i>
-                            </small>
-                            {/* <div style={{ height: "45px", marginTop: "20px" }}>
+                        </li>
+                    </ul>
+                </div>
+                {/* Body */}
+                <div className="body text-center" style={{ padding: "0px" }}>
+                    {/* Círculo de Progresso */}
+                    <div style={{ width: "140px", height: "100%", margin: "0 auto" }}>
+                        <CircularProgressbar
+                            value={data.progressValue}
+                            maxValue={100}
+                            text={`${data.progressValue}`}
+                            styles={buildStyles({
+                                pathColor: "#00ced1", // Cor da barra de progresso
+                                textColor: "#00ced1", // Cor do texto
+                                trailColor: "#d6d6d6", // Cor do fundo
+                                textSize: "24px", // Tamanho do texto
+                            })}
+                        />
+                    </div>
+                    <h6 className="m-t-30">Taxa de satisfação</h6>
+                    <small className="displayblock">
+                        {data.satisfactionRate}% Média{" "}
+                        <i className="zmdi zmdi-trending-up" style={{ color: "#00ced1" }}></i>
+                    </small>
+                    {/* <div style={{ height: "45px", marginTop: "20px" }}>
                                 <Bar data={chartData} options={chartOptions} />
                             </div> */}
-                        </div>
-                    </Card.Body>
-                </Card>
-            </div>
-        </div>
+                </div>
+            </Card.Body>
+        </Card>
     );
 };
 

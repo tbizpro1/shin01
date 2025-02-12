@@ -33,8 +33,6 @@ const TotalIncomeCard = ({ data }) => {
   };
 
   return (
-    <div class="col-lg-4 col-md-6">
-      <div class="card">
         <Card>
         <Card.Body style={{ padding: "0" }}>
             <div className="header header_helper">
@@ -53,8 +51,6 @@ const TotalIncomeCard = ({ data }) => {
               </div>
           </Card.Body>
         </Card>
-      </div>
-    </div>
   );
 };
 export default TotalIncomeCard;
