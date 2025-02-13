@@ -7,6 +7,7 @@ import { PartenrsCard } from "../Partnerscard/Partnerscard";
 import { DataStartup } from "../DataStartup/datastartup";
 import { CardData } from "../DataSelect/dataselect";
 import UserSettings from "../UserSettings/usersettings";
+import { PartnerItems } from "../PartnerItems/PartnerItems";
 
 export function ContentData({ enterprise }) {
     // const[enterpriseDetail, setEnterpriseDetail] = useState()
@@ -33,21 +34,29 @@ export function ContentData({ enterprise }) {
                 {/* wrapper para posicionar os componentes lado a lado */}
                 <div className="row">
                     {/* Primeiro elemento: ocupa 33,33% da largura em telas grandes */}
-                    <div className="col-lg-4 col-md-12 mb-3 mb-lg-0">
-                        <div className="d-flex flex-column">
-                            <div className="mb-3">
+                    <div className="col-lg-12 col-md-12 mb-3 mb-lg-0">
+                        <div className="d-flex">
+                            <div className="mb-3 col-lg-6">
                                 <Profilecard
                                     enterprise={enterprise || {}}
                                     enterprise_id={enterprise_id}
                                     user={user}
                                 />
                             </div>
-                            <PartenrsCard enterprise_id={enterprise_id} token={token} />
+                            <div className="col-lg-6">
+                                <PartnerItems enterprise_id={enterprise_id} token={token} />
+                                {/* <ul className="list-unstyled team-info m-b-0">
+                                                    {
+                                                        parters.map((partner) => <PartnerItems token={token} id_partner={partner.user_id} src={partner?.profile_picture}/>)
+                                                    }
+                                                </ul> */}
+                            </div>
                         </div>
                     </div>
-                    <div className="col-lg-8 col-md-12">
-                        <CardData activeTab={activeTab} setActiveTab={setActiveTab} enterprise={enterprise}/>
-                    </div>
+
+                </div>
+                <div className="col-lg-12 col-md-12">
+                    <CardData activeTab={activeTab} setActiveTab={setActiveTab} enterprise={enterprise} />
                 </div>
             </section>
         </>
