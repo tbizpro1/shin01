@@ -3,7 +3,8 @@ import { addMetricsCompany } from "../../api/post/add-metrics-company"
 import { useContext } from "react"
 import { AuthContext } from "../../context/authContext"
 
-export default function UpDateSettings({ enterprise }) {
+
+export default function UpDateSettings({setActiveTab, enterprise }) {
     const {handleSubmit, register} = useForm()
     const {token} =  useContext(AuthContext)
     const onSubmit = (data) => {
@@ -14,6 +15,7 @@ export default function UpDateSettings({ enterprise }) {
         ) 
     }
     // faltantes: capital, quatidade de sócios, porcetagem de sócios
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} role="tabpanel" className="tab-pane blog-page active" id="usersettings">
             <div className="card card_helper">

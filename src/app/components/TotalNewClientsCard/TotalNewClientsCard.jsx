@@ -13,7 +13,7 @@ const TotalNewClientsCard = ({ data  }) => {
             label: "Income Trend",
             data: data.trendData,
             borderColor: "rgb(63, 81, 181, 0.7)",
-            backgroundColor: "rgba(221,94,137, 0.2)",
+            backgroundColor: "rgba(99, 98, 98, 0.4)",
             tension: 0.4,
             },
         ],
@@ -36,7 +36,7 @@ const TotalNewClientsCard = ({ data  }) => {
                     <div style={{padding: "0px 20px 0 20px"}}>
                     <h5 className="m-b-0">{data.totalIncome.toLocaleString()}</h5>
                     <small className="displayblock">
-                        {data.averagePercentage}% Average <i className="zmdi zmdi-trending-up"></i>
+                        {data.averagePercentage}% Média <i className="zmdi zmdi-trending-up"></i>
                     </small>
                     </div>
                     <div style={{ height: "100px" }}> {/* Limita a altura do gráfico */}

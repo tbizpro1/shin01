@@ -47,7 +47,7 @@ const TotalRevenueCard = ({ enterprise  }) => {
                     <div style={{paddingTop: '5rem'}}>
                         <div className="header ">
                             <h2 style={{ fontSize: ".9rem", color: "#00ced1", padding: "1px" }}>
-                                <strong>Necessidade de capital</strong>
+                                <strong>Receita Total</strong>
                             </h2>
                         </div>
                         <h5 style={{color: "#00ced1", paddingLeft: "1.5rem"}}>

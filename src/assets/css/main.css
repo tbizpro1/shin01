@@ -3520,6 +3520,21 @@ body {
     /* background: linear-gradient(45deg, #49cdd0, #00bcd4) */
     background-color: #00bcd4;
 }
+.custom-button-clicked {
+    /* display: flex; */
+    color: #000;
+    
+    /* margin: 0;
+    margin-right: 5px; */
+    /* background-color: rgba(0, 0, 0, 0); */
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 30px;
+    font-size: 14px;
+    padding: 11px 23px;
+    line-height: 1.5;
+    /* background: linear-gradient(45deg, #49cdd0, #00bcd4) */
+    background-color: #fff;
+}
 
 .custom-button:hover {
     background-color: #fff;
