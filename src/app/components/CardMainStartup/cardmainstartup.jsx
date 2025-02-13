@@ -18,7 +18,7 @@ export function CardMainStartup({enterprise}) {
                             <a href="#">
                                 <div className="icon">
                                     <img src={minhas_startups} alt="" /><br />
-                                    <p style={{color:"#fca311"}}><strong>Onepage<br /></strong>
+                                    <p style={{color:"#fca311"}}><strong>One-Pager<br /></strong>
                                     <p style={{color:'#fca311', fontSize:'12px'}}>Resumo do projeto em uma página</p></p>
                                     
                                 </div>
