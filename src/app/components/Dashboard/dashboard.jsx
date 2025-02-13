@@ -5,6 +5,8 @@ import TotalIncomeCard from '../TotalIncomeCard/TotalIncomeCard';
 import TotalOrdersCard from "../TotalOrdersCard/TotalOrdersCard";
 import TotalSizeTimeCard from '../TotalSizeTimeCard/TotalSizeTimeCard';
 import TotalNewClientsCard from '../TotalNewClientsCard/TotalNewClientsCard';
+import EstateReport from "../AnnualRevanue/AnnualRevanue";
+import EstateAnnualReport from "../AnnualRevanue/AnnualRevanue";
 
 const mockIncomeData = {
     totalIncome: 4,
@@ -13,6 +15,15 @@ const mockIncomeData = {
 };
 
 export function DataDashboard({enterprise}) {
+    const reportData = {
+        labels: ["2022", "2023", "2024", "2025"],
+        receita: [1000, 0, 3000, 2500, 3000],
+        lucro: [800, 1200, 1800, 2200],
+        faturamento: [0, 100, 600, 1800, 2000],
+        salesReport: 13.500,
+        annualRevenue: 4.600,
+        totalProfit: 4210,
+    };
     return (
         <div className="container-fluid">
             <div class="row clearfix">
@@ -23,51 +34,22 @@ export function DataDashboard({enterprise}) {
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
-                        <TotalIncomeCard enterprise={enterprise}  data={mockIncomeData}/>
+                        <TotalSizeTimeCard data={mockIncomeData} />
                     </div>
                     <div class="card">
-                        <TotalOrdersCard />
+                        <TotalIncomeCard enterprise={enterprise}  data={mockIncomeData}/>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
-                        <TotalSizeTimeCard data={mockIncomeData} />
+                        <TotalOrdersCard />
                     </div>
                     <div class="card">
                         <TotalNewClientsCard data={mockIncomeData} />
                     </div>
                 </div>
             </div>
-            <div class="row clearfix">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2><strong>Receita</strong> Anual</h2>
-                        </div>
-                        <div class="body">
-                            <div class="row text-center">
-                                <div class="col-sm-3 col-6">
-                                    <h4 class="m-t-0">$ 106 <i class="zmdi zmdi-trending-up col-green"></i></h4>
-                                    <p class="text-muted"> Today's</p>
-                                </div>
-                                <div class="col-sm-3 col-6">
-                                    <h4 class="m-t-0">$ 907 <i class="zmdi zmdi-trending-down col-red"></i></h4>
-                                    <p class="text-muted">This Week's</p>
-                                </div>
-                                <div class="col-sm-3 col-6">
-                                    <h4 class="m-t-0">$ 4210 <i class="zmdi zmdi-trending-up col-green"></i></h4>
-                                    <p class="text-muted">This Month's</p>
-                                </div>
-                                <div class="col-sm-3 col-6">
-                                    <h4 class="m-t-0">$ 67,000 <i class="zmdi zmdi-trending-up col-green"></i></h4>
-                                    <p class="text-muted">This Year's</p>
-                                </div>
-                            </div>
-                            <div id="area_chart" class="graph"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <EstateAnnualReport data={reportData} />
         </div>
     )
 }
