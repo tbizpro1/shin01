@@ -96,7 +96,10 @@ const EstateAnnualReport = ({ data }) => {
                                 <i class="zmdi zmdi-money-box zmdi-hc-4x"></i>
                                 <div className=" m-l-20">
                                     <h4 className="m-t-0">
-                                    $ {data.salesReport}{" "}
+                                    R$ { new Intl.NumberFormat('pt-BR', {
+                                    style: 'currency',
+                                    currency: 'BRL'
+                                }).format(data.salesReport)}{" "}
                                     <i className="zmdi zmdi-trending-up col-green"></i>
                                     </h4>
                                     <p className="text-muted">Receita</p>
@@ -106,7 +109,10 @@ const EstateAnnualReport = ({ data }) => {
                                 <HandCoins size={50}/>
                                 <div className=" m-l-20">
                                     <h4 className="m-t-0">
-                                    $ {data.annualRevenue}{" "}
+                                    R$ { new Intl.NumberFormat('pt-BR', {
+                                        style: 'currency',
+                                        currency: 'BRL'
+                                    }).format(data.annualRevenue)}{" "}
                                     <i className="zmdi zmdi-trending-down col-red"></i>
                                     </h4>
                                     <p className="text-muted">Lucro</p>
@@ -116,7 +122,10 @@ const EstateAnnualReport = ({ data }) => {
                                 <ArrowUpNarrowWide size={50}/>
                                 <div className=" m-l-20">
                                     <h4 className="m-t-0">
-                                    $ {data.totalProfit}{" "}
+                                    R$ { new Intl.NumberFormat('pt-BR', {
+                                        style: 'currency',
+                                        currency: 'BRL'
+                                    }).format(data.totalProfit)}{" "}
                                     <i className="zmdi zmdi-trending-up col-green"></i>
                                     </h4>
                                     <p className="text-muted">Faturamento</p>
@@ -124,7 +133,7 @@ const EstateAnnualReport = ({ data }) => {
                             </div>
                         </div>
                         <div id="area_chart" className="graph">
-                            <Line ref={chartRef} data={chartData} options={options} />
+                            <Line ref={chartRef} data={chartData} options={options}/>
                         </div>
                     </div>
                 </div>
