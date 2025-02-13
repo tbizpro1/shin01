@@ -96,7 +96,7 @@ const EstateAnnualReport = ({ data }) => {
                                 <i class="zmdi zmdi-money-box zmdi-hc-4x"></i>
                                 <div className=" m-l-20">
                                     <h4 className="m-t-0">
-                                    R$ { new Intl.NumberFormat('pt-BR', {
+                                    { new Intl.NumberFormat('pt-BR', {
                                     style: 'currency',
                                     currency: 'BRL'
                                 }).format(data.salesReport)}{" "}
@@ -109,7 +109,7 @@ const EstateAnnualReport = ({ data }) => {
                                 <HandCoins size={50}/>
                                 <div className=" m-l-20">
                                     <h4 className="m-t-0">
-                                    R$ { new Intl.NumberFormat('pt-BR', {
+                                    { new Intl.NumberFormat('pt-BR', {
                                         style: 'currency',
                                         currency: 'BRL'
                                     }).format(data.annualRevenue)}{" "}
@@ -122,7 +122,7 @@ const EstateAnnualReport = ({ data }) => {
                                 <ArrowUpNarrowWide size={50}/>
                                 <div className=" m-l-20">
                                     <h4 className="m-t-0">
-                                    R$ { new Intl.NumberFormat('pt-BR', {
+                                    { new Intl.NumberFormat('pt-BR', {
                                         style: 'currency',
                                         currency: 'BRL'
                                     }).format(data.totalProfit)}{" "}

@@ -125,7 +125,7 @@ const TotalIncomeCard = ({ enterprise }) => {
           <Card.Body style={{ padding: "0" }}>
             <div className="header header_helper">
               <h2 style={{ fontSize: "1rem", color: "#2196F3", padding: "0" }}>
-                <strong>Renda Total</strong>
+                <strong>Tamanho do Time</strong>
               </h2>
             </div>
             <div style={{ padding: "0px 20px 0 20px" }}>
