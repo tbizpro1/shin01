@@ -5,7 +5,7 @@ import { DataHistory } from "../DataHistory/datahistory";
 import UpDateSettings from "../UpdateSettings/updatesettings";
 
 
-export function CardData ({ activeTab, setActiveTab, enterprise }) {
+export function CardData({ activeTab, setActiveTab, enterprise }) {
   const tabs = [
     { id: 'update', label: 'Atualizar Dados' },
     { id: 'history', label: 'Ver Histórico' },
@@ -38,14 +38,16 @@ export function CardData ({ activeTab, setActiveTab, enterprise }) {
           ))}
         </ul>
       </div>
-      <div className="tab-content">
-        {activeTab === 'update' && < UpDateSettings />}
-      </div>
-      <div className="tab-content">
-        {activeTab === 'history' && <DataHistory />}
-      </div>
-      <div className="tab-content">
-        {activeTab === 'dashboards' && <DataDashboard enterprise={enterprise} />}
+      <div className="tab-custom">
+        <div className="tab-content">
+          {activeTab === 'update' && < UpDateSettings />}
+        </div>
+        <div className="tab-content">
+          {activeTab === 'history' && <DataHistory />}
+        </div>
+        <div className="tab-content">
+          {activeTab === 'dashboards' && <DataDashboard enterprise={enterprise} />}
+        </div>
       </div>
     </div>
   );
