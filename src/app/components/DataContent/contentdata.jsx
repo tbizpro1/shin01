@@ -36,7 +36,7 @@ export function ContentData({ enterprise }) {
                     {/* Primeiro elemento: ocupa 33,33% da largura em telas grandes */}
                     <div className="col-lg-12 col-md-12 mb-3 mb-lg-0">
                         <div className="d-flex">
-                            <div className="mb-3 col-lg-6">
+                            <div className="mb-3 col-lg-12">
                                 <Profilecard
                                     enterprise={enterprise || {}}
                                     enterprise_id={enterprise_id}

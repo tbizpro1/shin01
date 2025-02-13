@@ -2,12 +2,21 @@ import { Camera } from "lucide-react";
 import { email, linkedin, perfilUnd, telefone } from "../../../assets/images";
 import { SocialLinks } from "../Sociallink/Sociallinks";
 import { Link } from "react-router-dom";
+import usePartners from "../../hooks/get_partners_by_id";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import { PartnerItems } from "../PartnerItems/PartnerItems";
 
 export const Profilecard = ({  enterprise, enterprise_id }) => {
+    const {token} = useContext(AuthContext)
+    const socios = usePartners(enterprise?.enterprise_id, token)
     return (
         <div className="card member-card">
             <div className="header l-cyan">
                 <h4 className="m-t-10">{enterprise?.name || 'não encontrado'}</h4>
+            </div>
+            <div>
+                
             </div>
             <div className="member-img">
                 <div className="member-card">
@@ -34,28 +43,7 @@ export const Profilecard = ({  enterprise, enterprise_id }) => {
             </div>
             <div className="body">
                 <div>
-                    <ul className="social-links list-unstyled align-items-center">
-                        <li className='mx-3'>
-                            <a href="" title="mail">
-                                {/* <Mail size={28} /> */}
-                                <img src={email} alt="" style={{ width: '32px', height: '32px' }} />
-                            </a>
-                        </li>
-                        <li className='mx-3'>
-                            <a href="" title="phone">
-                                {/* <Phone size={28} /> */}
-                                <img src={telefone} alt="" style={{ width: '32px', height: '32px' }} />
-                            </a>
-                        </li>
-                        <li className='mx-3'>
-                            <a href="" title="linkedin">
-                                {/* <Linkedin size={28} /> */}
-                                <img src={linkedin} alt="" style={{ width: '32px', height: '32px' }} />
-                            </a>
-                        </li>
-                    </ul>
                     <div style={{ padding: '4px' }}>
-
                         <Link 
                             to={"/startup"}
                             key={enterprise_id} 
@@ -67,6 +55,17 @@ export const Profilecard = ({  enterprise, enterprise_id }) => {
                         </Link>
                     </div>
                 </div>
+            </div>
+            <div className="d-flex justify-content-center" style={{paddingBottom: "28px"}}>
+                {
+                    socios.map(
+                        socio => ( 
+                            <ul className="list-unstyled team-info m-b-0">
+                                <PartnerItems token={token} id_partner={socio.user_id} />
+                            </ul>
+                        )
+                    )
+                }
             </div>
         </div>
     );
