@@ -1,8 +1,21 @@
-import React, { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form"
+import { addMetricsCompany } from "../../api/post/add-metrics-company"
+import { useContext } from "react"
+import { AuthContext } from "../../context/authContext"
 
-export default function UpDateSettings({ }) {
+export default function UpDateSettings({ enterprise }) {
+    const {handleSubmit, register} = useForm()
+    const {token} =  useContext(AuthContext)
+    const onSubmit = (data) => {
+        addMetricsCompany(data, enterprise.enterprise_id, token).then(
+            response => console.log(response)
+        ).catch(
+            error => console.error("ocorreu um erro ao registrar métrica", error)
+        ) 
+    }
+    // faltantes: capital, quatidade de sócios, porcetagem de sócios
     return (
-        <div role="tabpanel" className="tab-pane blog-page active" id="usersettings">
+        <form onSubmit={handleSubmit(onSubmit)} role="tabpanel" className="tab-pane blog-page active" id="usersettings">
             <div className="card card_helper">
                 <div className="row clearfix">
                     <div className="w-100 col-md-12">
@@ -14,7 +27,7 @@ export default function UpDateSettings({ }) {
                                 </div>
                                 <div className="col-12">
                                     <select
-                                        // {...register("invested")}
+                                        {...register("investment_round_open")}
                                         id="invested"
                                         className="form-control select_styled"
                                         defaultValue=""
@@ -33,7 +46,7 @@ export default function UpDateSettings({ }) {
                                 </div>
                                 <div className="col-12">
                                     <select
-                                        // {...register("discovered_startup")}
+                                        {...register("capital_needed")}
                                         id="discovered_startup"
                                         className="form-control select_styled"
                                         defaultValue=""
@@ -83,7 +96,7 @@ export default function UpDateSettings({ }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("team_size")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
@@ -97,7 +110,7 @@ export default function UpDateSettings({ }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("total_clients")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
@@ -111,7 +124,7 @@ export default function UpDateSettings({ }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("new_clients")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
@@ -139,7 +152,7 @@ export default function UpDateSettings({ }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("revenue_period")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
@@ -153,7 +166,7 @@ export default function UpDateSettings({ }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("valuation")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
@@ -175,6 +188,6 @@ export default function UpDateSettings({ }) {
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
