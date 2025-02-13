@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Profilecard = ({  enterprise, enterprise_id }) => {
     return (
-        <div className="card member-card">
+        <div className="card member-card d-flex">
             <div className="header l-cyan">
                 <h4 className="m-t-10">{enterprise?.name || 'não encontrado'}</h4>
             </div>
@@ -19,16 +19,6 @@ export const Profilecard = ({  enterprise, enterprise_id }) => {
                                 alt="profile-image"
                             />
                         </div>
-                        {/* <div className="cam-overlay">
-                            <Camera className="cam" color='gray' size={48} />
-                        </div>
-                        <input
-                            className="form-control input-overlay"
-                            type="file"
-                            id="formFile"
-                            {...register('profile_picture')}
-                            onChange={handleProfileImageChange}
-                        /> */}
                     </label>
                 </div>
             </div>

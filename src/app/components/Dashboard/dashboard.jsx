@@ -16,12 +16,12 @@ const mockIncomeData = {
 
 export function DataDashboard({enterprise}) {
     const reportData = {
-        labels: ["2024", "2025", "2026", "2027"],
+        labels: ["2022", "2023", "2024", "2025"],
         receita: [1000, 0, 3000, 2500, 3000],
         lucro: [800, 1200, 1800, 2200],
         faturamento: [0, 100, 600, 1800, 2000],
-        salesReport: 106,
-        annualRevenue: 907,
+        salesReport: 13.500,
+        annualRevenue: 4.600,
         totalProfit: 4210,
     };
     return (
