@@ -42,14 +42,14 @@ export function DataDashboard({enterprise}) {
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
-                        <TotalOrdersCard />
+                        <TotalOrdersCard enterprise={enterprise} />
                     </div>
                     <div class="card">
-                        <TotalNewClientsCard data={mockIncomeData} />
+                        <TotalNewClientsCard enterprise={enterprise} data={mockIncomeData} />
                     </div>
                 </div>
             </div>
-            <EstateAnnualReport data={reportData} />
+            <EstateAnnualReport enterprise={enterprise}data={reportData} />
         </div>
     )
 }

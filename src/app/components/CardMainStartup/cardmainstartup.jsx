@@ -5,7 +5,7 @@ import getEnterpriseById from "../../api/get/get-enterprise-by-id";
 import { AuthContext } from "../../context/authContext";
 
 export function CardMainStartup({enterprise}) {
-
+    const enterprise_id = enterprise?.enterprise_id
 
     console.log("hiii",enterprise)
 
@@ -16,14 +16,20 @@ export function CardMainStartup({enterprise}) {
                     <div className="card">
                         <div className="file">
                             <a href="#">
+                            <Link 
+                                to={"/startup"}
+                                key={enterprise_id} 
+                                state={{ enter: enterprise }}
+                            >  
                                 <div className="icon">
                                     <img src={minhas_startups} alt="" /><br />
                                     <p style={{color:"#fca311"}}><strong>One-Pager<br /></strong>
                                     <p style={{color:'#fca311', fontSize:'12px'}}>Resumo do projeto em uma página</p></p>
                                     
                                 </div>
-                            </a>
-                        </div>
+                            </Link>
+                        </a>
+                    </div>
                     </div>
                 </div>
                 <div className="col-sm-4">
