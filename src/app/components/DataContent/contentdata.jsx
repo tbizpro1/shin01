@@ -28,7 +28,6 @@ export function ContentData({ enterprise }) {
                 description={'Gerencie os dados da startup!'}
             />
             <section className="container-fluid">
-
                 <DataStartup />
                 {/* container flexível */}
                 {/* wrapper para posicionar os componentes lado a lado */}
@@ -36,21 +35,16 @@ export function ContentData({ enterprise }) {
                     {/* Primeiro elemento: ocupa 33,33% da largura em telas grandes */}
                     <div className="col-lg-12 col-md-12 mb-3 mb-lg-0">
                         <div className="d-flex">
-                            <div className="mb-3 col-lg-6">
+                            <div className="mb-3 col-lg-12">
                                 <Profilecard
                                     enterprise={enterprise || {}}
                                     enterprise_id={enterprise_id}
                                     user={user}
                                 />
                             </div>
-                            <div className="col-lg-6">
+                            {/* <div className="col-lg-6">
                                 <PartnerItems enterprise_id={enterprise_id} token={token} />
-                                {/* <ul className="list-unstyled team-info m-b-0">
-                                                    {
-                                                        parters.map((partner) => <PartnerItems token={token} id_partner={partner.user_id} src={partner?.profile_picture}/>)
-                                                    }
-                                                </ul> */}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
