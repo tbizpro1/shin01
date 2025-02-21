@@ -84,7 +84,7 @@ const TotalRevenueCard = ({ enterprise }) => {
                             new Intl.NumberFormat('pt-BR', {
                                 style: 'currency',
                                 currency: 'BRL'
-                            }).format(latestMetric?.capital_needed || 0)
+                            }).format(latestMetric?.revenue_period || 0)
                         }
                     </h5>
                 </div>
