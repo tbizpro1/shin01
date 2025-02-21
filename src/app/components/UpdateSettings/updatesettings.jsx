@@ -239,7 +239,7 @@ export default function UpDateSettings({ setActiveTab, enterprise }) {
                         type="submit"
                         className="btn btn-primary"
                     >
-                        <strong>SALVAR ALTERAÇÕES</strong>
+                        <strong>ENVIAR ALTERAÇÕES</strong>
                     </button>
                 </div>
             </div>
