@@ -5,7 +5,8 @@ import { getMetricsCompany } from "../../api/get/get-metrics-company";
 export function DataHistory({ enterprise }) {
   const { token } = useContext(AuthContext);
   const [metrics, setMetrics] = useState([]);
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState(2025); // Mantém 2025 como padrão
+  const availableYears = ["ANO", 2025, 2024, 2023];
 
   useEffect(() => {
     if (!enterprise?.enterprise_id || !token) return;
@@ -23,9 +24,6 @@ export function DataHistory({ enterprise }) {
           );
 
           setMetrics(filteredMetrics);
-          if (filteredMetrics.length > 0) {
-            setYear(new Date(filteredMetrics[0].date_recorded).getFullYear());
-          }
         }
       })
       .catch(error => {
@@ -47,13 +45,17 @@ export function DataHistory({ enterprise }) {
     { key: "captable", label: "Captable" }
   ];
 
-  const percentageFields = [ "captable"];
+  const percentageFields = ["captable"];
   const sumFields = ["new_clients", "revenue_period"];
+
+  const filteredMetricsByYear = metrics.filter(
+    metric => new Date(metric.date_recorded).getFullYear() === year
+  );
 
   const getMonthlySums = (key) => {
     const monthlyValues = Array(12).fill(0);
 
-    metrics.forEach(metric => {
+    filteredMetricsByYear.forEach(metric => {
       const month = new Date(metric.date_recorded).getMonth();
       if (metric[key] !== undefined && metric[key] !== null) {
         monthlyValues[month] = Number(metric[key]); // Último valor registrado no mês
@@ -71,11 +73,15 @@ export function DataHistory({ enterprise }) {
       return getMonthlySums(key);
     }
 
+    if (filteredMetricsByYear.length === 0) {
+      return { months: Array(12).fill("-"), total: "-" };
+    }
+
     const months = Array(12).fill("-");
     let latestValue = "-";
 
-    if (metrics.length > 0) {
-      const latestMetric = metrics[0];
+    if (filteredMetricsByYear.length > 0) {
+      const latestMetric = filteredMetricsByYear[0];
       const month = new Date(latestMetric.date_recorded).getMonth();
       latestValue = latestMetric[key] ?? "-";
       months[month] = latestValue;
@@ -84,6 +90,13 @@ export function DataHistory({ enterprise }) {
     return { months, total: latestValue };
   };
 
+  const handleYearChange = (e) => {
+    const selectedYear = e.target.value;
+    if (selectedYear !== "ANO") {
+      setYear(Number(selectedYear));
+    }
+  };
+  console.log("aaaaaaaa", metrics)
   return (
     <div className="row">
       <div className="col-md-12">
@@ -92,7 +105,18 @@ export function DataHistory({ enterprise }) {
             <thead>
               <tr>
                 <th>Dado <span className="filter-icon">&#9662;</span></th>
-                <th>ANO <span className="filter-icon">&#9662;</span></th>
+                <th>
+                  <select
+                    className="form-select"
+                    style={{ width: "100px", fontWeight: "800", display: "inline-block", marginLeft: "5px" }}
+                    value={year}
+                    onChange={handleYearChange}
+                  >
+                    {availableYears.map(y => (
+                      <option key={y} value={y}>{y}</option>
+                    ))}
+                  </select>
+                </th>
                 <th>JAN</th>
                 <th>FEV</th>
                 <th>MAR</th>
@@ -116,7 +140,7 @@ export function DataHistory({ enterprise }) {
                 return (
                   <tr key={key}>
                     <td>{label}</td>
-                    <th>{year}</th>
+                    <td>{year}</td> {/* Mantive o ano para cada linha */}
                     {months.map((value, index) => (
                       <td key={index}>{value}</td>
                     ))}
