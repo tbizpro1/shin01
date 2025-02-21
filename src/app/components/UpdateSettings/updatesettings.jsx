@@ -7,14 +7,33 @@ import { AuthContext } from "../../context/authContext"
 export default function UpDateSettings({setActiveTab, enterprise }) {
     const {handleSubmit, register} = useForm()
     const {token} =  useContext(AuthContext)
+    console.log(enterprise?.enterprise_id,"teste")
     const onSubmit = (data) => {
-        addMetricsCompany(data, enterprise.enterprise_id, token).then(
-            response => console.log(response)
+        const formattedData = {
+            enterprise_id: enterprise?.enterprise_id ?? null, // Garante que tenha um ID válido
+            team_size: Number(data.team_size) || null,
+            revenue_period: Number(data.revenue_period) || null,
+            total_clients: Number(data.total_clients) || null,
+            new_clients: Number(data.new_clients) || null,
+            investment_round_open: data.investment_round_open === "true", // Converte para booleano
+            capital_needed: Number(data.capital_needed) || null,
+            value_foment: Number(data.value_foment) || "null",
+            valuation: String(data.valuation) || null,
+            date_recorded: data.date_recorded || "null",
+            current_capital: data.current_capital || "null",
+            captable: data.captable || null,
+        };
+        addMetricsCompany(formattedData, token).then(
+            response => console.log("deu bom",response)
         ).catch(
-            error => console.error("ocorreu um erro ao registrar métrica", error)
+            error => console.log("ocorreu um erro ao registrar métrica", error)
         ) 
     }
     // faltantes: capital, quatidade de sócios, porcetagem de sócios
+
+    // {
+    //     "current_capital": null,
+    // }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} role="tabpanel" className="tab-pane blog-page active" id="usersettings">
@@ -47,18 +66,13 @@ export default function UpDateSettings({setActiveTab, enterprise }) {
                                     <h2 style={{ fontSize: "1.0625rem" }}><strong>Necessidade de Capital?</strong></h2>
                                 </div>
                                 <div className="col-12">
-                                    <select
-                                        {...register("capital_needed")}
-                                        id="discovered_startup"
-                                        className="form-control select_styled"
-                                        defaultValue=""
-                                    >
-                                        <option value="" disabled>
-                                            Sua resposta
-                                        </option>
-                                        <option value={true}>Não</option>
-                                        <option value={false}>Sim</option>
-                                    </select>
+                                <input
+                                    {...register("capital_needed")}
+                                    id="name"
+                                    type="text"
+                                    className="form-control select_styled"
+                                    placeholder=""
+                                />
                                 </div>
                             </div>
                         </div>
@@ -70,7 +84,7 @@ export default function UpDateSettings({setActiveTab, enterprise }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("captable")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
