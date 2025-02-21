@@ -25,7 +25,7 @@ const TotalRevenueCard = ({ enterprise  }) => {
                     {/* Header */}
                     <div className="header ">
                         <h2 >
-                            <strong>Capital</strong>
+                            <strong>Captable</strong>
                         </h2>
                     </div>
                     {/* Body */}
