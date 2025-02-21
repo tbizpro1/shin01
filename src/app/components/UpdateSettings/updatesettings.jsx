@@ -4,24 +4,24 @@ import { useContext } from "react"
 import { AuthContext } from "../../context/authContext"
 
 
-export default function UpDateSettings({setActiveTab, enterprise }) {
-    const {handleSubmit, register} = useForm()
-    const {token} =  useContext(AuthContext)
-    console.log(enterprise?.enterprise_id,"teste")
+export default function UpDateSettings({ setActiveTab, enterprise }) {
+    const { handleSubmit, register } = useForm()
+    const { token } = useContext(AuthContext)
+    console.log(enterprise?.enterprise_id, "teste")
     const onSubmit = (data) => {
         const dataform = {
             ...data,
             enterprise: enterprise?.enterprise_id
         }
         createCompanyMetric(token, dataform)
-        .then(response => {
-            console.log("Deu bom", response);
-            alert("Métrica registrada com sucesso!");
-        })
-        .catch(error => {
-            console.log("Ocorreu um erro ao registrar métrica", error);
-            alert("Erro ao registrar métrica. Tente novamente.");
-        });
+            .then(response => {
+                console.log("Deu bom", response);
+                alert("Métrica registrada com sucesso!");
+            })
+            .catch(error => {
+                console.log("Ocorreu um erro ao registrar métrica", error);
+                alert("Erro ao registrar métrica. Tente novamente.");
+            });
     }
 
 
@@ -56,18 +56,67 @@ export default function UpDateSettings({setActiveTab, enterprise }) {
                                     <h2 style={{ fontSize: "1.0625rem" }}><strong>Necessidade de Capital?</strong></h2>
                                 </div>
                                 <div className="col-12">
-                                <input
-                                    {...register("capital_needed")}
-                                    id="name"
-                                    type="text"
-                                    className="form-control select_styled"
-                                    placeholder=""
-                                />
+                                    <input
+                                        {...register("capital_needed")}
+                                        id="name"
+                                        type="text"
+                                        className="form-control select_styled"
+                                        placeholder=""
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="w-100 col-md-12">
+                        <div className="form-group">
+                            <div className="header">
+                                <h2 style={{ fontSize: "1.0625rem" }}><strong>Selecione o mês e o ano que deseja informar/atualizar</strong></h2>
+                            </div>
+                            <div className="col-12 d-flex gap-3 col-lg-4" style={{ marginBottom: "1rem" }}>
+                                <select
+                                    // {...register("captable")}
+                                    className="form-control"
+                                    defaultValue=""
+                                >
+                                    <option value="" disabled>
+                                        Mês
+                                    </option>
+                                    <option value="JAN">Janeiro</option>
+                                    <option value="FEV">Fevereiro</option>
+                                    <option value="MAR">Março</option>
+                                    <option value="ABR">Abril</option>
+                                    <option value="MAI">Maio</option>
+                                    <option value="JUN">Junho</option>
+                                    <option value="JUL">Julho</option>
+                                    <option value="AGO">Agosto</option>
+                                    <option value="SET">Setembro</option>
+                                    <option value="OUT">Outubro</option>
+                                    <option value="NOV">Novembro</option>
+                                    <option value="DEZ">Dezembro</option>
+                                </select>
+                                <select
+                                    // {...register("captable")}
+                                    className="form-control"
+                                    defaultValue=""
+                                >
+                                    <option value="" disabled>
+                                        Ano
+                                    </option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                            </div>
+                        </div>
                         <div className="form-group">
                             <div className="header">
                                 <h2 style={{ fontSize: "1.0625rem" }}><strong>Captable</strong></h2>
