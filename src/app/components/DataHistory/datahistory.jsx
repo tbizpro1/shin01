@@ -5,8 +5,8 @@ import { getMetricsCompany } from "../../api/get/get-metrics-company";
 export function DataHistory({ enterprise }) {
   const { token } = useContext(AuthContext);
   const [metrics, setMetrics] = useState([]);
-  const [year, setYear] = useState(2025); // Mantém 2025 como padrão
-  const availableYears = ["ANO", 2025, 2024, 2023];
+  const [year, setYear] = useState(2025);
+  const [availableYears, setAvailableYears] = useState(["ANO", 2025]);
 
   useEffect(() => {
     if (!enterprise?.enterprise_id || !token) return;
@@ -15,15 +15,22 @@ export function DataHistory({ enterprise }) {
       .then(response => {
         if (response && Array.isArray(response)) {
           let filteredMetrics = response.filter(metric => 
-            metric?.enterprise_id === enterprise?.enterprise_id && metric.date_recorded
+            metric?.enterprise_id === enterprise?.enterprise_id && (metric.date_recorded || metric.year_send)
           );
 
-          // Ordena do mais recente ao mais antigo
           filteredMetrics.sort((a, b) => 
-            new Date(b.date_recorded).getTime() - new Date(a.date_recorded).getTime() || b.id - a.id
+            new Date((b.year_send || b.date_recorded)).getTime() - new Date((a.year_send || a.date_recorded)).getTime() || b.id - a.id
           );
 
           setMetrics(filteredMetrics);
+
+          // Extrai anos únicos de 'year_send' ou 'date_recorded'
+          const yearsFromAPI = [...new Set(filteredMetrics.map(m => m.year_send || new Date(m.date_recorded).getFullYear()))];
+          setAvailableYears(["ANO", ...yearsFromAPI.sort((a, b) => b - a)]);
+
+          if (yearsFromAPI.length > 0) {
+            setYear(yearsFromAPI[0]); // Define o ano mais recente como padrão
+          }
         }
       })
       .catch(error => {
@@ -48,24 +55,24 @@ export function DataHistory({ enterprise }) {
   const percentageFields = ["captable"];
   const sumFields = ["new_clients", "revenue_period"];
 
-  const filteredMetricsByYear = metrics.filter(
-    metric => new Date(metric.date_recorded).getFullYear() === year
-  );
+  const filteredMetricsByYear = metrics.filter(metric => {
+    const metricYear = metric.year_send || new Date(metric.date_recorded).getFullYear();
+    return metricYear === year;
+  });
 
   const getMonthlySums = (key) => {
-    const monthlyValues = Array(12).fill(0);
+    const monthlyValues = Array(12).fill("-");
+    let total = 0;
 
     filteredMetricsByYear.forEach(metric => {
       const month = new Date(metric.date_recorded).getMonth();
       if (metric[key] !== undefined && metric[key] !== null) {
-        monthlyValues[month] = Number(metric[key]); // Último valor registrado no mês
+        monthlyValues[month] = Number(metric[key]);
+        total += Number(metric[key]);
       }
     });
 
-    return {
-      months: monthlyValues.map(value => (value !== 0 ? value : "-")),
-      total: monthlyValues.reduce((sum, value) => sum + (value !== "-" ? value : 0), 0)
-    };
+    return { months: monthlyValues, total };
   };
 
   const getMonthsData = (key) => {
@@ -80,8 +87,8 @@ export function DataHistory({ enterprise }) {
     const months = Array(12).fill("-");
     let latestValue = "-";
 
-    if (filteredMetricsByYear.length > 0) {
-      const latestMetric = filteredMetricsByYear[0];
+    const latestMetric = filteredMetricsByYear[0];
+    if (latestMetric) {
       const month = new Date(latestMetric.date_recorded).getMonth();
       latestValue = latestMetric[key] ?? "-";
       months[month] = latestValue;
@@ -96,7 +103,7 @@ export function DataHistory({ enterprise }) {
       setYear(Number(selectedYear));
     }
   };
-  console.log("aaaaaaaa", metrics)
+
   return (
     <div className="row">
       <div className="col-md-12">
@@ -129,7 +136,7 @@ export function DataHistory({ enterprise }) {
                 <th>OUT</th>
                 <th>NOV</th>
                 <th>DEZ</th>
-                <th>TOTAL</th> {/* Nova coluna TOTAL */}
+                <th>TOTAL</th>
               </tr>
             </thead>
             <tbody>
@@ -140,11 +147,11 @@ export function DataHistory({ enterprise }) {
                 return (
                   <tr key={key}>
                     <td>{label}</td>
-                    <td>{year}</td> {/* Mantive o ano para cada linha */}
+                    <td>{year}</td>
                     {months.map((value, index) => (
                       <td key={index}>{value}</td>
                     ))}
-                    <td><strong>{formattedTotal}</strong></td> {/* Soma total para os campos necessários */}
+                    <td><strong>{formattedTotal}</strong></td>
                   </tr>
                 );
               })}
