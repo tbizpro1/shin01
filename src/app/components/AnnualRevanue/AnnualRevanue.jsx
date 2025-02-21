@@ -1,200 +1,101 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { Card } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-} from "chart.js";
-import { ArrowUpNarrowWide, HandCoins, TrendingUp } from "lucide-react";
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from "chart.js";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { getMetricsCompany } from "../../api/get/get-metrics-company";
 
-// Registrar os componentes necessários do Chart.js
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-);
-
-
-const EstateAnnualReport = ({ enterprise, data }) => {
-    const chartRef = useRef(null);
-    
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
+const EstateAnnualReport = ({ enterprise }) => {
     const { token } = useContext(AuthContext);
     const [metrics, setMetrics] = useState([]);
-    const [latestMetric, setLatestMetric] = useState(null);
-    const [trendData, setTrendData] = useState([]);
-    const [monthLabels, setMonthLabels] = useState([]);
-    const [financialMetrics, setFinancialMetrics] = useState({
-        revenue: 0,
-        profit: 0,
-        totalRevenue: 0
-    });
-    
+    const [mostRecentMetric, setMostRecentMetric] = useState(null);
+    const [trendData, setTrendData] = useState(Array(12).fill(0));
+
     useEffect(() => {
         if (!enterprise?.enterprise_id || !token) return;
-    
+
         getMetricsCompany(token)
             .then(response => {
                 if (response && Array.isArray(response)) {
-                    // Filtra as métricas da empresa atual
                     let filteredMetrics = response.filter(metric => 
-                        metric?.enterprise_id === enterprise?.enterprise_id
+                        metric?.enterprise_id === enterprise?.enterprise_id && metric.date_recorded
                     );
-        
-                    // Agrupa os dados por mês
-                    const monthlyData = filteredMetrics.reduce((acc, metric) => {
-                        const date = new Date(metric.date_recorded);
-                        const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-                        
-                        if (!acc[monthKey] || new Date(acc[monthKey].date_recorded) < date) {
-                            acc[monthKey] = metric;
-                        }
-                        
-                        return acc;
-                    }, {});
-        
-                    // Ordena os meses
-                    const sortedMonths = Object.keys(monthlyData).sort();
-                    
-                    // Cria array com 12 posições para os meses
-                    const monthlyValues = new Array(12).fill(null);
-                    
-                    // Preenche o array com os valores mais recentes de cada mês
-                    sortedMonths.forEach(monthKey => {
-                        const month = parseInt(monthKey.split('-')[1]) - 1;
-                        monthlyValues[month] = monthlyData[monthKey];
-                    });
-        
-                    // Define a métrica mais recente
-                    const currentMonth = new Date().getMonth();
-                    const mostRecentMetric = monthlyValues[currentMonth] || null;
-                    setLatestMetric(mostRecentMetric);
-        
-                    // Prepara os dados para o gráfico com preenchimento de valores vazios
-                    let lastValidValue = 0;
-                    const processedData = monthlyValues.map((metric, index) => {
-                        if (metric && metric.revenue_period !== undefined) {
-                            lastValidValue = Number(metric.revenue_period);
-                            return lastValidValue;
-                        }
-                        // Para meses sem dados, usa o último valor válido
-                        return lastValidValue;
-                    });
-                    
-                    // Cria labels para os meses
-                    const months = [
-                        "2024", "2025",
-                    ];
-                    
-                    // Pega apenas os meses até o atual
-                    const currentMonthIndex = new Date().getMonth();
-                    const relevantMonths = months.slice(0, currentMonthIndex + 1);
-                    
-                    // Calcula métricas financeiras baseadas no revenue_period
-                    const revenue = mostRecentMetric?.revenue_period || 0;
-                    
-                    // Supondo que o lucro seja aproximadamente 25% da receita (ajuste conforme necessário)
-                    const profit = revenue * 0.25;
-                    
-                    // Total acumulado de todas as receitas mensais
-                    const totalRevenue = processedData.reduce((sum, value) => sum + (value || 0), 0);
-                    
-                    setFinancialMetrics({
-                        revenue,
-                        profit, 
-                        totalRevenue
-                    });
-        
-                    setTrendData(processedData.slice(0, currentMonthIndex + 1));
-                    setMonthLabels(relevantMonths);
+
+                    filteredMetrics.sort((a, b) => 
+                        new Date(b.date_recorded).getTime() - new Date(a.date_recorded).getTime() || b.id - a.id
+                    );
+
                     setMetrics(filteredMetrics);
+                    if (filteredMetrics.length > 0) {
+                        setMostRecentMetric(filteredMetrics[0]);
+                        populateTrendData(filteredMetrics);
+                    }
                 }
             })
             .catch(error => {
                 console.error("Erro ao buscar métricas:", error);
-                setLatestMetric(null);
-                setTrendData(new Array(12).fill(0));
+                setMetrics([]);
             });
     }, [token, enterprise?.enterprise_id]);
-    
+
+    const populateTrendData = (metrics) => {
+        const months = Array(12).fill(0);
+        metrics.forEach(metric => {
+            const month = new Date(metric.date_recorded).getMonth();
+            months[month] = metric.revenue_period ?? 0;
+        });
+        setTrendData([...months]);
+    };
+
+    const isGrowing = (currentValue, previousValue) => {
+        return currentValue > previousValue;
+    };
+
     const chartData = {
-        labels: monthLabels,
+        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
         datasets: [
             {
-                label: "Receita Mensal",
+                label: "Receita Anual",
                 data: trendData,
-                borderColor: "rgb(255, 89, 23)",
-                backgroundColor: "rgba(255, 166, 23, 0.3)",
-                fill: true,
+                borderColor: "rgb(255, 159, 64)", // Cor diferenciada
+                backgroundColor: "rgba(255, 159, 64, 0.2)",
                 tension: 0.4,
+                spanGaps: true,
+                fill: true,
             },
         ],
     };
 
-    const options = {
+    const chartOptions = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
-                display: true,
-                position: "bottom",
+                display: false,
             },
             tooltip: {
-                enabled: true,
                 callbacks: {
                     label: function(context) {
-                        return `Receita: ${new Intl.NumberFormat('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL'
-                        }).format(context.raw)}`;
+                        const monthIndex = context.dataIndex;
+                        const monthlyMetric = trendData[monthIndex];
+                        return monthlyMetric !== null ? `Receita: ${monthlyMetric}` : 'Sem dados';
                     }
                 }
-            },
+            }
         },
         scales: {
-            x: {
-                grid: {
-                    display: true,
-                },
-            },
             y: {
                 beginAtZero: true,
-                grid: {
-                    color: "rgba(0, 0, 0, 0.1)",
-                },
                 ticks: {
-                    callback: function(value) {
-                        return new Intl.NumberFormat('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL',
-                            notation: 'compact'
-                        }).format(value);
-                    }
+                    precision: 0
                 }
-            },
-        },
+            }
+        }
     };
-
-    // Formata valores monetários
     const formatCurrency = (value) => {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(value || 0);
-    };
-
-    // Determina se o valor está em crescimento
-    const isGrowing = (value, previousValue) => {
-        return value > previousValue;
+        if (value === undefined || value === null) return 'N/A';
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
     };
 
     return (
@@ -210,44 +111,21 @@ const EstateAnnualReport = ({ enterprise, data }) => {
                                 <i className="zmdi zmdi-money-box zmdi-hc-4x"></i>
                                 <div className="m-l-20">
                                     <h4 className="m-t-0">
-                                        {formatCurrency(financialMetrics.revenue)}{" "}
-                                        {isGrowing(financialMetrics.revenue, trendData[trendData.length - 2] || 0) ? (
+                                        {mostRecentMetric?.revenue_period ? 
+                                            formatCurrency(mostRecentMetric.revenue_period) : "N/A"}
+                                        {isGrowing(mostRecentMetric?.revenue_period, trendData[trendData.length - 2] || 0) ? (
                                             <i className="zmdi zmdi-trending-up col-green"></i>
                                         ) : (
                                             <i className="zmdi zmdi-trending-down col-red"></i>
                                         )}
                                     </h4>
-                                    <p className="text-muted">Receita Mensal</p>
+                                    <p className="text-muted">Receita Anual</p>
                                 </div>
                             </div>
                         </div>
-                            {/* <div className="col-sm-4 col-6 d-flex">
-                                <HandCoins size={50}/>
-                                <div className="m-l-20">
-                                    <h4 className="m-t-0">
-                                        {formatCurrency(financialMetrics.profit)}{" "}
-                                        {isGrowing(financialMetrics.profit, (trendData[trendData.length - 2] || 0) * 0.25) ? (
-                                            <i className="zmdi zmdi-trending-up col-green"></i>
-                                        ) : (
-                                            <i className="zmdi zmdi-trending-down col-red"></i>
-                                        )}
-                                    </h4>
-                                    <p className="text-muted">Lucro Mensal</p>
-                                </div>
-                            </div>
-                            <div className="col-sm-4 col-6 d-flex">
-                                <ArrowUpNarrowWide size={50}/>
-                                <div className="m-l-20">
-                                    <h4 className="m-t-0">
-                                        {formatCurrency(financialMetrics.totalRevenue)}{" "}
-                                        <i className="zmdi zmdi-trending-up col-green"></i>
-                                    </h4>
-                                    <p className="text-muted">Faturamento Total</p>
-                                </div>
-                            </div>
-                        </div> */}
+
                         <div id="area_chart" className="graph mt-4">
-                            <Line ref={chartRef} data={chartData} options={options}/>
+                            <Line data={chartData} options={chartOptions} height={200} />
                         </div>
                     </div>
                 </div>
