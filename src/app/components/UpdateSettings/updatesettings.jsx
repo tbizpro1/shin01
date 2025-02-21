@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { addMetricsCompany } from "../../api/post/add-metrics-company"
+import { createCompanyMetric } from "../../api/post/add-metrics-company"
 import { useContext } from "react"
 import { AuthContext } from "../../context/authContext"
 
@@ -7,14 +7,23 @@ import { AuthContext } from "../../context/authContext"
 export default function UpDateSettings({setActiveTab, enterprise }) {
     const {handleSubmit, register} = useForm()
     const {token} =  useContext(AuthContext)
+    console.log(enterprise?.enterprise_id,"teste")
     const onSubmit = (data) => {
-        addMetricsCompany(data, enterprise.enterprise_id, token).then(
-            response => console.log(response)
-        ).catch(
-            error => console.error("ocorreu um erro ao registrar métrica", error)
-        ) 
+        const dataform = {
+            ...data,
+            enterprise: enterprise?.enterprise_id
+        }
+        createCompanyMetric(token, dataform)
+        .then(response => {
+            console.log("Deu bom", response);
+            alert("Métrica registrada com sucesso!");
+        })
+        .catch(error => {
+            console.log("Ocorreu um erro ao registrar métrica", error);
+            alert("Erro ao registrar métrica. Tente novamente.");
+        });
     }
-    // faltantes: capital, quatidade de sócios, porcetagem de sócios
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} role="tabpanel" className="tab-pane blog-page active" id="usersettings">
@@ -47,18 +56,13 @@ export default function UpDateSettings({setActiveTab, enterprise }) {
                                     <h2 style={{ fontSize: "1.0625rem" }}><strong>Necessidade de Capital?</strong></h2>
                                 </div>
                                 <div className="col-12">
-                                    <select
-                                        {...register("capital_needed")}
-                                        id="discovered_startup"
-                                        className="form-control select_styled"
-                                        defaultValue=""
-                                    >
-                                        <option value="" disabled>
-                                            Sua resposta
-                                        </option>
-                                        <option value={true}>Não</option>
-                                        <option value={false}>Sim</option>
-                                    </select>
+                                <input
+                                    {...register("capital_needed")}
+                                    id="name"
+                                    type="text"
+                                    className="form-control select_styled"
+                                    placeholder=""
+                                />
                                 </div>
                             </div>
                         </div>
@@ -70,7 +74,7 @@ export default function UpDateSettings({setActiveTab, enterprise }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("captable")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
