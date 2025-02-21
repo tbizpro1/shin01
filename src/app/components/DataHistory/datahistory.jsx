@@ -33,7 +33,7 @@ export function DataHistory({ enterprise }) {
         setMetrics([]);
       });
   }, [token, enterprise?.enterprise_id]);
-  console.log(metrics)
+
   const dataFields = [
     { key: "team_size", label: "Tamanho do Time" },
     { key: "revenue_period", label: "Receita do Período" },
@@ -47,14 +47,41 @@ export function DataHistory({ enterprise }) {
     { key: "captable", label: "Captable" }
   ];
 
+  const percentageFields = [ "captable"];
+  const sumFields = ["new_clients", "revenue_period"];
+
+  const getMonthlySums = (key) => {
+    const monthlyValues = Array(12).fill(0);
+
+    metrics.forEach(metric => {
+      const month = new Date(metric.date_recorded).getMonth();
+      if (metric[key] !== undefined && metric[key] !== null) {
+        monthlyValues[month] = Number(metric[key]); // Último valor registrado no mês
+      }
+    });
+
+    return {
+      months: monthlyValues.map(value => (value !== 0 ? value : "-")),
+      total: monthlyValues.reduce((sum, value) => sum + (value !== "-" ? value : 0), 0)
+    };
+  };
+
   const getMonthsData = (key) => {
-    const months = Array(12).fill("-");
-    if (metrics.length > 0) {
-      const latestMetric = metrics[0]; // Pega sempre o último registro mais recente
-      const month = new Date(latestMetric.date_recorded).getMonth();
-      months[month] = latestMetric[key] ?? "-";
+    if (sumFields.includes(key)) {
+      return getMonthlySums(key);
     }
-    return months;
+
+    const months = Array(12).fill("-");
+    let latestValue = "-";
+
+    if (metrics.length > 0) {
+      const latestMetric = metrics[0];
+      const month = new Date(latestMetric.date_recorded).getMonth();
+      latestValue = latestMetric[key] ?? "-";
+      months[month] = latestValue;
+    }
+
+    return { months, total: latestValue };
   };
 
   return (
@@ -78,18 +105,25 @@ export function DataHistory({ enterprise }) {
                 <th>OUT</th>
                 <th>NOV</th>
                 <th>DEZ</th>
+                <th>TOTAL</th> {/* Nova coluna TOTAL */}
               </tr>
             </thead>
             <tbody>
-              {dataFields.map(({ key, label }) => (
-                <tr key={key}>
-                  <td>{label}</td>
-                  <th>{year}</th>
-                  {getMonthsData(key).map((value, index) => (
-                    <td key={index}>{value}</td>
-                  ))}
-                </tr>
-              ))}
+              {dataFields.map(({ key, label }) => {
+                const { months, total } = getMonthsData(key);
+                const formattedTotal = percentageFields.includes(key) && total !== "-" ? `${total}%` : total;
+
+                return (
+                  <tr key={key}>
+                    <td>{label}</td>
+                    <th>{year}</th>
+                    {months.map((value, index) => (
+                      <td key={index}>{value}</td>
+                    ))}
+                    <td><strong>{formattedTotal}</strong></td> {/* Soma total para os campos necessários */}
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
