@@ -7,11 +7,10 @@ import { getMetricsCompany } from "../../api/get/get-metrics-company";
 const TotalRevenueCard = ({ enterprise }) => {
     const { token } = useContext(AuthContext);
     const [metrics, setMetrics] = useState([]);
-    const [latestMetric, setLatestMetric] = useState(null);
-
+    const [latestMetric, setLatestMetric] = useState(null)
     useEffect(() => {
         if (!enterprise?.enterprise_id || !token) return;
-
+        
         getMetricsCompany(token)
             .then(response => {
                 if (response && Array.isArray(response)) {
@@ -35,6 +34,7 @@ const TotalRevenueCard = ({ enterprise }) => {
             });
     }, [token, enterprise?.enterprise_id]);
 
+    console.log("metricas das empresas: ", metrics)
     return (
         <Card>
             <Card.Body style={{ padding: "0" }}>
@@ -76,7 +76,7 @@ const TotalRevenueCard = ({ enterprise }) => {
                 <div style={{ paddingTop: '5rem' }}>
                     <div className="header">
                         <h2 style={{ fontSize: ".9rem", color: "#00ced1", padding: "1px" }}>
-                            <strong>Necessidade de Capital</strong>
+                            <strong>Necessidade de capital</strong>
                         </h2>
                     </div>
                     <h5 style={{ color: "#00ced1", paddingLeft: "1.5rem" }}>
