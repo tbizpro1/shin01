@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { addMetricsCompany } from "../../api/post/add-metrics-company"
+import { createCompanyMetric } from "../../api/post/add-metrics-company"
 import { useContext } from "react"
 import { AuthContext } from "../../context/authContext"
 
@@ -9,31 +9,21 @@ export default function UpDateSettings({setActiveTab, enterprise }) {
     const {token} =  useContext(AuthContext)
     console.log(enterprise?.enterprise_id,"teste")
     const onSubmit = (data) => {
-        const formattedData = {
-            enterprise_id: enterprise?.enterprise_id ?? null, // Garante que tenha um ID válido
-            team_size: Number(data.team_size) || null,
-            revenue_period: Number(data.revenue_period) || null,
-            total_clients: Number(data.total_clients) || null,
-            new_clients: Number(data.new_clients) || null,
-            investment_round_open: data.investment_round_open === "true", // Converte para booleano
-            capital_needed: Number(data.capital_needed) || null,
-            value_foment: Number(data.value_foment) || "null",
-            valuation: String(data.valuation) || null,
-            date_recorded: data.date_recorded || "null",
-            current_capital: data.current_capital || "null",
-            captable: data.captable || null,
-        };
-        addMetricsCompany(formattedData, token).then(
-            response => console.log("deu bom",response)
-        ).catch(
-            error => console.log("ocorreu um erro ao registrar métrica", error)
-        ) 
+        const dataform = {
+            ...data,
+            enterprise: enterprise?.enterprise_id
+        }
+        createCompanyMetric(token, dataform)
+        .then(response => {
+            console.log("Deu bom", response);
+            alert("Métrica registrada com sucesso!");
+        })
+        .catch(error => {
+            console.log("Ocorreu um erro ao registrar métrica", error);
+            alert("Erro ao registrar métrica. Tente novamente.");
+        });
     }
-    // faltantes: capital, quatidade de sócios, porcetagem de sócios
 
-    // {
-    //     "current_capital": null,
-    // }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} role="tabpanel" className="tab-pane blog-page active" id="usersettings">

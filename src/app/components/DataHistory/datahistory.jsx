@@ -19,15 +19,13 @@ export function DataHistory({ enterprise }) {
 
           // Ordena do mais recente ao mais antigo
           filteredMetrics.sort((a, b) => 
-            new Date(b.date_recorded) - new Date(a.date_recorded) || b.id - a.id
+            new Date(b.date_recorded).getTime() - new Date(a.date_recorded).getTime() || b.id - a.id
           );
 
           setMetrics(filteredMetrics);
           if (filteredMetrics.length > 0) {
             setYear(new Date(filteredMetrics[0].date_recorded).getFullYear());
           }
-
-          console.log("Métricas filtradas:", filteredMetrics);
         }
       })
       .catch(error => {
@@ -35,7 +33,7 @@ export function DataHistory({ enterprise }) {
         setMetrics([]);
       });
   }, [token, enterprise?.enterprise_id]);
-
+  console.log(metrics)
   const dataFields = [
     { key: "team_size", label: "Tamanho do Time" },
     { key: "revenue_period", label: "Receita do Período" },
@@ -51,10 +49,11 @@ export function DataHistory({ enterprise }) {
 
   const getMonthsData = (key) => {
     const months = Array(12).fill("-");
-    metrics.forEach(metric => {
-      const month = new Date(metric.date_recorded).getMonth();
-      months[month] = metric[key] ?? "-";
-    });
+    if (metrics.length > 0) {
+      const latestMetric = metrics[0]; // Pega sempre o último registro mais recente
+      const month = new Date(latestMetric.date_recorded).getMonth();
+      months[month] = latestMetric[key] ?? "-";
+    }
     return months;
   };
 
