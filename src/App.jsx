@@ -22,11 +22,15 @@ import { EditeStartup } from './app/pages/EditeStartup/EditeStartup';
 // components
 import { DataPage } from './app/components/DataPage/datapage';
 import ProtectedRouter from './app/components/ProtectedRouter/protectedRouter';
+import Admin from './app/components/PageAdmin/admin';
+import User from './app/components/PageUser/user';
+import SignUp from './app/pages/Signup/signup';
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Login />} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/workspace' element={<ProtectedRouter page={Home} />} />
       {/* página de formulário das startup */}
       <Route path='/startup' element={<ProtectedRouter page={StartupProfile} />} />
@@ -38,6 +42,8 @@ function App() {
       <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />} />
       <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} />} />
       <Route path='/datapage' element={<ProtectedRouter page={DataPage} />} />
+      <Route path='/admin' element={<ProtectedRouter page={Admin} />} />
+      <Route path='/user' element={<ProtectedRouter page={User} />} />
     </Routes>
   )
 }

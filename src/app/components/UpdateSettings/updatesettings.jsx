@@ -137,7 +137,7 @@ export default function UpDateSettings({ setActiveTab, enterprise }) {
                             </div>
                             <div className="col-12">
                                 <input
-                                    // {...register("accelerator_name")}
+                                    {...register("partners_count")}
                                     id="name"
                                     type="text"
                                     className="form-control select_styled"
