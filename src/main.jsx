@@ -17,8 +17,8 @@ createRoot(document.getElementById('root'))
 );
 
 /*
-<StrictMode>: Envolve toda a aplicacao para ativar o modo estrito, como mencionado anteriormente.
-<BrowserRouter>: Envolve a aplicacao para habilitar o roteamento.
-<AuthProvider>: Envolve o componente App para fornecer o contexto de autenticacao para todos os componentes filhos.
-<App />: Renderiza o componente principal da aplicacao, que contem toda a logica e estrutura da sua interface do usuario.
+<StrictMode>: Envolve toda a aplicacao para ativar o modo estrito
+<BrowserRouter>: Envolve a aplicacao para habilitar o roteamento
+<AuthProvider>: Envolve o componente App para fornecer o contexto de autenticacao para todos os componentes filhos
+<App />: Renderiza o componente principal da aplicacao, que contem toda a logica e estrutura da sua interface do usuario
 */

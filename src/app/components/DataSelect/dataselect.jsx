@@ -43,7 +43,7 @@ export function CardData({ activeTab, setActiveTab, enterprise }) {
         {activeTab === 'update' && <UpDateSettings enterprise={enterprise} />}
         </div>
         <div className="tab-content">
-          {activeTab === 'history' && <DataHistory />}
+          {activeTab === 'history' && <DataHistory enterprise={enterprise} />}
         </div>
         <div className="tab-content">
           {activeTab === 'dashboards' && <DataDashboard enterprise={enterprise} />}

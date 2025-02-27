@@ -13,7 +13,7 @@ import { backgroundLogin, logo, logoShin } from "../../../assets/images";
 
 
 const Login = () => {
-    const {setToken, setUserId, onSubmit} = useContext(AuthContext)
+    const { setToken, setUserId, onSubmit } = useContext(AuthContext)
     const { register, handleSubmit } = useForm();
     const [isLoading, setIsLoading] = useState(false)
 
@@ -79,11 +79,18 @@ const Login = () => {
                                                 <button
                                                     type="submit"
                                                     className="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
-                                                        Entrar
+                                                    Entrar
                                                 </button>
                                                 <h6 className="m-t-20">
                                                     <a href="forgot-password.html" className="link">Esqueceu sua senha?</a>
                                                 </h6>
+                                            </div>
+                                            <div>
+                                                <a href="/signup"
+                                                    type="submit"
+                                                    className="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
+                                                    Inscrever-se
+                                                </a>
                                             </div>
                                         </form>
                                     </div>
