@@ -5,11 +5,11 @@ import RegisterUm from "../RegisterUm/registerum";
 import RegisterDois from "../RegisterDois/registerdois";
 import RegisterTres from "../RegisterTres/registertres";
 import RegisterQuatro from "../RegisterQuatro/registerquatro";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 export default function Formulario() {
     const [passo, setPasso] = useState(1)
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, control} = useForm() // extrai propriedades
 
     // const calculateProgress = (currentStep: Number) => {
     //     switch (currentStep) {
@@ -41,7 +41,7 @@ export default function Formulario() {
             return  <RegisterDois setPasso={setPasso} register={register} />
           case 4: 
           console.log(passo)
-            return  <RegisterTres setPasso={setPasso} register={register} />
+            return  <RegisterTres setPasso={setPasso} register={register} control={control} />
           case 5: 
           console.log(passo)
             return  <RegisterQuatro setPasso={setPasso} register={register} onSubmit={handleSubmit(onSubmit)} />
@@ -53,7 +53,7 @@ export default function Formulario() {
 
     return (
         <>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}> {/* Associa o onSubmit ao form */}
             {renderFormStep()}
         </form>
         </>

@@ -35,7 +35,10 @@ const RegisterQuatro = ({ setPasso, register, onSubmit }) => {
                 {/* Campos lado a lado */}
                 <div className="row">
                   {[
-                    { label: 'Como você conheceu a Startup Piauí?', name: 'discovered_startup', type: 'select', options: ['Instagram', 'LinkedIn', 'Outro'] },
+                    { label: 'Como você conheceu a Startup Piauí?', 
+                      name: 'discovered_startup', 
+                      type: 'select', 
+                      options: ['Instagram', 'LinkedIn', 'Outro'] },
                     {
                       label: 'Selecione outros projetos que participa dentro do Startup Piauí',
                       name: 'cycle',
@@ -52,8 +55,8 @@ const RegisterQuatro = ({ setPasso, register, onSubmit }) => {
                       <div className="form-group">
                         <label>{label}*</label>
                         {type === 'select' ? (
-                          <select {...register(name)} defaultValue='' className="form-control" required>
-                            <option value="" disabled>{placeholder || 'Selecione uma opção'}</option>
+                          <select {...register(name)} className="form-control" required>
+                            <option value="" disabled selected>{placeholder || 'Selecione uma opção'}</option>
                             {options.map(option => (
                               <option key={option} value={option}>{option}</option>
                             ))}

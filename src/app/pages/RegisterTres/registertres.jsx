@@ -3,8 +3,9 @@ import NavBar from '../../components/NavBar/navbar';
 import Footer from '../../components/Footer/footer';
 import { backgroundLogin } from '../../../assets/images';
 import { NumericFormat } from 'react-number-format';
+import { useForm, Controller } from 'react-hook-form';
 
-const RegisterTres = ({ setPasso, register }) => {
+const RegisterTres = ({ setPasso, register, control }) => {
 
   const handleClickNextStep = () => {
     setPasso(5)
@@ -41,15 +42,25 @@ const RegisterTres = ({ setPasso, register }) => {
                             ))}
                           </select>
                         ) : type === 'currency' ? (
-                          <NumericFormat
-                            {...register(name)}
-                            className="form-control"
-                            required
-                            thousandSeparator="."
-                            decimalSeparator=","
-                            prefix="R$ "
-                            allowNegative={false}
-                            placeholder="R$ 0,00"
+                          <Controller
+                            name={name}
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                              <NumericFormat
+                                {...field}
+                                className="form-control"
+                                required
+                                thousandSeparator="."
+                                decimalSeparator=","
+                                prefix="R$ "
+                                allowNegative={false}
+                                placeholder="R$ 0,00"
+                                onValueChange={(values) => {
+                                  field.onChange(values.floatValue); // Atualiza o valor do campo
+                                }}
+                              />
+                            )}
                           />
                         ) : (
                           <input
