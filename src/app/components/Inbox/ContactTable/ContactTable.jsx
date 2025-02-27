@@ -4,22 +4,20 @@ import { AuthContext } from '../../../context/authContext';
 import addUserEnterprise from '../../../api/post/add-user-enterprise';
 import { perfilUnd, logo } from "../../../../assets/images/index";
 
-export const Partner = ({userid, name,profession, number, email, profile_picture, enterprise_id}) => {
+export const Partner = ({userid, name,profession, number, email, profile_picture}) => {
     const [isClicked, setIsClicked] = useState(false);
-    const { enterprise, token} = useContext(AuthContext)
 
-
-    const handleButtonClick = useCallback((userid) => {
-        if (enterprise_id) {
-            setIsClicked(!isClicked);
-            addUserEnterprise(userid, enterprise_id, token).then(
-                response => console.log(response)
-            );
-            window.location.reload()
-        } else {
-            console.error("Enterprise ID não disponível.");
-        }
-    }, [enterprise, token])
+    // const handleButtonClick = useCallback((userid) => {
+    //     if (enterprise_id) {
+    //         setIsClicked(!isClicked);
+    //         addUserEnterprise(userid, enterprise_id, token).then(
+    //             response => console.log(response)
+    //         );
+    //         window.location.reload()
+    //     } else {
+    //         console.error("Enterprise ID não disponível.");
+    //     }
+    // }, [enterprise, token])
     console.log(name, profile_picture)
     return (
         <tr className='display-flex justify-content-row'>
@@ -58,8 +56,8 @@ export const Partner = ({userid, name,profession, number, email, profile_picture
     )
 }
 
-export default function ContactTable({users, enterprise}) {
-    console.log("qwer",users)
+export default function ContactTable({users}) {
+    console.log("filtrados",users)
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -117,7 +115,6 @@ export default function ContactTable({users, enterprise}) {
                                 <th>Nome</th>
                                 <th data-breakpoints="xs">Telefone</th>
                                 <th data-breakpoints="xs sm md">Email</th>
-                                {/* <th data-breakpoints="xs sm md">Endereço</th> */}
                                 <th data-breakpoints="xs">Ações</th>
                             </tr>
                         </thead>
@@ -126,7 +123,6 @@ export default function ContactTable({users, enterprise}) {
                                 users.map((user, index) => (
                                     // console.log(user)
                                 <Partner
-                                    enterprise_id={enterprise.enterprise_id}
                                     key={user?.id || index} // Adicionado para garantir uma key única
                                     userid={user?.id}
                                     profile_picture={user?.profile_picture}
@@ -141,34 +137,6 @@ export default function ContactTable({users, enterprise}) {
                     </table>
                 </div>
             </div>
-            {/* <div className="card">
-                <div className="body">
-                    <ul className="pagination pagination-primary m-b-0">
-                        <li className="page-item">
-                            <a className="page-link" href="#">
-                                <i className="zmdi zmdi-arrow-left"></i>
-                            </a>
-                        </li>
-                        <li className="page-item active">
-                            <a className="page-link" href="#">1</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">2</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">3</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">4</a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#">
-                                <i className="zmdi zmdi-arrow-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div> */}
         </div>
     </div>
     )
