@@ -15,17 +15,17 @@ export function DataHistory({ enterprise }) {
       .then(response => {
         if (response && Array.isArray(response)) {
           let filteredMetrics = response.filter(metric => 
-            metric?.enterprise_id === enterprise?.enterprise_id && (metric.date_recorded || metric.year_send)
+            metric?.enterprise_id === enterprise?.enterprise_id && (metric.date_recorded || metric.metric_year)
           );
 
           filteredMetrics.sort((a, b) => 
-            new Date((b.year_send || b.date_recorded)).getTime() - new Date((a.year_send || a.date_recorded)).getTime() || b.id - a.id
+            new Date((b.y || b.date_recorded)).getTime() - new Date((a.metric_year || a.date_recorded)).getTime() || b.id - a.id
           );
 
           setMetrics(filteredMetrics);
 
-          // Extrai anos únicos de 'year_send' ou 'date_recorded'
-          const yearsFromAPI = [...new Set(filteredMetrics.map(m => m.year_send || new Date(m.date_recorded).getFullYear()))];
+          // Extrai anos únicos de 'metric_year' ou 'date_recorded'
+          const yearsFromAPI = [...new Set(filteredMetrics.map(m => m.metric_year || new Date(m.date_recorded).getFullYear()))];
           setAvailableYears(["ANO", ...yearsFromAPI.sort((a, b) => b - a)]);
 
           if (yearsFromAPI.length > 0) {
@@ -56,7 +56,7 @@ export function DataHistory({ enterprise }) {
   const sumFields = ["new_clients", "revenue_period"];
 
   const filteredMetricsByYear = metrics.filter(metric => {
-    const metricYear = metric.year_send || new Date(metric.date_recorded).getFullYear();
+    const metricYear = metric.metric_year || new Date(metric.date_recorded).getFullYear();
     return metricYear === year;
   });
 

@@ -14,11 +14,11 @@ const TotalRevenueCard = ({ enterprise }) => {
         getMetricsCompany(token)
             .then(response => {
                 if (response && Array.isArray(response)) {
-                    let filteredMetrics = response.filter(metric => 
+                    let filteredMetrics = response.filter(metric =>
                         metric?.enterprise_id === enterprise?.enterprise_id && metric.date_recorded
                     );
 
-                    filteredMetrics.sort((a, b) => 
+                    filteredMetrics.sort((a, b) =>
                         new Date(b.date_recorded).getTime() - new Date(a.date_recorded).getTime() || b.id - a.id
                     );
 
@@ -44,16 +44,16 @@ const TotalRevenueCard = ({ enterprise }) => {
                         <strong>Captable</strong>
                     </h2>
                 </div>
-                
+
                 {/* Circular Progress Bar */}
-                <div className="body text-center" style={{ padding: "0px" }}>
+                <div className="body" style={{ padding: "0px" }}>
                     <div style={{
-                        width: "130px", 
-                        height: "130px", 
-                        margin: "0 auto", 
-                        display: "flex", 
-                        alignItems: "center", 
-                        justifyContent: "center", 
+                        width: "130px",
+                        height: "130px",
+                        margin: "0 auto",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         paddingTop: '3rem'
                     }}>
                         <CircularProgressbar
@@ -64,15 +64,14 @@ const TotalRevenueCard = ({ enterprise }) => {
                                 pathColor: "#00ced1", // Cor da barra de progresso (aqua)
                                 textColor: "#00ced1", // Cor do texto (aqua)
                                 trailColor: "#d6d6d6", // Cor do fundo
-                                textSize: "24px", // Tamanho do texto
-                                textAnchor: "middle", // Centraliza o texto
+                                textSize: "22px", // Tamanho do texto                              
                                 fontWeight: "bold", // Deixa o texto em negrito
                             })}
                         />
                     </div>
                 </div>
 
-                
+
                 {/* Receita Total */}
                 <div style={{ paddingTop: '5rem' }}>
                     <div className="header">
@@ -81,7 +80,7 @@ const TotalRevenueCard = ({ enterprise }) => {
                         </h2>
                     </div>
                     <h5 style={{ color: "#00ced1", paddingLeft: "1.5rem" }}>
-                        { 
+                        {
                             new Intl.NumberFormat('pt-BR', {
                                 style: 'currency',
                                 currency: 'BRL'

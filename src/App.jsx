@@ -22,22 +22,36 @@ import { EditeStartup } from './app/pages/EditeStartup/EditeStartup';
 // components
 import { DataPage } from './app/components/DataPage/datapage';
 import ProtectedRouter from './app/components/ProtectedRouter/protectedRouter';
+import Admin from './app/components/PageAdmin/admin';
+import SignUp from './app/pages/Signup/signup';
+import React from 'react';
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Login />} />
+      <Route path='/signup' element={<SignUp />} />
       <Route path='/workspace' element={<ProtectedRouter page={Home} />} />
-      {/* página de formulário das startup */}
-      <Route path='/startup' element={<ProtectedRouter page={StartupProfile} />} />
-      <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} />
-      <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} />
-      <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} />
-      <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} />
-      <Route path='/profile/partner' element={<ProtectedRouter page={PartnerProfile} />} />
-      <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />} />
-      <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} />} />
-      <Route path='/datapage' element={<ProtectedRouter page={DataPage} />} />
+      
+      <Route path='/startup' element={<ProtectedRouter page={StartupProfile} adminRequiredadminRadminRequiredequired={false} />} />
+      <Route path='/socio' element={<ProtectedRouter page={AgentsPage} />} adminRequired={false} />
+      <Route path='/addsocio' element={<ProtectedRouter page={AddSocio} />} adminRequired={false} />
+      <Route path='/perfil' element={<ProtectedRouter page={AgentProfile} />} adminRequired={false} />
+      <Route path='/explorer' element={<ProtectedRouter page={InvitePage} />} adminRequired={false} />
+      <Route path='/profile/partner' element={<ProtectedRouter page={PartnerProfile} adminRequired={false} />} />
+      <Route path='/homestartup' element={<ProtectedRouter page={HomeStartup} />}  adminRequired={false} />
+      <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} adminRequired={false} />} />
+      <Route path='/datapage' element={<ProtectedRouter page={DataPage} adminRequired={false} />} />
+      <Route 
+        path='/admin' 
+        element={
+          React.createElement(ProtectedRouter, {
+            page: Admin,
+            adminRequired: true
+          })
+        } 
+      />
+      {/* <Route path='/admin' element={<ProtectedRouter page={Admin} adminRequired={true} />} /> */}
     </Routes>
   )
 }
