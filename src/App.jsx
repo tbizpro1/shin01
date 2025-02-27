@@ -25,8 +25,6 @@ import ProtectedRouter from './app/components/ProtectedRouter/protectedRouter';
 import Admin from './app/components/PageAdmin/admin';
 
 import Formulario from './app/pages/Formulario/formulario';
-
-import SignUp from './app/pages/Signup/signup';
 import React from 'react';
 
 
@@ -48,7 +46,6 @@ function App() {
       <Route path='/contentstartup' element={<ProtectedRouter page={EditeStartup} />} />
       <Route path='/datapage' element={<ProtectedRouter page={DataPage} />} />
       <Route path='/admin' element={<ProtectedRouter page={Admin} />} />
-
     </Routes>
   )
 }
