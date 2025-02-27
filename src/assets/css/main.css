@@ -19604,6 +19604,10 @@ section.content {
     background: linear-gradient(45deg, #49cdd0, #00bcd4) !important;
     color: #fff !important
 }
+.s-cyan {
+    background: linear-gradient(45deg, #49cdd0, #00bcd4) !important;
+    color: #fff !important
+}
 
 .l-khaki {
     background: linear-gradient(45deg, khaki, #fdf181) !important
