@@ -86,9 +86,9 @@ const Login = () => {
                                                 </h6>
                                             </div>
                                             <div>
-                                                <a href="/signup"
+                                                <a href="/register"
                                                     type="submit"
-                                                    className="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
+                                                    className="btn s-cyan btn-round btn-lg btn-block waves-effect waves-light">
                                                     Inscrever-se
                                                 </a>
                                             </div>
