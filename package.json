@@ -28,7 +28,8 @@
     "react-input-mask": "^2.0.4",
     "react-number-format": "^5.4.3",
     "react-router": "^7.1.1",
-    "react-router-dom": "^7.1.1"
+    "react-router-dom": "^7.1.1",
+    "sweetalert2": "^11.17.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
