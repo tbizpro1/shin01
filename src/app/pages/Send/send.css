@@ -1,0 +1,74 @@
+/* From Uiverse.io by Carlos-vargs */ 
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    border-radius: 36px;
+    font-weight: 700;
+    height: 54px;
+    font-size: 16px;
+    padding-inline: 20px;
+    background-color: transparent;
+    color: #fff;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-align: center;
+    transition: all .25s ease-in-out;
+    z-index: 1;
+    border: none;
+  }
+  
+  .button:is(:hover, :focus)::before {
+    transform: translateX(0%);
+  }
+  
+  .text {
+    white-space: nowrap;
+    line-height: 1.2;
+    padding-inline-end: 44px;
+    z-index: 2;
+  }
+  
+  /* change the width and height to 100% when you use it in your layout */
+  .button::after {
+    content: '';
+    position: absolute;
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    border: 1px solid #00bcd4;
+    border-radius: 36px;
+    z-index: 2;
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, #49cdd0, #00bcd4) !important;
+    /* color: #fff !important; */
+    z-index: 1;
+    left: -2px;
+    transform: translateX(90%);
+    transition: all .3s ease-out;
+  }
+  
+  .icon-send {
+    display: inherit;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    width: 54px;
+    height: 54px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background: linear-gradient(45deg, #49cdd0, #00bcd4) !important;
+    /* color: #fff !important; */
+    z-index: 2;
+  }
+  
+  

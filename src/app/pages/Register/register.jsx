@@ -56,7 +56,7 @@ const Register = ({ setPasso, register }) => {
                     { label: 'CNPJ (caso tenha)', name: 'cnpj', type: 'text' },
                     { label: 'Estado', name: 'enterprise_state', type: 'text' },
                     { label: 'Cidade', name: 'enterprise_city', type: 'text' },
-                    { label: 'Sumário', name: 'summary', type: 'text' },
+                    // { label: 'Sumário', name: 'summary', type: 'text' },
                   ].map(({ label, name, type }) => (
                     <div key={name} className="col-md-6">
                       <div className="form-group">

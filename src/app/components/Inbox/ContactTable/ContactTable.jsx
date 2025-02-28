@@ -89,14 +89,14 @@ export default function ContactTable({users}) {
                         <div className="col-lg-7 col-md-6 col-sm-12">
                             <h2>
                                 Invites
-                                <small className="text-muted">Welcome to Shin</small>
+                                <small className="text-muted">Lista de formulários submetidos</small>
                             </h2>
                         </div>
                     </div>
                 </div>
                 <div className="container-fluid d-flex justify-content-center align-items-center">
                     <div className="row clearfix text-center">
-                        <p>Você não enviou nenhum convite até o momento!</p>
+                        <p>Lista vazia até o momento!</p>
                     </div>
                 </div>
             </>

@@ -2,25 +2,27 @@ import React, { useState } from 'react';
 import NavBar from '../../components/NavBar/navbar';
 import Footer from '../../components/Footer/footer';
 import { backgroundLogin } from '../../../assets/images';
-import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router';
 
 const RegisterQuatro = ({ setPasso, register, onSubmit }) => {
 
-  const navigate = useNavigate() // cria uma instancia do useNavigate
+  // const navigate = useNavigate() // cria uma instancia do useNavigate
 
-  onSubmit() // chama a funcao de submit do formulario
+  // onSubmit() // chama a funcao de submit do formulario
+
+  // const handleClickNextStep = () => {
+  //   Swal.fire({
+  //     title: 'Sucesso!',
+  //     text: 'Seu formulário foi enviado com sucesso.',
+  //     icon: 'success',
+  //     confirmButtonText: 'OK'
+  //   }).then(() => {
+  //     // setPasso(1)
+  //     navigate('/')
+  //   })
+  // }
 
   const handleClickNextStep = () => {
-    Swal.fire({
-      title: 'Sucesso!',
-      text: 'Seu formulário foi enviado com sucesso.',
-      icon: 'success',
-      confirmButtonText: 'OK'
-    }).then(() => {
-      // setPasso(1)
-      navigate('/')
-    })
+    setPasso(6)
   }
 
   return (
@@ -38,17 +40,45 @@ const RegisterQuatro = ({ setPasso, register, onSubmit }) => {
                     { label: 'Como você conheceu a Startup Piauí?', 
                       name: 'discovered_startup', 
                       type: 'select', 
-                      options: ['Instagram', 'LinkedIn', 'Outro'] },
+                      options: [
+                        'Instagram', 
+                        'LinkedIn', 
+                        'Outro', 
+                        'Fui numa imersão do Programa', 
+                        'Campus Party', 
+                        'Investe Nelas 1', 
+                        'Investe Nelas 2', 
+                        'Expo Favela 2023', 
+                        'Expo Favela 2024', 
+                        'Achei no Google', 
+                        'Mídias Sociais', 
+                        'Indicação', 
+                        'Evento do Startup Piauí', 
+                        'Outros'
+                      ]
+                      },
                     {
                       label: 'Selecione outros projetos que participa dentro do Startup Piauí',
-                      name: 'cycle',
+                      name: 'other_projects',
                       type: 'checkbox',
                       options: [
-                        'Mentoria Startup Piauí',
-                        'Aceleração Startup Piauí',
-                        'Conexão com Investidores',
-                        'Capacitação Empreendedora'
+                        'Startup Piauí 1',
+                        'Startup Piauí 2',
+                        'Startup Piauí 3',
+                        'Startup Piauí 4',
+                        'Startup Piauí 5',
+                        'Startup Piauí 6',
+                        'Startup Piauí 7',
+                        'Start Piauí 8',
+                        'Batalha do Conhecimento 1',
+                        'Maratona de Negócios 1',
+                        'Batalha de Startups 1',
+                        'Investe Nelas 1',
+                        'Investe Nelas 2',
+                        'Expo Favela 2024',
+                        'Expo Favela 2023'
                       ]
+                      
                     }
                   ].map(({ label, name, type, options, placeholder }) => (
                     <div key={name} className="col-md-6">
@@ -84,7 +114,7 @@ const RegisterQuatro = ({ setPasso, register, onSubmit }) => {
               </div>
               <div className="footer text-center">
                 <button type="button" onClick={handleClickNextStep} className="btn l-cyan btn-round btn-lg btn-block waves-effect waves-light">
-                  Enviar
+                  Avançar
                 </button>
               </div>
             </div>

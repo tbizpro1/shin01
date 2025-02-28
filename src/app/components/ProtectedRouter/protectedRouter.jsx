@@ -13,11 +13,11 @@ const ProtectedRouter = ({ page: Page }) => {
         let userId = Cookies.get('user_id')
         let token = Cookies.get('token')
 
-        if (!token || !userId) {
-            // console.log(isAuthentication, token)
-            alert("Sua sessão expirou, realize login!")
-            navigate("/")
-        }
+        // if (!token || !userId) {
+        //     // console.log(isAuthentication, token)
+        //     alert("Sua sessão expirou, realize login!")
+        //     navigate("/")
+        // }
     }, [isAuthentication, navigate])
 
     return isAuthentication ? <Page /> : <Login />;

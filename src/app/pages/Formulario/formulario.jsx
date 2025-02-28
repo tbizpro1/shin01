@@ -5,7 +5,8 @@ import RegisterUm from "../RegisterUm/registerum";
 import RegisterDois from "../RegisterDois/registerdois";
 import RegisterTres from "../RegisterTres/registertres";
 import RegisterQuatro from "../RegisterQuatro/registerquatro";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import Send from "../Send/send";
 
 export default function Formulario() {
     const [passo, setPasso] = useState(1)
@@ -44,7 +45,10 @@ export default function Formulario() {
             return  <RegisterTres setPasso={setPasso} register={register} control={control} />
           case 5: 
           console.log(passo)
-            return  <RegisterQuatro setPasso={setPasso} register={register} onSubmit={handleSubmit(onSubmit)} />
+            return  <RegisterQuatro setPasso={setPasso} register={register} />
+          case 6: 
+          console.log(passo)
+            return  <Send setPasso={setPasso} register={register} onSubmit={handleSubmit(onSubmit)} />
           default:
             console.log(passo)
             return <Register setPasso={setPasso} register={register} />
